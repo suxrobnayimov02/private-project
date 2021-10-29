@@ -2510,8 +2510,8 @@ body {
 
 .list__vacancies__item .organization__logo {
   position: absolute;
-  width: 104px;
-  height: 104px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   top: 50%;
   -webkit-transform: translateY(-50%);

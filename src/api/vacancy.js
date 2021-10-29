@@ -1,57 +1,32 @@
 import request from '@/utils/request'
 
-export function login (data) {
-  return request({
-    url: 'login',
-    method: 'post',
-    data
-  })
-}
-export function logout () {
-  return request({
-    url: 'logout',
-    method: 'get'
-  })
-}
 export function index (query) {
   return request({
-    url: '/roles',
+    url: '/vacancies',
     method: 'get',
     params: query
   })
 }
+
 export function show (id) {
   return request({
-    url: '/roles/' + id,
+    url: '/vacancies/' + id,
     method: 'get'
   })
 }
 
-export function store (role) {
+export function store (data) {
   return request({
-    url: 'roles?include=Permissions',
+    url: 'vacancies',
     method: 'post',
-    data: role
+    data
   })
 }
 
-export function update (role) {
+export function update (data) {
   return request({
-    url: 'roles/' + role.id,
+    url: 'vacancies/' + data.id,
     method: 'put',
-    data: role.data
-  })
-}
-
-export function getInfo () {
-  return request({
-    url: '/auth/get-info',
-    method: 'post'
-  })
-}
-export function destroy (id) {
-  return request({
-    url: 'users/' + id,
-    method: 'delete'
+    data: data
   })
 }

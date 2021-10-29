@@ -272,7 +272,7 @@
     <div class="container bigger no-padding">
       <div class="vacancies__latest no-padding-right">
         <div class="section__title">
-          yangi vakansiyalar
+          Yangi vakansiyalar
         </div>
         <div class="type-slider">
           <div class="type-carousel owl-carousel owl-theme">

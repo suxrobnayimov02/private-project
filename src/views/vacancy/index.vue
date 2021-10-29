@@ -378,7 +378,49 @@
           </div>
           <div class="col-lg-9">
             <div class="list__vacancies">
-              <div class="list__vacancies__item">
+              <!--  -->
+              <div v-for="(vacancy, index) in vacancies_static.data" :key="index" class="list__vacancies__item">
+                <div class="item-body">
+                  <div class="item-row">
+                    <div class="name">{{ vacancy.position_name }}</div>
+                    <div class="salary" v-if="vacancy.position_salary">
+                      {{vacancy.position_salary}} <b> so’mdan</b>
+                    </div>
+                  </div>
+                  <div class="organization">{{vacancy.company_name}}</div>
+                  <div class="address">
+                    {{ vacancy.region ? vacancy.region.name_uz_ln : '' }}
+                    {{ vacancy.city ? ', ' + vacancy.city.name_uz_ln : '' }}
+
+                  </div>
+                  <div
+                    class="organization__logo"
+                    style="background-image: url('/img/image/portal.svg') ;"
+                  />
+                  <div class="desc">
+                    {{ vacancy.position_name }}
+                  </div>
+
+                </div>
+                <div class="item-footer">
+                  <div class="btn btn-primary">
+                    Qiziqish bildirish
+                  </div>
+                  <div class="icon-question">
+                    <img src="/img/image/question.svg" alt="">
+                  </div>
+                  <div class="date_view">
+                    <div class="date">
+                      {{ vacancy.date_start }}
+                    </div>
+                    <div class="view-count">
+                      2,5К
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <!-- <div class="list__vacancies__item">
                 <div class="item-body">
                   <div class="item-row">
                     <div class="name">Umumta’lim maktabi o’qituvchisi</div>
@@ -923,8 +965,8 @@
                       2,5К
                     </div>
                   </div>
-                </div>
-              </div>
+                </div> -->
+              <!-- </div> -->
             </div>
             <div class="text-center">
               <button class="filter_mobile_btn">
@@ -1000,8 +1042,520 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+import axios from 'axios'
 export default {
-  name: 'Index'
+  name: 'Index',
+  data () {
+    return {
+      vacancies_static: {
+        current_page: 1,
+        data: [
+          {
+            id: 21926568,
+            company_name: 'ООО "KING GARMENT TEXTILE"',
+            position_name: 'Оператор',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1726283',
+            company_soato_code4: '1726',
+            company_soato_code7: '1726283',
+            region: {
+              name_uz_ln: 'Toshkent shahri',
+              name_uz_cl: 'Тошкент шаҳри',
+              soato: '1726'
+            },
+            city: {
+              name_uz_ln: "Sirg'ali tumani",
+              name_uz_cl: 'Сирғали тумани',
+              soato: '1726283'
+            }
+          },
+          {
+            id: 21926567,
+            company_name: '"QIZILQUMGEOLOGIYA" AKSIYADORLIK JAMIYATI',
+            position_name: 'Бурғилаш қурилмаси машинисти',
+            position_salary: '862069.77',
+            date_start: '2021-10-29',
+            company_soato_code: '1712408',
+            company_soato_code4: '1712',
+            company_soato_code7: '1712408',
+            region: {
+              name_uz_ln: 'Navoiy viloyati',
+              name_uz_cl: 'Навоий вилояти',
+              soato: '1712'
+            },
+            city: {
+              name_uz_ln: 'Zarafshon',
+              name_uz_cl: 'Зарафшон',
+              soato: '1712408'
+            }
+          },
+          {
+            id: 21926566,
+            company_name: 'УЧРЕЖДЕНИЕ "RESPUBLIKA SHOSHILINCH TIBBIY YORDAM ILMIY MARKAZI',
+            position_name: 'Умумий амалиёт шифокори (ўриндош)',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1726294',
+            company_soato_code4: '1726',
+            company_soato_code7: '1726294',
+            region: {
+              name_uz_ln: 'Toshkent shahri',
+              name_uz_cl: 'Тошкент шаҳри',
+              soato: '1726'
+            },
+            city: {
+              name_uz_ln: 'Chilonzor tumani',
+              name_uz_cl: 'Чилонзор тумани',
+              soato: '1726294'
+            }
+          },
+          {
+            id: 21926565,
+            company_name: 'МАРКАЗИЙ КОН БОШКАРМАСИ',
+            position_name: 'Бадиий-безак ишларини бажарувчиси',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1712408',
+            company_soato_code4: '1712',
+            company_soato_code7: '1712408',
+            region: {
+              name_uz_ln: 'Navoiy viloyati',
+              name_uz_cl: 'Навоий вилояти',
+              soato: '1712'
+            },
+            city: {
+              name_uz_ln: 'Zarafshon',
+              name_uz_cl: 'Зарафшон',
+              soato: '1712408'
+            }
+          },
+          {
+            id: 21926564,
+            company_name: '"MIKROKREDITBANK" AKSIYADORLIK-TIJORAT BANKI',
+            position_name: 'Департамент директори ўринбосари',
+            position_salary: '1999926.00',
+            date_start: '2021-10-29',
+            company_soato_code: '1726294',
+            company_soato_code4: '1726',
+            company_soato_code7: '1726294',
+            region: {
+              name_uz_ln: 'Toshkent shahri',
+              name_uz_cl: 'Тошкент шаҳри',
+              soato: '1726'
+            },
+            city: {
+              name_uz_ln: 'Chilonzor tumani',
+              name_uz_cl: 'Чилонзор тумани',
+              soato: '1726294'
+            }
+          },
+          {
+            id: 21926563,
+            company_name: 'GID.INSH.QUR.DIREK. O ZTEMIRYO',
+            position_name: 'Дурадгор',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1726273',
+            company_soato_code4: '1726',
+            company_soato_code7: '1726273',
+            region: {
+              name_uz_ln: 'Toshkent shahri',
+              name_uz_cl: 'Тошкент шаҳри',
+              soato: '1726'
+            },
+            city: {
+              name_uz_ln: 'Mirobod tumani',
+              name_uz_cl: 'Миробод тумани',
+              soato: '1726273'
+            }
+          },
+          {
+            id: 21926562,
+            company_name: 'OLMALIQ KON-METALLURGIYA KOMBINATI',
+            position_name: '“Yoshlik-1» karyerida ishlovchi TD-40 buldozer mashinisti 5 razryadli',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1727404',
+            company_soato_code4: '1727',
+            company_soato_code7: '1727404',
+            region: {
+              name_uz_ln: 'Toshkent viloyati',
+              name_uz_cl: 'Тошкент вилояти',
+              soato: '1727'
+            },
+            city: {
+              name_uz_ln: 'Olmaliq',
+              name_uz_cl: 'Олмалиқ',
+              soato: '1727404'
+            }
+          },
+          {
+            id: 21926561,
+            company_name: '"O`ZBEKISTON SANOAT-QURILISH BANK" AKSIYADORLIK TIJORAT BANKI',
+            position_name: 'Бўлим бошлиғи',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1726266',
+            company_soato_code4: '1726',
+            company_soato_code7: '1726266',
+            region: {
+              name_uz_ln: 'Toshkent shahri',
+              name_uz_cl: 'Тошкент шаҳри',
+              soato: '1726'
+            },
+            city: {
+              name_uz_ln: 'Yunusobod tumani',
+              name_uz_cl: 'Юнусобод тумани',
+              soato: '1726266'
+            }
+          },
+          {
+            id: 21926560,
+            company_name: "OQOLTIN TUMANI 8-UMUMIY O'RTA TA'LIM MAKTABI",
+            position_name: 'Қоровул',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1724206824',
+            company_soato_code4: '1724',
+            company_soato_code7: '1724206',
+            region: {
+              name_uz_ln: 'Sirdaryo viloyati',
+              name_uz_cl: 'Сирдарё вилояти',
+              soato: '1724'
+            },
+            city: {
+              name_uz_ln: 'Oqoltin tumani',
+              name_uz_cl: 'Оқолтин тумани',
+              soato: '1724206'
+            }
+          },
+          {
+            id: 21926559,
+            company_name: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "HOME TEXTILE NT"',
+            position_name: 'Direktor',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1714401365',
+            company_soato_code4: '1714',
+            company_soato_code7: '1714401',
+            region: {
+              name_uz_ln: 'Namangan viloyati',
+              name_uz_cl: 'Наманган вилояти',
+              soato: '1714'
+            },
+            city: {
+              name_uz_ln: 'Namangan',
+              name_uz_cl: 'Наманган',
+              soato: '1714401'
+            }
+          },
+          {
+            id: 21926558,
+            company_name: "SHOVOT TUMANI 31-SON MAKTABGACHA TA'LIM MUASSASASI",
+            position_name: 'Xo‘jalik mudiri',
+            position_salary: '702004.00',
+            date_start: '2021-10-29',
+            company_soato_code: '1733230811',
+            company_soato_code4: '1733',
+            company_soato_code7: '1733230',
+            region: {
+              name_uz_ln: 'Xorazm viloyati',
+              name_uz_cl: 'Хоразм вилояти',
+              soato: '1733'
+            },
+            city: {
+              name_uz_ln: 'Shovot tumani',
+              name_uz_cl: 'Шовот тумани',
+              soato: '1733230'
+            }
+          },
+          {
+            id: 21926557,
+            company_name: '"ANOR BANK" AKSIYADORLIK JAMIYATI',
+            position_name: 'Катта мутахассис',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1726269',
+            company_soato_code4: '1726',
+            company_soato_code7: '1726269',
+            region: {
+              name_uz_ln: 'Toshkent shahri',
+              name_uz_cl: 'Тошкент шаҳри',
+              soato: '1726'
+            },
+            city: {
+              name_uz_ln: "Mirzo Ulug'bek tumani",
+              name_uz_cl: 'Мирзо Улуғбек тумани',
+              soato: '1726269'
+            }
+          },
+          {
+            id: 21926556,
+            company_name: '"ATROF MUHITNI MUHOFAZA QILISH SOHASIDA FAOLIYAT KO`RSATAYOTGAN XODIMLARNI QAYTA TAYYORLASH VA ULARNI MALAKASINI OSHIRISH MARKAZI"',
+            position_name: 'Етакчи мутахассис',
+            position_salary: '1192224.00',
+            date_start: '2021-10-29',
+            company_soato_code: '1726294',
+            company_soato_code4: '1726',
+            company_soato_code7: '1726294',
+            region: {
+              name_uz_ln: 'Toshkent shahri',
+              name_uz_cl: 'Тошкент шаҳри',
+              soato: '1726'
+            },
+            city: {
+              name_uz_ln: 'Chilonzor tumani',
+              name_uz_cl: 'Чилонзор тумани',
+              soato: '1726294'
+            }
+          },
+          {
+            id: 21926555,
+            company_name: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "INTERTEXSERVIS"',
+            position_name: 'Лазер қурилмаларида пайвандловчи',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1726290',
+            company_soato_code4: '1726',
+            company_soato_code7: '1726290',
+            region: {
+              name_uz_ln: 'Toshkent shahri',
+              name_uz_cl: 'Тошкент шаҳри',
+              soato: '1726'
+            },
+            city: {
+              name_uz_ln: 'Yashnobod tumani',
+              name_uz_cl: 'Яшнобод тумани',
+              soato: '1726290'
+            }
+          },
+          {
+            id: 21926554,
+            company_name: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "BCT CLUSTER AGROKO',
+            position_name: 'дала ишчиси',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1706242501',
+            company_soato_code4: '1706',
+            company_soato_code7: '1706242',
+            region: {
+              name_uz_ln: 'Buxoro viloyati',
+              name_uz_cl: 'Бухоро вилояти',
+              soato: '1706'
+            },
+            city: {
+              name_uz_ln: 'Romitan tumani',
+              name_uz_cl: 'Ромитан тумани',
+              soato: '1706242'
+            }
+          },
+          {
+            id: 21926553,
+            company_name: 'ZINATULIN RAVIL ABDURAXMANOVICH',
+            position_name: 'Директор',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1722210',
+            company_soato_code4: '1722',
+            company_soato_code7: '1722210',
+            region: {
+              name_uz_ln: 'Surxondaryo viloyati',
+              name_uz_cl: 'Сурхондарё вилояти',
+              soato: '1722'
+            },
+            city: {
+              name_uz_ln: 'Denov tumani',
+              name_uz_cl: 'Денов тумани',
+              soato: '1722210'
+            }
+          },
+          {
+            id: 21926552,
+            company_name: '1-САНЛЫ САНАТОРИЯ ТИПИНДЕГИ   МЕКТЕПКЕ ШЕКЕМГИ ТАЛИМ МУАССАС',
+            position_name: 'Тарбиячи ёрдамчиси',
+            position_salary: '450000.00',
+            date_start: '2021-10-29',
+            company_soato_code: '1735243501',
+            company_soato_code4: '1735',
+            company_soato_code7: '1735243',
+            region: {
+              name_uz_ln: "Qoraqalpog'iston Respublikasi",
+              name_uz_cl: 'Қорақалпоғистон Республикаси',
+              soato: '1735'
+            },
+            city: {
+              name_uz_ln: 'Shumanay tumani',
+              name_uz_cl: 'Шуманай тумани',
+              soato: '1735243'
+            }
+          },
+          {
+            id: 21926551,
+            company_name: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "VODIY METAN ISTIQBOLI"',
+            position_name: 'Заправка станциялари оператори',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1730221816',
+            company_soato_code4: '1730',
+            company_soato_code7: '1730221',
+            region: {
+              name_uz_ln: "Farg'ona viloyati",
+              name_uz_cl: 'Фарғона вилояти',
+              soato: '1730'
+            },
+            city: {
+              name_uz_ln: "Uchko'prik tumani",
+              name_uz_cl: 'Учкўприк тумани',
+              soato: '1730221'
+            }
+          },
+          {
+            id: 21926549,
+            company_name: 'MANZARALI GULLAR VA DARAXTLAR',
+            position_name: 'Ёрдамчи ишчи',
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1726262',
+            company_soato_code4: '1726',
+            company_soato_code7: '1726262',
+            region: {
+              name_uz_ln: 'Toshkent shahri',
+              name_uz_cl: 'Тошкент шаҳри',
+              soato: '1726'
+            },
+            city: {
+              name_uz_ln: 'Uchtepa tumani',
+              name_uz_cl: 'Учтепа тумани',
+              soato: '1726262'
+            }
+          },
+          {
+            id: 21926548,
+            company_name: '60-СОНЛИ УМУМИЙ УРТА ТАЪЛИМ МАКТАБИ',
+            position_name: "O't yoquvchi",
+            position_salary: null,
+            date_start: '2021-10-29',
+            company_soato_code: '1706215501',
+            company_soato_code4: '1706',
+            company_soato_code7: '1706215',
+            region: {
+              name_uz_ln: 'Buxoro viloyati',
+              name_uz_cl: 'Бухоро вилояти',
+              soato: '1706'
+            },
+            city: {
+              name_uz_ln: "G'ijduvon tumani",
+              name_uz_cl: 'Ғиждувон тумани',
+              soato: '1706215'
+            }
+          }
+        ],
+        first_page_url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=1',
+        from: 1,
+        last_page: 13490,
+        last_page_url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=13490',
+        links: [
+          {
+            url: null,
+            label: '&laquo; Previous',
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=1',
+            label: 1,
+            active: true
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=2',
+            label: 2,
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=3',
+            label: 3,
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=4',
+            label: 4,
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=5',
+            label: 5,
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=6',
+            label: 6,
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=7',
+            label: 7,
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=8',
+            label: 8,
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=9',
+            label: 9,
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=10',
+            label: 10,
+            active: false
+          },
+          {
+            url: null,
+            label: '...',
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=13489',
+            label: 13489,
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=13490',
+            label: 13490,
+            active: false
+          },
+          {
+            url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=2',
+            label: 'Next &raquo;',
+            active: false
+          }
+        ],
+        next_page_url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=2',
+        path: 'http://ish-api.mintrud.local/api/v1/vacancies',
+        per_page: 20,
+        prev_page_url: null,
+        to: 20,
+        total: 269791
+      }
+    }
+  },
+  async mounted () {
+    this.fetchVacancies().then(res => {
+      console.log('res', res)
+    })
+    await axios.get('https://ishapi.mehnat.uz/api/v1/vacancies').then(res => {
+      console.log('res', res)
+    })
+  },
+  computed: {
+    ...mapGetters({ vacancies: 'vacancy/GET_VACANCIES' })
+  },
+  methods: {
+    ...mapActions({ fetchVacancies: 'vacancy/index' })
+  }
 }
 </script>
 
