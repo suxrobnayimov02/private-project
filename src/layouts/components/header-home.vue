@@ -13,7 +13,7 @@
           </span>
         </router-link>
         <div class="header__nav">
-          <ul class="nav nav-pills">
+          <ul class="nav nav-pills" style="display:flex">
             <li class="nav-item ">
               <a href="" class="nav-link">
                 <span>

@@ -1,4 +1,4 @@
-@import url(bootstrap.min.css);
+@import url(bootstrap1.min.css);
 @import url(header.css);
 @import url(v-page.css);
 @import url(../fonts/fonts.css);
@@ -10,3 +10,28 @@
 @import url(owl.theme.default.min.css);
 
 
+
+.nav {
+  display: block;
+}
+.row {
+  display: block;
+}
+.owl-carousel {
+  display: block;
+}
+.type-slider .owl-carousel .owl-nav button.owl-next, .type-slider .owl-carousel .owl-nav button.owl-prev, .type-slider .owl-carousel button.owl-dot {
+  background: white;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: inherit!important;
+}
+.icon-question {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin: 8px 16px;
+}
+.pointer {
+  cursor: pointer;
+}
