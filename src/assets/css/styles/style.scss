@@ -1,0 +1,183 @@
+body {
+    font-family   : "Segoe UI";
+    font-weight   : normal;
+    font-size     : 16px;
+    letter-spacing: -0.02em;
+}
+
+.app {
+    position : relative;
+    overflow : hidden;
+    min-width: 375px;
+}
+
+.section__title {
+    font-family   : "Segoe UI";
+    font-weight   : bold;
+    font-size     : 24px;
+    letter-spacing: -0.01em;
+    line-height   : 17px;
+    color         : #333;
+    text-transform: uppercase;
+    text-align    : center;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.btn {
+    border-radius    : 0;
+    padding          : 11px 22px;
+    border-radius    : 0;
+    font-size        : 14px;
+    letter-spacing   : -0.02em;
+
+}
+
+.btn-warning {
+    background  : #FFB900 !important;
+    border-color: #FFB900 !important;
+
+    &:hover {
+        background: darken($color: #FFB900, $amount: 5) !important;
+    }
+}
+
+.btn-outline-primary {
+    background: transparent;
+    border    : 1px solid #0778D4 !important;
+    color     : #0078D4 !important;
+
+    &:hover {
+        background: darken($color: #0778D4, $amount: 5) !important;
+        color     : #fff !important;
+
+        path {
+            fill: #fff
+        }
+    }
+}
+
+.pagination {
+    &-row {
+        text-align: center
+    }
+
+    & li {
+        margin-right: 15px;
+        display     : inline-block;
+
+        & a {
+            border-radius: 50%;
+            width        : 40px;
+            height       : 40px;
+            border       : 0;
+
+            font-weight   : 600;
+            font-size     : 18px;
+            letter-spacing: -0.02em;
+            line-height   : 40px;
+            padding       : 0;
+
+            &:hover {
+                background-color: #3C3C3C;
+                color           : #F8F8F8;
+
+            }
+        }
+
+        &.dots {
+            span {
+                border: none;
+
+                &:hover {
+                    background: none;
+                }
+            }
+        }
+
+        &.active {
+            & a {
+                background-color: #3C3C3C;
+                color           : #F8F8F8;
+
+                &:hover {
+                    background-color: #3C3C3C;
+                    color           : #F8F8F8;
+                }
+            }
+        }
+
+        &:first-child {
+            & span {
+                border-radius   : 50%;
+                width           : 40px;
+                height          : 40px;
+                border          : 0;
+                background-color: #0078D4;
+                position        : relative;
+
+                & svg {
+                    position : absolute;
+                    top      : 50%;
+                    left     : 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                &:hover {
+                    background-color: #0078D4;
+
+                }
+            }
+        }
+
+        &:last-child {
+            & a {
+                border-radius   : 50%;
+                width           : 40px;
+                height          : 40px;
+                border          : 0;
+                background-color: #0078D4;
+
+                &:hover {
+                    background-color: #0078D4;
+
+                }
+            }
+
+            & svg {
+                position : absolute;
+                top      : 50%;
+                left     : 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+
+
+.row-no-gutters [class*=col-] {
+    padding-right: 15px;
+    padding-left : 15px;
+}
+
+.row-no-gutters>[class*=col-] {
+    padding-right: 0;
+    padding-left : 0;
+}
+
+@import '_header.scss';
+@import '_intro.scss';
+@import '_vacancies_section.scss';
+@import '_tips.scss';
+@import '_employer.scss';
+@import '_footer.scss';
+@import '_register.scss';
+@import '_list.scss';
+@import '_resume.scss';
+@import '_vpage.scss';
+@import 'media.scss';
+
+@import '_resume-info.scss';
+@import '_blog.scss';

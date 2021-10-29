@@ -1,22 +1,53 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-
-const routes = [
+import auth from './middleweres/auth'
+import resumeRouter from '@/router/modules/resume'
+import vacancyRouter from '@/router/modules/vacancy'
+export const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: () => import('@/layouts/main'),
+    meta: { middleware: [auth] },
+    children: [
+      {
+        name: 'Home',
+        path: '/',
+        component: () => import('@/views/home/index')
+      },
+      {
+        name: 'Register',
+        path: '/register',
+        component: () => import('@/views/register')
+      },
+      {
+        name: 'Auth',
+        path: '/auth',
+        component: () => import('@/views/auth/auth-token')
+      },
+      ...resumeRouter,
+      ...vacancyRouter
+    ]
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/404',
+    component: () => import('@/views/404'),
+    hidden: true
+  },
+  {
+    path: '/403',
+    component: () => import('@/views/403'),
+    hidden: true
+  },
+  {
+    // path: "*",
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: () => import('@/views/404'),
+    meta: {
+      requiresAuth: false
     }
   }
+  // 404 page must be placed at the end !!!
+  // { path: '*', redirect: '/404', hidden: true }
 ]
 
 const router = createRouter({

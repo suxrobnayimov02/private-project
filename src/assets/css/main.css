@@ -1,0 +1,12 @@
+@import url(bootstrap.min.css);
+@import url(header.css);
+@import url(v-page.css);
+@import url(../fonts/fonts.css);
+
+@import url(style.css);
+@import url(styles/style.scss);
+@import url(media.css);
+@import url(owl.carousel.min.css);
+@import url(owl.theme.default.min.css);
+
+
