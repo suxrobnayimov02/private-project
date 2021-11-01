@@ -2579,6 +2579,10 @@ body {
   padding: 7px 15px;
 }
 
+.item-body {
+  cursor: pointer;
+}
+
 .list__vacancies .pagination-row {
   margin-bottom: 80px;
 }

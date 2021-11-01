@@ -296,7 +296,7 @@
                 />
               </svg>
             </div>
-            <div class="text">
+            <div class="text" @click="goToServices">
               Davom etish
             </div>
           </button>
@@ -310,7 +310,18 @@
 import MapRegions from './components/map.vue'
 export default {
   name: 'Intro',
-  components: { MapRegions }
+  components: { MapRegions },
+  methods: {
+    goToServices () {
+      var element = document.getElementById('vacancies__section')
+      var top = element.offsetTop
+      window.scrollTo({
+        top: top - 100,
+        left: 0,
+        behavior: 'smooth'
+      })
+    }
+  }
 }
 </script>
 

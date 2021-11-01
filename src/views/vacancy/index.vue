@@ -5,13 +5,13 @@
         <div class="search-form">
           <form action="">
             <div class="row">
-              <div class="col-lg-10 col-md-10 col-sm-9 col-xs-10 no-padding-right-mobile">
+              <div class="col-lg-10 col-md-10 col-sm-9 col-xs-10 no-padding-right-mobile" >
                 <div class="form-group position-relative">
                   <input
                     type="text"
                     class="form-control"
                     placeholder="Vakansiya izlash uchun kasb, hudud, lavozim yoki tashkilot nomini kiriting "
-                  >
+                  />
                   <button class="btn btn-default btn-filter-setting">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,12 @@
                   </button>
                 </div>
               </div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-2 no-padding-left-mobile">
+              <div
+                class="
+                  col-lg-2 col-md-2 col-sm-3 col-xs-2
+                  no-padding-left-mobile
+                "
+              >
                 <button class="btn btn-primary btn-block btn-find">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -53,20 +58,14 @@
           </form>
         </div>
         <ul class="nav nav-pills">
-          <li class="nav-item ">
-            <a href="" class="nav-link active">
-              Vakansiyalar
-            </a>
+          <li class="nav-item">
+            <a href="" class="nav-link active"> Vakansiyalar </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
-              Rezyumelar
-            </a>
+            <a href="" class="nav-link"> Rezyumelar </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
-              Tashkilotlar
-            </a>
+            <a href="" class="nav-link"> Tashkilotlar </a>
           </li>
         </ul>
       </div>
@@ -79,24 +78,13 @@
               Topilgan vakansiyalar soni <b>53 897</b> ta
             </div>
             <div class="btn-group btn-group-slider">
-              <button class="btn btn-default">
-                Vaqtincha ish
-              </button>
-              <button class="btn btn-default">
-                Mavsumiy ish
-              </button>
-              <button class="btn btn-default">
-                Doimiy ish
-              </button>
-              <button class="btn btn-default">
-                Masofadan turib ishlash
-              </button>
-              <button class="btn btn-default">
-                Smenali ish
-              </button>
+              <button class="btn btn-default">Vaqtincha ish</button>
+              <button class="btn btn-default">Mavsumiy ish</button>
+              <button class="btn btn-default">Doimiy ish</button>
+              <button class="btn btn-default">Masofadan turib ishlash</button>
+              <button class="btn btn-default">Smenali ish</button>
             </div>
           </div>
-
         </div>
       </div>
       <div class="container">
@@ -110,7 +98,9 @@
                   </select>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8 text-right">
-                  <div class="total">Namoyish etilyapdi <b>20</b> ta <b>53 897</b> tadan </div>
+                  <div class="total">
+                    Namoyish etilyapdi <b>20</b> ta <b>53 897</b> tadan
+                  </div>
                 </div>
               </div>
             </div>
@@ -118,304 +108,46 @@
         </div>
         <div class="row">
           <div class="col-lg-3">
-            <div class="list__filters filter">
-              <div class="filter__item">
-                <div class="filter__title">Kasblar</div>
-                <table>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="barcha_kasblar"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="barcha_kasblar">
-                          Barcha kasblar
-                        </label>
-                      </div>
-                    </td>
-                    <td>53 897 </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="Oqituvchi"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="Oqituvchi">
-                          O’qituvchi
-                        </label>
-                      </div>
-                    </td>
-                    <td>18 752</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="barcha_kasblar"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="barcha_kasblar">
-                          Repetitor
-                        </label>
-                      </div>
-                    </td>
-                    <td> 963</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="barcha_kasblar"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="barcha_kasblar">
-                          Barcha kasblar
-                        </label>
-                      </div>
-                    </td>
-                    <td>53 897</td>
-                  </tr>
-                  <tfoot>
-                    <tr>
-                      <td>
-                        <button class="btn-link">
-                          Barchasini ko’rsatish
-                        </button>
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-
-              </div>
-              <div class="filter__item">
-                <div class="filter__title">Maosh, so’mda</div>
-                <table>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="barcha_kasblar"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="barcha_kasblar">
-                          Ahamiyatsiz
-                        </label>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="Oqituvchi"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="Oqituvchi">
-                          1 000 000 dan
-                        </label>
-                      </div>
-                    </td>
-                    <td>35 842</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="barcha_kasblar"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="barcha_kasblar">
-                          2 000 000 dan
-                        </label>
-                      </div>
-                    </td>
-                    <td> 9 752</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="barcha_kasblar"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="barcha_kasblar">
-                          3 000 000 dan
-                        </label>
-                      </div>
-                    </td>
-                    <td>5 963</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="barcha_kasblar"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="barcha_kasblar">
-                          O’zingiz belgilang
-                        </label>
-                      </div>
-                    </td>
-
-                  </tr>
-                  <tfoot>
-                    <tr>
-                      <td class="with-input">
-                        <div class="form-group position-relative">
-                          <input type="text">
-                          <span class="input-postfix">dan</span>
-                        </div>
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-
-              </div>
-              <div class="filter__item">
-                <div class="filter__title">Ta’lim darajasi</div>
-                <table>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="barcha_kasblar"
-                          type="checkbox"
-                          checked
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="barcha_kasblar">
-                          Ahamiyatsiz
-                        </label>
-                      </div>
-                    </td>
-                    <td>53 897 </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="Oqituvchi"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="Oqituvchi">
-                          O’rta
-                        </label>
-                      </div>
-                    </td>
-                    <td>1 752</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="barcha_kasblar"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="barcha_kasblar">
-                          O’rta maxsus
-                        </label>
-                      </div>
-                    </td>
-                    <td> 963</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="checkbox ">
-                        <input
-                          id="barcha_kasblar"
-                          type="checkbox"
-                          value="option1"
-                          aria-label="..."
-                        >
-                        <label for="barcha_kasblar">
-                          Oliy
-                        </label>
-                      </div>
-                    </td>
-                    <td>53 897</td>
-                  </tr>
-                  <tfoot>
-                    <tr>
-                      <td>
-                        <button class="btn-link">
-                          Barchasini ko’rsatish
-                        </button>
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-
-              </div>
-            </div>
-
+            <filter-vacancy />
           </div>
           <div class="col-lg-9">
             <div class="list__vacancies">
               <!--  -->
-              <div v-for="(vacancy, index) in vacancies_static.data" :key="index" class="list__vacancies__item">
-                <div class="item-body">
+              <div
+                v-for="(vacancy, index) in vacancies_static.data"
+                :key="index"
+                class="list__vacancies__item"
+              >
+                <div class="item-body" @click="showVacancy(vacancy.id)">
                   <div class="item-row">
                     <div class="name">{{ vacancy.position_name }}</div>
                     <div class="salary" v-if="vacancy.position_salary">
-                      {{vacancy.position_salary}} <b> so’mdan</b>
+                      {{ vacancy.position_salary }} <b> so’mdan</b>
                     </div>
                   </div>
-                  <div class="organization">{{vacancy.company_name}}</div>
+                  <div class="organization">{{ vacancy.company_name }}</div>
                   <div class="address">
-                    {{ vacancy.region ? vacancy.region.name_uz_ln : '' }}
-                    {{ vacancy.city ? ', ' + vacancy.city.name_uz_ln : '' }}
-
+                    {{ vacancy.region ? vacancy.region.name_uz_ln : "" }}
+                    {{ vacancy.city ? ", " + vacancy.city.name_uz_ln : "" }}
                   </div>
                   <div
                     class="organization__logo"
-                    style="background-image: url('/img/image/portal.svg') ;"
+                    style="background-image: url('/img/image/portal.svg')"
                   />
                   <div class="desc">
                     {{ vacancy.position_name }}
                   </div>
-
                 </div>
                 <div class="item-footer">
-                  <div class="btn btn-primary">
-                    Qiziqish bildirish
-                  </div>
+                  <div class="btn btn-primary">Qiziqish bildirish</div>
                   <div class="icon-question">
-                    <img src="/img/image/question.svg" alt="">
+                    <img src="/img/image/question.svg" alt="" />
                   </div>
                   <div class="date_view">
                     <div class="date">
                       {{ vacancy.date_start }}
                     </div>
-                    <div class="view-count">
-                      2,5К
-                    </div>
+                    <div class="view-count">2,5К</div>
                   </div>
                 </div>
               </div>
@@ -970,7 +702,12 @@
             </div>
             <div class="text-center">
               <button class="filter_mobile_btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 32 28">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="14"
+                  viewBox="0 0 32 28"
+                >
                   <path
                     id="Fabric_Icons"
                     data-name="Fabric Icons"
@@ -980,9 +717,7 @@
                   />
                 </svg>
 
-                <span>
-                  Filtrlar
-                </span>
+                <span> Filtrlar </span>
               </button>
             </div>
             <nav class="pagination-row">
@@ -1008,9 +743,7 @@
                 <li class="active"><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
                 <li class="dots">
-                  <span>
-                    ...
-                  </span>
+                  <span> ... </span>
                 </li>
                 <li><a href="#">98</a></li>
                 <li>
@@ -1044,8 +777,10 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import axios from 'axios'
+import FilterVacancy from './filter'
 export default {
   name: 'Index',
+  components: { FilterVacancy },
   data () {
     return {
       vacancies_static: {
@@ -1093,7 +828,8 @@ export default {
           },
           {
             id: 21926566,
-            company_name: 'УЧРЕЖДЕНИЕ "RESPUBLIKA SHOSHILINCH TIBBIY YORDAM ILMIY MARKAZI',
+            company_name:
+              'УЧРЕЖДЕНИЕ "RESPUBLIKA SHOSHILINCH TIBBIY YORDAM ILMIY MARKAZI',
             position_name: 'Умумий амалиёт шифокори (ўриндош)',
             position_salary: null,
             date_start: '2021-10-29',
@@ -1174,7 +910,8 @@ export default {
           {
             id: 21926562,
             company_name: 'OLMALIQ KON-METALLURGIYA KOMBINATI',
-            position_name: '“Yoshlik-1» karyerida ishlovchi TD-40 buldozer mashinisti 5 razryadli',
+            position_name:
+              '“Yoshlik-1» karyerida ishlovchi TD-40 buldozer mashinisti 5 razryadli',
             position_salary: null,
             date_start: '2021-10-29',
             company_soato_code: '1727404',
@@ -1193,7 +930,8 @@ export default {
           },
           {
             id: 21926561,
-            company_name: '"O`ZBEKISTON SANOAT-QURILISH BANK" AKSIYADORLIK TIJORAT BANKI',
+            company_name:
+              '"O`ZBEKISTON SANOAT-QURILISH BANK" AKSIYADORLIK TIJORAT BANKI',
             position_name: 'Бўлим бошлиғи',
             position_salary: null,
             date_start: '2021-10-29',
@@ -1233,7 +971,8 @@ export default {
           },
           {
             id: 21926559,
-            company_name: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "HOME TEXTILE NT"',
+            company_name:
+              'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "HOME TEXTILE NT"',
             position_name: 'Direktor',
             position_salary: null,
             date_start: '2021-10-29',
@@ -1293,7 +1032,8 @@ export default {
           },
           {
             id: 21926556,
-            company_name: '"ATROF MUHITNI MUHOFAZA QILISH SOHASIDA FAOLIYAT KO`RSATAYOTGAN XODIMLARNI QAYTA TAYYORLASH VA ULARNI MALAKASINI OSHIRISH MARKAZI"',
+            company_name:
+              '"ATROF MUHITNI MUHOFAZA QILISH SOHASIDA FAOLIYAT KO`RSATAYOTGAN XODIMLARNI QAYTA TAYYORLASH VA ULARNI MALAKASINI OSHIRISH MARKAZI"',
             position_name: 'Етакчи мутахассис',
             position_salary: '1192224.00',
             date_start: '2021-10-29',
@@ -1313,7 +1053,8 @@ export default {
           },
           {
             id: 21926555,
-            company_name: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "INTERTEXSERVIS"',
+            company_name:
+              'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "INTERTEXSERVIS"',
             position_name: 'Лазер қурилмаларида пайвандловчи',
             position_salary: null,
             date_start: '2021-10-29',
@@ -1333,7 +1074,8 @@ export default {
           },
           {
             id: 21926554,
-            company_name: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "BCT CLUSTER AGROKO',
+            company_name:
+              'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "BCT CLUSTER AGROKO',
             position_name: 'дала ишчиси',
             position_salary: null,
             date_start: '2021-10-29',
@@ -1373,7 +1115,8 @@ export default {
           },
           {
             id: 21926552,
-            company_name: '1-САНЛЫ САНАТОРИЯ ТИПИНДЕГИ   МЕКТЕПКЕ ШЕКЕМГИ ТАЛИМ МУАССАС',
+            company_name:
+              '1-САНЛЫ САНАТОРИЯ ТИПИНДЕГИ   МЕКТЕПКЕ ШЕКЕМГИ ТАЛИМ МУАССАС',
             position_name: 'Тарбиячи ёрдамчиси',
             position_salary: '450000.00',
             date_start: '2021-10-29',
@@ -1393,7 +1136,8 @@ export default {
           },
           {
             id: 21926551,
-            company_name: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "VODIY METAN ISTIQBOLI"',
+            company_name:
+              'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "VODIY METAN ISTIQBOLI"',
             position_name: 'Заправка станциялари оператори',
             position_salary: null,
             date_start: '2021-10-29',
@@ -1455,7 +1199,8 @@ export default {
         first_page_url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=1',
         from: 1,
         last_page: 13490,
-        last_page_url: 'http://ish-api.mintrud.local/api/v1/vacancies?page=13490',
+        last_page_url:
+          'http://ish-api.mintrud.local/api/v1/vacancies?page=13490',
         links: [
           {
             url: null,
@@ -1546,19 +1291,23 @@ export default {
     // this.fetchVacancies().then(res => {
     //   console.log('res', res)
     // })
-    await axios.get('https://ishapi.mehnat.uz/api/v1/vacancies/21946310').then(res => {
-      console.log('res', res)
-    })
+    await axios
+      .get('https://ishapi.mehnat.uz/api/v1/vacancies/21946310')
+      .then((res) => {
+        console.log('res', res)
+      })
   },
   computed: {
     ...mapGetters({ vacancies: 'vacancy/GET_VACANCIES' })
   },
   methods: {
-    ...mapActions({ fetchVacancies: 'vacancy/index' })
+    ...mapActions({ fetchVacancies: 'vacancy/index' }),
+    showVacancy (id) {
+      this.$router.push({ name: 'VacancyShow', params: { id: id } })
+    }
   }
 }
 </script>
 
 <style scoped>
-
 </style>

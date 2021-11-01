@@ -1,5 +1,5 @@
 <template>
-  <div class="vacancies__section">
+  <div class="vacancies__section" id="vacancies__section">
     <div class="container bigger no-padding">
       <div class="vacancies__tab">
         <ul class="nav nav-tabs nav-justified" role="tablist">
