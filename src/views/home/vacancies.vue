@@ -15,7 +15,8 @@
                 izlayapman</span>
             </a>
           </li>
-          <li role="presentation" class="nav-item"><a
+          <li role="presentation" class="nav-item">
+            <a
             class="nav-link"
             href="#Ish_beruvchiman"
             aria-controls="Ish_beruvchiman"

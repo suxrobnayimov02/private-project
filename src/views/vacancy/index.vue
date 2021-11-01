@@ -1543,10 +1543,10 @@ export default {
     }
   },
   async mounted () {
-    this.fetchVacancies().then(res => {
-      console.log('res', res)
-    })
-    await axios.get('https://ishapi.mehnat.uz/api/v1/vacancies').then(res => {
+    // this.fetchVacancies().then(res => {
+    //   console.log('res', res)
+    // })
+    await axios.get('https://ishapi.mehnat.uz/api/v1/vacancies/21946310').then(res => {
       console.log('res', res)
     })
   },
