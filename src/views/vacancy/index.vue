@@ -5,13 +5,13 @@
         <div class="search-form">
           <form action="">
             <div class="row">
-              <div class="col-lg-10 col-md-10 col-sm-9 col-xs-10 no-padding-right-mobile" >
+              <div class="col-lg-10 col-md-10 col-sm-9 col-xs-10 no-padding-right-mobile">
                 <div class="form-group position-relative">
                   <input
                     type="text"
                     class="form-control"
                     placeholder="Vakansiya izlash uchun kasb, hudud, lavozim yoki tashkilot nomini kiriting "
-                  />
+                  >
                   <button class="btn btn-default btn-filter-setting">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +121,7 @@
                 <div class="item-body" @click="showVacancy(vacancy.id)">
                   <div class="item-row">
                     <div class="name">{{ vacancy.position_name }}</div>
-                    <div class="salary" v-if="vacancy.position_salary">
+                    <div v-if="vacancy.position_salary" class="salary">
                       {{ vacancy.position_salary }} <b> so’mdan</b>
                     </div>
                   </div>
@@ -141,7 +141,7 @@
                 <div class="item-footer">
                   <div class="btn btn-primary">Qiziqish bildirish</div>
                   <div class="icon-question">
-                    <img src="/img/image/question.svg" alt="" />
+                    <img src="/img/image/question.svg" alt="">
                   </div>
                   <div class="date_view">
                     <div class="date">
@@ -781,7 +781,7 @@ import FilterVacancy from './filter'
 export default {
   name: 'Index',
   components: { FilterVacancy },
-  data () {
+  data() {
     return {
       vacancies_static: {
         current_page: 1,
@@ -1287,23 +1287,24 @@ export default {
       }
     }
   },
-  async mounted () {
-    // this.fetchVacancies().then(res => {
-    //   console.log('res', res)
-    // })
+  computed: {
+    ...mapGetters({ vacancies: 'vacancy/GET_VACANCIES' })
+  },
+  async mounted() {
+    this.fetchVacancies().then(res => {
+      console.log('res', res)
+    })
     await axios
-      .get('https://ishapi.mehnat.uz/api/v1/vacancies/21946310')
+      .get('https://ishapi.mehnat.uz/api/v1/vacancies')
       .then((res) => {
         console.log('res', res)
       })
   },
-  computed: {
-    ...mapGetters({ vacancies: 'vacancy/GET_VACANCIES' })
-  },
+
   methods: {
     ...mapActions({ fetchVacancies: 'vacancy/index' }),
-    showVacancy (id) {
-      this.$router.push({ name: 'VacancyShow', params: { id: id } })
+    showVacancy(id) {
+      this.$router.push({ name: 'VacancyShow', params: { id: id }})
     }
   }
 }

@@ -1,7 +1,8 @@
 import store from '@/store'
+import { VueMaskDirective } from 'v-mask'
 
 const can = ('can', {
-  bind (el, binding, vnode) {
+  bind(el, binding, vnode) {
     const value = binding.value
     let hasRole = false
     const perms = store.getters['auth/USER'].permissions
@@ -20,7 +21,8 @@ const can = ('can', {
     }
   }
 })
+const mask = ('mask', VueMaskDirective)
 
 export default (app) => {
-  app.directive(can)
+  app.directive({ can, mask })
 }

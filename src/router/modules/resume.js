@@ -10,6 +10,11 @@ const resumeRouter = [
     component: () => import('@/views/resume/create')
   },
   {
+    name: 'ResumeOldCreate',
+    path: '/resumes/create-old',
+    component: () => import('@/views/resume/components/index')
+  },
+  {
     name: 'ResumeShow',
     path: '/resumes/:id',
     component: () => import('@/views/resume/show')

@@ -6,7 +6,7 @@
           <h1>Ish qidiruvchilarga</h1>
           <ul class="nav">
             <li class="nav-item">
-              <router-link :to="{ name: 'ResumeCreate' }" class="nav-link">
+              <router-link :to="{ name: 'ResumeOldCreate' }" class="nav-link">
                 Rezyume yaratish
               </router-link>
             </li>
@@ -89,9 +89,7 @@
         <a href="" class="icon">
           <img src="/img/image/logo-footer.svg" alt="" width="230">
         </a>
-        <div class="name">
-
-        </div>
+        <div class="name" />
       </div>
     </div>
     <div class="container">
@@ -114,7 +112,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       year: new Date().getFullYear()
     }
