@@ -24,5 +24,6 @@ const can = ('can', {
 const mask = ('mask', VueMaskDirective)
 
 export default (app) => {
-  app.directive({ can, mask })
+  app.directive(can)
+  app.directive(mask)
 }

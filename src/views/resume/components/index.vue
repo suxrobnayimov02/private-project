@@ -143,33 +143,17 @@
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
           <el-form-item :label="$t('Мобилный телефон')">
-            <!-- <el-input v-model="form.phone_number" v-mask="'+998#########'" /> -->
+            <el-input v-model="form.phone_number" v-mask="mask" />
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
           <el-form-item :label="$t('Домашный телефон')">
-            <!-- <el-input v-model="form.home_phone_number" v-mask="'+998#########'" /> -->
+            <el-input v-model="form.home_phone_number" v-mask="mask" />
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
           <el-form-item :label="$t('Электронная почта')">
             <el-input v-model="form.email" />
-          </el-form-item>
-        </el-col>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <el-form-item :label="$t('Семейное положение') + ':'">
-            <el-select
-              v-model="form.family_state_id"
-              class="w-100"
-              filterable
-            >
-              <el-option
-                v-for="item in family_statuses"
-                :key="item.id"
-                :label="translateFamilyStatus(item)"
-                :value="item.id"
-              />
-            </el-select>
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
@@ -189,7 +173,7 @@
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
           <el-form-item :label="$t('Зарплата')">
-            <!-- <money v-model="form.want_salary" class="text-right text-right  el-input__inner" v-bind="money" /> -->
+            <input v-model="form.want_salary" v-money="money" class="text-right text-right  el-input__inner">
           </el-form-item>
         </el-col>
       </el-row>
@@ -353,15 +337,19 @@ import CitizenCollege from './components/resume/college'
 import { translater } from '@/assets/translate/translat_service'
 import WorkbookTable from './components/resume/workbook'
 import languages from './components/languages'
-import { Money } from 'v-money'
+import { VMoney } from 'v-money'
+import { VueMaskDirective } from 'v-mask'
+
 export default {
-  components: {
-    EducationTable, WorkbookTable, languages, Money, CitizenCollege, EducationCreate, CollageTable
-  },
+  // components: {
+  //   EducationTable, WorkbookTable, languages, Money, CitizenCollege, EducationCreate, CollageTable
+  // },
+  directives: { money: VMoney, mask: VueMaskDirective },
   data() {
     return {
-      regions: '',
-      districts: '',
+      // regions: '',
+      // districts: '',
+      mask: '##',
       form: {
         f_name: null,
         s_name: null,
@@ -434,9 +422,8 @@ export default {
       locale: 'app/LOCALE',
       userInfo: 'auth/USER',
       resume: 'resume/RESUME',
-      // regions: 'region/GET_REGIONS',
-      // districts: 'region/GET_CITIES',
-      family_statuses: 'resume/FAMILY_STATUSES'
+      regions: 'region/GET_REGIONS',
+      districts: 'region/GET_DISTRICTS'
     })
 
   },
@@ -463,54 +450,54 @@ export default {
     }
   },
   mounted() {
-    this.show(this.userInfo.resume.id).then(
-      res => {
-        // this.form = res.data.resume
-        if (res.success && res.data) {
-          this.setForm({ form: this.form, details: res.data.resume })
+    if (this.userInfo && this.userInfo.resume) {
+      this.show(this.userInfo.resume.id).then(
+        res => {
+          // this.form = res.data.resume
+          if (res.success && res.data) {
+            this.setForm({ form: this.form, details: res.data.resume })
+          }
+          this.education = res.data.education.result.citizens
+          if (this.education && this.education.length) {
+            this.edu_type_disabled = true
+          }
+          this.workbook = res.data.workbook.data ? res.data.workbook.data : []
+          this.positions = res.data.position ? res.data.position : []
+          this.party = res.data.partiya.result.party ? res.data.partiya.result.party : this.$t('Нет')
+          this.regionModel = res.data.resume.region_id
+          this.districtModel = res.data.resume.city_id
+          if (res.data.resume.photo) {
+            this.photoUrl = process.env.VUE_APP_BASE_URL + res.data.resume.photo
+          }
+          if (!this.form.work_schedule) {
+            this.form.work_schedule = []
+          }
+          if (!this.form.employment_id) {
+            this.form.employment_id = []
+          }
+          if (this.regionModel) {
+            this.changeRegion()
+          }
+          if (this.education.length !== 0) {
+            this.form.education_degree = 3
+          }
         }
-        this.education = res.data.education.result.citizens
-        if (this.education && this.education.length) {
-          this.edu_type_disabled = true
-        }
-        this.workbook = res.data.workbook.data ? res.data.workbook.data : []
-        this.positions = res.data.position ? res.data.position : []
-        this.party = res.data.partiya.result.party ? res.data.partiya.result.party : this.$t('Нет')
-        this.regionModel = res.data.resume.region_id
-        this.districtModel = res.data.resume.city_id
-        if (res.data.resume.photo) {
-          this.photoUrl = process.env.VUE_APP_BASE_URL + res.data.resume.photo
-        }
-        if (!this.form.work_schedule) {
-          this.form.work_schedule = []
-        }
-        if (!this.form.employment_id) {
-          this.form.employment_id = []
-        }
-        if (this.regionModel) {
-          this.changeRegion()
-        }
-        if (this.education.length !== 0) {
-          this.form.education_degree = 3
-        }
-      }
-    )
+      )
+    }
     if (!(this.regions && this.regions.length)) {
-      this.getRegions()
+      this.fetchRegions()
     }
-    this.familyStatus().then(res => {
-    })
-    this.getAppealsStatuses({ type: 'work_schedule' }).then(res => {
-      this.scheduleTypes = res.data
-    })
-    if (!this.employmentTypes.length) {
-      this.getAppealsStatuses({ type: 'employment_id' }).then(res => {
-        this.employmentTypes = res.data
-      })
-    }
-    this.getAppealsStatuses({ type: 'edu_degree' }).then(res => {
-      this.edu_degrees = res.data
-    })
+    // this.getAppealsStatuses({ type: 'work_schedule' }).then(res => {
+    //   this.scheduleTypes = res.data
+    // })
+    // if (!this.employmentTypes.length) {
+    //   this.getAppealsStatuses({ type: 'employment_id' }).then(res => {
+    //     this.employmentTypes = res.data
+    //   })
+    // }
+    // this.getAppealsStatuses({ type: 'edu_degree' }).then(res => {
+    //   this.edu_degrees = res.data
+    // })
   },
   methods: {
     ...mapActions({
@@ -518,11 +505,10 @@ export default {
       setForm: 'resume/setForm',
       getInfo: 'auth/getInfo',
       update: 'resume/update',
-      fetchCity: 'region/cities',
-      getRegions: 'region/regions',
+      fetchDistricts: 'region/districts',
+      fetchRegions: 'region/regions',
       storeImg: 'resume/storeImg',
       fetchPositions: 'resume/getPositions',
-      familyStatus: 'resume/getFamilyStatuses',
       getAppealsStatuses: 'resume/getAppealsStatuses'
     }),
     validate() {
@@ -534,7 +520,7 @@ export default {
     },
     changeRegion() {
       this.form.region_id = this.regionModel
-      this.fetchCity(this.form.region_id)
+      this.fetchDistricts(this.form.region_id)
     },
     changeDistrict() {
       this.form.city_id = this.districtModel
@@ -542,15 +528,16 @@ export default {
     },
     translateDistrict(district) {
       let Translate = ''
+      console.log('xxxd', this.locale)
       switch (this.locale) {
         case 'ru':
           Translate = this.capitalize(district.name_ru)
           break
         case 'uzln':
-          Translate = this.capitalize(district.name_uz)
+          Translate = this.capitalize(district.name_uz_ln)
           break
         case 'uzcl':
-          Translate = this.capitalize(translater.latcyr(district.name_uz))
+          Translate = this.capitalize(translater.latcyr(district.name_uz_cl))
           break
       }
       return Translate
