@@ -14,9 +14,10 @@
               </div>
               <div class="organization">Asko-Vostok MChJ QK ST</div>
               <div class="address">Toshkent shaxri, Yakkasaroy tumani</div>
-              <div class="organization__logo"
-                   style="background-image: url('/img/image/asko-vostok.svg') ;">
-              </div>
+              <div
+                class="organization__logo"
+                style="background-image: url('/img/image/asko-vostok.svg') ;"
+              />
               <div class="watcher">
                 Ayni damda, ushbu vakansiyani <span><b>18</b> ta odam </span>
                 ko’rayapdi
@@ -115,8 +116,10 @@
               </div>
             </div>
           </div>
-          <div class="simple-card card"
-               style="background-image: url('/img/image/for_applicant-rotate.png');">
+          <div
+            class="simple-card card"
+            style="background-image: url('/img/image/for_applicant-rotate.png');"
+          >
             <div class="card-body">
               <div class="title">
                 Ish beruvchi Siz bilan bog’lana olishi
@@ -125,8 +128,11 @@
               </div>
               <div class="form-group">
                 <!-- class is-valid покарсить иконку -->
-                <input type="text" class="form-control "
-                       placeholder="Pasport ID yoki Mobil telefon ">
+                <input
+                  type="text"
+                  class="form-control "
+                  placeholder="Pasport ID yoki Mobil telefon "
+                >
               </div>
               <div class="form-group">
                 <button class="btn btn-primary">Davom etish</button>
@@ -139,7 +145,7 @@
             </div>
             <div class="card-footer">
               «Davom etish» tugmasini bosib, Siz <a href="">«Ish topishga ko’maklashish bo’yicha
-              kelishuv(Oferta)»</a> bilan tanishib chiqganingizni va kelishuvda ko’rsatilgan
+                kelishuv(Oferta)»</a> bilan tanishib chiqganingizni va kelishuvda ko’rsatilgan
               talablarga
               roziligingizni tasdiqlaysiz
             </div>
@@ -150,12 +156,21 @@
             <div class="card-links ">
               <a class="item " href="#" style="background-color: #CCE6E3;">
                 <div class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                       viewBox="0 0 64 65">
-                    <text id="Fabric_Icons" data-name="Fabric Icons" transform="translate(0 64)"
-                          fill="#018272" font-size="64"
-                          font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                          letter-spacing="1em">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 64 65"
+                  >
+                    <text
+                      id="Fabric_Icons"
+                      data-name="Fabric Icons"
+                      transform="translate(0 64)"
+                      fill="#018272"
+                      font-size="64"
+                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
+                      letter-spacing="1em"
+                    >
                       <tspan x="0" y="0"></tspan>
                     </text>
                   </svg>
@@ -164,12 +179,21 @@
               </a>
               <a class="item " href="#" style="background-color: #FCE3D9;">
                 <div class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                       viewBox="0 0 64 65">
-                    <text id="Fabric_Icons" data-name="Fabric Icons" transform="translate(0 64)"
-                          fill="#ea4300" font-size="64"
-                          font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                          letter-spacing="1em">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 64 65"
+                  >
+                    <text
+                      id="Fabric_Icons"
+                      data-name="Fabric Icons"
+                      transform="translate(0 64)"
+                      fill="#ea4300"
+                      font-size="64"
+                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
+                      letter-spacing="1em"
+                    >
                       <tspan x="0" y="0"></tspan>
                     </text>
                   </svg>
@@ -179,12 +203,21 @@
               </a>
               <a class="item " href="#" style="background-color: #F5DFF2;">
                 <div class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                       viewBox="0 0 64 65">
-                    <text id="Fabric_Icons" data-name="Fabric Icons" transform="translate(0 64)"
-                          fill="#b4059e" font-size="64"
-                          font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                          letter-spacing="1em">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 64 65"
+                  >
+                    <text
+                      id="Fabric_Icons"
+                      data-name="Fabric Icons"
+                      transform="translate(0 64)"
+                      fill="#b4059e"
+                      font-size="64"
+                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
+                      letter-spacing="1em"
+                    >
                       <tspan x="0" y="0"></tspan>
                     </text>
                   </svg>
@@ -194,12 +227,21 @@
               </a>
               <a class="item " href="#" style="background-color: #D9DCEE;">
                 <div class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                       viewBox="0 0 64 65">
-                    <text id="Fabric_Icons" data-name="Fabric Icons" transform="translate(0 64)"
-                          fill="#03188f" font-size="64"
-                          font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                          letter-spacing="1em">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 64 65"
+                  >
+                    <text
+                      id="Fabric_Icons"
+                      data-name="Fabric Icons"
+                      transform="translate(0 64)"
+                      fill="#03188f"
+                      font-size="64"
+                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
+                      letter-spacing="1em"
+                    >
                       <tspan x="0" y="0"></tspan>
                     </text>
                   </svg>
@@ -210,12 +252,21 @@
 
               <a class="item " href="#" style="background-color: #DBEBDB;">
                 <div class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                       viewBox="0 0 64 65">
-                    <text id="Fabric_Icons" data-name="Fabric Icons" transform="translate(0 64)"
-                          fill="#107c10" font-size="64"
-                          font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                          letter-spacing="1em">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 64 65"
+                  >
+                    <text
+                      id="Fabric_Icons"
+                      data-name="Fabric Icons"
+                      transform="translate(0 64)"
+                      fill="#107c10"
+                      font-size="64"
+                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
+                      letter-spacing="1em"
+                    >
                       <tspan x="0" y="0"></tspan>
                     </text>
                   </svg>
@@ -225,12 +276,21 @@
               </a>
               <a class="item " href="#" style="background-color: #DAF5FD;">
                 <div class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                       viewBox="0 0 64 65">
-                    <text id="Fabric_Icons" data-name="Fabric Icons" transform="translate(0 64)"
-                          fill="#0abcf2" font-size="64"
-                          font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                          letter-spacing="1em">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 64 65"
+                  >
+                    <text
+                      id="Fabric_Icons"
+                      data-name="Fabric Icons"
+                      transform="translate(0 64)"
+                      fill="#0abcf2"
+                      font-size="64"
+                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
+                      letter-spacing="1em"
+                    >
                       <tspan x="0" y="0"></tspan>
                     </text>
                   </svg>
@@ -259,9 +319,10 @@
                         2,5К
                       </div>
                     </div>
-                    <div class="organization__logo"
-                         style="background-image: url('/img/image/mitc.png') ;">
-                    </div>
+                    <div
+                      class="organization__logo"
+                      style="background-image: url('/img/image/mitc.png') ;"
+                    />
                   </a>
                 </div>
                 <div class="col-lg-12 col-md-6 col-sm-6">
@@ -280,9 +341,10 @@
                         2,5К
                       </div>
                     </div>
-                    <div class="organization__logo"
-                         style="background-image: url('/img/image/mitc.png') ;">
-                    </div>
+                    <div
+                      class="organization__logo"
+                      style="background-image: url('/img/image/mitc.png') ;"
+                    />
                   </a>
                 </div>
                 <div class="col-lg-12 col-md-6 col-sm-6">
@@ -301,9 +363,10 @@
                         2,5К
                       </div>
                     </div>
-                    <div class="organization__logo"
-                         style="background-image: url('/img/image/mitc.png') ;">
-                    </div>
+                    <div
+                      class="organization__logo"
+                      style="background-image: url('/img/image/mitc.png') ;"
+                    />
                   </a>
                 </div>
               </div>

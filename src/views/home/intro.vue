@@ -308,17 +308,9 @@
 
 <script>
 import MapRegions from './components/map.vue'
-import axios from 'axios'
 export default {
   name: 'Intro',
   components: { MapRegions },
-  mounted() {
-    axios
-      .get('https://ishapi.mehnat.uz/api/v1/vacancies')
-      .then((res) => {
-        console.log('res', res)
-      })
-  },
   methods: {
     goToServices() {
       var element = document.getElementById('vacancies__section')
