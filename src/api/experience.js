@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function index(query) {
   return request({
-    url: '/seeker-educations',
+    url: '/seeker-experiences',
     method: 'get',
     params: query
   })
@@ -10,7 +10,7 @@ export function index(query) {
 
 export function show(id) {
   return request({
-    url: '/seeker-educations/' + id,
+    url: '/seeker-experiences/' + id,
     method: 'get'
   })
 }
@@ -25,8 +25,14 @@ export function store(data) {
 
 export function update(data) {
   return request({
-    url: 'seeker-educations/' + data.id,
+    url: 'seeker-experiences/' + data.id,
     method: 'put',
     data: data
+  })
+}
+export function destroy(id) {
+  return request({
+    url: 'seeker-experiences/' + id,
+    method: 'delete'
   })
 }

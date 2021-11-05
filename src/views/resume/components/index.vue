@@ -276,9 +276,15 @@
         <el-row>
           <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ') }} </el-divider>
         </el-row>
-        <el-row>
-          <experience-index />
-          <experience-create />
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <el-row class="mt-5">
+          <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
+          <experience-create ref="experienceCreate" @successSaved="$refs.experienceList.index()" />
         </el-row>
       </el-row>
       <!-- <el-dialog

@@ -1,8 +1,8 @@
 export const mutations = {
-  SET_VACANCY: (state, vacancy) => {
-    state.vacancy = vacancy
+  SET_ITEM: (state, item) => {
+    state.item = item
   },
-  SET_VACANCIES: (state, vacancies) => {
-    state.vacancies = vacancies
+  SET_LIST: (state, list) => {
+    state.list = list
   }
 }

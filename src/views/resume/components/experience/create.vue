@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-100">
     <el-dialog v-model="dialogVisible" title="Ish tajribasini qo'shish">
       <el-form
         ref="form"
@@ -74,25 +74,29 @@
             </el-form-item>
           </el-col>
         </el-row>
+        {{ positions }}
       </el-form>
       <template #footer>
         <el-button type="primary" icon="el-icon-check" @click="save">Сақлаш</el-button>
       </template>
-      {{ form }}
     </el-dialog>
-    <el-button type="primary" icon="el-icon-plus" @click="dialogVisible = true">{{ $t('Ish tajribasi qo\'shish') }}</el-button>
+    <div>
+      <el-button type="primary" icon="el-icon-plus" style="float: right" @click="dialogVisible = true">{{ $t('Ish tajribasi qo\'shish') }}</el-button>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-
+import { ElMessage } from 'element-plus'
+import Swal from 'sweetalert2'
 export default {
   name: 'ExperienceCreate',
   data() {
     return {
       dialogVisible: false,
       form: {
+        id: null,
         user_id: null,
         is_current_job: false,
         start_date: null,
@@ -114,7 +118,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({ positions: 'resources/GET_POSITIONS', regions: 'region/GET_REGIONS', districts: 'region/GET_DISTRICTS' }),
+    ...mapGetters({ positions: 'resources/GET_POSITIONS', regions: 'region/GET_REGIONS', districts: 'region/GET_DISTRICTS', item: 'experience/GET_ITEM' }),
     years() {
       const i = this.currentYear
       const arr = []
@@ -144,10 +148,60 @@ export default {
       this.$refs.form.validate((validated) => valid = validated)
       return valid
     },
-    save() {
-
+    edit(id) {
+      this.show(id).then((res) => {
+        this.setForm()
+        this.dialogVisible = true
+      })
     },
-    ...mapActions({ kodpAction: 'resources/positions', getDistrictsAction: 'region/districts' })
+    action(data) {
+      if (!this.form.id) return this.store(data)
+      else return this.update(data)
+    },
+    save() {
+      this.form.user_id = this.user.id
+      if (this.validate()) {
+        this.action(this.form).then((res) => {
+          if (res.success) {
+            Swal.fire({
+              title: 'Ma\'lumotlar saqlandi!',
+              type: 'success',
+              timer: 1500,
+              showConfirmButton: false
+            })
+            this.dialogVisible = false
+            this.$emit('successSaved')
+          } else {
+            Swal.fire({
+              title: 'Error!',
+              type: 'error',
+              timer: 1500,
+              showConfirmButton: false
+            })
+          }
+        }).catch(err => {
+          Swal.fire({
+            title: 'Error!',
+            type: 'error',
+            timer: 1500,
+            showConfirmButton: false
+          })
+        })
+      } else {
+        ElMessage({
+          showClose: true,
+          message: 'Talab qilingan maydonalarni to\'ldiring'
+        })
+      }
+    },
+    setForm() {
+      Object.keys(this.form).forEach(key => {
+        this.form[key] = this.item[key]
+      })
+      this.getDistricts()
+      this.kodpAction({ search: 'test', key: this.form.kodp_key })
+    },
+    ...mapActions({ kodpAction: 'resources/positions', getDistrictsAction: 'region/districts', store: 'experience/store', show: 'experience/show', update: 'experience/update' })
   }
 }
 </script>
