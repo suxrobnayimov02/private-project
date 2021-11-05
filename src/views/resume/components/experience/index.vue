@@ -1,36 +1,60 @@
 <template>
   <div>
     <table
-      class="table-auto table-main"
+      class="table table-bordered"
       style="width: 100%"
     >
       <thead>
         <tr class="text-gray-700 text-m font-bold bg-gray-200">
           <th>
-            {{ $t('Компания') }}
+            {{ $t('Hudud') }}
           </th>
           <th>
-            {{ $t('Дольжность') }}
+            {{ $t('Tuman(Shaxar)') }}
           </th>
           <th>
-            {{ $t('Период работы') }}
+            {{ $t('Tashkilot nomi') }}
           </th>
+          <th>
+            {{ $t('Kasb(Lavozim)') }}
+          </th>
+          <th>
+            {{ $t('Davr') }}
+          </th>
+          <th>
+            {{ $t('Vazifalar') }}
+          </th>
+          <th>{{ $t('Amallar') }}</th>
         </tr>
       </thead>
-      <tbody v-if="workbook && workbook.length">
+      <tbody v-if="list && list.length">
         <tr
-          v-for="(item, index) in workbook"
-          :key="'workbook-' + index"
-          class="text-gray-700 text-m font-serif"
+          v-for="(item, i) in list"
+          :key="'workbook-' + i"
         >
-          <td class=" px-4 py-2">
-            {{ item.company_profile_name }}
+          <td>
+            {{ item.region.name_uz_ln }}
           </td>
-          <td class="border px-4 py-2">
-            {{ item.position_name }}
+          <td class="px-4 py-2">
+            {{ item.district.name_uz_ln }}
           </td>
-          <td class="border px-4 py-2">
-            {{ (item.date_stop != '9999-01-01') ? dateFromLineToDot(item.date_start) + '-' + dateFromLineToDot(item.date_stop) : dateFromLineToDot(item.date_start) + '-' + $t('Х.в.') }}
+          <td>
+            {{ item.company_name }}
+          </td>
+          <td>
+            {{ item.position['name_uz-ln'] }}
+          </td>
+          <td>
+            {{ toLocaleDateString(item.start_date) + '-' + toLocaleDateString(item.end_date) }}
+          </td>
+          <td>
+            {{ item.position_description }}
+          </td>
+          <td>
+            <div style="display: flex; justify-content: space-around">
+              <el-button icon="el-icon-edit" type="success" size="mini" @click="editItem(item.id)" />
+              <el-button icon="el-icon-delete" type="danger" size="mini" @click="deleteItem(item.id)" />
+            </div>
           </td>
         </tr>
       </tbody>
@@ -46,10 +70,36 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+import { ElMessageBox, ElMessage } from 'element-plus'
 export default {
   name: 'ExperienceIndex',
+  computed: {
+    ...mapGetters({ list: 'experience/GET_LIST' })
+  },
+  mounted() {
+    this.index()
+  },
   methods: {
-
+    index() {
+      this.indexAction({ user_id: this.user.id })
+    },
+    editItem(id) {
+      this.$emit('edit', id)
+    },
+    deleteItem(id) {
+      ElMessageBox.confirm('Rostan ham o\'chirmoqchimisiz ?', 'Diqqat!',
+        { confirmButtonText: 'Ha', cancelButtonText: 'Yo\'q', type: 'warning' }).then(() => {
+        this.deleteAction(id).then((res) => {
+          this.index()
+          ElMessage({
+            type: 'success',
+            message: this.$t('Muvaffaqiyatli o\'chirildi')
+          })
+        })
+      })
+    },
+    ...mapActions({ indexAction: 'experience/index', deleteAction: 'experience/destroy' })
   }
 }
 </script>
