@@ -74,14 +74,13 @@
             </el-form-item>
           </el-col>
         </el-row>
-        {{ positions }}
       </el-form>
       <template #footer>
         <el-button type="primary" icon="el-icon-check" @click="save">Сақлаш</el-button>
       </template>
     </el-dialog>
     <div>
-      <el-button type="primary" icon="el-icon-plus" style="float: right" @click="dialogVisible = true">{{ $t('Ish tajribasi qo\'shish') }}</el-button>
+      <el-button type="primary" size="mini" icon="el-icon-plus" @click="dialogVisible = true">{{ $t('Ish tajribasi qo\'shish') }}</el-button>
     </div>
   </div>
 </template>
@@ -113,7 +112,7 @@ export default {
         company_name: [{ required: true, message: 'To\'ldirish joiz bo\'lgan maydonl', trigger: 'change' }],
         soato_region: [{ required: true, message: 'To\'ldirish joiz bo\'lgan maydonl', trigger: 'change' }],
         soato_district: [{ required: true, message: 'To\'ldirish joiz bo\'lgan maydonl', trigger: 'change' }],
-        position_description: [{ required: true, message: 'To\'ldirish joiz bo\'lgan maydonl', trigger: 'change' }],
+        position_description: [{ required: true, message: 'To\'ldirish joiz bo\'lgan maydonl', trigger: 'change' }]
       }
     }
   },

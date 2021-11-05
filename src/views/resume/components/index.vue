@@ -6,6 +6,7 @@
     <!-- <h3 class="text-gray-700 text-m font-bold bg-gray-200 text-center">
       {{ [form.f_name, form.s_name, form.m_name].join(' ') }}
     </h3> -->
+    <hr>
     <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
       {{ user.fullname }}
     </h3>
@@ -86,7 +87,7 @@
       <el-row>
         <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
           <div class="formControl">
-            <el-form-item :label="$t('Регион') + ':'">
+            <el-form-item :label="$t('Регион') + ':'" prop="soato_region">
               <div class="field withBackground">
                 <select v-model="regionModel" @change="changeRegion()">
                   <option value="">{{ $t('Выберите') }}</option>
@@ -100,12 +101,12 @@
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
           <div class="formControl">
-            <el-form-item :label="$t('Районы') + ':'">
+            <el-form-item :label="$t('Районы') + ':'" prop="soato_district">
               <div class="field withBackground">
                 <select v-model="districtModel" @change="changeDistrict()">
                   <option value="">{{ $t('Выберите') }}</option>
                   <template v-if="districts && districts.length">
-                    <option v-for="(district, index) of districts" :key="index" :value="district.code">
+                    <option v-for="(district, index) of districts" :key="index" :value="district.soato">
                       {{ translateDistrict(district) }}
                     </option>
                   </template>
@@ -140,8 +141,8 @@
           </el-form-item>
         </el-col> -->
         <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-          <el-form-item :label="$t('Водительское права') + ':'">
-            <el-select v-model="form.drive_license" placeholder="___" multiple>
+          <el-form-item :label="$t('Водительское права') + ':'" prop="drivers_license">
+            <el-select v-model="form.drivers_license" placeholder="___" multiple>
               <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.id" />
             </el-select>
           </el-form-item>
@@ -150,15 +151,14 @@
       <!--  -->
       <el-divider content-position="left">
         <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
-        {{ $t('Дополнительная информация') }}
+        {{ $t('Ishga doir ma\'lumotlar') }}
       </el-divider>
       <el-row>
         <el-col :span="24">
-          <el-form-item :label="$t('Желаемая должность')" prop="positions_id">
+          <el-form-item :label="$t('Желаемая должность')" prop="kodp_key">
             <el-select
-              v-model="form.positions_id"
+              v-model="form.kodp_key"
               class="w-100"
-              multiple
               filterable
               remote
               reserve-keyword
@@ -169,75 +169,63 @@
               <el-option
                 v-for="item in positions"
                 :key="item.id"
-                :label="(locale == 'ru') ? item.name_ru : (locale == 'uzln') ? item.name_uz_ln:item.name_uz"
-                :value="item.id"
+                :label="(locale == 'ru') ? item.name_uz : (locale == 'uzln') ? item.name_uz:item.name_uz"
+                :value="item.key"
               />
             </el-select>
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <el-form-item :label="$t('Зарплата')">
-            <input v-model="form.want_salary" v-money="money" class="text-right text-right  el-input__inner">
+          <el-form-item :label="$t('Зарплата')" prop="salary">
+            <input v-model="form.salary" type="number" class="text-right text-right  el-input__inner">
           </el-form-item>
         </el-col>
       </el-row>
       <!-- График работы -->
-      <el-row>
+      <div class="demo-collapse">
         <el-collapse v-model="activeNames">
-          <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-            <el-collapse-item :title="$t('График работы')" name="1">
-              <template v-if="busynessTypes && busynessTypes.length !== 0">
-                <div v-for="(type, index) in busynessTypes" :key="'schedule' +index">
-                  <el-checkbox v-model="checked1" :label="type.id">
-                    {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
-                  </el-checkbox>
-                </div>
-              </template>
-              <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
-            </el-collapse-item>
-          </el-col>
-          <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-            <el-collapse-item :title="$t('Занятость')" name="2">
-              <template v-if="workGraphics && workGraphics.length !== 0">
-                <div v-for="type in workGraphics" :key="'emp' + type.id">
-                  <el-checkbox v-model="checked2" :label="type.id">
-                    {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
-                  </el-checkbox>
-                </div>
-              </template>
-              <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
-            </el-collapse-item>
-          </el-col>
-          <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-            <el-collapse-item :title="$t('Переезд')" name="3">
-              <template v-if="businessTrips && businessTrips.length !== 0">
-                <div v-for="type in businessTrips" :key="'trip' + type.id">
-                  <el-checkbox v-model="checked3" :label="type.id">
-                    {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
-                  </el-checkbox>
-                </div>
-              </template>
-              <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
-            </el-collapse-item>
-          </el-col>
+          <el-collapse-item :title="$t('Ish grafigi')" name="1">
+            <template v-if="busynessTypes && busynessTypes.length !== 0">
+              <div v-for="(type, index) in busynessTypes" :key="'schedule' +index">
+                <el-checkbox v-model="form.busyness_type_ids" :label="type.id">
+                  {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                </el-checkbox>
+              </div>
+            </template>
+            <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
+          </el-collapse-item>
+          <el-collapse-item :title="$t('Bandlik turi')" name="2">
+            <template v-if="workGraphics && workGraphics.length !== 0">
+              <div v-for="type in workGraphics" :key="'emp' + type.id">
+                <el-checkbox v-model="form.work_graphic_ids" :label="type.id">
+                  {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                </el-checkbox>
+              </div>
+            </template>
+            <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
+          </el-collapse-item>
+          <el-collapse-item :title="$t('Ko\'chish')" name="3">
+            <template v-if="businessTrips && businessTrips.length !== 0">
+              <div v-for="type in businessTrips" :key="'trip' + type.id">
+                <el-checkbox v-model="form.business_trip_ids" :label="type.id">
+                  {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                </el-checkbox>
+              </div>
+            </template>
+            <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
+          </el-collapse-item>
         </el-collapse>
-      </el-row>
+      </div>
       <!-- ABOUT ME -->
       <el-row>
         <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-          <el-form-item :label="$t('О себе') + ':'">
-            <el-input v-model="form.about" type="textarea" />
-          </el-form-item>
-
-        </el-col>
-        <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-          <el-form-item :label="$t('Личное качество') + ':'">
-            <el-input v-model="form.personal_quality" type="textarea" />
+          <el-form-item :label="$t('О себе') + ':'" prop="additional_info">
+            <el-input v-model="form.additional_info" type="textarea" />
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-          <el-form-item :label="$t('Хобби') + ':'">
-            <el-input v-model="form.hobby" type="textarea" />
+          <el-form-item :label="$t('Хобби') + ':'" prop="hobbies">
+            <el-input v-model="form.hobbies" type="textarea" />
           </el-form-item>
         </el-col>
       </el-row>
@@ -249,21 +237,8 @@
       </el-row>
       <!-- Образование/ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ -->
       <el-row>
-        <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
-          {{ $t('Образование') }}</el-divider>
-        <el-row>
-          <el-col :xs="24" :sm="24" :md="12" :lg="16" :xl="16">
-            <el-form-item label=" ">
-              <el-button
-                class="float-right mb-2"
-                type="primary"
-                size="small"
-                icon="el-icon-plus"
-                @click="addEducation"
-              >Олий маълумот қўшиш</el-button>
-            </el-form-item>
-          </el-col>
-        </el-row>
+        <!-- <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
+          {{ $t('Ta\'lim ma\'lumotlari') }}</el-divider>
         <div>
           <el-row v-if="educationDialog">
             <EducationCreate :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" />
@@ -271,42 +246,30 @@
           <el-row v-if="education && education.length">
             <EducationTable :education="education" />
           </el-row>
-        </div>
+          <el-row v-else>
+            <p class="text-center">{{ $t('Нет информации') }}</p>
+          </el-row>
+          <el-row>
+            <el-button
+              class="float-right mt-5"
+              type="primary"
+              size="mini"
+              icon="el-icon-plus"
+              @click="addEducation"
+            >Ta'lim ma'lumoti qo'shish</el-button>
+          </el-row>
+        </div> -->
         <br>
-        <hr>
-        <el-row>
-          <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ') }} </el-divider>
-        </el-row>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ') }} </el-divider>
         <el-row class="mt-5">
           <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
           <experience-create ref="experienceCreate" @successSaved="$refs.experienceList.index()" />
         </el-row>
       </el-row>
-      <!-- <el-dialog
-        v-model="educationDialog"
-        title="Tips"
-        width="30%"
-      >
-        <span>This is a message</span>
-        <template #footer>
-          <span class="dialog-footer">
-            <el-button @click="educationDialog = false">Cancel</el-button>
-            <el-button
-              type="primary"
-              @click="educationDialog = false"
-            >Confirm</el-button>
-          </span>
-        </template>
-      </el-dialog> -->
       <hr>
       <el-form-item>
-        <el-button type="success" class="float-right" @click="onUpdate">{{ $t('Сохранить') }}</el-button>
+        <el-button type="success" class="float-right" @click="save">{{ $t('Saqlash') }}</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -338,6 +301,7 @@ export default {
       mask: '##',
       loaded: false,
       form: {
+        user_id: null,
         f_name: null,
         s_name: null,
         m_name: null,
@@ -345,27 +309,35 @@ export default {
         birth_date: null,
         gender: null,
         address: null,
-        positions_id: null,
         phone_number: null,
         home_phone_number: null,
         email: null,
         family_state_id: null,
         military_rank: null,
-        drive_license: null,
+        drivers_license: null,
         want_salary: null,
         about: null,
-        personal_quality: null,
+        additional_info: null,
         computer_skill: null,
-        hobby: null,
+        hobbies: null,
         is_student: 0,
         work_schedule: null,
         employment_id: null,
         education_degree: null,
         education: [],
-        region_id: null,
-        city_id: null
+        wanted_work: true,
+        soato_region: null,
+        soato_district: null,
+        // form work
+        kodp_key: null,
+        salary: null,
+        salary_currency_id: 2,
+        is_agreed_salary: true,
+        busyness_type_ids: [1],
+        work_graphic_ids: [1],
+        business_trip_ids: [1],
+        nskz: null
       },
-      // form: {},
       details_for_collage: {
         dialogFormVisible: true,
         degree: 2
@@ -373,10 +345,11 @@ export default {
       money: {
         decimal: '.',
         thousands: ',',
-        suffix: '',
+        suffix: ' so\'m',
         precision: 0,
         masked: false
       },
+      form_kodp_key: null,
       edu_type_disabled: false,
       educationDialog: false,
       loading: false,
@@ -388,15 +361,33 @@ export default {
       edu_degrees: [],
       party: '',
       person: {},
-      drive_license: ['A', 'B', 'C', 'D', 'E'],
-      positions: [],
+      drivers_license: ['A', 'B', 'C', 'D', 'E'],
+      // positions: [],
       photoUrl: null,
       fileList: [],
-      activeNames: ['1', '2'],
+      activeNames: ['1', '2', '3'],
       scheduleTypes: [],
       employmentTypes: [],
       rules: {
-        positions_id: [
+        soato_region: [
+          { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
+        ],
+        soato_district: [
+          { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
+        ],
+        drivers_license: [
+          { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
+        ],
+        kodp_key: [
+          { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
+        ],
+        salary: [
+          { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
+        ],
+        additional_info: [
+          { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
+        ],
+        hobbies: [
           { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
         ]
       }
@@ -405,10 +396,11 @@ export default {
   computed: {
     ...mapGetters({
       locale: 'app/LOCALE',
-      user: 'auth/USER',
       is_auth: 'auth/GET_IS_AUTH',
       resume: 'resume/RESUME',
       regions: 'region/GET_REGIONS',
+      positions: 'resources/GET_POSITIONS',
+
       driversLicenses: 'resources/GET_DRIVERS_LICENSES',
       skillCategories: 'resources/GET_SKILL_CATEGORIES',
       skillLevels: 'resources/GET_SKILL_LEVELS',
@@ -440,6 +432,17 @@ export default {
           this.details_for_collage.degree = 2
         }
       }
+    },
+    'form.kodp_key'(newVal, oldVal) {
+      if (newVal && newVal !== oldVal) {
+        if (this.positions && this.positions.length) {
+          this.positions.forEach(position => {
+            if (position.key == newVal) {
+              this.form.nskz = position.nskz_code
+            }
+          })
+        }
+      }
     }
   },
   async mounted() {
@@ -450,42 +453,12 @@ export default {
     await this.fetchResources().then(() => {
       this.loaded = true
     })
+    if (!this.is_auth) {
+      this.$router.push({ name: 'Register' })
+    }
     this.getInfo().then(() => {
       console.log(this.user)
     })
-    if (this.user && this.user.resume) {
-      this.show(this.user.resume.id).then(res => {
-        // this.form = res.data.resume
-        if (res.success && res.data) {
-          this.setForm({ form: this.form, details: res.data.resume })
-        }
-        this.education = res.data.education.result.citizens
-        if (this.education && this.education.length) {
-          this.edu_type_disabled = true
-        }
-        this.workbook = res.data.workbook.data ? res.data.workbook.data : []
-        this.positions = res.data.position ? res.data.position : []
-        this.party = res.data.partiya.result.party ? res.data.partiya.result.party : this.$t('Нет')
-        this.regionModel = res.data.resume.region_id
-        this.districtModel = res.data.resume.city_id
-        if (res.data.resume.photo) {
-          this.photoUrl = process.env.VUE_APP_BASE_URL + res.data.resume.photo
-        }
-        if (!this.form.work_schedule) {
-          this.form.work_schedule = []
-        }
-        if (!this.form.employment_id) {
-          this.form.employment_id = []
-        }
-        if (this.regionModel) {
-          this.changeRegion()
-        }
-        if (this.education.length !== 0) {
-          this.form.education_degree = 3
-        }
-      }
-      )
-    }
     // this.getAppealsStatuses({ type: 'work_schedule' }).then(res => {
     //   this.scheduleTypes = res.data
     // })
@@ -503,6 +476,9 @@ export default {
       fetchRegions: 'region/regions',
       fetchResources: 'resources/index',
       fetchPositions: 'resources/positions',
+      store_work_seeker: 'resources/store_work_seeker',
+      update_seeker_profiles: 'resources/update_seeker_profiles',
+      
       //
       show: 'resume/show',
       update: 'resume/update',
@@ -520,12 +496,13 @@ export default {
       return validated
     },
     changeRegion() {
-      this.form.region_id = this.regionModel
-      this.fetchDistricts(this.form.region_id)
+      this.form.soato_region = this.regionModel
+      this.form.soato_district = null
+      this.fetchDistricts(this.form.soato_region)
     },
     changeDistrict() {
-      this.form.city_id = this.districtModel
-      this.regionModel = this.form.region_id ? String(this.form.region_id).substring(0, 4) : ''
+      this.form.soato_district = this.districtModel
+      this.regionModel = this.form.soato_region ? String(this.form.soato_region).substring(0, 4) : ''
     },
     translateDistrict(district) {
       let Translate = ''
@@ -582,6 +559,62 @@ export default {
         })
       }
     },
+    save() {
+      if (this.validate()) {
+        const dataWork = {
+          user_id: this.user.id,
+          kodp_key: this.form.kodp_key,
+          salary: this.form.salary,
+          salary_currency_id: this.form.salary_currency_id,
+          is_agreed_salary: this.form.is_agreed_salary,
+          busyness_type_ids: this.form.busyness_type_ids,
+          work_graphic_ids: this.form.work_graphic_ids,
+          business_trip_ids: this.form.business_trip_ids,
+          nskz: this.form.nskz
+        }
+        const dataProfile = {
+          user_id: this.user.id,
+          soato_district: this.form.soato_district,
+          soato_region: this.form.soato_region,
+          wanted_work: this.form.wanted_work,
+          hobbies: this.form.hobbies,
+          drivers_license: this.form.drivers_license,
+          additional_info: this.form.additional_info
+        }
+        this.store_work_seeker(dataWork)
+          .then((res) => {           
+            this.update_seeker_profiles(dataProfile)
+              .then((res) => {
+                this.$notify({
+                  title: this.$t('Успешно'),
+                  message: this.$t('Успешно сохранено'),
+                  type: 'success'
+                })
+                this.$router.push({ name: 'Home' })
+              }).catch((error) => {
+                this.$notify({
+                  title: this.$t('Ошибка'),
+                  message: this.$t('Невозможно сохранить'),
+                  type: 'error'
+                })
+                console.log(error)
+              })
+          }).catch((error) => {
+            this.$notify({
+              title: this.$t('Ошибка'),
+              message: this.$t('Невозможно сохранить'),
+              type: 'error'
+            })
+            console.log(error)
+          })        
+      } else {
+        this.$notify({
+          title: this.$t('Ошибка'),
+          message: this.$t('Заполните все поля'),
+          type: 'error'
+        })
+      }
+    },
     async handleChange(file) {
       this.fileList = []
       const formData = new FormData()
@@ -619,17 +652,14 @@ export default {
       this.$message.warning('Файл мавжуд эмас!')
     },
     onSearch(search) {
-      console.log('xxx', search)
       if (search.length >= 3) {
         this.loading = true
-        // ?search=mene&language=uz-ln
         const query = {
           search: search,
           language: 'uz-ln'
         }
         this.fetchPositions(query).then(res => {
           if (res.success) {
-            this.positions = res.data
             this.loading = false
           } else {
             this.loading = false
@@ -720,5 +750,11 @@ export default {
     flex-wrap: wrap;
     padding: 0 2px;
     position: relative;
+}
+.el-collapse-item__header {
+    border-bottom-color: transparent;
+   
+    line-height: 14px !important;
+    font-weight: bold !important;
 }
 </style>

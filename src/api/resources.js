@@ -45,3 +45,18 @@ export function delete_seeker_skills(id) {
     method: 'delete'
   })
 }
+export function update_seeker_profiles(data) {
+  return request({
+    url: 'seeker-profiles/' + data.user_id,
+    method: 'put',
+    data: data
+  })
+}
+
+export function store_work_seeker(data) {
+  return request({
+    url: 'seeker-wanted-works',
+    method: 'post',
+    data
+  })
+}

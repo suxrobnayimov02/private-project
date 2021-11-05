@@ -1,5 +1,5 @@
 <template>
-  <div class="vacancies__section" id="vacancies__section">
+  <div id="vacancies__section" class="vacancies__section">
     <div class="container bigger no-padding">
       <div class="vacancies__tab">
         <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -17,13 +17,13 @@
           </li>
           <li role="presentation" class="nav-item">
             <a
-            class="nav-link"
-            href="#Ish_beruvchiman"
-            aria-controls="Ish_beruvchiman"
-            role="tab"
-            data-toggle="tab"
-          >
-            <span>Ish beruvchiman</span></a></li>
+              class="nav-link"
+              href="#Ish_beruvchiman"
+              aria-controls="Ish_beruvchiman"
+              role="tab"
+              data-toggle="tab"
+            >
+              <span>Ish beruvchiman</span></a></li>
 
           <!-- Tab panes -->
           <div class="tab-content">

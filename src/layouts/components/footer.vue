@@ -6,7 +6,7 @@
           <h1>Ish qidiruvchilarga</h1>
           <ul class="nav">
             <li class="nav-item">
-              <router-link :to="{ name: 'ResumeOldCreate' }" class="nav-link">
+              <router-link :to="{ name: 'ResumeCreate' }" class="nav-link">
                 Rezyume yaratish
               </router-link>
             </li>

@@ -1,4 +1,4 @@
-import { index, store_seeker_skills, get_seeker_skills, update_seeker_skills, delete_seeker_skills, kodp } from '@/api/resources'
+import { index, store_seeker_skills, get_seeker_skills, update_seeker_skills, delete_seeker_skills, kodp, store_work_seeker, update_seeker_profiles } from '@/api/resources'
 export const actions = {
   index({ commit }, query) {
     return new Promise((resolve, reject) => {
@@ -59,5 +59,23 @@ export const actions = {
           reject(res)
         })
     })
-  }
+  },
+  store_work_seeker({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      store_work_seeker(data).then(res => {
+        resolve(res)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  }, 
+  update_seeker_profiles({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      update_seeker_profiles(data).then(res => {
+        resolve(res)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  } 
 }
