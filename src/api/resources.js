@@ -27,8 +27,16 @@ export function get_seeker_skills(query) {
 
 export function update_seeker_skills(data) {
   return request({
-    url: 'seeker-skills/' + data.id,
+    url: 'seeker-skills/' + data.user_id,
     method: 'put',
+    data: data
+  })
+}
+
+export function delete_seeker_skills(data) {
+  return request({
+    url: 'seeker-skills/' + data.user_id,
+    method: 'delete',
     data: data
   })
 }

@@ -6,5 +6,7 @@ export const getters = {
   GET_BUSINESS_TRIPS: (state) => state.businessTrips,
   GET_BUSYNESS_TYPES: (state) => state.busynessTypes,
   GET_WORK_GRAPHICS: (state) => state.workGraphics,
+  GET_USER_LANGUAGES: (state) => state.user_languages,
+  GET_USER_COMPUTER_SKILLS: (state) => state.user_computer_skills,
   GET_POSITIONS: (state) => state.positions
 }

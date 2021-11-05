@@ -1,4 +1,4 @@
-import { index, store_seeker_skills, get_seeker_skills, update_seeker_skills } from '@/api/resources'
+import { index, store_seeker_skills, get_seeker_skills, update_seeker_skills, delete_seeker_skills } from '@/api/resources'
 import axios from 'axios'
 
 export const actions = {
@@ -36,6 +36,7 @@ export const actions = {
     return new Promise((resolve, reject) => {
       get_seeker_skills(data)
         .then(res => {
+          commit('SET_SKILLS', res.data)
           resolve(res)
         }).catch(res => {
           reject(res)
@@ -45,6 +46,16 @@ export const actions = {
   update_seeker_skills({ commit }, data) {
     return new Promise((resolve, reject) => {
       update_seeker_skills(data)
+        .then(res => {
+          resolve(res)
+        }).catch(res => {
+          reject(res)
+        })
+    })
+  },
+  delete_seeker_skills({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      delete_seeker_skills(data)
         .then(res => {
           resolve(res)
         }).catch(res => {

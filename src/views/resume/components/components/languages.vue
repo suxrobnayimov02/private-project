@@ -1,35 +1,58 @@
 <template>
   <div>
-    <el-row v-for="(skill, index) in skills" :key="'skill' + index">
-      <el-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t(skill.name) }}:</b></el-col>
+    <el-row v-for="(skill, index) in skills" :key="'skill' + index" :class="index != 0 ? 'mt5' : ''">
+      <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4"><b class="text-muted">{{ $t(skill.name) }}:</b></el-col>
       <el-col :xs="24" :sm="24" :md="10" :lg="10" :xl="10">
-        <template v-if="citizen_languages && citizen_languages.length != 0">
-          <div v-for="lang in citizen_languages" :key="lang.id" class="lang">
-            <el-row v-if="lang.skill && lang.skill.category_id == 1">
-              <el-col :span="7">
-                <p class="text-success font-weight-bold">{{ (locale == 'ru')?lang.skill.name:(locale == 'uzln')?lang.skill.name:lang.skill.name }}</p>
-              </el-col>
-              <el-col :span="16">
-                <el-rate v-model="lang.level" disabled />
-              </el-col>
-              <el-col :span="1">
-                <el-button size="mini" type="danger" @click="deleteItem(lang.id)">
-                  <i class="el-icon-delete-solid" />
-                </el-button>
-              </el-col>
-            </el-row>
-          </div>
-        </template>
-        <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
-      </el-col>
-      <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4">
-        <div class="float-right ml-5">
-          <el-button type="primary" size="mini" icon="el-icon-plus" @click="dialogVisible = true">{{ $t('Добавить язык') }}</el-button>
+        <div v-if="skill.id == 1">
+          <template v-if="user_languages && user_languages.length != 0">
+            <div v-for="lang in user_languages" :key="lang.id" class="lang">
+              <el-row>
+                <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
+                  <el-input v-model="lang.skill.name" class="w-100" disabled />
+                </el-col>
+                <el-col :xs="24" :sm="24" :md="9" :lg="9" :xl="9">
+                  <el-input v-model="lang.skill_level.name" disabled :placeholder="$t('Билиш даражаси')" />
+                </el-col>
+                <el-col :span="1">
+                  <el-button size="mini" type="danger" @click="deleteItem(lang.skill_id)">
+                    <i class="el-icon-delete-solid" />
+                  </el-button>
+                </el-col>
+              </el-row>
+            </div>
+          </template>
+          <span v-else class="mr-2">{{ $t('Нет') }}</span>
+        </div>
+        <div v-if="skill.id == 2">
+          <template v-if="user_computer_skills && user_computer_skills.length">
+            <div v-for="lang in user_computer_skills" :key="lang.id" class="lang">
+              <el-row>
+                <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
+                  <el-input v-model="lang.skill.name" class="w-100" disabled />
+                </el-col>
+                <el-col :xs="24" :sm="24" :md="9" :lg="9" :xl="9">
+                  <el-input v-model="lang.skill_level.name" disabled :placeholder="$t('Билиш даражаси')" />
+                </el-col>
+                <el-col :span="1">
+                  <el-button size="mini" type="danger" @click="deleteItem(lang.skill_id)">
+                    <i class="el-icon-delete-solid" />
+                  </el-button>
+                </el-col>
+              </el-row>
+            </div>
+          </template>
+          <template v-else>
+            <span class=" mr-2">{{ $t('Нет') }}</span>
+          </template>
         </div>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="4">
-        <div v-if="dialogVisible">
-          <span class="primaryTitle">{{ $t('Добавить язык') }}</span>
+      <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4">
+        <div class="float-right ml5l">
+          <el-button type="primary" size="mini" icon="el-icon-plus" @click="addSkillForm(skill)">{{ $t('Добавить') }}</el-button>
+        </div>
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="20" :lg="20" :xl="20">
+        <div v-if="dialogVisible && skill.id == add_skill_id" class="float-right ml200">
           <el-form
             ref="form"
             :model="form"
@@ -38,31 +61,31 @@
             class="top-label-custom pb-5"
           >
             <el-row>
-              <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
-                <el-form-item :label="$t('Тилни танланг')" prop="skill_level_id">
-                  <el-select v-model="form.skill_id" class="w-100" :filterable="true">
-                    <el-option
-                      v-for="language in languages"
-                      :key="language.id"
-                      :label="language.name"
-                      :value="language.id"
-                    />
-                  </el-select>
-                  <el-select v-model="form.skill_level_id" class="w-50" :placeholder="$t('Билиш даражаси')" :filterable="true">
-                    <el-option
-                      v-for="language in levels"
-                      :key="language.id"
-                      :label="language.name"
-                      :value="language.id"
-                    />
-                  </el-select>
-                </el-form-item>
+              <el-col :xs="24" :sm="24" :md="9" :lg="9" :xl="9">
+                <el-select v-model="form.skill_id" class="w-100" :placeholder="$t('Tanlang')" :filterable="true" style="width:100%">
+                  <el-option
+                    v-for="language in skill.skills"
+                    :key="language.id"
+                    :label="language.name"
+                    :value="language.id"
+                  />
+                </el-select>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
-                <el-button class="float-right mr-2 mtb" type="primary" size="mini" icon="el-icon-plus" @click="addLang" />
+              <el-col :xs="24" :sm="24" :md="5" :lg="5" :xl="5">
+                <el-select v-model="form.skill_level_id" class="w-50" :placeholder="$t('Билиш даражаси')" :filterable="true">
+                  <el-option
+                    v-for="language in levels"
+                    :key="language.id"
+                    :label="language.name"
+                    :value="language.id"
+                  />
+                </el-select>
+              </el-col>
+              <el-col :span="4">
+                <el-button class="float-right mr-2 mtb" type="primary" size="mini" icon="el-icon-plus" @click="addSkill" />
                 <el-button class="float-left mtb" type="danger" size="mini" icon="el-icon-delete" @click="reset" />
               </el-col>
-            </el-row>
+            </el-row>        
           </el-form>
         </div>
       </el-col>
@@ -89,10 +112,10 @@ export default {
     return {
       loaded: false,
       dialogVisible: false,
-      citizen_languages: [],
       languages: [],
       levels: [],
       skills: [],
+      add_skill_id: null,
       form: {
         user_id: null,
         skill_id: null,
@@ -113,6 +136,8 @@ export default {
       skillCategories: 'resources/GET_SKILL_CATEGORIES',
       skillLevels: 'resources/GET_SKILL_LEVELS',
       user: 'auth/USER',
+      user_languages: 'resources/GET_USER_LANGUAGES',
+      user_computer_skills: 'resources/GET_USER_COMPUTER_SKILLS',
       all_languages: 'resume/GET_LANGUAGES'
     })
   },
@@ -123,25 +148,29 @@ export default {
     this.skills = this.skillCategories
     this.languages = this.skillCategories[0].skills
     this.levels = this.skillLevels
-    if (this.user && this.user.id) {
-      this.getUserLanguages({ user_id: this.user.id }).then(res => {
-        if (res.success) {
-          this.citizen_languages = res.data.data
-        }
-      })
-    }
+    this.userSkills()
   },
   methods: {
     ...mapActions({
-      getUserLanguages: 'resources/get_seeker_skills',
-      getLanguages: 'resume/languages',
-      deleteLanguage: 'resume/destroyLanguage',
+      getUserSkills: 'resources/get_seeker_skills',
+      deleteLanguage: 'resources/delete_seeker_skills',
       storeLanguage: 'resources/store_seeker_skills'
     }),
+    userSkills() {
+      if (this.user && this.user.id) {
+        this.getUserSkills({ user_id: this.user.id })
+      }
+    },
     validate() {
       return !!((this.form.skill_id !== null && this.form.skill_level_id !== null))
     },
-    addLang() {
+    addSkillForm(skill) {
+      this.dialogVisible = true
+      this.add_skill_id = skill.id
+      this.form.skill_id = null
+      this.form.skill_level_id = null
+    },
+    addSkill() {
       if (this.validate()) {
         let v = false
         if (this.form.skill_id && this.form.skill_level_id) {
@@ -151,7 +180,17 @@ export default {
           this.storeLanguage(this.form)
             .then(result => {
               this.reset()
-              this.getUserLanguages({ person_pin: this.profile.pin })
+              this.userSkills()
+            })
+            .catch(err => {
+              if (err) {
+                console.log(err)
+                this.$notify({
+                  title: this.$t('Ошибка'),
+                  message: 'Sizda bu parametr bo\'yicha mal\'umot bor',
+                  type: 'error'
+                })
+              }
             })
         }
       } else {
@@ -164,8 +203,8 @@ export default {
     },
     deleteItem(id) {
       this.$msgbox({ message: 'Ишончингиз комилми?', title: 'Ўчириш', showCancelButton: true, confirmButtonText: 'Ўчириш' }).then(() => {
-        this.deleteLanguage(id).finally(() => {
-          this.getUserLanguages({ person_pin: this.profile.pin })
+        this.deleteLanguage({ skill_id: id, user_id: this.user.id }).finally(() => {
+          this.userSkills()
         })
       })
     },
@@ -179,6 +218,20 @@ export default {
 </script>
 <style >
 .mtb {
-  margin-top: 26px;
+     margin-top: 5px;
+    margin-left: 10px;
+}
+.ml200 {
+  margin-left: 206px;
+}
+.w-100 {
+  width: 100%;
+}
+.ml5l {
+  margin-top: 5px;
+  margin-left: 30px;
+}
+.mt5 {
+  margin-top: 15px;
 }
 </style>
