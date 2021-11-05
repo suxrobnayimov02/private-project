@@ -241,7 +241,7 @@
       </el-row>
       <!-- LANGUAGES -->
       <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
-        <el-col :span="16">
+        <el-col>
           <languages :profile="userInfo.resume" :locale="locale" />
         </el-col>
       </el-row>

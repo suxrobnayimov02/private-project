@@ -6,5 +6,7 @@ export const state = {
   businessTrips: [],
   busynessTypes: [],
   workGraphics: [],
-  positions: []
+  positions: [],
+  user_languages: [],
+  user_computer_skills: []
 }
