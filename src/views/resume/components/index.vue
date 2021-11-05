@@ -1,5 +1,5 @@
 <template>
-  <div v-if="is_auth" class="contentBlock clearfix container">
+  <div v-if="is_auth && user" class="contentBlock clearfix container">
     <div class="grid-content bg-purple-dark">
       <h2 style="text-align: center; font-weight: bold">{{ $t('Резуме') }}</h2>
     </div>
@@ -7,22 +7,20 @@
       {{ [form.f_name, form.s_name, form.m_name].join(' ') }}
     </h3> -->
     <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
-      {{ [form.f_name, form.s_name, form.m_name].join(' ') }}
+      {{ user.fullname }}
     </h3>
     <el-row :gutter="40">
       <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
         <div class="grid-content bg-purple" justify="end" style="text-align: center">
-          <template v-if="photoUrl">
+          <!-- <template v-if="photoUrl">
             <img :src="photoUrl" alt="image" width="150px" style="min-height: 160px">
-          </template>
-          <template v-else>
-            <img
-              src="@/assets/images/businessman.svg"
-              alt="image"
-              width="150px"
-            ><br>
-          </template>
-          <div class="mt-2 clearfix">
+          </template> -->
+          <img
+            src="@/assets/images/businessman.svg"
+            alt="image"
+            width="150px"
+          ><br>
+          <!-- <div class="mt-2 clearfix">
             <el-upload
               class="upload-demo"
               action="/"
@@ -47,24 +45,28 @@
               @click="destroy()"
             ><i class="el-icon-delete" />
             </el-button>
-          </div>
+          </div> -->
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" class="mb-3">
         <el-row class="mt-3">
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Возраст') }}:</b></el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ calcAge(form.birth_date) }}</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.age }}</b></el-col>
         </el-row>
         <el-row class="mt-3">
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Пол') }}:</b></el-col>
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
-            <span v-if="form.gender== 2"><b>{{ $t('Женщина') }}</b></span>
-            <span v-if="form.gender== 1"><b>{{ $t('Мужчина') }}</b></span>
+            <span v-if="user.data.gender"><b>{{ $t('Мужчина') }}</b></span>
+            <span v-else><b>{{ $t('Женщина') }}</b></span>
           </el-col>
         </el-row>
         <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="8"><b class="text-muted">{{ $t('Партийность') }}:</b></el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ party }}</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Telefoni') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>+{{ user.data.contact_number }}</b></el-col>
+        </el-row>
+        <el-row class="mt-3">
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Email') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.data.email }}</b></el-col>
         </el-row>
       </el-col>
     </el-row>
@@ -112,14 +114,9 @@
             </el-form-item>
           </div>
         </el-col>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <el-form-item :label="$t('Адрес')">
-            <el-input v-model="form.address" />
-          </el-form-item>
-        </el-col>
       </el-row>
       <el-row>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+        <!-- <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
           <el-form-item :label="$t('Мобилный телефон')">
             <el-input v-model="form.phone_number" v-mask="mask" />
           </el-form-item>
@@ -141,7 +138,7 @@
               <el-option :label="$t('Нет')" :value="null" />
             </el-select>
           </el-form-item>
-        </el-col>
+        </el-col> -->
         <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
           <el-form-item :label="$t('Водительское права') + ':'">
             <el-select v-model="form.drive_license" placeholder="___" multiple>
@@ -211,6 +208,18 @@
               <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
             </el-collapse-item>
           </el-col>
+          <el-col :xs="24" :sm="24" :lg="12" :xl="12">
+            <el-collapse-item :title="$t('Переезд')" name="3">
+              <template v-if="businessTrips && businessTrips.length !== 0">
+                <div v-for="type in businessTrips" :key="'trip' + type.id">
+                  <el-checkbox v-model="checked3" :label="type.id">
+                    {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                  </el-checkbox>
+                </div>
+              </template>
+              <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
+            </el-collapse-item>
+          </el-col>
         </el-collapse>
       </el-row>
       <!-- ABOUT ME -->
@@ -225,13 +234,6 @@
           <el-form-item :label="$t('Личное качество') + ':'">
             <el-input v-model="form.personal_quality" type="textarea" />
           </el-form-item>
-
-        </el-col>
-        <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-          <el-form-item :label="$t('Компютерные навыки') + ':'">
-            <el-input v-model="form.computer_skill" type="textarea" />
-          </el-form-item>
-
         </el-col>
         <el-col :xs="24" :sm="24" :lg="12" :xl="12">
           <el-form-item :label="$t('Хобби') + ':'">
@@ -242,10 +244,9 @@
       <!-- LANGUAGES -->
       <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
         <el-col>
-          <languages :profile="userInfo.resume" :locale="locale" />
+          <languages :profile="user.resume" :locale="locale" />
         </el-col>
       </el-row>
-      <hr>
       <!-- Образование/ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ -->
       <el-row>
         <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
@@ -327,6 +328,7 @@ export default {
       // districts: '',
       checked1: [],
       checked2: [],
+      checked3: [],
       mask: '##',
       loaded: false,
       form: {
@@ -397,7 +399,7 @@ export default {
   computed: {
     ...mapGetters({
       locale: 'app/LOCALE',
-      userInfo: 'auth/USER',
+      user: 'auth/USER',
       is_auth: 'auth/GET_IS_AUTH',
       resume: 'resume/RESUME',
       regions: 'region/GET_REGIONS',
@@ -443,43 +445,39 @@ export default {
       this.loaded = true
     })
     this.getInfo().then(() => {
-      console.log('2')
-      console.log(this.userInfo)
-      console.log(this.userInfo.id)
-      console.log(this.is_auth)
+      console.log(this.user)
     })
-    if (this.userInfo && this.userInfo.resume) {
-      this.show(this.userInfo.resume.id).then(
-        res => {
-          // this.form = res.data.resume
-          if (res.success && res.data) {
-            this.setForm({ form: this.form, details: res.data.resume })
-          }
-          this.education = res.data.education.result.citizens
-          if (this.education && this.education.length) {
-            this.edu_type_disabled = true
-          }
-          this.workbook = res.data.workbook.data ? res.data.workbook.data : []
-          this.positions = res.data.position ? res.data.position : []
-          this.party = res.data.partiya.result.party ? res.data.partiya.result.party : this.$t('Нет')
-          this.regionModel = res.data.resume.region_id
-          this.districtModel = res.data.resume.city_id
-          if (res.data.resume.photo) {
-            this.photoUrl = process.env.VUE_APP_BASE_URL + res.data.resume.photo
-          }
-          if (!this.form.work_schedule) {
-            this.form.work_schedule = []
-          }
-          if (!this.form.employment_id) {
-            this.form.employment_id = []
-          }
-          if (this.regionModel) {
-            this.changeRegion()
-          }
-          if (this.education.length !== 0) {
-            this.form.education_degree = 3
-          }
+    if (this.user && this.user.resume) {
+      this.show(this.user.resume.id).then(res => {
+        // this.form = res.data.resume
+        if (res.success && res.data) {
+          this.setForm({ form: this.form, details: res.data.resume })
         }
+        this.education = res.data.education.result.citizens
+        if (this.education && this.education.length) {
+          this.edu_type_disabled = true
+        }
+        this.workbook = res.data.workbook.data ? res.data.workbook.data : []
+        this.positions = res.data.position ? res.data.position : []
+        this.party = res.data.partiya.result.party ? res.data.partiya.result.party : this.$t('Нет')
+        this.regionModel = res.data.resume.region_id
+        this.districtModel = res.data.resume.city_id
+        if (res.data.resume.photo) {
+          this.photoUrl = process.env.VUE_APP_BASE_URL + res.data.resume.photo
+        }
+        if (!this.form.work_schedule) {
+          this.form.work_schedule = []
+        }
+        if (!this.form.employment_id) {
+          this.form.employment_id = []
+        }
+        if (this.regionModel) {
+          this.changeRegion()
+        }
+        if (this.education.length !== 0) {
+          this.form.education_degree = 3
+        }
+      }
       )
     }
     // this.getAppealsStatuses({ type: 'work_schedule' }).then(res => {
@@ -554,14 +552,14 @@ export default {
     },
     onUpdate() {
       if (this.validate()) {
-        this.update({ data: this.form, id: this.userInfo.resume.id })
+        this.update({ data: this.form, id: this.user.resume.id })
           .then((res) => {
             this.$notify({
               title: this.$t('Успешно'),
               message: this.$t('Успешно сохранено'),
               type: 'success'
             })
-            this.$router.push({ name: 'CitizenShow', params: { id: this.userInfo.resume.id }})
+            this.$router.push({ name: 'CitizenShow', params: { id: this.user.resume.id }})
           }).catch((error) => {
             this.$notify({
               title: this.$t('Ошибка'),
@@ -582,7 +580,7 @@ export default {
       this.fileList = []
       const formData = new FormData()
       formData.append('file', file.raw)
-      formData.append('resume_id', this.userInfo.resume.id)
+      formData.append('resume_id', this.user.resume.id)
       this.storeImg(formData)
         .then((res) => {
           this.photoUrl = process.env.VUE_APP_BASE_URL + res.data.photo
@@ -651,7 +649,7 @@ export default {
     destroy() {
       const formData = new FormData()
       formData.append('remove_image', true)
-      formData.append('resume_id', this.userInfo.resume.id)
+      formData.append('resume_id', this.user.resume.id)
       this.$confirm('Малумот ўчирилиб ташланади. Давом этасизми?', {
         confirmButtonText: 'Ҳа',
         cancelButtonText: 'Йўқ',

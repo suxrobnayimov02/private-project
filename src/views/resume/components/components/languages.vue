@@ -14,7 +14,7 @@
                   <el-input v-model="lang.skill_level.name" disabled :placeholder="$t('Билиш даражаси')" />
                 </el-col>
                 <el-col :span="1">
-                  <el-button size="mini" type="danger" @click="deleteItem(lang.skill_id)">
+                  <el-button size="mini" type="danger" @click="deleteItem(lang.id)">
                     <i class="el-icon-delete-solid" />
                   </el-button>
                 </el-col>
@@ -34,7 +34,7 @@
                   <el-input v-model="lang.skill_level.name" disabled :placeholder="$t('Билиш даражаси')" />
                 </el-col>
                 <el-col :span="1">
-                  <el-button size="mini" type="danger" @click="deleteItem(lang.skill_id)">
+                  <el-button size="mini" type="danger" @click="deleteItem(lang.id)">
                     <i class="el-icon-delete-solid" />
                   </el-button>
                 </el-col>
@@ -203,7 +203,7 @@ export default {
     },
     deleteItem(id) {
       this.$msgbox({ message: 'Ишончингиз комилми?', title: 'Ўчириш', showCancelButton: true, confirmButtonText: 'Ўчириш' }).then(() => {
-        this.deleteLanguage({ skill_id: id, user_id: this.user.id }).finally(() => {
+        this.deleteLanguage(id).finally(() => {
           this.userSkills()
         })
       })

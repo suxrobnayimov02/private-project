@@ -39,10 +39,9 @@ export function kodp(params) {
     params
   })
 }
-export function delete_seeker_skills(data) {
+export function delete_seeker_skills(id) {
   return request({
-    url: 'seeker-skills/' + data.user_id,
-    method: 'delete',
-    data: data
+    url: 'seeker-skills/' + id,
+    method: 'delete'
   })
 }

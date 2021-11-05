@@ -5,6 +5,7 @@ export const state = {
     is_auth: false,
     id: '',
     pin: '',
+    age: null,
     token: getToken(),
     login: '',
     data: {}
