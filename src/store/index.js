@@ -5,6 +5,7 @@ import vacancy from './vacancy'
 import region from './region'
 import resources from './resources'
 import education from './education'
+import experience from './experience'
 
 export default createStore({
   modules: {
@@ -13,6 +14,7 @@ export default createStore({
     vacancy,
     region,
     resources,
-    education
+    education,
+    experience
   }
 })

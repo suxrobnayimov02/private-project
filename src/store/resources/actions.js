@@ -1,4 +1,4 @@
-import { index, store_seeker_skills, get_seeker_skills, update_seeker_skills } from '@/api/resources'
+import { index, store_seeker_skills, get_seeker_skills, update_seeker_skills, kodp } from '@/api/resources'
 import axios from 'axios'
 
 export const actions = {
@@ -14,8 +14,7 @@ export const actions = {
   },
   positions({ commit }, query) {
     return new Promise((resolve, reject) => {
-      // ?search=mene&language=uz-ln
-      axios.get('https://my.mehnat.uz/kodpapi/kodp', { params: query }).then(res => {
+      kodp(query).then(res => {
         commit('SET_POSITIONS', res.data)
         resolve(res)
       }).catch(error => {

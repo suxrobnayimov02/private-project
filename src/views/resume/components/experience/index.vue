@@ -2,7 +2,6 @@
   <div>
     <table
       class="table-auto table-main"
-      :data="workbook"
       style="width: 100%"
     >
       <thead>
@@ -48,19 +47,9 @@
 
 <script>
 export default {
-  name: 'EducationTable',
-  props: {
-    workbook: {
-      type: Array,
-      default() {
-        return []
-      }
-    }
-  },
+  name: 'ExperienceIndex',
   methods: {
-    dateFromLineToDot(date) {
-      return date ? date.split('-').reverse().join('.') : ''
-    }
+
   }
 }
 </script>

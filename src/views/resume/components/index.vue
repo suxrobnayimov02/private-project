@@ -118,7 +118,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>      
+      <el-row>
         <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
           <el-form-item :label="$t('Мобилный телефон')">
             <el-input v-model="form.phone_number" v-mask="mask" />
@@ -244,7 +244,7 @@
         <el-col :span="16">
           <languages :profile="userInfo.resume" :locale="locale" />
         </el-col>
-      </el-row>     
+      </el-row>
       <hr>
       <!-- Образование/ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ -->
       <el-row>
@@ -271,13 +271,14 @@
             <EducationTable :education="education" />
           </el-row>
         </div>
-        <br> 
+        <br>
         <hr>
         <el-row>
           <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ') }} </el-divider>
         </el-row>
         <el-row>
-          <WorkbookTable :workbook="workbook" />
+          <experience-index />
+          <experience-create />
         </el-row>
       </el-row>
       <!-- <el-dialog
@@ -309,14 +310,15 @@ import { mapActions, mapGetters } from 'vuex'
 import EducationTable from './components/resume/education'
 import EducationCreate from './Education/create.vue'
 import { translater } from '@/assets/translate/translat_service'
-import WorkbookTable from './components/resume/workbook'
+import ExperienceIndex from './experience/index'
+import ExperienceCreate from './experience/create'
 import languages from './components/languages'
 import { VMoney } from 'v-money'
 import { VueMaskDirective } from 'v-mask'
 
 export default {
   components: {
-    EducationTable, WorkbookTable, languages, EducationCreate
+    EducationTable, ExperienceIndex, ExperienceCreate, languages, EducationCreate
   },
   directives: { money: VMoney, mask: VueMaskDirective },
   data() {
@@ -376,7 +378,6 @@ export default {
       districtModel: null,
       education: [],
       edu_degrees: [],
-      workbook: [],
       party: '',
       person: {},
       drive_license: ['A', 'B', 'C', 'D', 'E'],
@@ -498,7 +499,7 @@ export default {
       fetchRegions: 'region/regions',
       fetchResources: 'resources/index',
       fetchPositions: 'resources/positions',
-      // 
+      //
       show: 'resume/show',
       update: 'resume/update',
       getInfo: 'auth/getInfo',

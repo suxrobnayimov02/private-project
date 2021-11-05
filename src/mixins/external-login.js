@@ -2,16 +2,16 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    authServiceOneIDLink () {
+    authServiceOneIDLink() {
       return process.env.VUE_APP_ONE_ID_AUTH_URL
     },
-    authServiceEsiLink () {
+    authServiceEsiLink() {
       return process.env.VUE_APP_ESI_AUTH_URL
     },
     ...mapGetters({ user: 'auth/USER' })
   },
   methods: {
-    loginAuthService (type) {
+    loginAuthService(type) {
       window.location = String(type).replace('[base_url]', encodeURIComponent(process.env.VUE_APP_BASE_API))
     }
   }

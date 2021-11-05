@@ -32,3 +32,10 @@ export function update_seeker_skills(data) {
     data: data
   })
 }
+export function kodp(params) {
+  return request({
+    url: 'resources/kodp/',
+    method: 'get',
+    params
+  })
+}
