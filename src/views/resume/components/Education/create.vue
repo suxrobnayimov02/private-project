@@ -1,11 +1,8 @@
 <template>
   <div class="mainContainer">
     <div>
-      <!-- <router-link :to="{ name: 'CitizenShow' }">
-        <el-button type="text" icon="el-icon-arrow-left">Профилга қайтиш</el-button>
-      </router-link> -->
-      <el-dialog :title="$t('Олий маълумот қўшиш')" :visible.sync="dialogFormVisible">
-        <el-card class="box-shadow pb-4">
+      <el-dialog v-model="dialogFormVisible" :title="$t('Таълим маълумоти қўшиш')">
+        <div class="box-shadow pb-4">
           <el-form
             v-if="!editLoading"
             ref="form"
@@ -16,85 +13,69 @@
           >
             <!-- <el-divider content-position="left"> </el-divider> -->
             <el-row>
+              <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+                <el-form-item :label="$t('Уровень образования') + ':'" prop="education_level_id">
+                  <el-select
+                    v-model="form.education_level_id"
+                    class="w-100"
+                    filterable
+                    :disabled="edu_type_disabled"
+                  >
+                    <el-option
+                      v-for="item in educationLevels"
+                      :key="item.id"
+                      :label="item.name"
+                      :value="item.id"
+                    />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col v-if="form.education_level_id == 4" :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+                <el-form-item label=" ">
+                  <el-checkbox v-model="form.currently_studying" class="float-right">{{ $t('студент(ка) ВУЗа') }}</el-checkbox>
+                </el-form-item>
+              </el-col>
               <el-col :span="18">
-                <el-form-item label="Олий талим муассасаси" prop="otm_id">
-                  <el-select v-model="form.otm_id" class="w-100">
-                    <el-option v-for="otm in otms" :key="otm.id" :label="otm.name" :value="otm.id" />
-                  </el-select>
+                <el-form-item label="Таълим муассасаси номи" prop="education_place">
+                  <el-input v-model="form.education_place" class="w-100" />
                 </el-form-item>
               </el-col>
-              <el-col :span="6">
-                <el-form-item label="Даража" prop="degree">
-                  <el-select v-model="form.degree" class="w-100">
-                    <el-option v-for="degre in degrees" :key="degre.id" :label="degre.name" :value="degre.id" />
-                  </el-select>
+              <el-col :span="12">
+                <el-form-item label="Мутахассислик(Йўналиш)" prop="faculty">
+                  <el-input v-model="form.faculty" class="w-100" />
                 </el-form-item>
-              </el-col>
+              </el-col>             
             </el-row>
             <el-row>
               <el-col :span="6">
-                <el-form-item label="ОТМга кирган йили" prop="education_stared_year">
-                  <el-select v-model="form.education_stared_year">
+                <el-form-item label="Кирган йили" prop="start_year">
+                  <el-select v-model="form.start_year">
                     <el-option v-for="y in years.slice(1, years.length)" :key="y" :label="y" :value="y" />
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="6">
-                <el-form-item label="ОТМни битирган йили" prop="education_finished_year">
-                  <el-select v-model="form.education_finished_year">
+                <el-form-item label="Битирган йили" prop="end_year">
+                  <el-select v-model="form.end_year">
                     <el-option v-for="y in years" :key="y" :label="y" :value="y" />
                   </el-select>
                 </el-form-item>
               </el-col>
-              <el-col :span="12">
-                <el-form-item label="Мутахассислик" prop="faculty_id">
-                  <el-select v-model="form.faculty_id" class="w-100" :filterable="true">
-                    <el-option
-                      v-for="faculty in faculties"
-                      :key="faculty.id"
-                      :label="faculty.name"
-                      :value="faculty.id"
-                    />
-                  </el-select>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="Диплом серияси ва рақами" prop="diploma">
-                  <el-input v-model="form.diploma" placeholder="XX0000000" />
-                </el-form-item>
-              </el-col>
-              <el-col :span="16">
-                <el-form-item label="Диплом берилган сана" prop="diploma_given_date">
-                  <!-- <date-dropdown
-                    v-if="showDate"
-                    v-model="form.diploma_given_date"
-                    class="w-100"
-                    min="1950"
-                    :max="currentYear"
-                    :default="diploma_given_date"
-                    months-names="Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь"
-                  /> -->
-                </el-form-item>
-              </el-col>
+              
             </el-row>
           </el-form>
           <el-button type="primary" icon="el-icon-check" class="float-right" @click="save">Сақлаш</el-button>
-          <el-button icon="el-icon-close" class="float-right  mr-2" @click="cancel">Бекор қилиш</el-button>
-        </el-card>
+        </div>
       </el-dialog>
     </div>
   </div>
 </template>
 
 <script>
-// import DateDropdown from 'vue-date-dropdown'
 import Swal from 'sweetalert2'
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'Otm',
-  // components: { DateDropdown },
   props: {
     createOrUpdate: {
       type: String,
@@ -102,29 +83,31 @@ export default {
         return ''
       }
     },
-    otmDialog: {
+    educationDialog: {
       type: Boolean,
       default() {
         return false
+      }
+    },
+    educationLevels: {
+      type: Array,
+      default() {
+        return []
       }
     }
   },
   data() {
     return {
       form: {
-        id: null,
-        otm_id: '',
-        pin: '',
-        institution_id: '',
-        degree: '',
-        education_stared_year: null,
-        education_finished_year: null,
-        isApplications: false,
-        faculty_id: null,
-        diploma: '',
-        diploma_given_date: '01.01.2019'
+        user_id: 1,
+        education_level_id: null,
+        education_place: '',
+        faculty: '',
+        currently_studying: false,
+        start_year: null,
+        end_year: null
       },
-      dialogFormVisible: true,
+      dialogFormVisible: false,
       editLoading: false,
       diploma_given_date: '01.01.2019',
       showDate: false,
@@ -133,63 +116,46 @@ export default {
         { name: 'Бакалавр', id: 1 }, { name: 'Магистр', id: 2 }, { name: 'Мутахассис', id: 3 }
       ],
       rules: {
-        otm_id: [
+        education_level_id: [
           {
             required: true,
-            message: 'Олий талим муассасаси киритилмаган',
+            message: 'To\'ldirish joiz bo\'lgan maydonlar',
             trigger: 'change'
           }
         ],
-        education_stared_year: [
+        education_place: [
           {
             required: true,
-            message: 'ОТМга кирган йили кўрсатилмаган',
+            message: 'To\'ldirish joiz bo\'lgan maydonlar',
             trigger: 'change'
           }
         ],
-        education_finished_year: [
+        faculty: [
           {
             required: true,
-            message: 'ОТМни битирган йили кўрсатилмаган',
+            message: 'To\'ldirish joiz bo\'lgan maydonlar',
             trigger: 'change'
           }
         ],
-        faculty_id: [
+        start_year: [
           {
             required: true,
-            message: 'Факультет кўрсатилмаган',
+            message: 'To\'ldirish joiz bo\'lgan maydonlar',
             trigger: 'change'
           }
         ],
-        schoolarship_type: [
+        end_year: [
           {
             required: true,
-            message: 'Талим тури кўрсатилмаган',
+            message: 'To\'ldirish joiz bo\'lgan maydonlar',
             trigger: 'change'
           }
-        ],
-        diploma_seria: [
-          { required: true, message: 'Сериа киритилмаган', trigger: 'change' }
-        ],
-        diploma: [
-          {
-            required: true,
-            pattern: '^.{6,}$',
-            message: 'Белгилар сони камида 6 та бўлиши керак',
-            trigger: 'change'
-          }
-        ],
-        degree: [
-          { required: true, message: 'Даража кўрсатилмаган', trigger: 'change' }
-        ],
-        diploma_given_date: [
-          { required: true, message: 'Диплом берилган сана кўрсатилмаган', trigger: 'change' }
-        ]
+        ]      
       }
     }
   },
   computed: {
-    ...mapGetters({ otms: 'otm/GET_ALL_OTMS', user: 'auth/USER' }),
+    ...mapGetters({ user: 'auth/USER' }),
     currentYear() {
       return String(new Date().getFullYear())
     },
@@ -217,7 +183,6 @@ export default {
     },
     'form.otm_id'(newVal, oldVal) {
       if ((newVal && newVal !== oldVal) && !this.editLoading) {
-        this.form.institution_id = this.otms.find(otm => otm.id === newVal).institution_id
         this.form.faculty_id = null
         if (this.form.education_finished_year && this.form.education_stared_year) {
           this.fetchFaculties()
@@ -229,17 +194,15 @@ export default {
     }
   },
   created() {
-    this.dialogFormVisible = this.otmDialog
+    this.dialogFormVisible = this.educationDialog
     if (this.$route.name === 'OtmUpdate') {
       this.editLoading = true
       this.setForm()
     }
     setTimeout(() => { this.showDate = true }, 300)
-    this.form.pin = this.user.resume.pin
-    this.getOtms()
   },
   methods: {
-    ...mapActions({ getOtms: 'otm/otms', getFaculties: 'otm/faculties', create: 'otm/create', update: 'otm/update' }),
+    ...mapActions({ getOtms: 'otm/otms', getFaculties: 'otm/faculties', create: 'education/store', update: 'otm/update' }),
     fetchFaculties() {
       this.form.faculty_id = null
       this.showDate = false
@@ -253,8 +216,7 @@ export default {
     },
     save() {
       if (this.validate()) {
-        this.form.diploma_given_date = this.form.diploma_given_date.split('.').reverse().join('-')
-        if (this.create_or_update === 'create') {
+        if (true) {
           this.create(this.form).then((res) => {
             if (res.success) {
               Swal.fire({

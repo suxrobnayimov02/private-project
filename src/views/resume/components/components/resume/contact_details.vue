@@ -6,7 +6,7 @@
       </el-button>
     </el-row>
     <el-dialog
-      :visible.sync="contactDialogVisible"
+      v-model="contactDialogVisible"
       width="30%"
       center
     >

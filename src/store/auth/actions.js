@@ -4,7 +4,7 @@ import { resetRouter } from '@/router'
 
 export const actions = {
   // user login
-  login ({ commit }, credientials) {
+  login({ commit }, credientials) {
     return new Promise((resolve, reject) => {
       login(credientials)
         .then(res => {
@@ -19,7 +19,7 @@ export const actions = {
     })
   },
   // user logout
-  logout ({ commit }) {
+  logout({ commit }) {
     return new Promise((resolve, reject) => {
       logout()
         .then(res => {
@@ -34,7 +34,7 @@ export const actions = {
     })
   },
   // remove token
-  resetToken ({ commit }) {
+  resetToken({ commit }) {
     return new Promise(resolve => {
       commit('SET_USER_TOKEN', '')
       commit('SET_IS_AUTH', false)
@@ -42,14 +42,14 @@ export const actions = {
       resolve()
     })
   },
-  setUserToken ({ commit }, token) {
+  setUserToken({ commit }, token) {
     return new Promise(resolve => {
       commit('SET_USER_TOKEN', token)
       setToken(token)
       resolve()
     })
   },
-  create ({ commit }, user) {
+  create({ commit }, user) {
     return new Promise((resolve, reject) => {
       store(user).then(response => {
         resolve(response)
@@ -58,7 +58,7 @@ export const actions = {
       })
     })
   },
-  destroy ({ commit }, id) {
+  destroy({ commit }, id) {
     return new Promise((resolve, reject) => {
       destroy(id).then(response => {
         resolve(response)
@@ -67,7 +67,7 @@ export const actions = {
       })
     })
   },
-  getInfo ({ commit }) {
+  getInfo({ commit }) {
     return new Promise((resolve, reject) => {
       getInfo()
         .then(res => {

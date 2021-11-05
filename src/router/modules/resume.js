@@ -15,6 +15,11 @@ const resumeRouter = [
     component: () => import('@/views/resume/components/index')
   },
   {
+    name: 'EducationCreate',
+    path: '/resumes/education-create',
+    component: () => import('@/views/resume/components/Education/create')
+  },
+  {
     name: 'ResumeShow',
     path: '/resumes/:id',
     component: () => import('@/views/resume/show')

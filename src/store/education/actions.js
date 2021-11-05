@@ -1,4 +1,4 @@
-import { show, update, index, store } from '@/api/vacancy'
+import { show, update, index, store } from '@/api/education'
 export const actions = {
   index({ commit }, query) {
     return new Promise((resolve, reject) => {
@@ -20,7 +20,7 @@ export const actions = {
       })
     })
   },
-  store({ commit }, { data }) {
+  store({ commit }, data) {
     return new Promise((resolve, reject) => {
       store(data)
         .then(res => {
