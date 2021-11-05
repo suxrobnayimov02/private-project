@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row v-for="(skill, index) in skills" :key="'skill' + index" :class="index != 0 ? 'mt5' : ''">
-      <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4"><b class="text-muted">{{ $t(skill.name) }}:</b></el-col>
+      <el-col><b class="text-muted">{{ $t(skill.name) }}:</b></el-col>
       <el-col :xs="24" :sm="24" :md="10" :lg="10" :xl="10">
         <div v-if="skill.id == 1">
           <template v-if="user_languages && user_languages.length != 0">
@@ -52,7 +52,7 @@
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :md="20" :lg="20" :xl="20">
-        <div v-if="dialogVisible && skill.id == add_skill_id" class="float-right ml200">
+        <div v-if="dialogVisible && skill.id == add_skill_id" class="float-right">
           <el-form
             ref="form"
             :model="form"
@@ -61,7 +61,7 @@
             class="top-label-custom pb-5"
           >
             <el-row>
-              <el-col :xs="24" :sm="24" :md="9" :lg="9" :xl="9">
+              <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
                 <el-select v-model="form.skill_id" class="w-100" :placeholder="$t('Tanlang')" :filterable="true" style="width:100%">
                   <el-option
                     v-for="language in skill.skills"
@@ -71,7 +71,7 @@
                   />
                 </el-select>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="5" :lg="5" :xl="5">
+              <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4">
                 <el-select v-model="form.skill_level_id" class="w-50" :placeholder="$t('Билиш даражаси')" :filterable="true">
                   <el-option
                     v-for="language in levels"
