@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-import { index, store_seeker_skills, get_seeker_skills, update_seeker_skills, kodp } from '@/api/resources'
-=======
-import { index, store_seeker_skills, get_seeker_skills, update_seeker_skills, delete_seeker_skills } from '@/api/resources'
->>>>>>> origin/master
-import axios from 'axios'
-
+import { index, store_seeker_skills, get_seeker_skills, update_seeker_skills, delete_seeker_skills, kodp } from '@/api/resources'
 export const actions = {
   index({ commit }, query) {
     return new Promise((resolve, reject) => {

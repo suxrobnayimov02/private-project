@@ -32,19 +32,17 @@ export function update_seeker_skills(data) {
     data: data
   })
 }
-<<<<<<< HEAD
 export function kodp(params) {
   return request({
     url: 'resources/kodp/',
     method: 'get',
     params
-=======
-
+  })
+}
 export function delete_seeker_skills(data) {
   return request({
     url: 'seeker-skills/' + data.user_id,
     method: 'delete',
     data: data
->>>>>>> origin/master
   })
 }
