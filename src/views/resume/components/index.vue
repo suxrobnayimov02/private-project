@@ -3,9 +3,6 @@
     <div class="grid-content bg-purple-dark">
       <h2 style="text-align: center; font-weight: bold">{{ $t('Резуме') }}</h2>
     </div>
-    <!-- <h3 class="text-gray-700 text-m font-bold bg-gray-200 text-center">
-      {{ [form.f_name, form.s_name, form.m_name].join(' ') }}
-    </h3> -->
     <hr>
     <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
       {{ user.fullname }}
@@ -117,31 +114,8 @@
         </el-col>
       </el-row>
       <el-row>
-        <!-- <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <el-form-item :label="$t('Мобилный телефон')">
-            <el-input v-model="form.phone_number" v-mask="mask" />
-          </el-form-item>
-        </el-col>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <el-form-item :label="$t('Домашный телефон')">
-            <el-input v-model="form.home_phone_number" v-mask="mask" />
-          </el-form-item>
-        </el-col>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <el-form-item :label="$t('Электронная почта')">
-            <el-input v-model="form.email" />
-          </el-form-item>
-        </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-          <el-form-item :label="$t('Войенное звание') + ':'">
-            <el-select v-model="form.military_rank" placeholder="___">
-              <el-option :label="$t('Да')" value="1" />
-              <el-option :label="$t('Нет')" :value="null" />
-            </el-select>
-          </el-form-item>
-        </el-col> -->
-        <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-          <el-form-item :label="$t('Водительское права') + ':'" prop="drivers_license">
+          <el-form-item :label="$t('Водительское права') + ':'">
             <el-select v-model="form.drivers_license" placeholder="___" multiple>
               <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.id" />
             </el-select>
@@ -176,7 +150,7 @@
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <el-form-item :label="$t('Зарплата')" prop="salary">
+          <el-form-item :label="$t('Зарплата')">
             <input v-model="form.salary" type="number" class="text-right text-right  el-input__inner">
           </el-form-item>
         </el-col>
@@ -219,12 +193,14 @@
       <!-- ABOUT ME -->
       <el-row>
         <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-          <el-form-item :label="$t('О себе') + ':'" prop="additional_info">
+          <el-form-item :label="$t('О себе') + ':'">
             <el-input v-model="form.additional_info" type="textarea" />
           </el-form-item>
         </el-col>
+      </el-row>
+      <el-row>
         <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-          <el-form-item :label="$t('Хобби') + ':'" prop="hobbies">
+          <el-form-item :label="$t('Хобби') + ':'">
             <el-input v-model="form.hobbies" type="textarea" />
           </el-form-item>
         </el-col>
@@ -237,7 +213,7 @@
       </el-row>
       <!-- Образование/ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ -->
       <el-row>
-        <!-- <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
+        <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
           {{ $t('Ta\'lim ma\'lumotlari') }}</el-divider>
         <div>
           <el-row v-if="educationDialog">
@@ -258,7 +234,7 @@
               @click="addEducation"
             >Ta'lim ma'lumoti qo'shish</el-button>
           </el-row>
-        </div> -->
+        </div>
         <br>
         <br>
         <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ') }} </el-divider>
@@ -293,27 +269,11 @@ export default {
   directives: { money: VMoney, mask: VueMaskDirective },
   data() {
     return {
-      // regions: '',
-      // districts: '',
-      checked1: [],
-      checked2: [],
-      checked3: [],
       mask: '##',
       loaded: false,
       form: {
         user_id: null,
-        f_name: null,
-        s_name: null,
-        m_name: null,
         pin: null,
-        birth_date: null,
-        gender: null,
-        address: null,
-        phone_number: null,
-        home_phone_number: null,
-        email: null,
-        family_state_id: null,
-        military_rank: null,
         drivers_license: null,
         want_salary: null,
         about: null,
@@ -333,9 +293,9 @@ export default {
         salary: null,
         salary_currency_id: 2,
         is_agreed_salary: true,
-        busyness_type_ids: [1],
-        work_graphic_ids: [1],
-        business_trip_ids: [1],
+        busyness_type_ids: [],
+        work_graphic_ids: [],
+        business_trip_ids: [],
         nskz: null
       },
       details_for_collage: {
@@ -349,23 +309,15 @@ export default {
         precision: 0,
         masked: false
       },
-      form_kodp_key: null,
-      edu_type_disabled: false,
       educationDialog: false,
       loading: false,
-      activeAccordions: ['1', '3'],
-      person_photo: null,
       regionModel: null,
       districtModel: null,
       education: [],
       edu_degrees: [],
-      party: '',
-      person: {},
-      drivers_license: ['A', 'B', 'C', 'D', 'E'],
-      // positions: [],
       photoUrl: null,
       fileList: [],
-      activeNames: ['1', '2', '3'],
+      activeNames: [],
       scheduleTypes: [],
       employmentTypes: [],
       rules: {
