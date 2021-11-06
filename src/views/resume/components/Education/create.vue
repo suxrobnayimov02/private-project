@@ -1,7 +1,7 @@
 <template>
   <div class="mainContainer">
     <div>
-      <el-dialog v-model="dialogFormVisible" :title="$t('Таълим маълумоти қўшиш')">
+      <el-dialog v-model="dialogFormVisible" :title="$t('Таълим маълумоти қўшиш')" :before-close="handleClose">
         <div class="box-shadow pb-4">
           <el-form
             v-if="!editLoading"
@@ -54,7 +54,7 @@
                   </el-select>
                 </el-form-item>
               </el-col>
-              <el-col :span="6">
+              <el-col v-if="!form.currently_studying" :span="6">
                 <el-form-item label="Битирган йили" prop="end_year">
                   <el-select v-model="form.end_year">
                     <el-option v-for="y in years" :key="y" :label="y" :value="y" />
@@ -99,7 +99,7 @@ export default {
   data() {
     return {
       form: {
-        user_id: 1,
+        user_id: null,
         education_level_id: null,
         education_place: '',
         faculty: '',
@@ -216,6 +216,7 @@ export default {
     },
     save() {
       if (this.validate()) {
+        this.form.user_id = this.user.id
         if (true) {
           this.create(this.form).then((res) => {
             if (res.success) {
@@ -237,6 +238,7 @@ export default {
                 confirmButtonText: 'Давом этиш'
               })
             }
+            this.$emit('close')
           })
         } else {
           this.update(this.form).then((res) => {
@@ -262,6 +264,19 @@ export default {
           })
         }
       }
+    },
+    handleClose(done) {
+      this.$confirm('Bekor qilmoqchimisiz?', {
+        confirmButtonText: 'Ha',
+        cancelButtonText: 'Yo\'q',
+        type: 'warning' })
+        .then(() => {
+          this.$emit('save')
+          done()
+        })
+        .catch(() => {
+          // catch error
+        })
     },
     validate() {
       let validated = false

@@ -1,8 +1,10 @@
 export const mutations = {
-  SET_VACANCY: (state, vacancy) => {
-    state.vacancy = vacancy
+  SET_EDUCATION: (state, education) => {
+    state.education = education
   },
-  SET_VACANCIES: (state, vacancies) => {
-    state.vacancies = vacancies
+  SET_EDUCATIONS: (state, edus) => {
+    if (edus && edus.data.length) {     
+      state.educations = edus.data
+    }
   }
 }

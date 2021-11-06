@@ -217,7 +217,7 @@
           {{ $t('Ta\'lim ma\'lumotlari') }}</el-divider>
         <div>
           <el-row v-if="educationDialog">
-            <EducationCreate :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" />
+            <EducationCreate :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" @close="educationDialo = false" @save="setEducation" />
           </el-row>
           <el-row v-if="education && education.length">
             <EducationTable :education="education" />
@@ -283,8 +283,6 @@ export default {
         is_student: 0,
         work_schedule: null,
         employment_id: null,
-        education_degree: null,
-        education: [],
         wanted_work: true,
         soato_region: null,
         soato_district: null,
@@ -298,10 +296,6 @@ export default {
         business_trip_ids: [],
         nskz: null
       },
-      details_for_collage: {
-        dialogFormVisible: true,
-        degree: 2
-      },
       money: {
         decimal: '.',
         thousands: ',',
@@ -313,7 +307,6 @@ export default {
       loading: false,
       regionModel: null,
       districtModel: null,
-      education: [],
       edu_degrees: [],
       photoUrl: null,
       fileList: [],
@@ -352,6 +345,7 @@ export default {
       resume: 'resume/RESUME',
       regions: 'region/GET_REGIONS',
       positions: 'resources/GET_POSITIONS',
+      education: 'education/GET_EDUCATIONS',
 
       driversLicenses: 'resources/GET_DRIVERS_LICENSES',
       skillCategories: 'resources/GET_SKILL_CATEGORIES',
@@ -365,26 +359,6 @@ export default {
 
   },
   watch: {
-    'form.education_degree'(newVal, oldVal) {
-      if (newVal && newVal !== oldVal) {
-        if (newVal === 2) {
-          if (!this.form.education) {
-            this.form.education = []
-          }
-        } else if (newVal === 3) {
-          //
-        }
-      }
-    },
-    'form.is_student'(newVal, oldVal) {
-      if (newVal && newVal !== oldVal) {
-        if (newVal === 1) {
-          this.details_for_collage.degree = 3
-        } else {
-          this.details_for_collage.degree = 2
-        }
-      }
-    },
     'form.kodp_key'(newVal, oldVal) {
       if (newVal && newVal !== oldVal) {
         if (this.positions && this.positions.length) {
@@ -405,12 +379,15 @@ export default {
     await this.fetchResources().then(() => {
       this.loaded = true
     })
-    if (!this.is_auth) {
-      this.$router.push({ name: 'Register' })
-    }
-    this.getInfo().then(() => {
-      console.log(this.user)
-    })
+    await this.getInfo()
+      .then(() => {
+        this.setEducation()
+      })
+      .catch(() => {      
+        if (!(this.user && this.user.id)) {
+          this.$router.push({ name: 'Register' })
+        }
+      })
     // this.getAppealsStatuses({ type: 'work_schedule' }).then(res => {
     //   this.scheduleTypes = res.data
     // })
@@ -428,6 +405,7 @@ export default {
       fetchRegions: 'region/regions',
       fetchResources: 'resources/index',
       fetchPositions: 'resources/positions',
+      fetchEdus: 'education/index',
       store_work_seeker: 'resources/store_work_seeker',
       update_seeker_profiles: 'resources/update_seeker_profiles',
       
@@ -679,11 +657,9 @@ export default {
       this.educationDialog = true
       // this.$router.push({ name: 'EducationCreate' })
     },
-    setCollage(collage) {
-      this.is_education = false
-      if (collage !== false) {
-        this.form.education.push(collage)
-      }
+    setEducation() {
+      this.educationDialog = false
+      this.fetchEdus({ user_id: this.user.id })
     }
 
   }

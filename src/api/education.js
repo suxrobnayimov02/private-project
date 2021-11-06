@@ -30,3 +30,10 @@ export function update(data) {
     data: data
   })
 }
+
+export function destroy(id) {
+  return request({
+    url: 'seeker-educations/' + id,
+    method: 'delete'
+  })
+}
