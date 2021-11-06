@@ -227,6 +227,7 @@ export default {
                 showConfirmButton: false,
                 confirmButtonText: 'Давом этиш'
               })
+              this.$emit('save')
               this.dialogFormVisible = false
             } else {
               const message = res.code === 441 ? 'Ушбу диплом аввал рўйхатга олинган!' : 'Хатолик!'
@@ -271,7 +272,7 @@ export default {
         cancelButtonText: 'Yo\'q',
         type: 'warning' })
         .then(() => {
-          this.$emit('save')
+          this.$emit('close')
           done()
         })
         .catch(() => {

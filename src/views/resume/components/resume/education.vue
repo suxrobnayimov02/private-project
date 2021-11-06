@@ -64,6 +64,9 @@ export default {
     create() {
       this.$router.push({ name: 'EducationCreate' })
     },
+    updateEducation(id) {
+
+    },
     deleteEdu(id) {
       ElMessageBox.confirm('Rostan ham o\'chirmoqchimisiz ?', 'Diqqat!',
         { confirmButtonText: 'Ha', cancelButtonText: 'Yo\'q', type: 'warning' }).then(() => {
