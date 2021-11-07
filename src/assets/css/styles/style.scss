@@ -28,7 +28,6 @@ body {
 
 .btn {
     border-radius    : 0;
-    padding          : 11px 22px;
     border-radius    : 0;
     font-size        : 14px;
     letter-spacing   : -0.02em;
@@ -165,6 +164,14 @@ body {
 .row-no-gutters>[class*=col-] {
     padding-right: 0;
     padding-left : 0;
+}
+.btnHamburger {
+    padding: 0;
+    background: transparent;
+    border: none;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    outline: none;
 }
 
 @import '_header.scss';

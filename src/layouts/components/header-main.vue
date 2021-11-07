@@ -109,6 +109,9 @@
           </router-link>
           <div class="header__nav">
             <ul class="nav nav-pills" style="display:flex">
+              <li class="nav-link">
+                
+              </li>
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <span class="name">Bosh sahifa</span>
@@ -222,6 +225,7 @@
         </li>
 
       </ul>
+      
       <ul class="nav nav-pills no-desktop on-mobile ">
         <li class="nav-item">
           <a href="" class="nav-link">

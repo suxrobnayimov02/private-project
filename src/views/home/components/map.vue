@@ -21,7 +21,7 @@
       </table>
     </div>
     <div id="map" class="map">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1182.625 774.976" height="386">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1182.625 774.976" height="605">
         <g
           id="Сгруппировать_9910"
           data-name="Сгруппировать 9910"
@@ -77,6 +77,13 @@
               >
                 <circle cx="53.5" cy="53.5" r="53.5" stroke="none" />
                 <circle cx="53.5" cy="53.5" r="53" fill="none" />
+                <circle cx="53.5" cy="53.5" fill="none" r="53" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="53" to="102" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
             </g>
             <g class="grouped">
@@ -87,7 +94,7 @@
                 transform="translate(368.92 1970.7)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
               <text
                 id="Nukus"
@@ -110,6 +117,13 @@
               >
                 <ellipse cx="18" cy="18.5" rx="18" ry="18.5" stroke="none" />
                 <ellipse cx="18" cy="18.5" rx="17.5" ry="18" fill="none" />
+                <circle cx="18" cy="18.5" fill="none" r="36" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="18" to="32" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
             </g>
             <g class="grouped">
@@ -120,7 +134,7 @@
                 transform="translate(93.738 1711.424)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
               <text
                 id="Buxoro"
@@ -143,6 +157,13 @@
               >
                 <ellipse cx="54" cy="53.5" rx="54" ry="53.5" stroke="none" />
                 <ellipse cx="54" cy="53.5" rx="53.5" ry="53" fill="none" />
+                <circle cx="54" cy="54.5" fill="none" r="53" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="54" to="102" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
 
             </g>
@@ -154,7 +175,7 @@
                 transform="translate(-188.657 1689.119)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
 
               <g
@@ -168,6 +189,13 @@
               >
                 <ellipse cx="36.5" cy="38" rx="36.5" ry="38" stroke="none" />
                 <ellipse cx="36.5" cy="38" rx="36" ry="37.5" fill="none" />
+                <circle cx="36.5" cy="38" fill="none" r="38" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="36" to="60" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
               <text
                 id="Guliston"
@@ -189,7 +217,7 @@
                 transform="translate(104.303 1851.722)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
                 opacity="0.9"
               />
 
@@ -204,6 +232,13 @@
               >
                 <circle cx="33.5" cy="33.5" r="33.5" stroke="none" />
                 <circle cx="33.5" cy="33.5" r="33" fill="none" />
+                <circle cx="33.5" cy="33.5" fill="none" r="33" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="33" to="82" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
               <text
                 id="Navoi"
@@ -225,7 +260,7 @@
                 transform="translate(-121.521 1566.978)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
 
               <text
@@ -250,6 +285,13 @@
               >
                 <ellipse cx="37.5" cy="37" rx="37.5" ry="37" stroke="none" />
                 <ellipse cx="37.5" cy="37" rx="37" ry="36.5" fill="none" />
+                <circle cx="37" cy="37.5" fill="none" r="36" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="37" to="82" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
             </g>
             <g class="grouped">
@@ -260,7 +302,7 @@
                 transform="translate(-126.436 1699.904)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
               <text
                 id="Jizzax"
@@ -283,6 +325,13 @@
               >
                 <circle cx="37.5" cy="37.5" r="37.5" stroke="none" />
                 <circle cx="37.5" cy="37.5" r="37" fill="none" />
+                <circle cx="37" cy="37.5" fill="none" r="36" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="37" to="80" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
             </g>
             <g class="grouped">
@@ -293,7 +342,7 @@
                 transform="translate(-217.598 1776.905)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
 
               <g
@@ -307,6 +356,13 @@
               >
                 <ellipse cx="73" cy="72" rx="73" ry="72" stroke="none" />
                 <ellipse cx="73" cy="72" rx="72.5" ry="71.5" fill="none" />
+                <circle cx="73" cy="72" fill="none" r="50" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="73" to="122" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
               <text
                 id="Chirchiq"
@@ -338,7 +394,7 @@
                 transform="translate(-48.752 1664.364)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
 
               <text
@@ -362,6 +418,13 @@
               >
                 <ellipse cx="53.5" cy="54.5" rx="53.5" ry="54.5" stroke="none" />
                 <ellipse cx="53.5" cy="54.5" rx="53" ry="54" fill="none" />
+                <circle cx="53" cy="54.5" fill="none" r="54" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="53" to="102" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
             </g>
             <g class="grouped">
@@ -372,7 +435,7 @@
                 transform="translate(-15.383 1593.515)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
               <g
                 id="Эллипс_2006"
@@ -385,6 +448,13 @@
               >
                 <ellipse cx="41.5" cy="41" rx="41.5" ry="41" stroke="none" />
                 <ellipse cx="41.5" cy="41" rx="41" ry="40.5" fill="none" />
+                <circle cx="41.5" cy="41" fill="none" r="40" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="41" to="92" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
               <text
                 id="Qarshi"
@@ -406,7 +476,7 @@
                 transform="translate(-294.902 1735.049)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
 
               <g
@@ -420,6 +490,13 @@
               >
                 <ellipse cx="37.5" cy="37" rx="37.5" ry="37" stroke="none" />
                 <ellipse cx="37.5" cy="37" rx="37" ry="36.5" fill="none" />
+                <circle cx="37" cy="37.5" fill="none" r="36" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="37" to="72" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
               <text
                 id="Namangan"
@@ -440,7 +517,7 @@
                 transform="translate(-295.51 1683.437)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
 
               <text
@@ -465,6 +542,13 @@
               >
                 <circle cx="32" cy="32" r="32" stroke="none" />
                 <circle cx="32" cy="32" r="31.5" fill="none" />
+                <circle cx="37" cy="37.5" fill="none" r="36" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="37" to="82" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
             </g>
             <g class="grouped">
@@ -475,7 +559,7 @@
                 transform="translate(-348.068 1708.16)"
                 fill="none"
                 stroke="#fff"
-                stroke-width="3"
+                stroke-width="2"
               />
 
               <g
@@ -489,6 +573,13 @@
               >
                 <ellipse cx="54" cy="53.5" rx="54" ry="53.5" stroke="none" />
                 <ellipse cx="54" cy="53.5" rx="53.5" ry="53" fill="none" />
+                <circle cx="54" cy="53.5" fill="none" r="36" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="54" to="132" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
               <text
                 id="Qo_qon"
@@ -526,6 +617,13 @@
               >
                 <ellipse cx="18.5" cy="19" rx="18.5" ry="19" stroke="none" />
                 <ellipse cx="18.5" cy="19" rx="18" ry="18.5" fill="none" />
+                <circle cx="18.5" cy="19" fill="none" r="36" stroke="#ff8c00"
+                            stroke-width="2">
+                  <animate  attributeName="r" from="18" to="72" dur="1.5s" begin="0s"
+                            repeatCount="indefinite" />
+                  <animate  attributeName="opacity" from="1" to="0" dur="1.5s"
+                            begin="0s" repeatCount="indefinite" />
+                </circle>
               </g>
               <text
                 id="Toshkent"

@@ -450,7 +450,6 @@ body {
 .header__top .radio-inline label {
   margin-left: 10px;
   cursor: pointer;
-  font-weight: normal;
   color: #0078D4;
   margin-bottom: 0;
 }

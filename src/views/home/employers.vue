@@ -2,9 +2,7 @@
   <div class="employers__section">
     <div class="container bigger no-padding">
       <div class="employers__card no-padding-right">
-        <div class="section__title">
-          Mashxur ish beruvchilar
-        </div>
+        <div class="section__title">Mashxur ish beruvchilar</div>
         <div class="type-slider">
           <div class="type-carousel owl-carousel owl-theme">
             <a href="" class="type_item active">
@@ -40,11 +38,13 @@
           <div class="row row-no-gutters">
             <div class="col-lg-4 col-md-6">
               <a href="" class="card employers__item">
-                <div class="image" style="background-image: url('/img/image/murad-building.svg') ;" />
+                <div
+                  class="image"
+                  style="background-image: url('/img/image/murad-building.svg')"
+                />
                 <div class="content">
                   <div class="name">Murad Buildings</div>
                   <div class="raiting">
-
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
@@ -126,26 +126,22 @@
                         stroke-width="1"
                       />
                     </svg>
-                    <div class="raiting_number">
-                      4.8
-                    </div>
+                    <div class="raiting_number">4.8</div>
                   </div>
-                  <div class="total_job">
-                    Jami <b> 128 </b> ta vakansiya
-                  </div>
-                  <div class="view-count">
-                    6.3k
-                  </div>
+                  <div class="total_job">Jami <b> 128 </b> ta vakansiya</div>
+                  <div class="view-count">6.3k</div>
                 </div>
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card employers__item">
-                <div class="image" style="background-image: url('/img/image/korzinka.svg') ;" />
+                <div
+                  class="image"
+                  style="background-image: url('/img/image/korzinka.svg')"
+                />
                 <div class="content">
                   <div class="name">Korzinka.uz</div>
                   <div class="raiting">
-
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
@@ -227,26 +223,22 @@
                         stroke-width="1"
                       />
                     </svg>
-                    <div class="raiting_number">
-                      4.8
-                    </div>
+                    <div class="raiting_number">4.8</div>
                   </div>
-                  <div class="total_job">
-                    Jami <b> 43 </b> ta vakansiya
-                  </div>
-                  <div class="view-count">
-                    3.4k
-                  </div>
+                  <div class="total_job">Jami <b> 43 </b> ta vakansiya</div>
+                  <div class="view-count">3.4k</div>
                 </div>
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card employers__item">
-                <div class="image" style="background-image: url('/img/image/beeline.svg') ;" />
+                <div
+                  class="image"
+                  style="background-image: url('/img/image/beeline.svg')"
+                />
                 <div class="content">
                   <div class="name">Beeline Uzbekistan</div>
                   <div class="raiting">
-
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
@@ -328,26 +320,22 @@
                         stroke-width="1"
                       />
                     </svg>
-                    <div class="raiting_number">
-                      4.8
-                    </div>
+                    <div class="raiting_number">4.8</div>
                   </div>
-                  <div class="total_job">
-                    Jami <b> 76 </b> ta vakansiya
-                  </div>
-                  <div class="view-count">
-                    1.8k
-                  </div>
+                  <div class="total_job">Jami <b> 76 </b> ta vakansiya</div>
+                  <div class="view-count">1.8k</div>
                 </div>
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card employers__item">
-                <div class="image" style="background-image: url('/img/image/minzdrav.svg') ;" />
+                <div
+                  class="image"
+                  style="background-image: url('/img/image/minzdrav.svg')"
+                />
                 <div class="content">
                   <div class="name">Sog’liqni saqlash vazirligi</div>
                   <div class="raiting">
-
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
@@ -429,26 +417,22 @@
                         stroke-width="1"
                       />
                     </svg>
-                    <div class="raiting_number">
-                      4.9
-                    </div>
+                    <div class="raiting_number">4.9</div>
                   </div>
-                  <div class="total_job">
-                    Jami <b> 236 </b> ta vakansiya
-                  </div>
-                  <div class="view-count">
-                    9.8k
-                  </div>
+                  <div class="total_job">Jami <b> 236 </b> ta vakansiya</div>
+                  <div class="view-count">9.8k</div>
                 </div>
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card employers__item">
-                <div class="image" style="background-image: url('/img/image/portal.svg') ;" />
+                <div
+                  class="image"
+                  style="background-image: url('/img/image/portal.svg')"
+                />
                 <div class="content">
                   <div class="name">Hukumat portali</div>
                   <div class="raiting">
-
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
@@ -530,26 +514,22 @@
                         stroke-width="1"
                       />
                     </svg>
-                    <div class="raiting_number">
-                      4.8
-                    </div>
+                    <div class="raiting_number">4.8</div>
                   </div>
-                  <div class="total_job">
-                    Jami <b> 21 </b> ta vakansiya
-                  </div>
-                  <div class="view-count">
-                    9.8k
-                  </div>
+                  <div class="total_job">Jami <b> 21 </b> ta vakansiya</div>
+                  <div class="view-count">9.8k</div>
                 </div>
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card employers__item">
-                <div class="image" style="background-image: url('/img/image/lokoil.svg') ;" />
+                <div
+                  class="image"
+                  style="background-image: url('/img/image/lokoil.svg')"
+                />
                 <div class="content">
                   <div class="name">Lukoil Uzbekistan</div>
                   <div class="raiting">
-
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
@@ -631,26 +611,22 @@
                         stroke-width="1"
                       />
                     </svg>
-                    <div class="raiting_number">
-                      4.9
-                    </div>
+                    <div class="raiting_number">4.9</div>
                   </div>
-                  <div class="total_job">
-                    Jami <b> 45 </b> ta vakansiya
-                  </div>
-                  <div class="view-count">
-                    8.8k
-                  </div>
+                  <div class="total_job">Jami <b> 45 </b> ta vakansiya</div>
+                  <div class="view-count">8.8k</div>
                 </div>
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card employers__item">
-                <div class="image" style="background-image: url('/img/image/mitc.svg') ;" />
+                <div
+                  class="image"
+                  style="background-image: url('/img/image/mitc.svg')"
+                />
                 <div class="content">
                   <div class="name">Aloqa vazirligi</div>
                   <div class="raiting">
-
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
@@ -732,26 +708,22 @@
                         stroke-width="1"
                       />
                     </svg>
-                    <div class="raiting_number">
-                      5.0
-                    </div>
+                    <div class="raiting_number">5.0</div>
                   </div>
-                  <div class="total_job">
-                    Jami <b> 87 </b> ta vakansiya
-                  </div>
-                  <div class="view-count">
-                    7.8k
-                  </div>
+                  <div class="total_job">Jami <b> 87 </b> ta vakansiya</div>
+                  <div class="view-count">7.8k</div>
                 </div>
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card employers__item">
-                <div class="image" style="background-image: url('/img/image/unesco.svg') ;" />
+                <div
+                  class="image"
+                  style="background-image: url('/img/image/unesco.svg')"
+                />
                 <div class="content">
                   <div class="name">UNESKO</div>
                   <div class="raiting">
-
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
@@ -833,26 +805,22 @@
                         stroke-width="1"
                       />
                     </svg>
-                    <div class="raiting_number">
-                      5.0
-                    </div>
+                    <div class="raiting_number">5.0</div>
                   </div>
-                  <div class="total_job">
-                    Jami <b> 32 </b> ta vakansiya
-                  </div>
-                  <div class="view-count">
-                    7.8k
-                  </div>
+                  <div class="total_job">Jami <b> 32 </b> ta vakansiya</div>
+                  <div class="view-count">7.8k</div>
                 </div>
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card employers__item">
-                <div class="image" style="background-image: url('/img/image/asko-vostok.svg') ;" />
+                <div
+                  class="image"
+                  style="background-image: url('/img/image/asko-vostok.svg')"
+                />
                 <div class="content">
-                  <div class="name">Asko Vostok </div>
+                  <div class="name">Asko Vostok</div>
                   <div class="raiting">
-
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
@@ -934,80 +902,77 @@
                         stroke-width="1"
                       />
                     </svg>
-                    <div class="raiting_number">
-                      4.0
-                    </div>
+                    <div class="raiting_number">4.0</div>
                   </div>
-                  <div class="total_job">
-                    Jami <b> 4 </b> ta vakansiya
-                  </div>
-                  <div class="view-count">
-                    5.8k
-                  </div>
+                  <div class="total_job">Jami <b> 4 </b> ta vakansiya</div>
+                  <div class="view-count">5.8k</div>
                 </div>
               </a>
             </div>
           </div>
           <div class="text-center">
-            <a href="" class="more_link">
-              Barcha vakansiyalar
-            </a>
+            <a href="" class="more_link"> Barcha vakansiyalar </a>
           </div>
         </div>
       </div>
 
       <div class="employers__card no-padding-right">
-        <div class="section__title">
-          Foydali havolalar
-        </div>
+        <div class="section__title">Foydali havolalar</div>
         <div class="useful-link__slider">
           <div class="useful-links_carousel owl-carousel owl-theme">
             <a href="" class="item card useful-links__item">
-              <div class="image" style="background-image: url('/img/image/my-gov-uz.svg') ;" />
+              <div
+                class="image"
+                style="background-image: url('/img/image/my-gov-uz.svg')"
+              />
               <div class="content">
-                <div class="name">Yagona interaktiv Davlat
-                  xizmatlari portali </div>
-                <div class="link"> my.gov.uz</div>
+                <div class="name">
+                  Yagona interaktiv Davlat xizmatlari portali
+                </div>
+                <div class="link">my.gov.uz</div>
               </div>
             </a>
             <a href="" class="item card useful-links__item">
-              <div class="image" style="background-image: url('/img/image/mitc.svg') ;" />
+              <div
+                class="image"
+                style="background-image: url('/img/image/mitc.svg')"
+              />
               <div class="content">
-                <div class="name">O’zbekiston Respublikasi
-                  Aloqa vazirligi</div>
+                <div class="name">O’zbekiston Respublikasi Aloqa vazirligi</div>
                 <div class="link">mitc.uz</div>
-
               </div>
             </a>
             <a href="" class="item card useful-links__item">
-              <div class="image" style="background-image: url('/img/image/portal.svg') ;" />
+              <div
+                class="image"
+                style="background-image: url('/img/image/portal.svg')"
+              />
               <div class="content">
-                <div class="name">Davlat soliq qo’mitasi
-                  boshqarmasi </div>
+                <div class="name">Davlat soliq qo’mitasi boshqarmasi</div>
                 <div class="link">mitc.uz</div>
-
               </div>
             </a>
             <a href="" class="item card useful-links__item">
-              <div class="image" style="background-image: url('/img/image/ung-uz.svg') ;" />
+              <div
+                class="image"
+                style="background-image: url('/img/image/ung-uz.svg')"
+              />
               <div class="content">
-                <div class="name">Uzbekneftgaz
-                  Aksiyadorlik jamiyati</div>
+                <div class="name">Uzbekneftgaz Aksiyadorlik jamiyati</div>
                 <div class="link">soliq.uz</div>
-
               </div>
             </a>
             <a href="" class="item card useful-links__item">
-              <div class="image" style="background-image: url('/img/image/portal.svg') ;" />
+              <div
+                class="image"
+                style="background-image: url('/img/image/portal.svg')"
+              />
               <div class="content">
-                <div class="name">Davlat soliq qo’mitasi
-                  boshqarmasi </div>
+                <div class="name">Davlat soliq qo’mitasi boshqarmasi</div>
                 <div class="link">ung.uz</div>
-
               </div>
             </a>
           </div>
-
         </div>
       </div>
     </div>
@@ -1016,10 +981,9 @@
 
 <script>
 export default {
-  name: 'Employers'
-}
+  name: "Employers",
+};
 </script>
 
 <style scoped>
-
 </style>

@@ -3,7 +3,59 @@
     <div class="container bigger no-padding">
       <div class="vacancies__tab">
         <ul class="nav nav-tabs nav-justified" role="tablist">
-          <li role="presentation" class="nav-item active">
+          <!-- <div class="search">
+            <input class="search-input" type="search">
+              <label for="">Qidirish</label>
+          </div> -->
+          <div class="search__form">
+            <form action="">
+              <div class="input-group">
+                <div class="input__field">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Vakansiya izlash uchun kasb, hudud, lavozim yoki tashkilot nomini kiriting "
+                  />
+                  <div class="input_setting-btn">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 64 64"
+                    >
+                      <g
+                        id="Сгруппировать_10538"
+                        data-name="Сгруппировать 10538"
+                        transform="translate(11263 -12655)"
+                      >
+                        <rect
+                          id="Прямоугольник_13921"
+                          data-name="Прямоугольник 13921"
+                          width="64"
+                          height="64"
+                          transform="translate(-11263 12655)"
+                          fill="none"
+                        />
+                        <path
+                          id="Fabric_Icons"
+                          data-name="Fabric Icons"
+                          d="M48-42v3H30v1.5a4.415,4.415,0,0,1-.352,1.758,4.515,4.515,0,0,1-.961,1.43,4.515,4.515,0,0,1-1.43.961A4.415,4.415,0,0,1,25.5-33a4.415,4.415,0,0,1-1.758-.352,4.515,4.515,0,0,1-1.43-.961,4.515,4.515,0,0,1-.961-1.43A4.415,4.415,0,0,1,21-37.5V-39H0v-3H21v-1.5a4.415,4.415,0,0,1,.352-1.758,4.515,4.515,0,0,1,.961-1.43,4.515,4.515,0,0,1,1.43-.961A4.415,4.415,0,0,1,25.5-48a4.415,4.415,0,0,1,1.758.352,4.515,4.515,0,0,1,1.43.961,4.515,4.515,0,0,1,.961,1.43A4.415,4.415,0,0,1,30-43.5V-42ZM37.5-18a4.415,4.415,0,0,1,1.758.352,4.515,4.515,0,0,1,1.43.961,4.515,4.515,0,0,1,.961,1.43A4.415,4.415,0,0,1,42-13.5V-12h6v3H42v1.5a4.415,4.415,0,0,1-.352,1.758,4.515,4.515,0,0,1-.961,1.43,4.515,4.515,0,0,1-1.43.961A4.415,4.415,0,0,1,37.5-3a4.415,4.415,0,0,1-1.758-.352,4.515,4.515,0,0,1-1.43-.961,4.515,4.515,0,0,1-.961-1.43A4.415,4.415,0,0,1,33-7.5V-9H0v-3H33v-1.5a4.415,4.415,0,0,1,.352-1.758,4.515,4.515,0,0,1,.961-1.43,4.515,4.515,0,0,1,1.43-.961A4.415,4.415,0,0,1,37.5-18Zm-27-15a4.415,4.415,0,0,1,1.758.352,4.515,4.515,0,0,1,1.43.961,4.515,4.515,0,0,1,.961,1.43A4.415,4.415,0,0,1,15-28.5V-27H48v3H15v1.5a4.415,4.415,0,0,1-.352,1.758,4.515,4.515,0,0,1-.961,1.43,4.515,4.515,0,0,1-1.43.961A4.415,4.415,0,0,1,10.5-18a4.415,4.415,0,0,1-1.758-.352,4.515,4.515,0,0,1-1.43-.961,4.515,4.515,0,0,1-.961-1.43A4.415,4.415,0,0,1,6-22.5V-24H0v-3H6v-1.5a4.415,4.415,0,0,1,.352-1.758,4.515,4.515,0,0,1,.961-1.43,4.515,4.515,0,0,1,1.43-.961A4.415,4.415,0,0,1,10.5-33ZM12-28.5a1.442,1.442,0,0,0-.445-1.055A1.442,1.442,0,0,0,10.5-30a1.442,1.442,0,0,0-1.055.445A1.442,1.442,0,0,0,9-28.5v6a1.442,1.442,0,0,0,.445,1.055A1.442,1.442,0,0,0,10.5-21a1.442,1.442,0,0,0,1.055-.445A1.442,1.442,0,0,0,12-22.5Zm15-15a1.442,1.442,0,0,0-.445-1.055A1.442,1.442,0,0,0,25.5-45a1.442,1.442,0,0,0-1.055.445A1.442,1.442,0,0,0,24-43.5v6a1.442,1.442,0,0,0,.445,1.055A1.442,1.442,0,0,0,25.5-36a1.442,1.442,0,0,0,1.055-.445A1.442,1.442,0,0,0,27-37.5Zm12,30a1.442,1.442,0,0,0-.445-1.055A1.442,1.442,0,0,0,37.5-15a1.442,1.442,0,0,0-1.055.445A1.442,1.442,0,0,0,36-13.5v6a1.442,1.442,0,0,0,.445,1.055A1.442,1.442,0,0,0,37.5-6a1.442,1.442,0,0,0,1.055-.445A1.442,1.442,0,0,0,39-7.5Z"
+                          transform="translate(-11255 12713)"
+                          fill="#0078d4"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+                <div class="input__btn">
+                  <button class="btn" type="submit">
+                    <span class="text">Qidirish</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- <li role="presentation" class="nav-item active">
             <a
               class="nav-link "
               href="#Ish_izlayapman"
@@ -23,14 +75,14 @@
               role="tab"
               data-toggle="tab"
             >
-              <span>Ish beruvchiman</span></a></li>
+              <span>Ish beruvchiman</span></a></li> -->
 
           <!-- Tab panes -->
           <div class="tab-content">
             <div id="Ish_izlayapman" role="tabpanel" class="tab-pane active">
               <div class="row row-no-gutters">
-                <div class="col-lg-2 col-md-4 col-sm-12 ">
-                  <a href="" class="card" style="background-color: #B4059E;">
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                  <a href="" class="card" style="background-color: #b4059e">
                     <div class="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -44,15 +96,16 @@
                           fill="#F8F8F8"
                         />
                       </svg>
-
                     </div>
-                    <div class="name">
-                      Ish topish
-                    </div>
+                    <div class="name">Ish topish</div>
                   </a>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-12">
-                  <router-link :to="{ name: 'ResumeCreate' }" class="card" style="background-color: #018272;">
+                  <router-link
+                    :to="{ name: 'ResumeCreate' }"
+                    class="card"
+                    style="background-color: #018272"
+                  >
                     <div class="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -68,14 +121,11 @@
                         />
                       </svg>
                     </div>
-                    <div class="name">
-                      Rezyume
-                      joylashtirish
-                    </div>
+                    <div class="name">Rezyume joylashtirish</div>
                   </router-link>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-12">
-                  <a href="" class="card" style="background-color: #5C2D91;">
+                  <a href="" class="card" style="background-color: #5c2d91">
                     <div class="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -90,18 +140,14 @@
                           fill="#F8F8F8"
                         />
                       </svg>
-
                     </div>
-                    <div class="name">
-                      Kvotalangan
-                      ish o’rinlari
-                    </div>
+                    <div class="name">Kvotalangan ish o’rinlari</div>
                     <span class="info" />
                   </a>
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-sm-12">
-                  <a href="" class="card" style="background-color: #FF8C00;">
+                  <a href="" class="card" style="background-color: #ff8c00">
                     <div class="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -117,15 +163,12 @@
                         />
                       </svg>
                     </div>
-                    <div class="name">
-                      Dasturga doir
-                      yangi ish o’rinlari
-                    </div>
+                    <div class="name">Dasturga doir yangi ish o’rinlari</div>
                     <span class="info" />
                   </a>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-12">
-                  <a href="" class="card" style="background-color: #2137B4;">
+                  <a href="" class="card" style="background-color: #2137b4">
                     <div class="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -139,16 +182,12 @@
                           fill="#F8F8F8"
                         />
                       </svg>
-
                     </div>
-                    <div class="name">
-                      Ta’lim muassasalari
-                      bitiruvchilariga
-                    </div>
+                    <div class="name">Ta’lim muassasalari bitiruvchilariga</div>
                   </a>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-12">
-                  <a href="" class="card" style="background-color: #107C10;">
+                  <a href="" class="card" style="background-color: #107c10">
                     <div class="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -164,21 +203,20 @@
                         />
                       </svg>
                     </div>
-                    <div class="name">
-                      Nogironlarga
-                      ish o’rinlari
-                    </div>
+                    <div class="name">Nogironlarga ish o’rinlari</div>
                     <span class="info" />
                   </a>
                 </div>
               </div>
             </div>
-            <div id="Ish_beruvchiman" role="tabpanel" class="tab-pane">.2..</div>
-
+            <div id="Ish_beruvchiman" role="tabpanel" class="tab-pane">
+              .2..
+            </div>
           </div>
-        </ul></div>
+        </ul>
+      </div>
     </div>
-    <div class="container bigger ">
+    <div class="container bigger">
       <div class="vacancies__benefits">
         <div class="row row-no-gutters">
           <div class="col-lg-4 col-md-4">
@@ -200,13 +238,9 @@
                 </svg>
               </div>
               <div class="content">
-                <div class="title">
-                  MEHNAT HUQUQLARI
-                  MUHOFAZASI
-                </div>
+                <div class="title">MEHNAT HUQUQLARI MUHOFAZASI</div>
                 <a href="" class="link">
-                  Davlat mehnat inspeksiyasiga
-                  murojaat qilish
+                  Davlat mehnat inspeksiyasiga murojaat qilish
                   <span class="link__arrow" />
                 </a>
               </div>
@@ -215,21 +249,39 @@
           <div class="col-lg-4 col-md-4">
             <div class="benefit__item">
               <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="90" viewBox="0 0 128 128">
-                  <g id="Group_10279" data-name="Group 10279" transform="translate(11761 -15609)">
-                    <rect id="Rectangle_13896" data-name="Rectangle 13896" width="55" height="90" transform="translate(-11761 15609)" fill="none" />
-                    <path id="Fabric_Icons" data-name="Fabric Icons" d="M34.375-110V0H-41.25a13.381,13.381,0,0,1-5.344-1.074,13.887,13.887,0,0,1-4.377-2.954,13.887,13.887,0,0,1-2.954-4.377A13.381,13.381,0,0,1-55-13.75v-82.5a12.1,12.1,0,0,1,1.155-5.129,15.187,15.187,0,0,1,3.062-4.4,15.3,15.3,0,0,1,4.377-3.062A12.039,12.039,0,0,1-41.25-110ZM27.5-20.625H-41.25a6.662,6.662,0,0,0-2.686.537,6.987,6.987,0,0,0-2.175,1.477,6.987,6.987,0,0,0-1.477,2.175,6.662,6.662,0,0,0-.537,2.686,6.662,6.662,0,0,0,.537,2.686,6.987,6.987,0,0,0,1.477,2.175,6.987,6.987,0,0,0,2.175,1.477,6.662,6.662,0,0,0,2.686.537H27.5Zm-75.625-5.049A13.726,13.726,0,0,1-41.25-27.5H27.5v-75.625H-41.25a5.482,5.482,0,0,0-2.471.618,8.414,8.414,0,0,0-2.2,1.584,8.414,8.414,0,0,0-1.584,2.2,5.482,5.482,0,0,0-.618,2.471Zm13.75-63.7H13.75V-68.75H-34.375Zm6.875,13.75H6.875V-82.5H-27.5Z" transform="translate(-11686.688 15728)" fill="#0078d4" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="55"
+                  height="90"
+                  viewBox="0 0 128 128"
+                >
+                  <g
+                    id="Group_10279"
+                    data-name="Group 10279"
+                    transform="translate(11761 -15609)"
+                  >
+                    <rect
+                      id="Rectangle_13896"
+                      data-name="Rectangle 13896"
+                      width="55"
+                      height="90"
+                      transform="translate(-11761 15609)"
+                      fill="none"
+                    />
+                    <path
+                      id="Fabric_Icons"
+                      data-name="Fabric Icons"
+                      d="M34.375-110V0H-41.25a13.381,13.381,0,0,1-5.344-1.074,13.887,13.887,0,0,1-4.377-2.954,13.887,13.887,0,0,1-2.954-4.377A13.381,13.381,0,0,1-55-13.75v-82.5a12.1,12.1,0,0,1,1.155-5.129,15.187,15.187,0,0,1,3.062-4.4,15.3,15.3,0,0,1,4.377-3.062A12.039,12.039,0,0,1-41.25-110ZM27.5-20.625H-41.25a6.662,6.662,0,0,0-2.686.537,6.987,6.987,0,0,0-2.175,1.477,6.987,6.987,0,0,0-1.477,2.175,6.662,6.662,0,0,0-.537,2.686,6.662,6.662,0,0,0,.537,2.686,6.987,6.987,0,0,0,1.477,2.175,6.987,6.987,0,0,0,2.175,1.477,6.662,6.662,0,0,0,2.686.537H27.5Zm-75.625-5.049A13.726,13.726,0,0,1-41.25-27.5H27.5v-75.625H-41.25a5.482,5.482,0,0,0-2.471.618,8.414,8.414,0,0,0-2.2,1.584,8.414,8.414,0,0,0-1.584,2.2,5.482,5.482,0,0,0-.618,2.471Zm13.75-63.7H13.75V-68.75H-34.375Zm6.875,13.75H6.875V-82.5H-27.5Z"
+                      transform="translate(-11686.688 15728)"
+                      fill="#0078d4"
+                    />
                   </g>
                 </svg>
               </div>
               <div class="content">
-                <div class="title">
-                  MEHNAT SOHASIDAGI
-                  QONUNCHILIK
-                </div>
+                <div class="title">MEHNAT SOHASIDAGI QONUNCHILIK</div>
                 <a href="" class="link">
-                  O‘zbekiston Respublikasi
-                  Mehnat kodeksi
+                  O‘zbekiston Respublikasi Mehnat kodeksi
                   <span class="link__arrow" />
                 </a>
               </div>
@@ -252,16 +304,11 @@
                     fill="#0078d4"
                   />
                 </svg>
-
               </div>
               <div class="content">
-                <div class="title">
-                  MEHNAT SOHASIDAGI
-                  QONUNCHILIK
-                </div>
+                <div class="title">MEHNAT SOHASIDAGI QONUNCHILIK</div>
                 <a href="" class="link">
-                  «Aholi bandligi to‘g‘risida»
-                  qonun
+                  «Aholi bandligi to‘g‘risida» qonun
                   <span class="link__arrow" />
                 </a>
               </div>
@@ -272,9 +319,7 @@
     </div>
     <div class="container bigger no-padding">
       <div class="vacancies__latest no-padding-right">
-        <div class="section__title">
-          Yangi vakansiyalar
-        </div>
+        <div class="section__title">Yangi vakansiyalar</div>
         <div class="type-slider">
           <div class="type-carousel owl-carousel owl-theme">
             <a href="" class="type_item active">
@@ -309,26 +354,29 @@
         <div class="vacancy__list">
           <div class="row row-no-gutters">
             <div class="col-lg-4 col-md-6">
-              <router-link :to="{ name: 'VacancyShow', params: { id: 1 } }" class="card vacancy__info">
-                <div class="name">
-                  Aloqa vazirligi Bosh vazir o’rinbosari
-                </div>
+              <router-link
+                :to="{ name: 'VacancyShow', params: { id: 1 } }"
+                class="card vacancy__info"
+              >
+                <div class="name">Aloqa vazirligi Bosh vazir o’rinbosari</div>
                 <div class="salary"><b>5 500 000</b> so’mdan</div>
                 <div class="organization checked">60-Umumta’lim maktabi</div>
                 <div class="address">Andijon viloyati, Jalolquduq tumani</div>
                 <div class="date_view">
-                  <div class="date">
-                    16 Sen 2021
-                  </div>
-                  <div class="view-count">
-                    2,5К
-                  </div>
+                  <div class="date">16 Sen 2021</div>
+                  <div class="view-count">2,5К</div>
                 </div>
-                <div class="organization__logo" style="background-image: url('/img/image/mitc.png') ;" />
+                <div
+                  class="organization__logo"
+                  style="background-image: url('/img/image/mitc.png')"
+                />
               </router-link>
             </div>
             <div class="col-lg-4 col-md-6">
-              <router-link :to="{ name: 'VacancyShow', params: { id: 1 } }" class="card vacancy__info">
+              <router-link
+                :to="{ name: 'VacancyShow', params: { id: 1 } }"
+                class="card vacancy__info"
+              >
                 <div class="name">
                   Sog’liqni saqlash vazirligi yetakchi muta…
                 </div>
@@ -336,170 +384,127 @@
                 <div class="organization checked">60-Umumta’lim maktabi</div>
                 <div class="address">Andijon viloyati, Jalolquduq tumani</div>
                 <div class="date_view">
-                  <div class="date">
-                    16 Sen 2021
-                  </div>
-                  <div class="view-count">
-                    2,5К
-                  </div>
+                  <div class="date">16 Sen 2021</div>
+                  <div class="view-count">2,5К</div>
                 </div>
                 <div
                   class="organization__logo"
-                  style="background-image: url('/img/image/minzdrav.png') ;"
+                  style="background-image: url('/img/image/minzdrav.png')"
                 />
               </router-link>
             </div>
             <div class="col-lg-4 col-md-6">
-              <router-link :to="{ name: 'VacancyShow', params: { id: 1 } }" class="card vacancy__info">
-                <div class="name">
-                  Beeline Uzbekistan operator
-                </div>
+              <router-link
+                :to="{ name: 'VacancyShow', params: { id: 1 } }"
+                class="card vacancy__info"
+              >
+                <div class="name">Beeline Uzbekistan operator</div>
                 <div class="salary"><b>2 000 000</b> so’mdan</div>
                 <div class="organization checked">60-Umumta’lim maktabi</div>
                 <div class="address">Andijon viloyati, Jalolquduq tumani</div>
                 <div class="date_view">
-                  <div class="date">
-                    16 Sen 2021
-                  </div>
-                  <div class="view-count">
-                    2,5К
-                  </div>
+                  <div class="date">16 Sen 2021</div>
+                  <div class="view-count">2,5К</div>
                 </div>
                 <div
                   class="organization__logo"
-                  style="background-image: url('/img/image/beeline.png') ;"
+                  style="background-image: url('/img/image/beeline.png')"
                 />
               </router-link>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card vacancy__info">
-                <div class="name">
-                  Murad Buildings dizayner
-                </div>
+                <div class="name">Murad Buildings dizayner</div>
                 <div class="salary"><b>6 500 000 </b> so’mdan</div>
                 <div class="organization checked">60-Umumta’lim maktabi</div>
                 <div class="address">Andijon viloyati, Jalolquduq tumani</div>
                 <div class="date_view">
-                  <div class="date">
-                    16 Sen 2021
-                  </div>
-                  <div class="view-count">
-                    2,5К
-                  </div>
+                  <div class="date">16 Sen 2021</div>
+                  <div class="view-count">2,5К</div>
                 </div>
                 <div
                   class="organization__logo"
-                  style="background-image: url('/img/image/murad-building.png') ;"
+                  style="background-image: url('/img/image/murad-building.png')"
                 />
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card vacancy__info">
-                <div class="name">
-                  Asko Vostok sug’urta agenti
-                </div>
+                <div class="name">Asko Vostok sug’urta agenti</div>
                 <div class="salary"><b>3 500 000</b> so’mdan</div>
                 <div class="organization checked">60-Umumta’lim maktabi</div>
                 <div class="address">Andijon viloyati, Jalolquduq tumani</div>
                 <div class="date_view">
-                  <div class="date">
-                    16 Sen 2021
-                  </div>
-                  <div class="view-count">
-                    2,5К
-                  </div>
+                  <div class="date">16 Sen 2021</div>
+                  <div class="view-count">2,5К</div>
                 </div>
                 <div
                   class="organization__logo"
-                  style="background-image: url('/img/image/asko-vostok.png') ;"
+                  style="background-image: url('/img/image/asko-vostok.png')"
                 />
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card vacancy__info">
-                <div class="name">
-                  Hukumat portali bosh mutaxasis
-                </div>
+                <div class="name">Hukumat portali bosh mutaxasis</div>
                 <div class="salary"><b>2 500 000 </b> so’mdan</div>
                 <div class="organization checked">60-Umumta’lim maktabi</div>
                 <div class="address">Andijon viloyati, Jalolquduq tumani</div>
                 <div class="date_view">
-                  <div class="date">
-                    16 Sen 2021
-                  </div>
-                  <div class="view-count">
-                    2,5К
-                  </div>
+                  <div class="date">16 Sen 2021</div>
+                  <div class="view-count">2,5К</div>
                 </div>
                 <div
                   class="organization__logo"
-                  style="background-image: url('/img/image/asko-vostok.png') ;"
+                  style="background-image: url('/img/image/asko-vostok.png')"
                 />
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card vacancy__info">
-                <div class="name">
-                  Korzinka.uz kassir
-                </div>
+                <div class="name">Korzinka.uz kassir</div>
                 <div class="salary"><b>1 500 000</b> so’mdan</div>
                 <div class="organization checked">60-Umumta’lim maktabi</div>
                 <div class="address">Andijon viloyati, Jalolquduq tumani</div>
                 <div class="date_view">
-                  <div class="date">
-                    16 Sen 2021
-                  </div>
-                  <div class="view-count">
-                    2,5К
-                  </div>
+                  <div class="date">16 Sen 2021</div>
+                  <div class="view-count">2,5К</div>
                 </div>
                 <div
                   class="organization__logo"
-                  style="background-image: url('/img/image/asko-vostok.png') ;"
+                  style="background-image: url('/img/image/asko-vostok.png')"
                 />
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card vacancy__info">
-                <div class="name">
-                  Lukoil Uzbekistan
-                </div>
+                <div class="name">Lukoil Uzbekistan</div>
                 <div class="salary"><b>4 000 000</b> so’mdan</div>
                 <div class="organization checked">60-Umumta’lim maktabi</div>
                 <div class="address">Andijon viloyati, Jalolquduq tumani</div>
                 <div class="date_view">
-                  <div class="date">
-                    16 Sen 2021
-                  </div>
-                  <div class="view-count">
-                    2,5К
-                  </div>
+                  <div class="date">16 Sen 2021</div>
+                  <div class="view-count">2,5К</div>
                 </div>
                 <div
                   class="organization__logo"
-                  style="background-image: url('/img/image/lukoil.png') ;"
+                  style="background-image: url('/img/image/lukoil.png')"
                 />
               </a>
             </div>
             <div class="col-lg-4 col-md-6">
               <a href="" class="card vacancy__info">
-                <div class="name">
-                  UNESKO
-                </div>
+                <div class="name">UNESKO</div>
                 <div class="salary"><b>2 500 000</b> so’mdan</div>
                 <div class="organization checked">60-Umumta’lim maktabi</div>
                 <div class="address">Andijon viloyati, Jalolquduq tumani</div>
                 <div class="date_view">
-                  <div class="date">
-                    16 Sen 2021
-                  </div>
-                  <div class="view-count">
-                    2,5К
-                  </div>
+                  <div class="date">16 Sen 2021</div>
+                  <div class="view-count">2,5К</div>
                 </div>
                 <div
                   class="organization__logo"
-                  style="background-image: url('/img/image/unesco.png    ') ;"
+                  style="background-image: url('/img/image/unesco.png    ')"
                 />
               </a>
             </div>
@@ -510,7 +515,6 @@
             </router-link>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -518,12 +522,11 @@
 
 <script>
 export default {
-  name: 'Vacancies'
-}
+  name: "Vacancies",
+};
 // import '@/assets/js/script.js'
 // import '@/assets/js/owl.carousel.min.js'
 </script>
 
 <style scoped>
-
 </style>
