@@ -8,5 +8,6 @@ export const getters = {
   GET_WORK_GRAPHICS: (state) => state.workGraphics,
   GET_USER_LANGUAGES: (state) => state.user_languages,
   GET_USER_COMPUTER_SKILLS: (state) => state.user_computer_skills,
-  GET_POSITIONS: (state) => state.positions
+  GET_POSITIONS: (state) => state.positions,
+  GET_SALARY_CURRENCIES: (state) => state.salaryCurrencies
 }

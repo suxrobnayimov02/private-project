@@ -7,6 +7,7 @@ export const mutations = {
     state.businessTrips = data.businessTrips
     state.busynessTypes = data.busynessTypes
     state.workGraphics = data.workGraphics
+    state.salaryCurrencies = data.salaryCurrencies
   },
   SET_POSITIONS: (state, positions) => {
     state.positions = positions

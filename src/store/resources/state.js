@@ -8,5 +8,6 @@ export const state = {
   workGraphics: [],
   positions: [],
   user_languages: [],
-  user_computer_skills: []
+  user_computer_skills: [],
+  salaryCurrencies: []
 }

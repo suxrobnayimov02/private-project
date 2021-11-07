@@ -16,7 +16,7 @@
           <img
             src="@/assets/images/businessman.svg"
             alt="image"
-            width="150px"
+            width="150"
           ><br>
           <!-- <div class="mt-2 clearfix">
             <el-upload
@@ -48,14 +48,14 @@
       </el-col>
       <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" class="mb-3">
         <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Возраст') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Yoshi') }}:</b></el-col>
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.age }}</b></el-col>
         </el-row>
         <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Пол') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Jinsi') }}:</b></el-col>
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
-            <span v-if="user.data.gender"><b>{{ $t('Мужчина') }}</b></span>
-            <span v-else><b>{{ $t('Женщина') }}</b></span>
+            <span v-if="user.data.gender"><b>{{ $t('Erkak') }}</b></span>
+            <span v-else><b>{{ $t('Ayol') }}</b></span>
           </el-col>
         </el-row>
         <el-row class="mt-3">
@@ -71,7 +71,7 @@
     <br>
     <el-divider content-position="left">
       <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
-      {{ $t('Дополнительная информация') }}
+      {{ $t('Yashash manzili') }}
     </el-divider>
     <el-form
       ref="form"
@@ -82,171 +82,191 @@
       label-position="top"
     >
       <el-row>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <div class="formControl">
-            <el-form-item :label="$t('Регион') + ':'" prop="soato_region">
-              <div class="field withBackground">
-                <select v-model="regionModel" @change="changeRegion()">
-                  <option value="">{{ $t('Выберите') }}</option>
-                  <option v-for="(region, index) of regions" :key="index" :value="region.soato">
-                    {{ locale == 'uzcl' ? region.name_cyrl : locale == 'uzln' ? region.name_uz : region.name_ru }}
-                  </option>
-                </select>
+        <el-col :span="16">
+          <el-row>
+            <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+              <div class="formControl">
+                <el-form-item :label="$t('Hudud') + ':'" prop="soato_region">
+                  <div class="field withBackground">
+                    <select v-model="regionModel" @change="changeRegion()">
+                      <option value="">{{ $t('Выберите') }}</option>
+                      <option v-for="(region, index) of regions" :key="index" :value="region.soato">
+                        {{ locale == 'uzcl' ? region.name_cyrl : locale == 'uzln' ? region.name_uz : region.name_ru }}
+                      </option>
+                    </select>
+                  </div>
+                </el-form-item>
               </div>
-            </el-form-item>
-          </div>
-        </el-col>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <div class="formControl">
-            <el-form-item :label="$t('Районы') + ':'" prop="soato_district">
-              <div class="field withBackground">
-                <select v-model="districtModel" @change="changeDistrict()">
-                  <option value="">{{ $t('Выберите') }}</option>
-                  <template v-if="districts && districts.length">
-                    <option v-for="(district, index) of districts" :key="index" :value="district.soato">
-                      {{ translateDistrict(district) }}
-                    </option>
-                  </template>
-                </select>
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+              <div class="formControl">
+                <el-form-item :label="$t('Tuman') + ':'" prop="soato_district">
+                  <div class="field withBackground">
+                    <select v-model="districtModel" @change="changeDistrict()">
+                      <option value="">{{ $t('Выберите') }}</option>
+                      <template v-if="districts && districts.length">
+                        <option v-for="(district, index) of districts" :key="index" :value="district.soato">
+                          {{ translateDistrict(district) }}
+                        </option>
+                      </template>
+                    </select>
+                  </div>
+                </el-form-item>
               </div>
-            </el-form-item>
-          </div>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-          <el-form-item :label="$t('Водительское права') + ':'">
-            <el-select v-model="form.drivers_license" placeholder="___" multiple>
-              <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.id" />
-            </el-select>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <!--  -->
-      <el-divider content-position="left">
-        <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
-        {{ $t('Ishga doir ma\'lumotlar') }}
-      </el-divider>
-      <el-row>
-        <el-col :span="24">
-          <el-form-item :label="$t('Желаемая должность')" prop="kodp_key">
-            <el-select
-              v-model="form.kodp_key"
-              class="w-100"
-              filterable
-              remote
-              reserve-keyword
-              :placeholder="$t('Лавозим номини киритинг')"
-              :remote-method="onSearch"
-              :loading="loading"
-            >
-              <el-option
-                v-for="item in positions"
-                :key="item.id"
-                :label="(locale == 'ru') ? item.name_uz : (locale == 'uzln') ? item.name_uz:item.name_uz"
-                :value="item.key"
-              />
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <el-form-item :label="$t('Зарплата')">
-            <input v-model="form.salary" type="number" class="text-right text-right  el-input__inner">
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <!-- График работы -->
-      <div class="demo-collapse">
-        <el-collapse v-model="activeNames">
-          <el-collapse-item :title="$t('Ish grafigi')" name="1">
-            <template v-if="busynessTypes && busynessTypes.length !== 0">
-              <div v-for="(type, index) in busynessTypes" :key="'schedule' +index">
-                <el-checkbox v-model="form.busyness_type_ids" :label="type.id">
-                  {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
-                </el-checkbox>
-              </div>
-            </template>
-            <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
-          </el-collapse-item>
-          <el-collapse-item :title="$t('Bandlik turi')" name="2">
-            <template v-if="workGraphics && workGraphics.length !== 0">
-              <div v-for="type in workGraphics" :key="'emp' + type.id">
-                <el-checkbox v-model="form.work_graphic_ids" :label="type.id">
-                  {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
-                </el-checkbox>
-              </div>
-            </template>
-            <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
-          </el-collapse-item>
-          <el-collapse-item :title="$t('Ko\'chish')" name="3">
-            <template v-if="businessTrips && businessTrips.length !== 0">
-              <div v-for="type in businessTrips" :key="'trip' + type.id">
-                <el-checkbox v-model="form.business_trip_ids" :label="type.id">
-                  {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
-                </el-checkbox>
-              </div>
-            </template>
-            <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
-          </el-collapse-item>
-        </el-collapse>
-      </div>
-      <!-- ABOUT ME -->
-      <el-row>
-        <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-          <el-form-item :label="$t('О себе') + ':'">
-            <el-input v-model="form.additional_info" type="textarea" />
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-          <el-form-item :label="$t('Хобби') + ':'">
-            <el-input v-model="form.hobbies" type="textarea" />
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <!-- LANGUAGES -->
-      <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
-        <el-col>
-          <languages :profile="user.resume" :locale="locale" />
-        </el-col>
-      </el-row>
-      <!-- Образование/ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ -->
-      <el-row>
-        <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
-          {{ $t('Ta\'lim ma\'lumotlari') }}</el-divider>
-        <div>
-          <el-row v-if="educationDialog">
-            <EducationCreate :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" @close="educationDialog = false" @save="setEducation" />
+            </el-col>
+          </el-row>                  
+          <!-- Position/salary -->
+          <el-divider content-position="left">
+            <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
+            {{ $t('Ishga doir ma\'lumotlar') }}
+          </el-divider>
+          <el-row>
+            <el-col :span="24">
+              <el-form-item :label="$t('Istayotgan lavozimingiz')" prop="kodp_key">
+                <el-select
+                  v-model="form.kodp_key"
+                  class="w-100"
+                  filterable
+                  remote
+                  reserve-keyword
+                  :placeholder="$t('Lavozim nomini kiriting')"
+                  :remote-method="onSearch"
+                  :loading="loading"
+                >
+                  <el-option
+                    v-for="item in positions"
+                    :key="item.id"
+                    :label="(locale == 'ru') ? item.name_uz : (locale == 'uzln') ? item.name_uz:item.name_uz"
+                    :value="item.key"
+                  />
+                </el-select>
+              </el-form-item>
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
+              <el-form-item :label="$t('Ish haqi')">
+                <input v-model="form.salary" v-money="money" class="text-right text-right  el-input__inner">
+              </el-form-item>
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="12" :lg="3" :xl="3">
+              <el-form-item label="‎ ">
+                <el-select v-model="form.salary_currency_id" placeholder="UZS">
+                  <el-option v-for="item in salaryCurrencies" :key="item.id" :label="item.name" :value="item.id" />
+                </el-select>
+              </el-form-item>
+            </el-col>
           </el-row>
-          <el-row v-if="education && education.length">
-            <EducationTable :education="education" />
+          <!-- График работы -->
+          <el-row>
+            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+              <div class="demo-collapse">
+                <el-collapse v-model="activeNames">
+                  <el-collapse-item :title="$t('Ish grafigi')" name="1">
+                    <template v-if="busynessTypes && busynessTypes.length !== 0">
+                      <div v-for="(type, index) in busynessTypes" :key="'schedule' +index">
+                        <el-checkbox v-model="form.busyness_type_ids" :label="type.id">
+                          {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                        </el-checkbox>
+                      </div>
+                    </template>
+                    <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
+                  </el-collapse-item>
+                  <el-collapse-item :title="$t('Bandlik turi')" name="2">
+                    <template v-if="workGraphics && workGraphics.length !== 0">
+                      <div v-for="type in workGraphics" :key="'emp' + type.id">
+                        <el-checkbox v-model="form.work_graphic_ids" :label="type.id">
+                          {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                        </el-checkbox>
+                      </div>
+                    </template>
+                    <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
+                  </el-collapse-item>
+                  <el-collapse-item :title="$t('Ko\'chish')" name="3">
+                    <template v-if="businessTrips && businessTrips.length !== 0">
+                      <div v-for="type in businessTrips" :key="'trip' + type.id">
+                        <el-checkbox v-model="form.business_trip_ids" :label="type.id">
+                          {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                        </el-checkbox>
+                      </div>
+                    </template>
+                    <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
+                  </el-collapse-item>
+                </el-collapse>
+              </div>
+            </el-col>
           </el-row>
-          <el-row v-else>
-            <p class="text-center">{{ $t('Нет информации') }}</p>
+          <!-- ABOUT ME -->
+          <el-row>
+            <el-col :xs="24" :sm="24" :lg="12" :xl="12">
+              <el-form-item :label="$t('О себе') + ':'">
+                <el-input v-model="form.additional_info" type="textarea" />
+              </el-form-item>
+            </el-col>
           </el-row>
           <el-row>
-            <el-button
-              class="float-right mt-5"
-              type="primary"
-              size="mini"
-              icon="el-icon-plus"
-              @click="addEducation"
-            >Ta'lim ma'lumoti qo'shish</el-button>
+            <el-col :xs="24" :sm="24" :lg="12" :xl="12">
+              <el-form-item :label="$t('Хобби') + ':'">
+                <el-input v-model="form.hobbies" type="textarea" />
+              </el-form-item>
+            </el-col>
           </el-row>
-        </div>
-        <br>
-        <br>
-        <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ') }} </el-divider>
-        <el-row class="mt-5">
-          <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
-          <experience-create ref="experienceCreate" @successSaved="$refs.experienceList.index()" />
-        </el-row>
+          <el-row>
+            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+              <el-form-item :label="$t('Haydovchilik guvohnomasi') + ':'">
+                <el-select v-model="form.drivers_license" :placeholder="$t('Guvohnoma mavjud emas')" class="w100" multiple>
+                  <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.id" />
+                </el-select>
+                <!-- <el-checkbox-group v-for="(item, index) in driversLicenses" :key="'license' +index" v-model="form.drivers_license">
+                  <el-checkbox :label="item.id">{{ item.name }}</el-checkbox>
+                </el-checkbox-group> -->
+              </el-form-item>              
+            </el-col>
+          </el-row>
+          <!-- LANGUAGES -->
+          <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
+            <el-col>
+              <languages :profile="user.resume" :locale="locale" />
+            </el-col>
+          </el-row>
+          <!-- Образование/ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ -->
+          <el-row>
+            <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
+              {{ $t('Ta\'lim ma\'lumotlari') }}</el-divider>
+            <div>
+              <el-row v-if="educationDialog">
+                <EducationCreate :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" @close="educationDialog = false" @save="setEducation" />
+              </el-row>
+              <el-row v-if="education && education.length">
+                <EducationTable :education="education" />
+              </el-row>
+              <el-row v-else>
+                <p class="text-center">{{ $t('Нет информации') }}</p>
+              </el-row>
+              <el-row>
+                <el-button
+                  class="float-right mt-5"
+                  type="primary"
+                  size="mini"
+                  icon="el-icon-plus"
+                  @click="addEducation"
+                >Ta'lim ma'lumoti qo'shish</el-button>
+              </el-row>
+            </div>
+            <br>
+            <br>
+            <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ') }} </el-divider>
+            <el-row class="mt-5">
+              <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
+              <experience-create ref="experienceCreate" @successSaved="$refs.experienceList.index()" />
+            </el-row>
+          </el-row>
+          <hr>
+          <el-form-item>
+            <el-button type="success" class="float-right" @click="save">{{ $t('Saqlash') }}</el-button>
+          </el-form-item>
+
+        </el-col>
+        <el-col :span="8" />
       </el-row>
-      <hr>
-      <el-form-item>
-        <el-button type="success" class="float-right" @click="save">{{ $t('Saqlash') }}</el-button>
-      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -274,7 +294,7 @@ export default {
       form: {
         user_id: null,
         pin: null,
-        drivers_license: null,
+        drivers_license: [],
         want_salary: null,
         about: null,
         additional_info: null,
@@ -289,7 +309,7 @@ export default {
         // form work
         kodp_key: null,
         salary: null,
-        salary_currency_id: 2,
+        salary_currency_id: 1,
         is_agreed_salary: true,
         busyness_type_ids: [],
         work_graphic_ids: [],
@@ -299,7 +319,7 @@ export default {
       money: {
         decimal: '.',
         thousands: ',',
-        suffix: ' so\'m',
+        suffix: '',
         precision: 0,
         masked: false
       },
@@ -346,7 +366,6 @@ export default {
       regions: 'region/GET_REGIONS',
       positions: 'resources/GET_POSITIONS',
       education: 'education/GET_EDUCATIONS',
-
       driversLicenses: 'resources/GET_DRIVERS_LICENSES',
       skillCategories: 'resources/GET_SKILL_CATEGORIES',
       skillLevels: 'resources/GET_SKILL_LEVELS',
@@ -354,6 +373,7 @@ export default {
       businessTrips: 'resources/GET_BUSINESS_TRIPS',
       busynessTypes: 'resources/GET_BUSYNESS_TYPES',
       workGraphics: 'resources/GET_WORK_GRAPHICS',
+      salaryCurrencies: 'resources/GET_SALARY_CURRENCIES',
       districts: 'region/GET_DISTRICTS'
     })
 
@@ -684,5 +704,8 @@ export default {
    
     line-height: 14px !important;
     font-weight: bold !important;
+}
+.w100 {
+  width: 100%;
 }
 </style>

@@ -126,7 +126,7 @@
         </el-row>
         <el-row class="mt-4">
           <img alt="logo" src="@/assets/images/driver-license.svg" height="22px" class="mr-2 mt-1">
-          <b>{{ $t('Водительское права') }}: </b>{{ getDriverLicence() }}
+          <b>{{ $t('Haydovchilik guvohnomasi') }}: </b>{{ getDriverLicence() }}
         </el-row>
         <el-row class="mt-4">
           <img alt="logo" src="@/assets/images/military.svg" height="22px" class="mr-2 mt-1">
