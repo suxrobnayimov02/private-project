@@ -2,18 +2,20 @@
   <div class="header">
     <div class="container">
       <div class="row row-no-gutters">
-        <router-link to="/" class="header__logo">
-          <span class="icon">
-            <img src="/img/image/logo-uz.png" alt="" width="82">
-          </span>
-          <span class="name">
-            Milliy
-            vakansiyalar
-            bazasi
-          </span>
-        </router-link>
+         
+       
         <div class="header__nav">
-          <ul class="nav nav-pills" style="display:flex">
+          <ul class="navList " style="display:flex">
+            <li class="nav nav-item radio-btn">
+              <label class="radio-inline">
+                <input id="inlineRadio1" type="radio" name="inlineRadioOptions" value="option1">
+                <label for="inlineRadio1">Ish izlayotganlarga</label>
+              </label>
+              <label class="radio-inline">
+                <input id="inlineRadio2" type="radio" name="inlineRadioOptions" value="option2">
+                <label for="inlineRadio2">Ish beruvchilarga</label>
+              </label>
+            </li>
             <li class="nav-item ">
               <a href="" class="nav-link">
                 <span>
@@ -74,11 +76,11 @@
             </li>
           </ul>
         </div>
-        <div class="mobile__btn">
+        <!-- <div class="mobile__btn">
           <button class="btn ">
             <img src="/img/image/icon_menu.svg" alt="" width="24">
           </button>
-        </div>
+        </div> -->
         <div class="spec-view__btn no-mobile">
           <button class="btn">
             <img src="/img/image/icon_glasses.svg" alt="" width="24">
