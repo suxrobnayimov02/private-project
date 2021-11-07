@@ -53,73 +53,10 @@
         </div>
       </el-col> -->
       <!--  -->
-      <el-col />
+      <!-- Add skill  -->
+      <!-- <el-col /> -->
       <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
-        <div v-if="skill.id == 1">
-          <template v-if="user_languages && user_languages.length != 0">
-            <div v-for="lang in user_languages" :key="lang.id" class="lang">
-              <el-row>
-                <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
-                  <el-select v-model="form.skill_id" class="w-100" :placeholder="$t('Tanlang')" :filterable="true" style="width:100%">
-                    <el-option
-                      v-for="language in skill.skills"
-                      :key="language.id"
-                      :label="language.name"
-                      :value="language.id"
-                    />
-                  </el-select>
-                </el-col>
-                <el-col :xs="24" :sm="24" :md="9" :lg="9" :xl="9">
-                  <el-select v-model="form.skill_level_id" class="w-50" :placeholder="$t('Bilish darajasi')" :filterable="true">
-                    <el-option
-                      v-for="language in levels"
-                      :key="language.id"
-                      :label="language.name"
-                      :value="language.id"
-                    />
-                  </el-select>
-                </el-col>
-                <el-col :span="1">
-                  <el-button size="mini" type="danger" plain @click="deleteItem(lang.id)">
-                    <i class="el-icon-delete-solid" />
-                  </el-button>
-                </el-col>
-              </el-row>
-            </div>
-          </template>
-          <span v-else class="mr-2">{{ $t('Нет') }}</span>
-        </div>
-        <div v-if="skill.id == 2">
-          <template v-if="user_computer_skills && user_computer_skills.length">
-            <div v-for="lang in user_computer_skills" :key="lang.id" class="lang">
-              <el-row>
-                <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
-                  <el-input v-model="lang.skill.name" class="w-100" disabled />
-                </el-col>
-                <el-col :xs="24" :sm="24" :md="9" :lg="9" :xl="9">
-                  <el-input v-model="lang.skill_level.name" disabled :placeholder="$t('Билиш даражаси')" />
-                </el-col>
-                <el-col :span="1">
-                  <el-button size="mini" type="danger" @click="deleteItem(lang.id)">
-                    <i class="el-icon-delete-solid" />
-                  </el-button>
-                </el-col>
-              </el-row>
-            </div>
-          </template>
-          <template v-else>
-            <span class=" mr-2">{{ $t('Нет') }}</span>
-          </template>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4">
-        <div class="float-right ml5l">
-          <el-button type="primary" size="mini" icon="el-icon-plus" @click="addSkillForm(skill)">{{ $t('Qo\'shish') }}</el-button>
-        </div>
-      </el-col>
-      <!--  -->
-      <el-col :xs="24" :sm="24" :md="20" :lg="20" :xl="20">
-        <div v-if="dialogVisible && skill.id == add_skill_id" class="float-right">
+        <div v-if="dialogVisible && skill.id == add_skill_id" class="float-right lang">
           <el-form
             ref="form"
             :model="form"
@@ -128,7 +65,7 @@
             class="top-label-custom pb-5"
           >
             <el-row>
-              <el-col :xs="24" :sm="24" :md="10" :lg="10" :xl="10">
+              <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
                 <el-select v-model="form.skill_id" class="w-100" :placeholder="$t('Tanlang')" :filterable="true" style="width:100%">
                   <el-option
                     v-for="language in skill.skills"
@@ -138,7 +75,7 @@
                   />
                 </el-select>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
+              <el-col :xs="24" :sm="24" :md="9" :lg="9" :xl="9">
                 <el-select v-model="form.skill_level_id" class="w-50" :placeholder="$t('Bilish darajasi')" :filterable="true">
                   <el-option
                     v-for="language in levels"
@@ -148,19 +85,22 @@
                   />
                 </el-select>
               </el-col>
-              <el-col :span="4">
-                <el-button class="float-right mr-2 mtb" type="primary" size="mini" icon="el-icon-plus" @click="addSkill" />
-                <el-button class="float-left mtb" type="danger" size="mini" icon="el-icon-delete" @click="reset" />
+              <el-col :span="1">
+                <!-- <el-button class="float-right mr-2 mtb" type="primary" size="mini" icon="el-icon-plus" @click="addSkill" /> -->
+                <!-- <el-button class="float-left mtb" type="danger" size="mini" icon="el-icon-delete" @click="reset" /> -->
+                <el-button size="mini" type="danger" plain @click="reset">
+                  <i class="el-icon-delete-solid" />
+                </el-button>
               </el-col>
             </el-row>        
           </el-form>
         </div>
       </el-col>
-      <el-row>
-        <div class="float-left ml5l">
+      <el-col>
+        <div class="float-left mt5">
           <el-button type="primary" size="mini" icon="el-icon-plus" @click="addSkillForm(skill)">{{ $t('Qo\'shish') }}</el-button>
         </div>
-      </el-row>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -237,6 +177,9 @@ export default {
       return !!((this.form.skill_id !== null && this.form.skill_level_id !== null))
     },
     addSkillForm(skill) {
+      if (this.dialogVisible) {
+        this.addSkill()
+      }
       this.dialogVisible = true
       this.add_skill_id = skill.id
       this.form.skill_id = null
@@ -258,7 +201,7 @@ export default {
               if (err) {
                 console.log(err)
                 this.$notify({
-                  title: this.$t('Ошибка'),
+                  title: this.$t('Xatolik'),
                   message: 'Sizda bu parametr bo\'yicha mal\'umot bor',
                   type: 'error'
                 })
@@ -267,14 +210,14 @@ export default {
         }
       } else {
         this.$notify({
-          title: this.$t('Ошибка'),
-          message: this.$t('Заполните все поля'),
+          title: this.$t('Xatolik'),
+          message: this.$t('Maydonlarni to\'ldiring'),
           type: 'error'
         })
       }
     },
     deleteItem(id) {
-      this.$msgbox({ message: 'Ишончингиз комилми?', title: 'Ўчириш', showCancelButton: true, confirmButtonText: 'Ўчириш' }).then(() => {
+      this.$msgbox({ message: 'Ishonchingiz komilmi?', title: 'O\'chirish', showCancelButton: true, confirmButtonText: 'O\'chirish' }).then(() => {
         this.deleteLanguage(id).finally(() => {
           this.userSkills()
         })
