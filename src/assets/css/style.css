@@ -1064,7 +1064,7 @@ body {
   background-color: white;
   padding: 40px 40px 8px 40px;
   margin: 50px 0;
-  border-radius: 30px;
+  border-radius: 15px;
 }
 
 .vacancies__tab .nav-tabs .nav-item.active .nav-link {
@@ -1210,6 +1210,7 @@ body {
 }
 
 .vacancies__latest {
+  border-radius: 15px;
   padding: 40px;
   background: white;
   -webkit-box-shadow: 0 3px 99px rgba(0, 0, 0, 0.1);
@@ -1235,12 +1236,14 @@ body {
   text-decoration: none;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
+  border-radius: 7px;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
 }
 
-.vacancies__latest .vacancy__info:hover {
+/* .vacancies__latest .vacancy__info:hover {
   -webkit-box-shadow: 0 3px 99px rgba(0, 0, 0, 0.1);
   box-shadow: 0 3px 99px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .vacancies__latest .vacancy__info .name {
   font-weight: 600;
