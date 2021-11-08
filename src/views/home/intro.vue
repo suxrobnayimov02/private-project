@@ -4,15 +4,15 @@
       <div class="row">	
         <div class="main_nav">
           <ul class="nav nav-pills navMenu on-mobile">
-						<div class="menuLogo">
-							<router-link to="/" class="header__logo">
-              	<span class="icon">
-                	<img src="/img/image/logo-uz.png" alt="" width="82" />
-              	</span>
-              	<span class="name"> Milliy vakansiyalar bazasi </span>
-            	</router-link>
-						</div>
-						<ul class="nav"></ul> 
+            <div class="menuLogo">
+              <router-link to="/" class="header__logo">
+                <span class="icon">
+                  <img src="/img/image/logo-uz.png" alt="" width="82">
+                </span>
+                <span class="name"> Milliy vakansiyalar bazasi </span>
+              </router-link>
+            </div>
+            <ul class="nav" /> 
             <li class="nav-item nav-title no-desktop on-mobile">
               Ish qidiruvchilarga
             </li>
@@ -21,18 +21,20 @@
               <router-link to="/" class="nav-link">Bosh sahifa</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'ResumeCreate' }" class="nav-link"
-                >Rezyume qo’shish</router-link
-              >
+              <router-link
+                :to="{ name: 'ResumeCreate' }"
+                class="nav-link"
+              >Rezyume qo’shish</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="nav-link"
-                >Vakansiya e’lon qilish</router-link
-              >
+              <router-link
+                to="/"
+                class="nav-link"
+              >Vakansiya e’lon qilish</router-link>
             </li>
             <li class="nav-item mobile__btn">
               <button class="btnHamburger">
-                <img src="/img/image/icon_menu.svg" alt="" width="24" />
+                <img src="/img/image/icon_menu.svg" alt="" width="24">
               </button>
             </li>
           </ul>
@@ -42,33 +44,34 @@
               <router-link to="/" class="nav-link">Bosh sahifa</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'ResumeCreate' }" class="nav-link"
-                >Rezyume qo’shish</router-link
-              >
+              <router-link
+                :to="{ name: 'ResumeCreate' }"
+                class="nav-link"
+              >Rezyume qo’shish</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="nav-link"
-                >Vakansiya e’lon qilish</router-link
-              >
+              <router-link
+                to="/"
+                class="nav-link"
+              >Vakansiya e’lon qilish</router-link>
             </li>
           </ul>
           <ul class="nav nav-pills no-desktop on-mobile">
             <li class="nav-item">
               <router-link to="/register" class="nav-link register">
                 <span>
-                  <img src="/img/image/icon_user.svg" alt="" width="16" />
+                  <img src="/img/image/icon_user.svg" alt="" width="16">
                 </span>
                 <span class="name">Ro’yxatdan o’tish</span>
               </router-link>
             </li>
           </ul>
-
 					
           <ul class="nav nav-pills no-desktop on-mobile">
             <li class="nav-item">
               <a href="" class="nav-link">
                 <span>
-                  <img src="/img/image/icon_book.svg" alt="" width="23" />
+                  <img src="/img/image/icon_book.svg" alt="" width="23">
                 </span>
                 <span class="name">Qo’llanma</span>
               </a>
@@ -77,7 +80,7 @@
             <li class="nav-item">
               <a href="" class="nav-link">
                 <span>
-                  <img src="/img/image/icon_phone.svg" alt="" width="23" />
+                  <img src="/img/image/icon_phone.svg" alt="" width="23">
                 </span>
                 <span class="name">+998 (71) 200-06-00</span>
               </a>
@@ -92,7 +95,7 @@
                 aria-expanded="false"
               >
                 <span>
-                  <img src="/img/image/icon_globus.svg" alt="" width="23" />
+                  <img src="/img/image/icon_globus.svg" alt="" width="23">
                 </span>
                 <span class="name"> O’zbek </span>
               </a>
@@ -110,12 +113,12 @@
             </li>
           </ul>
           <button class="js_close_main-nav">
-            <img src="/img/image/icon_close.svg" width="32" />
+            <img src="/img/image/icon_close.svg" width="32">
           </button>
 
           <a href="" class="nav-link login-link">
             <span>
-              <img src="/img/image/icon_door.svg" alt="" width="23" />
+              <img src="/img/image/icon_door.svg" alt="" width="23">
             </span>
             <span class="name">Kirish</span>
           </a>
@@ -233,7 +236,7 @@
         <div class="row">
           <a href="" class="statistic__logo">
             <span class="icon">
-              <img src="/img/image/logo-uz.png" alt="" width="82" />
+              <img src="/img/image/logo-uz.png" alt="" width="82">
             </span>
             <span class="name"> Milliy vakansiyalar bazasi </span>
           </a>
@@ -244,7 +247,7 @@
               <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
                 <div class="item">
                   <div class="icon">
-                    <img src="/img/image/icon_users.svg" alt="" width="64px" />
+                    <img src="/img/image/icon_users.svg" alt="" width="64px">
                   </div>
                   <div class="info">
                     <div class="number">56 829</div>
@@ -255,7 +258,7 @@
               <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
                 <div class="item">
                   <div class="icon">
-                    <img src="/img/image/icon_case.svg" alt="" width="64px" />
+                    <img src="/img/image/icon_case.svg" alt="" width="64px">
                   </div>
                   <div class="info">
                     <div class="number">34 789</div>
@@ -271,7 +274,7 @@
                       alt=""
                       width="67"
                       height="52"
-                    />
+                    >
                   </div>
                   <div class="info">
                     <div class="number">1 253</div>
@@ -282,7 +285,7 @@
               <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
                 <div class="item">
                   <div class="icon">
-                    <img src="/img/image/icon_flag.svg" alt="" width="55px" />
+                    <img src="/img/image/icon_flag.svg" alt="" width="55px">
                   </div>
                   <div class="info">
                     <div class="number">358</div>
@@ -320,22 +323,22 @@
 </template>
 
 <script>
-import MapRegions from "./components/map.vue";
+import MapRegions from './components/map.vue'
 export default {
-  name: "Intro",
+  name: 'Intro',
   components: { MapRegions },
   methods: {
     goToServices() {
-      var element = document.getElementById("vacancies__section");
-      var top = element.offsetTop;
+      var element = document.getElementById('vacancies__section')
+      var top = element.offsetTop
       window.scrollTo({
         top: top - 100,
         left: 0,
-        behavior: "smooth",
-      });
-    },
-  },
-};
+        behavior: 'smooth'
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>
