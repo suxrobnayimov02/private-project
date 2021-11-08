@@ -7,5 +7,6 @@ export const mutations = {
     state.vacancies.per_page = pagination.per_page
     state.vacancies.total = pagination.total
     state.vacancies.current_page = pagination.current_page
+    state.vacancies.last_page = pagination.last_page
   }
 }

@@ -3,28 +3,27 @@
     <div class="list__header">
       <div class="container">
         <div class="search-form">
-          <form action="">
-            <div class="row">
-              <div class="col-lg-10 col-md-10 col-sm-9 col-xs-10 no-padding-right-mobile">
-                <div class="form-group position-relative">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Vakansiya izlash uchun kasb, hudud, lavozim yoki tashkilot nomini kiriting "
-                  >
-                  <button class="btn btn-default btn-filter-setting">
-                    <img src="/img/image/filter.svg">
-                  </button>
-                </div>
-              </div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-2 no-padding-left-mobile">
-                <button class="btn btn-primary btn-block btn-find">
-                  <img src="/img/image/search.svg">                  
-                  <span class="text">Qidirish</span>
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-10 no-padding-right-mobile">
+              <div class="form-group position-relative">
+                <input
+                  v-model="filter.search"
+                  type="text"
+                  class="form-control"
+                  placeholder="Vakansiya izlash uchun kasb, hudud, lavozim yoki tashkilot nomini kiriting"
+                >
+                <button class="btn btn-default btn-filter-setting">
+                  <img src="/img/image/filter.svg">
                 </button>
               </div>
             </div>
-          </form>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-2 no-padding-left-mobile">
+              <button class="btn btn-primary btn-block btn-find" @click="getVacancies">
+                <img src="/img/image/search.svg">
+                <span class="text">Qidirish</span>
+              </button>
+            </div>
+          </div>
         </div>
         <ul class="nav nav-pills">
           <li class="nav-item">
@@ -44,7 +43,7 @@
         <div class="list__info">
           <div class="__header">
             <div class="list__title">
-              Topilgan vakansiyalar soni <b>53 897</b> ta
+              Topilgan vakansiyalar soni <b>{{ $filters.formatPrice(vacancies.total) }}</b> ta
             </div>
             <div class="btn-group btn-group-slider">
               <button class="btn btn-default">Vaqtincha ish</button>
@@ -68,7 +67,7 @@
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8 text-right">
                   <div class="total">
-                    Namoyish etilyapdi <b>20</b> ta <b>53 897</b> tadan
+                    Namoyish etilyapdi <b>{{ vacancies.per_page }}</b> ta <b>{{ $filters.formatPrice(vacancies.total) }}</b> tadan
                   </div>
                 </div>
               </div>
@@ -77,10 +76,10 @@
         </div>
         <div class="row">
           <div class="col-lg-3">
-            <filter-vacancy />
+            <filter-vacancy :filter="filter"/>
           </div>
           <div class="col-lg-9">
-            <div class="list__vacancies">
+            <div v-loading="loading" class="list__vacancies">
               <div
                 v-for="(vacancy, index) in vacancies.data"
                 :key="index"
@@ -90,7 +89,10 @@
                   <div class="item-row">
                     <div class="name">{{ vacancy.position_name }}</div>
                     <div v-if="vacancy.position_salary" class="salary">
-                      {{ vacancy.position_salary }} <b> so’mdan</b>
+                      {{ $filters.formatPrice(vacancy.position_salary) }} <b> so’mdan</b>
+                    </div>
+                    <div v-else>
+                      <span>Maosh ko'rsatilmagan</span>
                     </div>
                   </div>
                   <div class="organization">{{ vacancy.company_name }}</div>
@@ -98,10 +100,7 @@
                     {{ vacancy.region ? vacancy.region.name_uz_ln : "" }}
                     {{ vacancy.city ? ", " + vacancy.city.name_uz_ln : "" }}
                   </div>
-                  <div
-                    class="organization__logo"
-                    style="background-image: url('/img/image/portal.svg')"
-                  />
+                  <div class="organization__logo" :style="`background-image: url('${defaultLogo}')`" />
                   <div class="desc">
                     {{ vacancy.position_name }}
                   </div>
@@ -113,7 +112,7 @@
                   </div>
                   <div class="date_view">
                     <div class="date">
-                      {{ vacancy.date_start }}
+                      {{ toLocaleDateString(vacancy.date_start) }}
                     </div>
                     <div class="view-count">2,5К</div>
                   </div>
@@ -140,35 +139,10 @@
                 <span> Filtrlar </span>
               </button>
             </div>
-            <nav class="pagination-row">
-              <ul class="pagination">
-                <li class="disabled">
-                  <span class="icon" aria-hidden="true">
-                    <img src="/img/image/arrow-left.svg">                   
-                  </span>
-                </li>
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li class="dots">
-                  <span> ... </span>
-                </li>
-                <li><a href="#">98</a></li>
-                <li>
-                  <a aria-label="Next">
-                    <span aria-hidden="true">
-                      <img src="/img/image/arrow-right.svg">
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-            <el-pagination
-              :page-size="20"
-              :pager-count="11"
-              layout="prev, pager, next"
-              :total="1000"
-            />
+            <div class="text-center">
+              <el-pagination :total="vacancies.total" layout="prev, pager, next" v-model:currentPage="filter.page" :page-size="vacancies.per_page" @current-change="handleCurrentChange"/>
+              <br><br>
+            </div>
           </div>
         </div>
       </div>
@@ -178,32 +152,49 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import url from '../../utils/default-logo'
 import FilterVacancy from './filter'
 export default {
   name: 'Index',
   components: { FilterVacancy },
   data() {
     return {
+      loading: false,
+      defaultLogo: url,
       filter: {
-
+        per_page: 5,
+        page: 1,
+        salary: null,
+        search: null
       }
     }
   },
   computed: {
     ...mapGetters({ vacancies: 'vacancy/GET_VACANCIES' })
   },
-  async mounted() {
-    if (!(this.vacancies && this.vacancies.length)) {
-      await this.fetchVacancies().then(res => {
-        console.log('res', res)
-      })  
+  watch: {
+    'filter.salary'(newVal) {
+      if (newVal !== 'manual') {
+        this.getVacancies()
+      }
     }
   },
-
+  mounted() {
+    this.fetchVacancies(this.filter)
+  },
   methods: {
     ...mapActions({ fetchVacancies: 'vacancy/index' }),
     showVacancy(id) {
       this.$router.push({ name: 'VacancyShow', params: { id: id }})
+    },
+    handleCurrentChange(page) {
+      this.filter.page = page
+      this.getVacancies()
+    },
+    async getVacancies() {
+      this.loading = true
+      await this.fetchVacancies(this.filter)
+      this.loading = false
     }
   }
 }
