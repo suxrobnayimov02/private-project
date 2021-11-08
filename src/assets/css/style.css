@@ -240,7 +240,7 @@ body {
 }
 
 .header__nav .nav-link {
-  padding: 0.8vw 1.45vw;
+  padding: 0 1.45vw;
   background: none;
   font-weight: normal;
   font-size: 16px;
@@ -250,7 +250,7 @@ body {
 
 .header__nav .nav-link.register {
   border-radius: 0;
-  border: 2px solid #FFB900;
+  /* border: 2px solid #FFB900; */
 }
 
 .header__nav .nav-link:hover {
@@ -3910,7 +3910,7 @@ body {
 /*# sourceMappingURL=style.css.map */
 
 
-.btnHamburger {
+.btnHamburger, .glasses-btn {
   padding: 0;
   background: transparent;
   border: none;
@@ -3919,7 +3919,10 @@ body {
   outline: none;
   
 }
-.btnHamburger:hover {
+.glasses-btn {
+  margin: 0 0 0 35px;
+}
+.btnHamburger:hover, .glasses-btn:hover {
   transform:scale(1.2);
 }
 .name {
