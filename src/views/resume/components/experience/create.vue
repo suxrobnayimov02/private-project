@@ -80,7 +80,7 @@
       </template>
     </el-dialog>
     <div>
-      <el-button type="primary" size="mini" icon="el-icon-plus" @click="dialogVisible = true">{{ $t('Ish tajribasi qo\'shish') }}</el-button>
+      <el-button type="primary" size="mini" icon="el-icon-plus" @click="addItem">{{ $t('Ish tajribasi qo\'shish') }}</el-button>
     </div>
   </div>
 </template>
@@ -157,6 +157,10 @@ export default {
       if (!this.form.id) return this.store(data)
       else return this.update(data)
     },
+    addItem() {
+      this.formClean()
+      this.dialogVisible = true
+    },
     save() {
       this.form.user_id = this.user.id
       if (this.validate()) {
@@ -199,6 +203,16 @@ export default {
       })
       this.getDistricts()
       this.kodpAction({ search: 'test', key: this.form.kodp_key })
+    },
+    formClean() {
+      this.form.is_current_job = false
+      this.form.start_date = null
+      this.form.end_date = null
+      this.form.kodp_key = null
+      this.form.company_name = null
+      this.form.soato_district = null
+      this.form.soato_region = null
+      this.form.position_description = null
     },
     ...mapActions({ kodpAction: 'resources/positions', getDistrictsAction: 'region/districts', store: 'experience/store', show: 'experience/show', update: 'experience/update' })
   }

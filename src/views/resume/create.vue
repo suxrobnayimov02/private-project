@@ -148,10 +148,16 @@
               </el-form-item>
             </el-col>
             <el-col :xs="24" :sm="24" :md="12" :lg="3" :xl="3">
-              <el-form-item label="‎ ">
+              <el-form-item label=" ‎">
                 <el-select v-model="form.salary_currency_id" placeholder="UZS">
                   <el-option v-for="item in salaryCurrencies" :key="item.id" :label="item.name" :value="item.id" />
                 </el-select>
+              </el-form-item>
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+              <el-form-item label="Kelishsa bo'ladimi?‎">
+                <el-radio v-model="form.is_agreed_salary" :label="true">{{ $t('Ha') }}</el-radio>
+                <el-radio v-model="form.is_agreed_salary" :label="false">{{ $t('Yo\'q') }}</el-radio>
               </el-form-item>
             </el-col>
           </el-row>
@@ -197,14 +203,14 @@
           <!-- ABOUT ME -->
           <el-row>
             <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-              <el-form-item :label="$t('О себе') + ':'">
+              <el-form-item :label="$t('O\'zim haqimda') + ':'">
                 <el-input v-model="form.additional_info" type="textarea" />
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-              <el-form-item :label="$t('Хобби') + ':'">
+              <el-form-item :label="$t('Hobbi') + ':'">
                 <el-input v-model="form.hobbies" type="textarea" />
               </el-form-item>
             </el-col>
@@ -253,7 +259,7 @@
             </div>
             <br>
             <br>
-            <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ') }} </el-divider>
+            <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('Mehnat faoliyati') }} </el-divider>
             <el-row class="mt-5">
               <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
               <experience-create ref="experienceCreate" @successSaved="$refs.experienceList.index()" />
@@ -310,7 +316,7 @@ export default {
         kodp_key: null,
         salary: null,
         salary_currency_id: 1,
-        is_agreed_salary: true,
+        is_agreed_salary: false,
         busyness_type_ids: [],
         work_graphic_ids: [],
         business_trip_ids: [],
