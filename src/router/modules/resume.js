@@ -6,7 +6,12 @@ const resumeRouter = [
   },
   {
     name: 'ResumeCreate',
-    path: '/resumes/create',
+    path: '/resume/create',
+    component: () => import('@/views/resume/create')
+  },
+  {
+    name: 'ResumeUpdate',
+    path: '/resume/:id/update',
     component: () => import('@/views/resume/create')
   },
   {
@@ -16,7 +21,7 @@ const resumeRouter = [
   },
   {
     name: 'ResumeShow',
-    path: '/resumes/:id',
+    path: '/resume/:id',
     component: () => import('@/views/resume/show')
   }
 ]

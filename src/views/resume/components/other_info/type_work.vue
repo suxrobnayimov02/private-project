@@ -39,7 +39,7 @@ export default {
   methods: {
     ...mapActions({
       getAppealsStatuses: 'resume/getAppealsStatuses'
-    }),
+    })
     // handleCheckedChange(value) {
     //   this.work_schedule = value
     //   console.log(value)

@@ -1,7 +1,7 @@
 <template>
   <div v-if="is_auth && user" class="contentBlock clearfix container">
     <div class="grid-content bg-purple-dark">
-      <h2 style="text-align: center; font-weight: bold">{{ $t('Резуме') }}</h2>
+      <h2 style="text-align: center; font-weight: bold">{{ $t('Rezyume') }}</h2>
     </div>
     <hr>
     <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
@@ -91,7 +91,7 @@
                     <select v-model="regionModel" @change="changeRegion()">
                       <option value="">{{ $t('Выберите') }}</option>
                       <option v-for="(region, index) of regions" :key="index" :value="region.soato">
-                        {{ locale == 'uzcl' ? region.name_cyrl : locale == 'uzln' ? region.name_uz : region.name_ru }}
+                        {{ locale == 'uzcl' ? region.name_uz_ln : locale == 'uzln' ? region.name_uz_ln : region.name_uz_ln }}
                       </option>
                     </select>
                   </div>
@@ -106,7 +106,7 @@
                       <option value="">{{ $t('Выберите') }}</option>
                       <template v-if="districts && districts.length">
                         <option v-for="(district, index) of districts" :key="index" :value="district.soato">
-                          {{ translateDistrict(district) }}
+                          {{ district.name_uz_ln }}
                         </option>
                       </template>
                     </select>
@@ -136,7 +136,7 @@
                   <el-option
                     v-for="item in positions"
                     :key="item.id"
-                    :label="(locale == 'ru') ? item.name_uz : (locale == 'uzln') ? item.name_uz:item.name_uz"
+                    :label="item['name_uz-ln']"
                     :value="item.key"
                   />
                 </el-select>
@@ -144,7 +144,7 @@
             </el-col>
             <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
               <el-form-item :label="$t('Ish haqi')">
-                <input v-model="form.salary" v-money="money" class="text-right text-right  el-input__inner">
+                <input v-model="seeder_salary" v-money="money" class="text-right text-right  el-input__inner">
               </el-form-item>
             </el-col>
             <el-col :xs="24" :sm="24" :md="12" :lg="3" :xl="3">
@@ -279,7 +279,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import EducationTable from './components/resume/education'
+import EducationTable from './components/Education/table.vue'
 import EducationCreate from './components/Education/create.vue'
 import { translater } from '@/assets/translate/translat_service'
 import ExperienceIndex from './components/experience/index'
@@ -297,6 +297,7 @@ export default {
     return {
       mask: '##',
       loaded: false,
+      seeder_salary: null,
       form: {
         user_id: null,
         pin: null,
@@ -346,9 +347,6 @@ export default {
         soato_district: [
           { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
         ],
-        drivers_license: [
-          { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
-        ],
         kodp_key: [
           { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
         ],
@@ -368,19 +366,20 @@ export default {
     ...mapGetters({
       locale: 'app/LOCALE',
       is_auth: 'auth/GET_IS_AUTH',
-      resume: 'resume/RESUME',
       regions: 'region/GET_REGIONS',
+      districts: 'region/GET_DISTRICTS',
+      resume: 'resources/GET_WORK_SEEKER',
       positions: 'resources/GET_POSITIONS',
       education: 'education/GET_EDUCATIONS',
-      driversLicenses: 'resources/GET_DRIVERS_LICENSES',
-      skillCategories: 'resources/GET_SKILL_CATEGORIES',
+      profile: 'resources/GET_SEEKER_PROFILE',
       skillLevels: 'resources/GET_SKILL_LEVELS',
-      educationLevels: 'resources/GET_EDUCATION_LEVELS',
+      workGraphics: 'resources/GET_WORK_GRAPHICS',
       businessTrips: 'resources/GET_BUSINESS_TRIPS',
       busynessTypes: 'resources/GET_BUSYNESS_TYPES',
-      workGraphics: 'resources/GET_WORK_GRAPHICS',
-      salaryCurrencies: 'resources/GET_SALARY_CURRENCIES',
-      districts: 'region/GET_DISTRICTS'
+      driversLicenses: 'resources/GET_DRIVERS_LICENSES',
+      skillCategories: 'resources/GET_SKILL_CATEGORIES',
+      educationLevels: 'resources/GET_EDUCATION_LEVELS',
+      salaryCurrencies: 'resources/GET_SALARY_CURRENCIES'
     })
 
   },
@@ -394,6 +393,11 @@ export default {
             }
           })
         }
+      }
+    },
+    seeder_salary(newVal, oldVal) {
+      if (newVal && newVal !== oldVal) {
+        this.form.salary = newVal.split(',').join('')
       }
     }
   },
@@ -414,35 +418,33 @@ export default {
           this.$router.push({ name: 'Register' })
         }
       })
-    // this.getAppealsStatuses({ type: 'work_schedule' }).then(res => {
-    //   this.scheduleTypes = res.data
-    // })
-    // if (!this.employmentTypes.length) {
-    //   this.getAppealsStatuses({ type: 'employment_id' }).then(res => {
-    //     this.employmentTypes = res.data
-    //   })
-    // }
-    // this.getAppealsStatuses({ type: 'edu_degree' }).then(res => {
-    //   this.edu_degrees = res.data
-    // })
+    if (this.$route.params.id) {
+      if (!(this.resume && this.resume.position)) {
+        this.fetchResume({ user_id: this.user.id, search_by: 'user_id' }).then(res => {
+          if (res.success) {
+            this.setResumeWork(res.data)
+          }
+        })
+      }
+      this.fetchSeekerProfile({ user_id: this.user.id, search_by: 'user_id' }).then(res => {
+        if (res.success) {
+          this.setResumeProfile(res.data)
+        }
+      })
+    }
   },
   methods: {
     ...mapActions({
+      getInfo: 'auth/getInfo',
+      fetchEdus: 'education/index',
       fetchRegions: 'region/regions',
       fetchResources: 'resources/index',
-      fetchPositions: 'resources/positions',
-      fetchEdus: 'education/index',
-      store_work_seeker: 'resources/store_work_seeker',
-      update_seeker_profiles: 'resources/update_seeker_profiles',
-      
-      //
-      show: 'resume/show',
-      update: 'resume/update',
-      getInfo: 'auth/getInfo',
-      setForm: 'resume/setForm',
-      storeImg: 'resume/storeImg',
       fetchDistricts: 'region/districts',
-      getAppealsStatuses: 'resume/getAppealsStatuses'
+      fetchPositions: 'resources/positions',
+      fetchResume: 'resources/get_work_seeker',
+      store_work_seeker: 'resources/store_work_seeker',
+      fetchSeekerProfile: 'resources/get_seeker_profile',
+      update_seeker_profiles: 'resources/update_seeker_profiles'
     }),
     validate() {
       let validated = false
@@ -529,7 +531,7 @@ export default {
           nskz: this.form.nskz
         }
         const dataProfile = {
-          user_id: this.user.id,
+          id: this.user.data.profile.id,
           soato_district: this.form.soato_district,
           soato_region: this.form.soato_region,
           wanted_work: this.form.wanted_work,
@@ -537,9 +539,9 @@ export default {
           drivers_license: this.form.drivers_license,
           additional_info: this.form.additional_info
         }
-        this.store_work_seeker(dataWork)
+        this.update_seeker_profiles(dataProfile)
           .then((res) => {           
-            this.update_seeker_profiles(dataProfile)
+            this.store_work_seeker(dataWork)
               .then((res) => {
                 this.$notify({
                   title: this.$t('Успешно'),
@@ -575,7 +577,6 @@ export default {
       this.fileList = []
       const formData = new FormData()
       formData.append('file', file.raw)
-      formData.append('resume_id', this.user.resume.id)
       this.storeImg(formData)
         .then((res) => {
           this.photoUrl = process.env.VUE_APP_BASE_URL + res.data.photo
@@ -604,9 +605,6 @@ export default {
     beforeRemove(file, fileList) {
       return this.$confirm(`Юкланган ${file.name} файлини бекор қиласизми  ?`)
     },
-    notFile() {
-      this.$message.warning('Файл мавжуд эмас!')
-    },
     onSearch(search) {
       if (search.length >= 3) {
         this.loading = true
@@ -622,21 +620,6 @@ export default {
           }
         })
       }
-    },
-    translateFamilyStatus(family_state) {
-      let Translate = ''
-      switch (this.locale) {
-        case 'ru':
-          Translate = family_state.name_ru
-          break
-        case 'uzln':
-          Translate = family_state.name_uz
-          break
-        case 'uzcl':
-          Translate = family_state.name_cyrl
-          break
-      }
-      return Translate
     },
     destroy() {
       const formData = new FormData()
@@ -669,19 +652,31 @@ export default {
         })
         .catch(() => {})
     },
-    // studentCheck(institutions) {
-    //   institutions.forEach(institution => {
-    //     institution
-    //   })
-    //   if (condition) {
-
-    //   } else {
-
-    //   }
-    // },
+    setResumeWork(work) {
+      this.form.kodp_key = work.kodp_key
+      this.form.salary = work.salary
+      this.form.salary_currency_id = work.salary_currency_id
+      this.form.is_agreed_salary = work.is_agreed_salary
+      this.form.busyness_type_ids = work.busyness_type_ids
+      this.form.work_graphic_ids = work.work_graphic_ids
+      this.form.business_trip_ids = work.business_trip_ids
+      this.form.nskz = work.nskz
+    },
+    setResumeProfile(profile) {
+      this.form.soato_district = profile.soato_district
+      this.form.soato_region = profile.soato_region
+      this.regionModel = profile.soato_region
+      this.districtModel = profile.soato_district
+      this.form.wanted_work = profile.wanted_work
+      this.form.hobbies = profile.hobbies
+      this.form.drivers_license = profile.drivers_license
+      this.form.additional_info = profile.additional_info
+      if (this.regionModel) {
+        this.changeRegion()
+      }
+    },
     addEducation() {
       this.educationDialog = true
-      // this.$router.push({ name: 'EducationCreate' })
     },
     setEducation() {
       this.educationDialog = false

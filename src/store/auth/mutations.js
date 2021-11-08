@@ -7,7 +7,7 @@ export const mutations = {
     state.user.data = user
     state.user.age = getAge(user.birth_date)
     if (user.profile && user.profile.length) {
-      state.user.fullname = user.profile[0].first_name + ' ' + user.profile[0].last_name
+      state.user.fullname = user.profile.first_name + ' ' + user.profile.last_name
     }
   },
   SET_USER_TOKEN: (state, token) => (state.user.token = token),
