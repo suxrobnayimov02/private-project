@@ -1,4 +1,4 @@
 export const state = {
   vacancy: {},
-  vacancies: []
+  vacancies: {}
 }

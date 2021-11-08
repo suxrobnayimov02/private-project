@@ -15,7 +15,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Vakansiya izlash uchun kasb, hudud, lavozim yoki tashkilot nomini kiriting "
-                  />
+                  >
                   <div class="input_setting-btn">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -317,215 +317,17 @@
         </div>
       </div>
     </div>
-    <div class="container bigger no-padding">
-      <div class="vacancies__latest no-padding-right">
-        <div class="section__title">Yangi vakansiyalar</div>
-        <div class="type-slider">
-          <div class="type-carousel owl-carousel owl-theme">
-            <a href="" class="type_item active">
-              <span>Taklif qilinganlar</span>
-            </a>
-            <a href="" class="type_item">
-              <span>Talabalar uchun</span>
-            </a>
-            <a href="" class="type_item">
-              <span>Quruvchilar uchun</span>
-            </a>
-            <a href="" class="type_item">
-              <span>Haydovchilar uchun</span>
-            </a>
-            <a href="" class="type_item">
-              <span>Reklama va marketing</span>
-            </a>
-            <a href="" class="type_item">
-              <span>IT sohasi</span>
-            </a>
-            <a href="" class="type_item">
-              <span>O’qituvchi</span>
-            </a>
-            <a href="" class="type_item">
-              <span>O’qituvchi</span>
-            </a>
-            <a href="" class="type_item">
-              <span>O’qituvchi</span>
-            </a>
-          </div>
-        </div>
-        <div class="vacancy__list">
-          <div class="row row-no-gutters">
-            <div class="col-lg-4 col-md-6">
-              <router-link
-                :to="{ name: 'VacancyShow', params: { id: 1 } }"
-                class="card vacancy__info"
-              >
-                <div class="name">Aloqa vazirligi Bosh vazir o’rinbosari</div>
-                <div class="salary"><b>5 500 000</b> so’mdan</div>
-                <div class="organization checked">60-Umumta’lim maktabi</div>
-                <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                <div class="date_view">
-                  <div class="date">16 Sen 2021</div>
-                  <div class="view-count">2,5К</div>
-                </div>
-                <div
-                  class="organization__logo"
-                  style="background-image: url('/img/image/mitc.png')"
-                />
-              </router-link>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <router-link
-                :to="{ name: 'VacancyShow', params: { id: 1 } }"
-                class="card vacancy__info"
-              >
-                <div class="name">
-                  Sog’liqni saqlash vazirligi yetakchi muta…
-                </div>
-                <div class="salary"><b>2 500 000 </b> so’mdan</div>
-                <div class="organization checked">60-Umumta’lim maktabi</div>
-                <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                <div class="date_view">
-                  <div class="date">16 Sen 2021</div>
-                  <div class="view-count">2,5К</div>
-                </div>
-                <div
-                  class="organization__logo"
-                  style="background-image: url('/img/image/minzdrav.png')"
-                />
-              </router-link>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <router-link
-                :to="{ name: 'VacancyShow', params: { id: 1 } }"
-                class="card vacancy__info"
-              >
-                <div class="name">Beeline Uzbekistan operator</div>
-                <div class="salary"><b>2 000 000</b> so’mdan</div>
-                <div class="organization checked">60-Umumta’lim maktabi</div>
-                <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                <div class="date_view">
-                  <div class="date">16 Sen 2021</div>
-                  <div class="view-count">2,5К</div>
-                </div>
-                <div
-                  class="organization__logo"
-                  style="background-image: url('/img/image/beeline.png')"
-                />
-              </router-link>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <a href="" class="card vacancy__info">
-                <div class="name">Murad Buildings dizayner</div>
-                <div class="salary"><b>6 500 000 </b> so’mdan</div>
-                <div class="organization checked">60-Umumta’lim maktabi</div>
-                <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                <div class="date_view">
-                  <div class="date">16 Sen 2021</div>
-                  <div class="view-count">2,5К</div>
-                </div>
-                <div
-                  class="organization__logo"
-                  style="background-image: url('/img/image/murad-building.png')"
-                />
-              </a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <a href="" class="card vacancy__info">
-                <div class="name">Asko Vostok sug’urta agenti</div>
-                <div class="salary"><b>3 500 000</b> so’mdan</div>
-                <div class="organization checked">60-Umumta’lim maktabi</div>
-                <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                <div class="date_view">
-                  <div class="date">16 Sen 2021</div>
-                  <div class="view-count">2,5К</div>
-                </div>
-                <div
-                  class="organization__logo"
-                  style="background-image: url('/img/image/asko-vostok.png')"
-                />
-              </a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <a href="" class="card vacancy__info">
-                <div class="name">Hukumat portali bosh mutaxasis</div>
-                <div class="salary"><b>2 500 000 </b> so’mdan</div>
-                <div class="organization checked">60-Umumta’lim maktabi</div>
-                <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                <div class="date_view">
-                  <div class="date">16 Sen 2021</div>
-                  <div class="view-count">2,5К</div>
-                </div>
-                <div
-                  class="organization__logo"
-                  style="background-image: url('/img/image/asko-vostok.png')"
-                />
-              </a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <a href="" class="card vacancy__info">
-                <div class="name">Korzinka.uz kassir</div>
-                <div class="salary"><b>1 500 000</b> so’mdan</div>
-                <div class="organization checked">60-Umumta’lim maktabi</div>
-                <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                <div class="date_view">
-                  <div class="date">16 Sen 2021</div>
-                  <div class="view-count">2,5К</div>
-                </div>
-                <div
-                  class="organization__logo"
-                  style="background-image: url('/img/image/asko-vostok.png')"
-                />
-              </a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <a href="" class="card vacancy__info">
-                <div class="name">Lukoil Uzbekistan</div>
-                <div class="salary"><b>4 000 000</b> so’mdan</div>
-                <div class="organization checked">60-Umumta’lim maktabi</div>
-                <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                <div class="date_view">
-                  <div class="date">16 Sen 2021</div>
-                  <div class="view-count">2,5К</div>
-                </div>
-                <div
-                  class="organization__logo"
-                  style="background-image: url('/img/image/lukoil.png')"
-                />
-              </a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <a href="" class="card vacancy__info">
-                <div class="name">UNESKO</div>
-                <div class="salary"><b>2 500 000</b> so’mdan</div>
-                <div class="organization checked">60-Umumta’lim maktabi</div>
-                <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                <div class="date_view">
-                  <div class="date">16 Sen 2021</div>
-                  <div class="view-count">2,5К</div>
-                </div>
-                <div
-                  class="organization__logo"
-                  style="background-image: url('/img/image/unesco.png    ')"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="text-center">
-            <router-link :to="{ name: 'VacancyIndex' }" class="more_link">
-              Barcha vakansiyalar
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </div>
+    <vacancy-list />
   </div>
 </template>
 
 <script>
+import VacancyList from './components/vacancy-list'
 export default {
-  name: "Vacancies",
-};
-// import '@/assets/js/script.js'
-// import '@/assets/js/owl.carousel.min.js'
+  name: 'Vacancies',
+  components: { VacancyList }
+}
+
 </script>
 
 <style scoped>
