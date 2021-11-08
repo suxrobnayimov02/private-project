@@ -114,7 +114,7 @@
                 </el-form-item>
               </div>
             </el-col>
-          </el-row>                  
+          </el-row>
           <!-- Position/salary -->
           <el-divider content-position="left">
             <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
@@ -224,7 +224,7 @@
                 <!-- <el-checkbox-group v-for="(item, index) in driversLicenses" :key="'license' +index" v-model="form.drivers_license">
                   <el-checkbox :label="item.id">{{ item.name }}</el-checkbox>
                 </el-checkbox-group> -->
-              </el-form-item>              
+              </el-form-item>
             </el-col>
           </el-row>
           <!-- LANGUAGES -->
@@ -281,7 +281,7 @@
 import { mapActions, mapGetters } from 'vuex'
 import EducationTable from './components/Education/table.vue'
 import EducationCreate from './components/Education/create.vue'
-import { translater } from '@/assets/translate/translat_service'
+import { translater } from '../../utils/translater'
 import ExperienceIndex from './components/experience/index'
 import ExperienceCreate from './components/experience/create'
 import languages from './components/languages'
@@ -413,7 +413,7 @@ export default {
       .then(() => {
         this.setEducation()
       })
-      .catch(() => {      
+      .catch(() => {
         if (!(this.user && this.user.id)) {
           this.$router.push({ name: 'Register' })
         }
@@ -564,7 +564,7 @@ export default {
               type: 'error'
             })
             console.log(error)
-          })        
+          })
       } else {
         this.$notify({
           title: this.$t('Ошибка'),
@@ -702,7 +702,7 @@ export default {
 }
 .el-collapse-item__header {
     border-bottom-color: transparent;
-   
+
     line-height: 14px !important;
     font-weight: bold !important;
 }

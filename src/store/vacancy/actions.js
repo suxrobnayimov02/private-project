@@ -13,7 +13,7 @@ export const actions = {
   show({ commit }, id) {
     return new Promise((resolve, reject) => {
       show(id).then(res => {
-        commit('SET_VACANCY', res.result.help)
+        commit('SET_VACANCY', res.data)
         resolve(res)
       }).catch(error => {
         reject(error)

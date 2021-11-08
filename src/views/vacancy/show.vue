@@ -5,15 +5,13 @@
         <div class="col-lg-8 row-right-divider">
           <div class="v-info">
             <div class="v-card position-relative">
-              <div class="name">Sug’urta kompaniyasining Sirdaryo viloyati
-                filiali direktori
+              <div class="name">{{ vacancy.position_name }}</div>
+              <div v-if="vacancy.position_salary" class="salary">
+                Oyiga <b> {{ $filters.formatPrice(vacancy.position_salary) }}</b> so’mdan
               </div>
-              <div class="salary">
-                Oyiga
-                <b> 8 500 000</b> so’mdan
-              </div>
-              <div class="organization">Asko-Vostok MChJ QK ST</div>
-              <div class="address">Toshkent shaxri, Yakkasaroy tumani</div>
+              <div v-else style="margin-bottom: 16px">Maosh ko'rsatilmagan</div>
+              <div class="organization">{{ vacancy.company_name }}</div>
+              <div class="address">{{ vacancy.region ? vacancy.region.name_uz_ln : '-' }}, {{ vacancy.district ? vacancy.district.name_uz_ln : '-' }}</div>
               <div
                 class="organization__logo"
                 style="background-image: url('/img/image/asko-vostok.svg') ;"
@@ -76,13 +74,7 @@
                 <div class="title">Talablar</div>
                 <div class="content">
                   <ul>
-                    <li>Ishga ma’suliyat bilan yondashish;
-                    </li>
-                    <li>Tushuntirish ishlarini oborish;
-                    </li>
-                    <li>Ma’suliyat bilan yondashish.
-                    </li>
-
+                    <li>{{ vacancy.position_requirements }}</li>
                   </ul>
                 </div>
               </div>
@@ -90,7 +82,7 @@
                 <div class="title">Ish shartlari</div>
                 <div class="content">
                   <ul>
-                    <li>Ish tajribasi ahamiyatsiz, eng asosiysi ishga ma’suliyat; </li>
+                    <li>Ish tajribasi ahamiyatsiz, eng asosiysi ishga mas'uliyat; </li>
                     <li>Mijozlar tushuntirish ishlarini oborish;</li>
                     <li>Tajribasi ahamiyatsiz, eng asosiysi ishga ma’suliyat bilan yondashish.
                     </li>
@@ -107,7 +99,7 @@
                 </div>
                 <div class="date_view">
                   <div class="date">
-                    16 Sen 2021
+                    {{ toLocaleDateString(vacancy.date_start) }}
                   </div>
                   <div class="view-count">
                     2,5К
@@ -383,8 +375,19 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
-  name: 'Show'
+  name: 'Show',
+  computed: {
+    ...mapGetters({ vacancy: 'vacancy/GET_VACANCY' })
+  },
+  created() {
+    this.show(this.$route.params.id)
+  },
+  methods: {
+    ...mapActions({ show: 'vacancy/show' })
+  }
 }
 </script>
 
