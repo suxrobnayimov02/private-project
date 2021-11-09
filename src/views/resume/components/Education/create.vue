@@ -1,7 +1,7 @@
 <template>
   <div class="mainContainer">
     <div>
-      <el-dialog v-model="dialogFormVisible" :title="$t('Таълим маълумоти қўшиш')" :before-close="handleClose">
+      <el-dialog v-model="dialogFormVisible" :title="$t('Ta\'lim ma\'lumoti qo\'sh\'ish')" :before-close="handleClose">
         <div class="box-shadow pb-4">
           <el-form
             v-if="!editLoading"
@@ -11,10 +11,9 @@
             label-position="top"
             class="top-label-custom"
           >
-            <!-- <el-divider content-position="left"> </el-divider> -->
             <el-row>
               <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-                <el-form-item :label="$t('Уровень образования') + ':'" prop="education_level_id">
+                <el-form-item :label="$t('Ta\'lim darajasi') + ':'" prop="education_level_id">
                   <el-select
                     v-model="form.education_level_id"
                     class="w-100"
@@ -29,42 +28,41 @@
                     />
                   </el-select>
                 </el-form-item>
-              </el-col>
-              <el-col v-if="form.education_level_id == 4" :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-                <el-form-item label=" ">
-                  <el-checkbox v-model="form.currently_studying" class="float-right">{{ $t('студент(ка) ВУЗа') }}</el-checkbox>
-                </el-form-item>
-              </el-col>
+              </el-col>              
               <el-col :span="18">
-                <el-form-item label="Таълим муассасаси номи" prop="education_place">
+                <el-form-item label="Ta'lim muassasasi nomi" prop="education_place">
                   <el-input v-model="form.education_place" class="w-100" />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item label="Мутахассислик(Йўналиш)" prop="faculty">
+                <el-form-item label="Mutaxasislik(yo'nalish)" prop="faculty">
                   <el-input v-model="form.faculty" class="w-100" />
                 </el-form-item>
               </el-col>             
             </el-row>
             <el-row>
               <el-col :span="6">
-                <el-form-item label="Кирган йили" prop="start_year">
+                <el-form-item label="Kirgan yili" prop="start_year">
                   <el-select v-model="form.start_year">
-                    <el-option v-for="y in years.slice(1, years.length)" :key="y" :label="y" :value="y" />
+                    <el-option v-for="y in years" :key="y" :label="y" :value="y" />
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col v-if="!form.currently_studying" :span="6">
-                <el-form-item label="Битирган йили" prop="end_year">
+                <el-form-item label="Bitirgan yili" prop="end_year">
                   <el-select v-model="form.end_year">
                     <el-option v-for="y in years" :key="y" :label="y" :value="y" />
                   </el-select>
                 </el-form-item>
               </el-col>
-              
+              <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+                <el-form-item label="" class="mt5">
+                  <el-checkbox v-model="form.currently_studying" class="float-right">{{ $t('Talaba/O\'quvchi') }}</el-checkbox>
+                </el-form-item>
+              </el-col>
             </el-row>
           </el-form>
-          <el-button type="primary" icon="el-icon-check" class="float-right" @click="save">Сақлаш</el-button>
+          <el-button type="primary" icon="el-icon-check" class="float-right" @click="save">Saqlash</el-button>
         </div>
       </el-dialog>
     </div>
@@ -168,30 +166,11 @@ export default {
     }
   },
   watch: {
-    'form.education_stared_year'(newVal) {
-      if (this.form.otm_id && !this.editLoading) {
-        this.fetchFaculties()
+    'form.currently_studying'(newVal, oldVal) {
+      if (newVal && newVal !== oldVal) {
+        this.form.end_year = null
       }
-    },
-    'form.education_finished_year'(newVal) {
-      if (newVal < this.form.education_stared_year + 1) {
-        this.$msgbox({
-          title: 'Хатолик', type: 'warning', confirmButtonText: 'OK', message: 'ОТМни битирган ва йили ОТМга кирган йили орасидаги фарқ камида 1 йил бўлиши керак!'
-        })
-        this.form.education_finished_year = this.form.education_finished_year + 1
-      }
-    },
-    'form.otm_id'(newVal, oldVal) {
-      if ((newVal && newVal !== oldVal) && !this.editLoading) {
-        this.form.faculty_id = null
-        if (this.form.education_finished_year && this.form.education_stared_year) {
-          this.fetchFaculties()
-        }
-      }
-    },
-    'form.diploma'(newVal) {
-      this.form.diploma = newVal.toUpperCase()
-    }
+    }   
   },
   created() {
     this.dialogFormVisible = this.educationDialog

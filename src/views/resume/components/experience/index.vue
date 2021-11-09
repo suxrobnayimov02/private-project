@@ -5,7 +5,7 @@
         v-for="(item, indexx) in list"
         :key="'education-' + indexx"
         type="success"
-        :timestamp="toLocaleDateString(item.start_date) + '-' + ( item.end_date ? toLocaleDateString(item.end_date) : '...')"
+        :timestamp="toLocaleDateString(item.start_date) + ' - ' + ( item.end_date ? toLocaleDateString(item.end_date) : 'h.v. ')"
         placement="top"
       >
         <div>

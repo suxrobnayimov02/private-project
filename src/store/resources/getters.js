@@ -9,5 +9,10 @@ export const getters = {
   GET_USER_LANGUAGES: (state) => state.user_languages,
   GET_USER_COMPUTER_SKILLS: (state) => state.user_computer_skills,
   GET_POSITIONS: (state) => state.positions,
-  GET_SALARY_CURRENCIES: (state) => state.salaryCurrencies
+  GET_SALARY_CURRENCIES: (state) => state.salaryCurrencies,
+  // 
+  GET_WORK_SEEKER: (state) => state.work_seeker,  
+  GET_WORK_SEEKERS: (state) => state.work_seekers,
+  GET_SEEKER_PROFILE: (state) => state.seeker_profile
+  
 }

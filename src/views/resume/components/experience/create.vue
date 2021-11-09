@@ -63,7 +63,12 @@
               <el-date-picker v-model="form.start_date" type="date" :disabled-date="disableDate" format="DD.MM.YYYY" value-format="YYYY-MM-DD" class="w-100" />
             </el-form-item>
           </el-col>
-          <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+          <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+            <el-form-item label="" class="mt5">
+              <el-checkbox v-model="form.is_current_job" class="float-right">{{ $t('Hozirgi vaqtga qadar') }}</el-checkbox>
+            </el-form-item>
+          </el-col>
+          <el-col v-if="!form.is_current_job" :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <el-form-item label="Ishdan ketgan sana" prop="end_date">
               <el-date-picker v-model="form.end_date" type="date" :disabled-date="disableDateEnd" format="DD.MM.YYYY" value-format="YYYY-MM-DD" class="w-100" />
             </el-form-item>
@@ -76,7 +81,7 @@
         </el-row>
       </el-form>
       <template #footer>
-        <el-button type="primary" icon="el-icon-check" @click="save">Сақлаш</el-button>
+        <el-button type="primary" icon="el-icon-check" @click="save">Saqlash</el-button>
       </template>
     </el-dialog>
     <div>
@@ -125,6 +130,13 @@ export default {
         arr.push(i)
       }
       return arr
+    }
+  },
+  watch: {
+    'form.is_current_job'(newVal) {
+      if (newVal) {
+        this.form.end_date = null     
+      }
     }
   },
   methods: {

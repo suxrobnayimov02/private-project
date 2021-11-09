@@ -9,5 +9,9 @@ export const state = {
   positions: [],
   user_languages: [],
   user_computer_skills: [],
-  salaryCurrencies: []
+  salaryCurrencies: [],
+  // 
+  work_seeker: [],
+  work_seekers: [],
+  seeker_profile: {}
 }
