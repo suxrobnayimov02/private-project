@@ -99,7 +99,7 @@
         <div class="row row-no-gutters">
           <router-link to="/" class="header__logo">
             <span class="icon">
-              <img src="img/image/logo-uz.png" alt="" width="82">
+              <img :src="logoUrl" alt="" width="82">
             </span>
             <span class="name">
               Milliy
@@ -110,7 +110,7 @@
           <div class="header__nav">
             <ul class="nav nav-pills" style="display:flex">
               <li class="nav-link">
-                
+
               </li>
               <li class="nav-item">
                 <a href="" class="nav-link">
@@ -225,7 +225,7 @@
         </li>
 
       </ul>
-      
+
       <ul class="nav nav-pills no-desktop on-mobile ">
         <li class="nav-item">
           <a href="" class="nav-link">
@@ -287,6 +287,11 @@
 
 <script>
 export default {
-  name: 'HeaderMain'
+  name: 'HeaderMain',
+  computed: {
+    logoUrl() {
+      return process.env.VUE_APP_BASE_URL + 'storage/image/logo-uz.png'
+    }
+  }
 }
 </script>

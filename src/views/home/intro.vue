@@ -1,22 +1,22 @@
 <template>
   <div class="intro">
     <div class="container">
-      <div class="row">	
+      <div class="row">
         <div class="main_nav">
           <ul class="nav nav-pills navMenu on-mobile">
             <div class="menuLogo">
               <router-link to="/" class="header__logo">
                 <span class="icon">
-                  <img src="/img/image/logo-uz.png" alt="" width="82">
+                  <img :src="logoUrl" alt="" width="82">
                 </span>
                 <span class="name"> Milliy vakansiyalar bazasi </span>
               </router-link>
             </div>
-            <ul class="nav" /> 
+            <ul class="nav" />
             <li class="nav-item nav-title no-desktop on-mobile">
               Ish qidiruvchilarga
             </li>
-            
+
             <li class="nav-item">
               <router-link to="/" class="nav-link">Bosh sahifa</router-link>
             </li>
@@ -66,7 +66,7 @@
               </router-link>
             </li>
           </ul>
-					
+
           <ul class="nav nav-pills no-desktop on-mobile">
             <li class="nav-item">
               <a href="" class="nav-link">
@@ -76,7 +76,7 @@
                 <span class="name">Qo’llanma</span>
               </a>
             </li>
-						
+
             <li class="nav-item">
               <a href="" class="nav-link">
                 <span>
@@ -327,6 +327,11 @@ import MapRegions from './components/map.vue'
 export default {
   name: 'Intro',
   components: { MapRegions },
+  computed: {
+    logoUrl() {
+      return process.env.VUE_APP_BASE_URL + 'storage/image/logo-uz.png'
+    }
+  },
   methods: {
     goToServices() {
       var element = document.getElementById('vacancies__section')
