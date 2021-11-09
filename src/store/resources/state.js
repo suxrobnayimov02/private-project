@@ -10,8 +10,9 @@ export const state = {
   user_languages: [],
   user_computer_skills: [],
   salaryCurrencies: [],
-  // 
+  //
   work_seeker: [],
   work_seekers: [],
-  seeker_profile: {}
+  seeker_profile: {},
+  filterable_nskz: []
 }

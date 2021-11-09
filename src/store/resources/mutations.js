@@ -35,5 +35,8 @@ export const mutations = {
   },
   SET_SEEKER_PROFILE: (state, profile) => {
     state.seeker_profile = profile
+  },
+  SET_FILTERABLE_NSKZ: (state, data) => {
+    state.filterable_nskz = data
   }
 }

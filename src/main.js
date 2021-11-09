@@ -17,6 +17,7 @@ import installElementPlus from './plugins/element'
 
 // import './assets/css/main.css'
 const app = createApp(App)
+
 installElementPlus(app)
 app.config.globalProperties.$filters = {
   formatPrice

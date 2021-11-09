@@ -1,5 +1,5 @@
 import { index, store_seeker_skills, get_seeker_skills, update_seeker_skills, delete_seeker_skills, kodp, store_work_seeker,
-  update_seeker_profiles, get_work_seeker, get_work_seekers, get_seeker_profile } from '@/api/resources'
+  update_seeker_profiles, get_work_seeker, get_work_seekers, get_seeker_profile, filterableNskz } from '@/api/resources'
 export const actions = {
   index({ commit }, query) {
     return new Promise((resolve, reject) => {
@@ -69,7 +69,7 @@ export const actions = {
         reject(error)
       })
     })
-  }, 
+  },
   update_seeker_profiles({ commit }, data) {
     return new Promise((resolve, reject) => {
       update_seeker_profiles(data).then(res => {
@@ -106,6 +106,17 @@ export const actions = {
       get_work_seekers(data)
         .then(res => {
           commit('SET_WORK_SEEKERS', res.data)
+          resolve(res)
+        }).catch(res => {
+          reject(res)
+        })
+    })
+  },
+  filterableNskz({ commit }) {
+    return new Promise((resolve, reject) => {
+      filterableNskz()
+        .then(res => {
+          commit('SET_FILTERABLE_NSKZ', res.data)
           resolve(res)
         }).catch(res => {
           reject(res)

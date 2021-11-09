@@ -3,37 +3,19 @@
     <div class="vacancies__latest no-padding-right">
       <div class="section__title">Yangi vakansiyalar</div>
       <div class="type-slider">
-        <div class="type-carousel owl-carousel owl-theme">
-          <a href="" class="type_item active">
-            <span>Taklif qilinganlar</span>
-          </a>
-          <a href="" class="type_item">
-            <span>Talabalar uchun</span>
-          </a>
-          <a href="" class="type_item">
-            <span>Quruvchilar uchun</span>
-          </a>
-          <a href="" class="type_item">
-            <span>Haydovchilar uchun</span>
-          </a>
-          <a href="" class="type_item">
-            <span>Reklama va marketing</span>
-          </a>
-          <a href="" class="type_item">
-            <span>IT sohasi</span>
-          </a>
-          <a href="" class="type_item">
-            <span>O’qituvchi</span>
-          </a>
-          <a href="" class="type_item">
-            <span>O’qituvchi</span>
-          </a>
-          <a href="" class="type_item">
-            <span>O’qituvchi</span>
-          </a>
-        </div>
+        <carousel v-if="listFilterableNskz.length" :items-to-show="5">
+          <slide v-for="i in listFilterableNskz" :key="i.id">
+            <span class="type_item pointer" :class="{ 'active' : filter.nskz === i.code }" @click="filter.nskz = i.code">
+              <span>{{ i.name_uz_ln }}</span>
+            </span>
+          </slide>
+          <template #addons>
+            <navigation />
+            <!--            <pagination />-->
+          </template>
+        </carousel>
       </div>
-      <div class="vacancy__list">
+      <div v-loading="loading" class="vacancy__list">
         <div class="row row-no-gutters">
           <div v-for="(item, i) in list.data" :key="i" class="col-lg-4 col-md-6">
             <router-link :to="{ name: 'VacancyShow', params: { id: item.id } }" class="card vacancy__info">
@@ -63,24 +45,47 @@
 <script>
 import url from '../../../utils/default-logo'
 import { mapActions, mapGetters } from 'vuex'
-
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 export default {
   name: 'VacancyList',
+  components: {
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation
+  },
   data() {
     return {
-      defaultLogo: url
+      defaultLogo: url,
+      filter: {
+        nskz: null,
+        per_page: 9
+      },
+      loading: true
     }
   },
   computed: {
-    ...mapGetters({ list: 'vacancy/GET_VACANCIES' })
+    ...mapGetters({ list: 'vacancy/GET_VACANCIES', listFilterableNskz: 'resources/GET_FILTERABLE_NSKZ' })
+  },
+  watch: {
+    'filter.nskz'(newVal) {
+      this.getList()
+    }
   },
   mounted() {
-    this.index({ per_page: 9 })
+    this.getList()
+    this.filterableNskz()
   },
   methods: {
-    ...mapActions({ index: 'vacancy/index' }),
+    ...mapActions({ index: 'vacancy/index', filterableNskz: 'resources/filterableNskz' }),
     fixCompanyName(name) {
       return name.length > 35 ? name.slice(0, 35) + '...' : name
+    },
+    async getList() {
+      this.loading = true
+      await this.index(this.filter)
+      this.loading = false
     }
   }
 

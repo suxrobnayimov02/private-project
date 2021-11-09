@@ -83,3 +83,9 @@ export function get_work_seekers(data) {
     data
   })
 }
+export function filterableNskz() {
+  return request({
+    url: 'resources/filterable-nskz',
+    method: 'get'
+  })
+}
