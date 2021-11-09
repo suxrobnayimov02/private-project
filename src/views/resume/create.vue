@@ -314,6 +314,8 @@ export default {
         soato_region: null,
         soato_district: null,
         // form work
+        work_id: null,
+        profile_id: null,
         kodp_key: null,
         salary: null,
         salary_currency_id: 1,
@@ -337,7 +339,7 @@ export default {
       edu_degrees: [],
       photoUrl: null,
       fileList: [],
-      activeNames: [],
+      activeNames: ['1', '2', '3'],
       scheduleTypes: [],
       employmentTypes: [],
       rules: {
@@ -443,6 +445,7 @@ export default {
       fetchPositions: 'resources/positions',
       fetchResume: 'resources/get_work_seeker',
       store_work_seeker: 'resources/store_work_seeker',
+      update_work_seeker: 'resources/update_work_seeker',
       fetchSeekerProfile: 'resources/get_seeker_profile',
       update_seeker_profiles: 'resources/update_seeker_profiles'
     }),
@@ -520,43 +523,64 @@ export default {
     save() {
       if (this.validate()) {
         const dataWork = {
+          nskz: this.form.nskz,
+          id: this.form.work_id,
           user_id: this.user.id,
-          kodp_key: this.form.kodp_key,
           salary: this.form.salary,
-          salary_currency_id: this.form.salary_currency_id,
+          kodp_key: this.form.kodp_key,
+          work_graphic_ids: this.form.work_graphic_ids,
           is_agreed_salary: this.form.is_agreed_salary,
           busyness_type_ids: this.form.busyness_type_ids,
-          work_graphic_ids: this.form.work_graphic_ids,
           business_trip_ids: this.form.business_trip_ids,
-          nskz: this.form.nskz
+          salary_currency_id: this.form.salary_currency_id
         }
         const dataProfile = {
-          id: this.user.data.profile.id,
-          soato_district: this.form.soato_district,
-          soato_region: this.form.soato_region,
-          wanted_work: this.form.wanted_work,
+          user_id: this.user.id,
+          id: this.form.profile_id,
           hobbies: this.form.hobbies,
+          wanted_work: this.form.wanted_work,
+          soato_region: this.form.soato_region,
+          soato_district: this.form.soato_district,
           drivers_license: this.form.drivers_license,
           additional_info: this.form.additional_info
         }
         this.update_seeker_profiles(dataProfile)
-          .then((res) => {           
-            this.store_work_seeker(dataWork)
-              .then((res) => {
-                this.$notify({
-                  title: this.$t('Успешно'),
-                  message: this.$t('Успешно сохранено'),
-                  type: 'success'
+          .then((res) => {    
+            if (this.$route.params.id) {
+              this.update_work_seeker(dataWork)
+                .then((res) => {
+                  this.$notify({
+                    title: this.$t('Успешно'),
+                    message: this.$t('Успешно сохранено'),
+                    type: 'success'
+                  })
+                  this.$router.push({ name: 'ResumeStatistics', params: { id: this.user.id }})
+                }).catch((error) => {
+                  this.$notify({
+                    title: this.$t('Ошибка'),
+                    message: this.$t('Невозможно сохранить'),
+                    type: 'error'
+                  })
+                  console.log(error)
                 })
-                this.$router.push({ name: 'Home' })
-              }).catch((error) => {
-                this.$notify({
-                  title: this.$t('Ошибка'),
-                  message: this.$t('Невозможно сохранить'),
-                  type: 'error'
+            } else {              
+              this.store_work_seeker(dataWork)
+                .then((res) => {
+                  this.$notify({
+                    title: this.$t('Успешно'),
+                    message: this.$t('Успешно сохранено'),
+                    type: 'success'
+                  })
+                  this.$router.push({ name: 'ResumeStatistics', params: { id: this.user.id }})
+                }).catch((error) => {
+                  this.$notify({
+                    title: this.$t('Ошибка'),
+                    message: this.$t('Невозможно сохранить'),
+                    type: 'error'
+                  })
+                  console.log(error)
                 })
-                console.log(error)
-              })
+            }       
           }).catch((error) => {
             this.$notify({
               title: this.$t('Ошибка'),
@@ -653,8 +677,10 @@ export default {
         .catch(() => {})
     },
     setResumeWork(work) {
+      this.form.work_id = work.id
       this.form.kodp_key = work.kodp_key
       this.form.salary = work.salary
+      this.seeder_salary = work.salary
       this.form.salary_currency_id = work.salary_currency_id
       this.form.is_agreed_salary = work.is_agreed_salary
       this.form.busyness_type_ids = work.busyness_type_ids
@@ -663,14 +689,17 @@ export default {
       this.form.nskz = work.nskz
     },
     setResumeProfile(profile) {
+      this.form.profile_id = profile.id
       this.form.soato_district = profile.soato_district
       this.form.soato_region = profile.soato_region
       this.regionModel = profile.soato_region
       this.districtModel = profile.soato_district
       this.form.wanted_work = profile.wanted_work
       this.form.hobbies = profile.hobbies
-      this.form.drivers_license = profile.drivers_license
       this.form.additional_info = profile.additional_info
+      if (profile.drivers_license) {
+        this.form.drivers_license = profile.drivers_license.split(',')
+      }
       if (this.regionModel) {
         this.changeRegion()
       }

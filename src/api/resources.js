@@ -76,6 +76,14 @@ export function get_work_seeker(params) {
   })
 }
 
+export function update_work_seeker(data) {
+  return request({
+    url: 'seeker-wanted-works/' + data.id,
+    method: 'put',
+    data
+  })
+}
+
 export function get_work_seekers(data) {
   return request({
     url: 'seeker-wanted-works',
