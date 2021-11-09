@@ -3,6 +3,7 @@ import store from './store'
 import App from './App.vue'
 import router from './router'
 import global from './mixins/global'
+import { formatPrice } from './filters/report'
 import './registerServiceWorker'
 import '@/assets/scss/main.scss'
 // directives
@@ -16,10 +17,15 @@ import installElementPlus from './plugins/element'
 
 // import './assets/css/main.css'
 const app = createApp(App)
+
 installElementPlus(app)
+app.config.globalProperties.$filters = {
+  formatPrice
+}
 app
   .use(store)
   .use(router)
   .mixin(global)
+  // .filter(formatPrice)
   // .filter('formatPrice', formatPrice)
   .mount('#app')

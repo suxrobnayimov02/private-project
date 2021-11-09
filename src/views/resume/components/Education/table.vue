@@ -7,7 +7,7 @@
             v-for="(item, index) in education"
             :key="'education-' + index"
             type="success"
-            :timestamp="item.start_year + ' - ' +( item.end_year?item.end_year:'...')"
+            :timestamp="item.start_year + ' - ' + ( item.end_year?item.end_year:'h.v.')"
             placement="top"
           >
             <div>

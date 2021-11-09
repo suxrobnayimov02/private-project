@@ -11,7 +11,7 @@
                   type="radio"
                   name="inlineRadioOptions"
                   value="option1"
-                />
+                >
                 <label for="inlineRadio1">Ish izlayotganlarga</label>
               </label>
               <label class="radio-inline">
@@ -20,14 +20,14 @@
                   type="radio"
                   name="inlineRadioOptions"
                   value="option2"
-                />
+                >
                 <label for="inlineRadio2">Ish beruvchilarga</label>
               </label>
             </li>
             <li class="nav-item">
               <a href="" class="nav-link">
                 <span>
-                  <img src="/img/image/icon_book.svg" alt="" width="23" />
+                  <img src="/img/image/icon_book.svg" alt="" width="23">
                 </span>
                 <span class="name">Qo’llanma</span>
               </a>
@@ -35,7 +35,7 @@
             <li class="nav-item no-tab">
               <a href="" class="nav-link">
                 <span>
-                  <img src="/image/phone_icon.svg" alt="" width="23" />
+                  <img src="/image/phone_icon.svg" alt="" width="23">
                 </span>
                 <span class="name">+998 (71) 200-06-00</span>
               </a>
@@ -50,7 +50,7 @@
                 aria-expanded="false"
               >
                 <span>
-                  <img src="/img/image/icon_globus.svg" alt="" width="23" />
+                  <img src="/img/image/icon_globus.svg" alt="" width="23">
                 </span>
                 <span class="name"> O’zbek </span>
               </a>
@@ -63,17 +63,24 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item no-tab">
+            <li v-if="!user.token" class="nav-item no-tab">
               <router-link :to="{ name: 'Register' }" class="nav-link">
                 <span>
-                  <img src="/img/image/admin_icon.svg" alt="" width="20" />
+                  <img src="/img/image/admin_icon.svg" alt="" width="20">
                 </span>
                 <span class="name">Kirish</span>
               </router-link>
             </li>
+            <li v-else class="nav-item no-tab">
+              <router-link :to="{ name: 'ResumeStatistics', params: { id: 5 } }" class="nav-link">
+                <span>
+                  <img src="/img/image/admin_icon.svg" alt="" width="20">
+                </span>
+              </router-link>
+            </li>
             <li class="nav-item">
               <button class="btn glasses-btn">
-                <img src="/img/image/icon_glasses.svg" alt="" width="24" />
+                <img src="/img/image/icon_glasses.svg" alt="" width="24">
               </button>
             </li>
             <!-- <li class="nav-item no-tab">
@@ -98,6 +105,6 @@
 
 <script>
 export default {
-  name: "Header",
-};
+  name: 'Header'
+}
 </script>

@@ -47,9 +47,16 @@ export function delete_seeker_skills(id) {
 }
 export function update_seeker_profiles(data) {
   return request({
-    url: 'seeker-profiles/' + data.user_id,
+    url: 'seeker-profiles/' + data.id,
     method: 'put',
     data: data
+  })
+}
+export function get_seeker_profile(params) {
+  return request({
+    url: 'seeker-profiles/' + params.user_id,
+    method: 'get',
+    params
   })
 }
 
@@ -58,5 +65,35 @@ export function store_work_seeker(data) {
     url: 'seeker-wanted-works',
     method: 'post',
     data
+  })
+}
+
+export function get_work_seeker(params) {
+  return request({
+    url: 'seeker-wanted-works/' + params.user_id,
+    method: 'get',
+    params
+  })
+}
+
+export function update_work_seeker(data) {
+  return request({
+    url: 'seeker-wanted-works/' + data.id,
+    method: 'put',
+    data
+  })
+}
+
+export function get_work_seekers(data) {
+  return request({
+    url: 'seeker-wanted-works',
+    method: 'get',
+    data
+  })
+}
+export function filterableNskz() {
+  return request({
+    url: 'resources/filterable-nskz',
+    method: 'get'
   })
 }

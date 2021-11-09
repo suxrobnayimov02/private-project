@@ -14,3 +14,38 @@ $--font-path: '~element-plus/lib/theme-chalk/fonts';
 .el-submenu__title i {
     color: white !important;
 }
+.el-pagination .number {
+    font-size: 18px !important;
+    font-family: "Segoe UI"!important;
+    color: #337ab7!important;
+    line-height: 36px;
+    //width: 40px;
+    height: 36px;
+    border-radius: 18px;
+}
+.el-pagination .number.active {
+    color: white!important;
+    background: #3C3C3C;
+}
+.el-pagination .btn-prev i, .el-pagination .btn-next i {
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.el-pagination .el-pager .more {
+    line-height: 50px;
+    height: 36px;
+    border-radius: 18px;
+    color: #337ab7;
+}
+.el-radio__inner {
+    height: 16px!important;
+    width: 16px!important;
+}
+.el-radio__label {
+    font-size: 16px!important;
+}
+.filter .el-radio {
+    height: 24px;
+}

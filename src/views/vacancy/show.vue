@@ -5,18 +5,16 @@
         <div class="col-lg-8 row-right-divider">
           <div class="v-info">
             <div class="v-card position-relative">
-              <div class="name">Sug’urta kompaniyasining Sirdaryo viloyati
-                filiali direktori
+              <div class="name">{{ vacancy.position_name }}</div>
+              <div v-if="vacancy.position_salary" class="salary">
+                Oyiga <b> {{ $filters.formatPrice(vacancy.position_salary) }}</b> so’mdan
               </div>
-              <div class="salary">
-                Oyiga
-                <b> 8 500 000</b> so’mdan
-              </div>
-              <div class="organization">Asko-Vostok MChJ QK ST</div>
-              <div class="address">Toshkent shaxri, Yakkasaroy tumani</div>
+              <div v-else style="margin-bottom: 16px">Maosh ko'rsatilmagan</div>
+              <div class="organization">{{ vacancy.company_name }}</div>
+              <div class="address">{{ vacancy.region ? vacancy.region.name_uz_ln : '-' }}, {{ vacancy.district ? vacancy.district.name_uz_ln : '-' }}</div>
               <div
                 class="organization__logo"
-                style="background-image: url('/img/image/asko-vostok.svg') ;"
+                :style="`background-image: url('${defaultLogo}');`"
               />
               <div class="watcher">
                 Ayni damda, ushbu vakansiyani <span><b>18</b> ta odam </span>
@@ -53,22 +51,15 @@
               <div class="__item">
                 <div class="title">Korxona haqida</div>
                 <div class="content">
-                  ASKO-VOSTOK sug’urta tashkiloti butun Respublika bo’yicha sug’urta agentlarini
-                  ishga taklif qiladi.
-                  Ish tajribasi ahamiyatsiz, eng asosiysi ishga ma’suliyat bilan yondashish.
-                  Mijozlar bilan aloqa o’rnatish, tushuntirish ishlarini oborish…
+                  ASKO-VOSTOK sug’urta tashkiloti butun Respublika bo’yicha sug’urta agentlarini ishga taklif qiladi.
+                  Ish tajribasi ahamiyatsiz, eng asosiysi ishga ma’suliyat bilan yondashish. Mijozlar bilan aloqa o’rnatish, tushuntirish ishlarini oborish…
                 </div>
               </div>
               <div class="__item">
                 <div class="title">Majburiyatlar</div>
                 <div class="content">
                   <ul>
-                    <li>Ish tajribasi ahamiyatsiz, eng asosiysi ishga ma’suliyat bilan
-                      yondashish;</li>
-                    <li>Mijozlar bilan aloqa o’rnatish, tushuntirish ishlarini oborish;</li>
-                    <li>Tajribasi ahamiyatsiz, eng asosiysi ishga ma’suliyat bilan yondashish.
-                    </li>
-
+                    <li>{{ vacancy.position_duties }}</li>
                   </ul>
                 </div>
               </div>
@@ -76,26 +67,15 @@
                 <div class="title">Talablar</div>
                 <div class="content">
                   <ul>
-                    <li>Ishga ma’suliyat bilan yondashish;
-                    </li>
-                    <li>Tushuntirish ishlarini oborish;
-                    </li>
-                    <li>Ma’suliyat bilan yondashish.
-                    </li>
-
+                    <li>{{ vacancy.position_requirements }}</li>
                   </ul>
                 </div>
               </div>
               <div class="__item">
-                <div class="title">Ish shartlari</div>
+                <div class="title">Ish sharoitlari</div>
                 <div class="content">
                   <ul>
-                    <li>Ish tajribasi ahamiyatsiz, eng asosiysi ishga ma’suliyat; </li>
-                    <li>Mijozlar tushuntirish ishlarini oborish;</li>
-                    <li>Tajribasi ahamiyatsiz, eng asosiysi ishga ma’suliyat bilan yondashish.
-                    </li>
-                    <li>Tushuntirish ishlarini oborish;</li>
-                    <li>Eng asosiysi ishga ma’suliyat bilan yondashish. </li>
+                    <li>{{ vacancy.position_conditions }}</li>
                   </ul>
                 </div>
               </div>
@@ -107,7 +87,7 @@
                 </div>
                 <div class="date_view">
                   <div class="date">
-                    16 Sen 2021
+                    {{ toLocaleDateString(vacancy.date_start) }}
                   </div>
                   <div class="view-count">
                     2,5К
@@ -151,228 +131,29 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4" style="margin-top: 20px!important;">
           <div class="flex-order">
-            <div class="card-links ">
-              <a class="item " href="#" style="background-color: #CCE6E3;">
-                <div class="icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 64 65"
-                  >
-                    <text
-                      id="Fabric_Icons"
-                      data-name="Fabric Icons"
-                      transform="translate(0 64)"
-                      fill="#018272"
-                      font-size="64"
-                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                      letter-spacing="1em"
-                    >
-                      <tspan x="0" y="0"></tspan>
-                    </text>
-                  </svg>
-                </div>
-                <span class="text">Rezyume joylashtirish </span>
-              </a>
-              <a class="item " href="#" style="background-color: #FCE3D9;">
-                <div class="icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 64 65"
-                  >
-                    <text
-                      id="Fabric_Icons"
-                      data-name="Fabric Icons"
-                      transform="translate(0 64)"
-                      fill="#ea4300"
-                      font-size="64"
-                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                      letter-spacing="1em"
-                    >
-                      <tspan x="0" y="0"></tspan>
-                    </text>
-                  </svg>
-
-                </div>
-                <span class="text">Rezyume joylashtirish </span>
-              </a>
-              <a class="item " href="#" style="background-color: #F5DFF2;">
-                <div class="icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 64 65"
-                  >
-                    <text
-                      id="Fabric_Icons"
-                      data-name="Fabric Icons"
-                      transform="translate(0 64)"
-                      fill="#b4059e"
-                      font-size="64"
-                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                      letter-spacing="1em"
-                    >
-                      <tspan x="0" y="0"></tspan>
-                    </text>
-                  </svg>
-
-                </div>
-                <span class="text">Rezyume joylashtirish </span>
-              </a>
-              <a class="item " href="#" style="background-color: #D9DCEE;">
-                <div class="icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 64 65"
-                  >
-                    <text
-                      id="Fabric_Icons"
-                      data-name="Fabric Icons"
-                      transform="translate(0 64)"
-                      fill="#03188f"
-                      font-size="64"
-                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                      letter-spacing="1em"
-                    >
-                      <tspan x="0" y="0"></tspan>
-                    </text>
-                  </svg>
-
-                </div>
-                <span class="text">Rezyume joylashtirish </span>
-              </a>
-
-              <a class="item " href="#" style="background-color: #DBEBDB;">
-                <div class="icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 64 65"
-                  >
-                    <text
-                      id="Fabric_Icons"
-                      data-name="Fabric Icons"
-                      transform="translate(0 64)"
-                      fill="#107c10"
-                      font-size="64"
-                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                      letter-spacing="1em"
-                    >
-                      <tspan x="0" y="0"></tspan>
-                    </text>
-                  </svg>
-
-                </div>
-                <span class="text">Rezyume joylashtirish </span>
-              </a>
-              <a class="item " href="#" style="background-color: #DAF5FD;">
-                <div class="icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 64 65"
-                  >
-                    <text
-                      id="Fabric_Icons"
-                      data-name="Fabric Icons"
-                      transform="translate(0 64)"
-                      fill="#0abcf2"
-                      font-size="64"
-                      font-family="FabricExternalMDL2Assets, Fabric External MDL2 Assets"
-                      letter-spacing="1em"
-                    >
-                      <tspan x="0" y="0"></tspan>
-                    </text>
-                  </svg>
-
-                </div>
-                <span class="text">Rezyume joylashtirish </span>
-              </a>
-            </div>
             <div class="similar_v ">
-              <div class="title">O’hshash vakansiyalar</div>
-
+              <div class="title">O’xshash vakansiyalar</div>
               <div class="row">
-                <div class="col-lg-12 col-md-6 col-sm-6">
-                  <a href="" class="card vacancy__info">
-                    <div class="name">
-                      Aloqa vazirligi Bosh vazir o’rinbosari
-                    </div>
-                    <div class="salary"><b>5 500 000</b> so’mdan</div>
-                    <div class="organization checked">60-Umumta’lim maktabi</div>
-                    <div class="address">Andijon viloyati, Jalolquduq tumani</div>
+                <div v-for="(item, i) in list.data" :key="i" class="col-lg-12 col-md-6 col-sm-6">
+                  <router-link :to="{ name: 'VacancyShow', params: { id: item.id } }" class="card vacancy__info">
+                    <div class="name">{{ item.position_name }}</div>
+                    <div v-if="item.position_salary" class="salary"><b>{{ $filters.formatPrice(item.position_salary) }}</b> so’mdan</div>
+                    <div v-else class="salary">Maosh ko'rsatilmagan</div>
+                    <div class="organization checked">{{ fixCompanyName(item.company_name) }}</div>
+                    <div class="address">{{ item.region ? item.region.name_uz_ln : '-' }}, {{ item.district ? item.district.name_uz_ln : '-' }}</div>
                     <div class="date_view">
-                      <div class="date">
-                        16 Sen 2021
-                      </div>
-                      <div class="view-count">
-                        2,5К
-                      </div>
+                      <div class="date">{{ toLocaleDateString(item.date_start) }}</div>
+                      <div class="view-count">2,5К</div>
                     </div>
-                    <div
-                      class="organization__logo"
-                      style="background-image: url('/img/image/mitc.png') ;"
-                    />
-                  </a>
-                </div>
-                <div class="col-lg-12 col-md-6 col-sm-6">
-                  <a href="" class="card vacancy__info">
-                    <div class="name">
-                      Aloqa vazirligi Bosh vazir o’rinbosari
-                    </div>
-                    <div class="salary"><b>5 500 000</b> so’mdan</div>
-                    <div class="organization checked">60-Umumta’lim maktabi</div>
-                    <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                    <div class="date_view">
-                      <div class="date">
-                        16 Sen 2021
-                      </div>
-                      <div class="view-count">
-                        2,5К
-                      </div>
-                    </div>
-                    <div
-                      class="organization__logo"
-                      style="background-image: url('/img/image/mitc.png') ;"
-                    />
-                  </a>
-                </div>
-                <div class="col-lg-12 col-md-6 col-sm-6">
-                  <a href="" class="card vacancy__info">
-                    <div class="name">
-                      Aloqa vazirligi Bosh vazir o’rinbosari
-                    </div>
-                    <div class="salary"><b>5 500 000</b> so’mdan</div>
-                    <div class="organization checked">60-Umumta’lim maktabi</div>
-                    <div class="address">Andijon viloyati, Jalolquduq tumani</div>
-                    <div class="date_view">
-                      <div class="date">
-                        16 Sen 2021
-                      </div>
-                      <div class="view-count">
-                        2,5К
-                      </div>
-                    </div>
-                    <div
-                      class="organization__logo"
-                      style="background-image: url('/img/image/mitc.png') ;"
-                    />
-                  </a>
+                    <div class="organization__logo" :style="`background-image: url('${defaultLogo}')`" />
+                  </router-link>
                 </div>
               </div>
 
               <div class="text-center">
-                <a href="" class="more_link"> <b>208</b> ta o’hshash vakansiyalar</a>
+                <a href="" class="more_link"> <b>{{ $filters.formatPrice(list.total) }}</b> ta O’xshash vakansiyalar</a>
               </div>
             </div>
           </div>
@@ -383,8 +164,29 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+import url from '../../utils/default-logo'
 export default {
-  name: 'Show'
+  name: 'Show',
+  data() {
+    return {
+      defaultLogo: url
+    }
+  },
+  computed: {
+    ...mapGetters({ vacancy: 'vacancy/GET_VACANCY', list: 'vacancy/GET_VACANCIES' })
+  },
+  created() {
+    this.show(this.$route.params.id).then(res => {
+      this.index({ position_kodp_pn: this.vacancy.position_kodp_pn, position_kodp_type: this.vacancy.position_kodp_type, per_page: 7 })
+    })
+  },
+  methods: {
+    ...mapActions({ show: 'vacancy/show', index: 'vacancy/index' }),
+    fixCompanyName(name) {
+      return name.length > 35 ? name.slice(0, 35) + '...' : name
+    }
+  }
 }
 </script>
 

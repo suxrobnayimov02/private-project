@@ -1,6 +1,35 @@
 <template>
   <div>
-    <table
+    <el-timeline v-if="list && list.length">
+      <el-timeline-item
+        v-for="(item, indexx) in list"
+        :key="'education-' + indexx"
+        type="success"
+        :timestamp="toLocaleDateString(item.start_date) + ' - ' + ( item.end_date ? toLocaleDateString(item.end_date) : 'h.v. ')"
+        placement="top"
+      >
+        <div>
+          <el-row>
+            <el-col :span="22">
+              <el-card>
+                <b class="text-success">{{ item.position['name_uz-ln'] }}</b> <br>
+                <b>{{ item.company_name }}</b><br>
+                <p v-if="item.position_description">{{ $t('Vazifalar') }}: <b> {{ item.position_description }}</b></p>              
+                <p>{{ item.region.name_uz_ln + ', ' + item.district.name_uz_ln }}</p>
+              </el-card>
+            </el-col>
+            <el-col :span="2">
+              <el-button class="float-right mr-2 mtb" type="primary" round plain size="mini" icon="el-icon-edit" @click="editItem(item.id)" />
+              <el-button class="float-left mtb" type="danger" round plain size="mini" icon="el-icon-delete" @click="deleteItem(item.id)" />
+            </el-col>
+          </el-row>
+        </div>
+      </el-timeline-item>
+    </el-timeline>
+    <template v-else>
+      <p class="text-center"> {{ $t('Нет информации') }} </p>
+    </template>
+    <!-- <table
       class="table table-bordered"
       style="width: 100%"
     >
@@ -65,7 +94,7 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
   </div>
 </template>
 

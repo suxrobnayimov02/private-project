@@ -7,6 +7,7 @@ export const mutations = {
     state.businessTrips = data.businessTrips
     state.busynessTypes = data.busynessTypes
     state.workGraphics = data.workGraphics
+    state.salaryCurrencies = data.salaryCurrencies
   },
   SET_POSITIONS: (state, positions) => {
     state.positions = positions
@@ -25,5 +26,17 @@ export const mutations = {
       state.user_languages = langs
       state.user_computer_skills = comp_skills
     }
+  },
+  SET_WORK_SEEKER: (state, work_seeker) => {
+    state.work_seeker = work_seeker
+  },
+  SET_WORK_SEEKERS: (state, work_seekers) => {
+    state.work_seekers = work_seekers
+  },
+  SET_SEEKER_PROFILE: (state, profile) => {
+    state.seeker_profile = profile
+  },
+  SET_FILTERABLE_NSKZ: (state, data) => {
+    state.filterable_nskz = data
   }
 }

@@ -4,14 +4,14 @@ const resumeRouter = [
     path: '/resumes/handbook',
     component: () => import('@/views/resume/handbook')
   },
-  // {
-  //   name: 'ResumeCreate',
-  //   path: '/resumes/create',
-  //   component: () => import('@/views/resume/create')
-  // },
   {
     name: 'ResumeCreate',
-    path: '/resumes/create',
+    path: '/resume/create',
+    component: () => import('@/views/resume/create')
+  },
+  {
+    name: 'ResumeUpdate',
+    path: '/resume/:id/update',
     component: () => import('@/views/resume/create')
   },
   {
@@ -20,8 +20,13 @@ const resumeRouter = [
     component: () => import('@/views/resume/components/Education/create')
   },
   {
+    name: 'ResumeStatistics',
+    path: '/resume/:id/statistics',
+    component: () => import('@/views/resume/statistics')
+  },
+  {
     name: 'ResumeShow',
-    path: '/resumes/:id',
+    path: '/resume/:id',
     component: () => import('@/views/resume/show')
   }
 ]

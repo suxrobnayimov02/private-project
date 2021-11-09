@@ -41,3 +41,9 @@
 .el-input {
   width: 100%!important;
 }
+.carousel__prev {
+  background-color: #0078D4!important;
+}
+.carousel__next {
+  background-color: #0078D4!important;
+}

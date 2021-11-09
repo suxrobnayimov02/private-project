@@ -1,7 +1,7 @@
 <template>
   <div v-if="is_auth && user" class="contentBlock clearfix container">
     <div class="grid-content bg-purple-dark">
-      <h2 style="text-align: center; font-weight: bold">{{ $t('Резуме') }}</h2>
+      <h2 style="text-align: center; font-weight: bold">{{ $t('Rezyume') }}</h2>
     </div>
     <hr>
     <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
@@ -16,7 +16,7 @@
           <img
             src="@/assets/images/businessman.svg"
             alt="image"
-            width="150px"
+            width="150"
           ><br>
           <!-- <div class="mt-2 clearfix">
             <el-upload
@@ -48,14 +48,14 @@
       </el-col>
       <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" class="mb-3">
         <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Возраст') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Yoshi') }}:</b></el-col>
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.age }}</b></el-col>
         </el-row>
         <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Пол') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Jinsi') }}:</b></el-col>
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
-            <span v-if="user.data.gender"><b>{{ $t('Мужчина') }}</b></span>
-            <span v-else><b>{{ $t('Женщина') }}</b></span>
+            <span v-if="user.data.gender"><b>{{ $t('Erkak') }}</b></span>
+            <span v-else><b>{{ $t('Ayol') }}</b></span>
           </el-col>
         </el-row>
         <el-row class="mt-3">
@@ -71,7 +71,7 @@
     <br>
     <el-divider content-position="left">
       <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
-      {{ $t('Дополнительная информация') }}
+      {{ $t('Yashash manzili') }}
     </el-divider>
     <el-form
       ref="form"
@@ -82,180 +82,206 @@
       label-position="top"
     >
       <el-row>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <div class="formControl">
-            <el-form-item :label="$t('Регион') + ':'" prop="soato_region">
-              <div class="field withBackground">
-                <select v-model="regionModel" @change="changeRegion()">
-                  <option value="">{{ $t('Выберите') }}</option>
-                  <option v-for="(region, index) of regions" :key="index" :value="region.soato">
-                    {{ locale == 'uzcl' ? region.name_cyrl : locale == 'uzln' ? region.name_uz : region.name_ru }}
-                  </option>
-                </select>
+        <el-col :span="16">
+          <el-row>
+            <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+              <div class="formControl">
+                <el-form-item :label="$t('Hudud') + ':'" prop="soato_region">
+                  <div class="field withBackground">
+                    <select v-model="regionModel" @change="changeRegion()">
+                      <option value="">{{ $t('Выберите') }}</option>
+                      <option v-for="(region, index) of regions" :key="index" :value="region.soato">
+                        {{ locale == 'uzcl' ? region.name_uz_ln : locale == 'uzln' ? region.name_uz_ln : region.name_uz_ln }}
+                      </option>
+                    </select>
+                  </div>
+                </el-form-item>
               </div>
-            </el-form-item>
-          </div>
-        </el-col>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <div class="formControl">
-            <el-form-item :label="$t('Районы') + ':'" prop="soato_district">
-              <div class="field withBackground">
-                <select v-model="districtModel" @change="changeDistrict()">
-                  <option value="">{{ $t('Выберите') }}</option>
-                  <template v-if="districts && districts.length">
-                    <option v-for="(district, index) of districts" :key="index" :value="district.soato">
-                      {{ translateDistrict(district) }}
-                    </option>
-                  </template>
-                </select>
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+              <div class="formControl">
+                <el-form-item :label="$t('Tuman') + ':'" prop="soato_district">
+                  <div class="field withBackground">
+                    <select v-model="districtModel" @change="changeDistrict()">
+                      <option value="">{{ $t('Выберите') }}</option>
+                      <template v-if="districts && districts.length">
+                        <option v-for="(district, index) of districts" :key="index" :value="district.soato">
+                          {{ district.name_uz_ln }}
+                        </option>
+                      </template>
+                    </select>
+                  </div>
+                </el-form-item>
               </div>
-            </el-form-item>
-          </div>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-          <el-form-item :label="$t('Водительское права') + ':'">
-            <el-select v-model="form.drivers_license" placeholder="___" multiple>
-              <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.id" />
-            </el-select>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <!--  -->
-      <el-divider content-position="left">
-        <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
-        {{ $t('Ishga doir ma\'lumotlar') }}
-      </el-divider>
-      <el-row>
-        <el-col :span="24">
-          <el-form-item :label="$t('Желаемая должность')" prop="kodp_key">
-            <el-select
-              v-model="form.kodp_key"
-              class="w-100"
-              filterable
-              remote
-              reserve-keyword
-              :placeholder="$t('Лавозим номини киритинг')"
-              :remote-method="onSearch"
-              :loading="loading"
-            >
-              <el-option
-                v-for="item in positions"
-                :key="item.id"
-                :label="(locale == 'ru') ? item.name_uz : (locale == 'uzln') ? item.name_uz:item.name_uz"
-                :value="item.key"
-              />
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-          <el-form-item :label="$t('Зарплата')">
-            <input v-model="form.salary" type="number" class="text-right text-right  el-input__inner">
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <!-- График работы -->
-      <div class="demo-collapse">
-        <el-collapse v-model="activeNames">
-          <el-collapse-item :title="$t('Ish grafigi')" name="1">
-            <template v-if="busynessTypes && busynessTypes.length !== 0">
-              <div v-for="(type, index) in busynessTypes" :key="'schedule' +index">
-                <el-checkbox v-model="form.busyness_type_ids" :label="type.id">
-                  {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
-                </el-checkbox>
-              </div>
-            </template>
-            <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
-          </el-collapse-item>
-          <el-collapse-item :title="$t('Bandlik turi')" name="2">
-            <template v-if="workGraphics && workGraphics.length !== 0">
-              <div v-for="type in workGraphics" :key="'emp' + type.id">
-                <el-checkbox v-model="form.work_graphic_ids" :label="type.id">
-                  {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
-                </el-checkbox>
-              </div>
-            </template>
-            <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
-          </el-collapse-item>
-          <el-collapse-item :title="$t('Ko\'chish')" name="3">
-            <template v-if="businessTrips && businessTrips.length !== 0">
-              <div v-for="type in businessTrips" :key="'trip' + type.id">
-                <el-checkbox v-model="form.business_trip_ids" :label="type.id">
-                  {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
-                </el-checkbox>
-              </div>
-            </template>
-            <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
-          </el-collapse-item>
-        </el-collapse>
-      </div>
-      <!-- ABOUT ME -->
-      <el-row>
-        <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-          <el-form-item :label="$t('О себе') + ':'">
-            <el-input v-model="form.additional_info" type="textarea" />
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-          <el-form-item :label="$t('Хобби') + ':'">
-            <el-input v-model="form.hobbies" type="textarea" />
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <!-- LANGUAGES -->
-      <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
-        <el-col>
-          <languages :profile="user.resume" :locale="locale" />
-        </el-col>
-      </el-row>
-      <!-- Образование/ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ -->
-      <el-row>
-        <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
-          {{ $t('Ta\'lim ma\'lumotlari') }}</el-divider>
-        <div>
-          <el-row v-if="educationDialog">
-            <EducationCreate :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" @close="educationDialog = false" @save="setEducation" />
+            </el-col>
           </el-row>
-          <el-row v-if="education && education.length">
-            <EducationTable :education="education" />
+          <!-- Position/salary -->
+          <el-divider content-position="left">
+            <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
+            {{ $t('Ishga doir ma\'lumotlar') }}
+          </el-divider>
+          <el-row>
+            <el-col :span="24">
+              <el-form-item :label="$t('Istayotgan lavozimingiz')" prop="kodp_key">
+                <el-select
+                  v-model="form.kodp_key"
+                  class="w-100"
+                  filterable
+                  remote
+                  reserve-keyword
+                  :placeholder="$t('Lavozim nomini kiriting')"
+                  :remote-method="onSearch"
+                  :loading="loading"
+                >
+                  <el-option
+                    v-for="item in positions"
+                    :key="item.id"
+                    :label="item['name_uz-ln']"
+                    :value="item.key"
+                  />
+                </el-select>
+              </el-form-item>
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
+              <el-form-item :label="$t('Ish haqi')">
+                <input v-model="seeder_salary" v-money="money" class="text-right text-right  el-input__inner">
+              </el-form-item>
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="12" :lg="3" :xl="3">
+              <el-form-item label=" ‎">
+                <el-select v-model="form.salary_currency_id" placeholder="UZS">
+                  <el-option v-for="item in salaryCurrencies" :key="item.id" :label="item.name" :value="item.id" />
+                </el-select>
+              </el-form-item>
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+              <el-form-item label="Kelishsa bo'ladimi?‎">
+                <el-radio v-model="form.is_agreed_salary" :label="true">{{ $t('Ha') }}</el-radio>
+                <el-radio v-model="form.is_agreed_salary" :label="false">{{ $t('Yo\'q') }}</el-radio>
+              </el-form-item>
+            </el-col>
           </el-row>
-          <el-row v-else>
-            <p class="text-center">{{ $t('Нет информации') }}</p>
+          <!-- График работы -->
+          <el-row>
+            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+              <div class="demo-collapse">
+                <el-collapse v-model="activeNames">
+                  <el-collapse-item :title="$t('Ish grafigi')" name="1">
+                    <template v-if="busynessTypes && busynessTypes.length !== 0">
+                      <div v-for="(type, index) in busynessTypes" :key="'schedule' +index">
+                        <el-checkbox v-model="form.busyness_type_ids" :label="type.id">
+                          {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                        </el-checkbox>
+                      </div>
+                    </template>
+                    <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
+                  </el-collapse-item>
+                  <el-collapse-item :title="$t('Bandlik turi')" name="2">
+                    <template v-if="workGraphics && workGraphics.length !== 0">
+                      <div v-for="type in workGraphics" :key="'emp' + type.id">
+                        <el-checkbox v-model="form.work_graphic_ids" :label="type.id">
+                          {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                        </el-checkbox>
+                      </div>
+                    </template>
+                    <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
+                  </el-collapse-item>
+                  <el-collapse-item :title="$t('Ko\'chish')" name="3">
+                    <template v-if="businessTrips && businessTrips.length !== 0">
+                      <div v-for="type in businessTrips" :key="'trip' + type.id">
+                        <el-checkbox v-model="form.business_trip_ids" :label="type.id">
+                          {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                        </el-checkbox>
+                      </div>
+                    </template>
+                    <span v-else class="label label-red mr-2">{{ $t('Нет') }}</span>
+                  </el-collapse-item>
+                </el-collapse>
+              </div>
+            </el-col>
+          </el-row>
+          <!-- ABOUT ME -->
+          <el-row>
+            <el-col :xs="24" :sm="24" :lg="12" :xl="12">
+              <el-form-item :label="$t('O\'zim haqimda') + ':'">
+                <el-input v-model="form.additional_info" type="textarea" />
+              </el-form-item>
+            </el-col>
           </el-row>
           <el-row>
-            <el-button
-              class="float-right mt-5"
-              type="primary"
-              size="mini"
-              icon="el-icon-plus"
-              @click="addEducation"
-            >Ta'lim ma'lumoti qo'shish</el-button>
+            <el-col :xs="24" :sm="24" :lg="12" :xl="12">
+              <el-form-item :label="$t('Hobbi') + ':'">
+                <el-input v-model="form.hobbies" type="textarea" />
+              </el-form-item>
+            </el-col>
           </el-row>
-        </div>
-        <br>
-        <br>
-        <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ') }} </el-divider>
-        <el-row class="mt-5">
-          <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
-          <experience-create ref="experienceCreate" @successSaved="$refs.experienceList.index()" />
-        </el-row>
+          <el-row>
+            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+              <el-form-item :label="$t('Haydovchilik guvohnomasi') + ':'">
+                <el-select v-model="form.drivers_license" :placeholder="$t('Guvohnoma mavjud emas')" class="w100" multiple>
+                  <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.id" />
+                </el-select>
+                <!-- <el-checkbox-group v-for="(item, index) in driversLicenses" :key="'license' +index" v-model="form.drivers_license">
+                  <el-checkbox :label="item.id">{{ item.name }}</el-checkbox>
+                </el-checkbox-group> -->
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <!-- LANGUAGES -->
+          <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
+            <el-col>
+              <languages :profile="user.resume" :locale="locale" />
+            </el-col>
+          </el-row>
+          <!-- Образование/ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ -->
+          <el-row>
+            <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
+              {{ $t('Ta\'lim ma\'lumotlari') }}</el-divider>
+            <div>
+              <el-row v-if="educationDialog">
+                <EducationCreate :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" @close="educationDialog = false" @save="setEducation" />
+              </el-row>
+              <el-row v-if="education && education.length">
+                <EducationTable :education="education" />
+              </el-row>
+              <el-row v-else>
+                <p class="text-center">{{ $t('Нет информации') }}</p>
+              </el-row>
+              <el-row>
+                <el-button
+                  class="float-right mt-5"
+                  type="primary"
+                  size="mini"
+                  icon="el-icon-plus"
+                  @click="addEducation"
+                >Ta'lim ma'lumoti qo'shish</el-button>
+              </el-row>
+            </div>
+            <br>
+            <br>
+            <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('Mehnat faoliyati') }} </el-divider>
+            <el-row class="mt-5">
+              <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
+              <experience-create ref="experienceCreate" @successSaved="$refs.experienceList.index()" />
+            </el-row>
+          </el-row>
+          <hr>
+          <el-form-item>
+            <el-button type="success" class="float-right" @click="save">{{ $t('Saqlash') }}</el-button>
+          </el-form-item>
+
+        </el-col>
+        <el-col :span="8" />
       </el-row>
-      <hr>
-      <el-form-item>
-        <el-button type="success" class="float-right" @click="save">{{ $t('Saqlash') }}</el-button>
-      </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import EducationTable from './components/resume/education'
+import EducationTable from './components/Education/table.vue'
 import EducationCreate from './components/Education/create.vue'
-import { translater } from '@/assets/translate/translat_service'
+import { translater } from '../../utils/translater'
 import ExperienceIndex from './components/experience/index'
 import ExperienceCreate from './components/experience/create'
 import languages from './components/languages'
@@ -271,10 +297,11 @@ export default {
     return {
       mask: '##',
       loaded: false,
+      seeder_salary: null,
       form: {
         user_id: null,
         pin: null,
-        drivers_license: null,
+        drivers_license: [],
         want_salary: null,
         about: null,
         additional_info: null,
@@ -287,10 +314,12 @@ export default {
         soato_region: null,
         soato_district: null,
         // form work
+        work_id: null,
+        profile_id: null,
         kodp_key: null,
         salary: null,
-        salary_currency_id: 2,
-        is_agreed_salary: true,
+        salary_currency_id: 1,
+        is_agreed_salary: false,
         busyness_type_ids: [],
         work_graphic_ids: [],
         business_trip_ids: [],
@@ -299,7 +328,7 @@ export default {
       money: {
         decimal: '.',
         thousands: ',',
-        suffix: ' so\'m',
+        suffix: '',
         precision: 0,
         masked: false
       },
@@ -310,7 +339,7 @@ export default {
       edu_degrees: [],
       photoUrl: null,
       fileList: [],
-      activeNames: [],
+      activeNames: ['1', '2', '3'],
       scheduleTypes: [],
       employmentTypes: [],
       rules: {
@@ -318,9 +347,6 @@ export default {
           { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
         ],
         soato_district: [
-          { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
-        ],
-        drivers_license: [
           { required: true, message: this.$t('Заполните это поле'), trigger: 'change' }
         ],
         kodp_key: [
@@ -342,19 +368,20 @@ export default {
     ...mapGetters({
       locale: 'app/LOCALE',
       is_auth: 'auth/GET_IS_AUTH',
-      resume: 'resume/RESUME',
       regions: 'region/GET_REGIONS',
+      districts: 'region/GET_DISTRICTS',
+      resume: 'resources/GET_WORK_SEEKER',
       positions: 'resources/GET_POSITIONS',
       education: 'education/GET_EDUCATIONS',
-
-      driversLicenses: 'resources/GET_DRIVERS_LICENSES',
-      skillCategories: 'resources/GET_SKILL_CATEGORIES',
+      profile: 'resources/GET_SEEKER_PROFILE',
       skillLevels: 'resources/GET_SKILL_LEVELS',
-      educationLevels: 'resources/GET_EDUCATION_LEVELS',
+      workGraphics: 'resources/GET_WORK_GRAPHICS',
       businessTrips: 'resources/GET_BUSINESS_TRIPS',
       busynessTypes: 'resources/GET_BUSYNESS_TYPES',
-      workGraphics: 'resources/GET_WORK_GRAPHICS',
-      districts: 'region/GET_DISTRICTS'
+      driversLicenses: 'resources/GET_DRIVERS_LICENSES',
+      skillCategories: 'resources/GET_SKILL_CATEGORIES',
+      educationLevels: 'resources/GET_EDUCATION_LEVELS',
+      salaryCurrencies: 'resources/GET_SALARY_CURRENCIES'
     })
 
   },
@@ -368,6 +395,11 @@ export default {
             }
           })
         }
+      }
+    },
+    seeder_salary(newVal, oldVal) {
+      if (newVal && newVal !== oldVal) {
+        this.form.salary = newVal.split(',').join('')
       }
     }
   },
@@ -383,40 +415,39 @@ export default {
       .then(() => {
         this.setEducation()
       })
-      .catch(() => {      
+      .catch(() => {
         if (!(this.user && this.user.id)) {
           this.$router.push({ name: 'Register' })
         }
       })
-    // this.getAppealsStatuses({ type: 'work_schedule' }).then(res => {
-    //   this.scheduleTypes = res.data
-    // })
-    // if (!this.employmentTypes.length) {
-    //   this.getAppealsStatuses({ type: 'employment_id' }).then(res => {
-    //     this.employmentTypes = res.data
-    //   })
-    // }
-    // this.getAppealsStatuses({ type: 'edu_degree' }).then(res => {
-    //   this.edu_degrees = res.data
-    // })
+    if (this.$route.params.id) {
+      if (!(this.resume && this.resume.position)) {
+        this.fetchResume({ user_id: this.user.id, search_by: 'user_id' }).then(res => {
+          if (res.success) {
+            this.setResumeWork(res.data)
+          }
+        })
+      }
+      this.fetchSeekerProfile({ user_id: this.user.id, search_by: 'user_id' }).then(res => {
+        if (res.success) {
+          this.setResumeProfile(res.data)
+        }
+      })
+    }
   },
   methods: {
     ...mapActions({
+      getInfo: 'auth/getInfo',
+      fetchEdus: 'education/index',
       fetchRegions: 'region/regions',
       fetchResources: 'resources/index',
-      fetchPositions: 'resources/positions',
-      fetchEdus: 'education/index',
-      store_work_seeker: 'resources/store_work_seeker',
-      update_seeker_profiles: 'resources/update_seeker_profiles',
-      
-      //
-      show: 'resume/show',
-      update: 'resume/update',
-      getInfo: 'auth/getInfo',
-      setForm: 'resume/setForm',
-      storeImg: 'resume/storeImg',
       fetchDistricts: 'region/districts',
-      getAppealsStatuses: 'resume/getAppealsStatuses'
+      fetchPositions: 'resources/positions',
+      fetchResume: 'resources/get_work_seeker',
+      store_work_seeker: 'resources/store_work_seeker',
+      update_work_seeker: 'resources/update_work_seeker',
+      fetchSeekerProfile: 'resources/get_seeker_profile',
+      update_seeker_profiles: 'resources/update_seeker_profiles'
     }),
     validate() {
       let validated = false
@@ -492,43 +523,64 @@ export default {
     save() {
       if (this.validate()) {
         const dataWork = {
+          nskz: this.form.nskz,
+          id: this.form.work_id,
           user_id: this.user.id,
-          kodp_key: this.form.kodp_key,
           salary: this.form.salary,
-          salary_currency_id: this.form.salary_currency_id,
+          kodp_key: this.form.kodp_key,
+          work_graphic_ids: this.form.work_graphic_ids,
           is_agreed_salary: this.form.is_agreed_salary,
           busyness_type_ids: this.form.busyness_type_ids,
-          work_graphic_ids: this.form.work_graphic_ids,
           business_trip_ids: this.form.business_trip_ids,
-          nskz: this.form.nskz
+          salary_currency_id: this.form.salary_currency_id
         }
         const dataProfile = {
           user_id: this.user.id,
-          soato_district: this.form.soato_district,
-          soato_region: this.form.soato_region,
-          wanted_work: this.form.wanted_work,
+          id: this.form.profile_id,
           hobbies: this.form.hobbies,
+          wanted_work: this.form.wanted_work,
+          soato_region: this.form.soato_region,
+          soato_district: this.form.soato_district,
           drivers_license: this.form.drivers_license,
           additional_info: this.form.additional_info
         }
-        this.store_work_seeker(dataWork)
-          .then((res) => {           
-            this.update_seeker_profiles(dataProfile)
-              .then((res) => {
-                this.$notify({
-                  title: this.$t('Успешно'),
-                  message: this.$t('Успешно сохранено'),
-                  type: 'success'
+        this.update_seeker_profiles(dataProfile)
+          .then((res) => {    
+            if (this.$route.params.id) {
+              this.update_work_seeker(dataWork)
+                .then((res) => {
+                  this.$notify({
+                    title: this.$t('Успешно'),
+                    message: this.$t('Успешно сохранено'),
+                    type: 'success'
+                  })
+                  this.$router.push({ name: 'ResumeStatistics', params: { id: this.user.id }})
+                }).catch((error) => {
+                  this.$notify({
+                    title: this.$t('Ошибка'),
+                    message: this.$t('Невозможно сохранить'),
+                    type: 'error'
+                  })
+                  console.log(error)
                 })
-                this.$router.push({ name: 'Home' })
-              }).catch((error) => {
-                this.$notify({
-                  title: this.$t('Ошибка'),
-                  message: this.$t('Невозможно сохранить'),
-                  type: 'error'
+            } else {              
+              this.store_work_seeker(dataWork)
+                .then((res) => {
+                  this.$notify({
+                    title: this.$t('Успешно'),
+                    message: this.$t('Успешно сохранено'),
+                    type: 'success'
+                  })
+                  this.$router.push({ name: 'ResumeStatistics', params: { id: this.user.id }})
+                }).catch((error) => {
+                  this.$notify({
+                    title: this.$t('Ошибка'),
+                    message: this.$t('Невозможно сохранить'),
+                    type: 'error'
+                  })
+                  console.log(error)
                 })
-                console.log(error)
-              })
+            }       
           }).catch((error) => {
             this.$notify({
               title: this.$t('Ошибка'),
@@ -536,7 +588,7 @@ export default {
               type: 'error'
             })
             console.log(error)
-          })        
+          })
       } else {
         this.$notify({
           title: this.$t('Ошибка'),
@@ -549,7 +601,6 @@ export default {
       this.fileList = []
       const formData = new FormData()
       formData.append('file', file.raw)
-      formData.append('resume_id', this.user.resume.id)
       this.storeImg(formData)
         .then((res) => {
           this.photoUrl = process.env.VUE_APP_BASE_URL + res.data.photo
@@ -578,9 +629,6 @@ export default {
     beforeRemove(file, fileList) {
       return this.$confirm(`Юкланган ${file.name} файлини бекор қиласизми  ?`)
     },
-    notFile() {
-      this.$message.warning('Файл мавжуд эмас!')
-    },
     onSearch(search) {
       if (search.length >= 3) {
         this.loading = true
@@ -596,21 +644,6 @@ export default {
           }
         })
       }
-    },
-    translateFamilyStatus(family_state) {
-      let Translate = ''
-      switch (this.locale) {
-        case 'ru':
-          Translate = family_state.name_ru
-          break
-        case 'uzln':
-          Translate = family_state.name_uz
-          break
-        case 'uzcl':
-          Translate = family_state.name_cyrl
-          break
-      }
-      return Translate
     },
     destroy() {
       const formData = new FormData()
@@ -643,19 +676,36 @@ export default {
         })
         .catch(() => {})
     },
-    // studentCheck(institutions) {
-    //   institutions.forEach(institution => {
-    //     institution
-    //   })
-    //   if (condition) {
-
-    //   } else {
-
-    //   }
-    // },
+    setResumeWork(work) {
+      this.form.work_id = work.id
+      this.form.kodp_key = work.kodp_key
+      this.form.salary = work.salary
+      this.seeder_salary = work.salary
+      this.form.salary_currency_id = work.salary_currency_id
+      this.form.is_agreed_salary = work.is_agreed_salary
+      this.form.busyness_type_ids = work.busyness_type_ids
+      this.form.work_graphic_ids = work.work_graphic_ids
+      this.form.business_trip_ids = work.business_trip_ids
+      this.form.nskz = work.nskz
+    },
+    setResumeProfile(profile) {
+      this.form.profile_id = profile.id
+      this.form.soato_district = profile.soato_district
+      this.form.soato_region = profile.soato_region
+      this.regionModel = profile.soato_region
+      this.districtModel = profile.soato_district
+      this.form.wanted_work = profile.wanted_work
+      this.form.hobbies = profile.hobbies
+      this.form.additional_info = profile.additional_info
+      if (profile.drivers_license) {
+        this.form.drivers_license = profile.drivers_license.split(',')
+      }
+      if (this.regionModel) {
+        this.changeRegion()
+      }
+    },
     addEducation() {
       this.educationDialog = true
-      // this.$router.push({ name: 'EducationCreate' })
     },
     setEducation() {
       this.educationDialog = false
@@ -681,8 +731,11 @@ export default {
 }
 .el-collapse-item__header {
     border-bottom-color: transparent;
-   
+
     line-height: 14px !important;
     font-weight: bold !important;
+}
+.w100 {
+  width: 100%;
 }
 </style>

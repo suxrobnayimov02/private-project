@@ -63,7 +63,12 @@
               <el-date-picker v-model="form.start_date" type="date" :disabled-date="disableDate" format="DD.MM.YYYY" value-format="YYYY-MM-DD" class="w-100" />
             </el-form-item>
           </el-col>
-          <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+          <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+            <el-form-item label="" class="mt5">
+              <el-checkbox v-model="form.is_current_job" class="float-right">{{ $t('Hozirgi vaqtga qadar') }}</el-checkbox>
+            </el-form-item>
+          </el-col>
+          <el-col v-if="!form.is_current_job" :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <el-form-item label="Ishdan ketgan sana" prop="end_date">
               <el-date-picker v-model="form.end_date" type="date" :disabled-date="disableDateEnd" format="DD.MM.YYYY" value-format="YYYY-MM-DD" class="w-100" />
             </el-form-item>
@@ -76,11 +81,11 @@
         </el-row>
       </el-form>
       <template #footer>
-        <el-button type="primary" icon="el-icon-check" @click="save">Сақлаш</el-button>
+        <el-button type="primary" icon="el-icon-check" @click="save">Saqlash</el-button>
       </template>
     </el-dialog>
     <div>
-      <el-button type="primary" size="mini" icon="el-icon-plus" @click="dialogVisible = true">{{ $t('Ish tajribasi qo\'shish') }}</el-button>
+      <el-button type="primary" size="mini" icon="el-icon-plus" @click="addItem">{{ $t('Ish tajribasi qo\'shish') }}</el-button>
     </div>
   </div>
 </template>
@@ -127,6 +132,13 @@ export default {
       return arr
     }
   },
+  watch: {
+    'form.is_current_job'(newVal) {
+      if (newVal) {
+        this.form.end_date = null     
+      }
+    }
+  },
   methods: {
     kodp(search) {
       if (search && search.length > 2) {
@@ -156,6 +168,10 @@ export default {
     action(data) {
       if (!this.form.id) return this.store(data)
       else return this.update(data)
+    },
+    addItem() {
+      this.formClean()
+      this.dialogVisible = true
     },
     save() {
       this.form.user_id = this.user.id
@@ -199,6 +215,16 @@ export default {
       })
       this.getDistricts()
       this.kodpAction({ search: 'test', key: this.form.kodp_key })
+    },
+    formClean() {
+      this.form.is_current_job = false
+      this.form.start_date = null
+      this.form.end_date = null
+      this.form.kodp_key = null
+      this.form.company_name = null
+      this.form.soato_district = null
+      this.form.soato_region = null
+      this.form.position_description = null
     },
     ...mapActions({ kodpAction: 'resources/positions', getDistrictsAction: 'region/districts', store: 'experience/store', show: 'experience/show', update: 'experience/update' })
   }
