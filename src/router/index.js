@@ -28,6 +28,10 @@ export const routes = [
     ]
   },
   {
+    path: '/tree',
+    component: () => import('@/views/tree'),
+  },
+  {
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true
