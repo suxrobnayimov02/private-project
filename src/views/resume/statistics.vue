@@ -3,17 +3,7 @@
     <div class="container">
       <div class="block">
         <div class="row row-no-gutters">
-          <button v-if="!user.id" class="btn btn-warning">
-            Rezyume yaratish
-          </button>
-          <button v-else class="btn btn-warning" @click="goToRoute('ResumeShow', {id: user.id})">
-            Rezyumeni ko'rish
-          </button>
-          <!-- <button class="btn btn-outline-primary">
-            Tayyor shablondan foydalanish
-          </button> -->
           <div class="title">Mening rezyumeim</div>
-
           <div class="col-lg-7">
             <div class="simple-card">
               <div class="__title">
@@ -31,6 +21,17 @@
 
               <button class="btn btn-outline-primary">Qiziqish bildirishga mos vakansiyalar</button>
             </div>
+          </div>
+          <div class="col-lg-5 float-right">
+            <button v-if="!user.id" class="btn btn-warning">
+              Rezyume yaratish
+            </button>
+            <button v-else class="btn btn-warning" @click="goToRoute('ResumeShow', {id: user.id})">
+              Rezyumeni ko'rish
+            </button>
+          <!-- <button class="btn btn-outline-primary">
+            Tayyor shablondan foydalanish
+          </button> -->
           </div>
         </div>
       </div>
@@ -154,4 +155,3 @@ export default {
   }
 }
 </script>
-
