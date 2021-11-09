@@ -201,7 +201,7 @@ body {
   content: '';
   display: block;
   width: 2px;
-  height: 64px;
+  height: 40px;
   position: absolute;
   background: url("/img/image/logo_flag.png") no-repeat 0/cover;
   top: 50%;
@@ -215,7 +215,7 @@ body {
 }
 
 .header__nav .nav {
-  height: 82px;
+  height: 40px;
   vertical-align: middle;
   display: table-cell;
   vertical-align: middle;
@@ -563,11 +563,16 @@ body {
   border-radius: 0;
 }
 
+.radio-inline {
+  padding: 0px 20px;
+}
+
 .header__top .radio-inline {
-  padding-top: 14px;
-  padding-bottom: 14px;
+  /* padding-top: 14px;
+  padding-bottom: 14px; */
+  padding: 14px 0px;
   margin-right: 40px;
-  margin-left: 0;
+  margin-left: 10px;
 }
 
 .header__top .radio-inline:last-child {
@@ -640,11 +645,11 @@ body {
 .intro {
   min-height: 969px;
   background: url("/img/image/intro_bg.png") no-repeat 0/cover;
-  padding-top: 139px;
+  padding-top: 100px;
 }
 
 .intro .tab-form {
-  padding-top: 135px;
+  padding-top: 100px;
 }
 
 .intro .tab-form .nav > li.active a {
@@ -3940,7 +3945,7 @@ body {
   list-style: none;
 }
 .radio-btn {
-  margin-right: 120px;
+  margin-right: 220px;
   color: white;
   font-size: 14px;
   font-weight: 400;
@@ -4034,4 +4039,10 @@ body {
 
 .search__form .input_setting-btn svg {
   vertical-align: middle;
+}
+.radio-inline label {
+  padding: 0px 10px;
+}
+ul {
+  padding: 0;
 }
