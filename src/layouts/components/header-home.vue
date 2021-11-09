@@ -72,7 +72,7 @@
               </router-link>
             </li>
             <li v-else class="nav-item no-tab">
-              <router-link :to="{ name: 'ResumeShow', params: { id: 5 } }" class="nav-link">
+              <router-link :to="{ name: 'ResumeStatistics', params: { id: 5 } }" class="nav-link">
                 <span>
                   <img src="/img/image/admin_icon.svg" alt="" width="20">
                 </span>

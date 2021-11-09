@@ -1,154 +1,191 @@
 <template>
-  <div class="content resume-info">
-    <div class="container">
-      <div class="block">
-        <div class="row row-no-gutters">
-          <button class="btn btn-warning">
-            Rezyume yaratish
-          </button>
-          <!-- <button class="btn btn-outline-primary">
-            Tayyor shablondan foydalanish
-          </button> -->
-          <div class="title">Mening rezyumeim</div>
-
-          <div class="col-lg-7">
-            <div class="simple-card">
-              <div class="__title">
-                Yana 9 martta «Qiziqish bildirish»
-                imkoniyatingiz bor
-              </div>
-              <div class="__desc">
-                O’zingizga yoqgan vakansiyalarga qiziqish bildiring,
-                statistika bo’yicha, 10 ta qiziqish bildirilgan
-                vakansiyalardan o’rtacha 1 dona ishga taklif tushadi
-              </div>
-              <div class="interest">
-                <b>1</b>/10
-              </div>
-
-              <button class="btn btn-outline-primary">Qiziqish bildirishga mos vakansiyalar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div v-if="resume && resume.position" class="block">
-        <div class="job-title">
-          {{ resume.position['name_uz-ln'] }}
-        </div>
-        <div class="date_view">
-          <div class="date">
-            16 Sen 2021
-          </div>
-          <div class="view-count">
-            2,5К
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="outline-card">
-              <div class="__title increase"><b>27</b> <span>+4</span></div>
-              <div class="__desc">
-                Hafta davomida qidiruv
-                natijalarida ko’rsatildi
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="outline-card">
-              <div class="__title decrease"><b>3</b> <span>-1</span></div>
-              <div class="__desc">
-                Hafta davomida rezyume
-                ko’rib chiqildi
-              </div>
-              <a href="" class="link">
-                <img src="/img/image/arrow-rightt.svg" alt="">
-              </a>
-              <a class="info">
-                <img src="/img/image/info.svg" alt="">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="outline-card">
-              <div class="__title "><b>0</b> <span /></div>
-              <div class="__desc">
-                Hafta davomida ishga
-                takliflar soni
-              </div>
-              <a href="" class="link">
-                <img src="/img/image/arrow-rightt.svg" alt="">
-              </a>
-              <a class="info">
-                <img src="/img/image/info.svg" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-5">
-            <div class="block-text">
-              Rezyumeni ko’p ish beruvchilar ko’rishi uchun, qidiruv natijalaridagi
-              o’rnini muntazam ko’tarib turing
-            </div>
-            <!-- <button class="btn btn-primary">
-              Rezyume o’rnini ko’tarish
-            </button> -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="nav nav-pills">
-              <li>
-                <a href="#">
-                  <img src="/img/image/hidden.svg" alt="">
-                  Ko’rishni o’zgartirish
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <router-link :to="{name: 'ResumeUpdate', params: { id: resume.user_id}}">
-                    <img src="/img/image/edit-pen.svg">
-                    Tahrir qilish
-                  </router-link>
-                </a>
-              </li>
-              <!-- <li><a href="#">
-                Takroriy nusxa</a></li> -->
-              <li>
-                <a href="#">
-                  <img src="/img/image/trash.svg" alt="">
-                  O’chirish</a>
-              </li>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div v-if="is_auth && user" class="contentBlock clearfix container">
+    <div class="grid-content bg-purple-dark">
+      <h2 style="text-align: center; font-weight: bold">{{ $t('Rezyume') }}</h2>
     </div>
-
+    <hr>
+    <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
+      {{ profile.first_name + ' ' + profile.last_name }}
+    </h3>
+    <el-row :gutter="40">
+      <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
+        <div class="grid-content bg-purple" justify="end" style="text-align: center">
+          <img
+            src="@/assets/images/businessman.svg"
+            alt="image"
+            width="150"
+          ><br>
+        </div>
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" class="mb-3">
+        <el-row class="mt-3">
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Yoshi') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.age }}</b></el-col>
+        </el-row>
+        <el-row class="mt-3">
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Jinsi') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
+            <span v-if="user.data.gender"><b>{{ $t('Erkak') }}</b></span>
+            <span v-else><b>{{ $t('Ayol') }}</b></span>
+          </el-col>
+        </el-row>
+        <el-row class="mt-3">
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Telefoni') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>+{{ user.data.contact_number }}</b></el-col>
+        </el-row>
+        <el-row class="mt-3">
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Email') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.data.email }}</b></el-col>
+        </el-row>
+        <el-row class="mt-3">
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Yashash joyi') }}:</b></el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ profile.region.name_uz_ln + ', ' + profile.district.name_uz_ln }}</b></el-col>
+        </el-row>
+      </el-col>   
+    </el-row>
+    <br>
+    <el-divider content-position="left">
+      {{ $t('Istalgan lavozim va oylik maosh') }}
+    </el-divider>
+    <p>{{ resume.position ? resume.position['name_uz-ln']: '' }}</p>
+    <p>{{ resume.nskz_object.name }}</p>
+    <p>Ish grafigi: {{ resume.workGraphics.join(', ') }}</p>
+    <p>Bandlik turi: {{ resume.busynessTypes.join(', ') }}</p>
+    <p>Ko'chish: {{ resume.businessTrips.join(', ') }}</p>
+    <p>Oyligi: {{ formatPrice(resume.salary) + ' ' + resume.salary_currency.name }} </p>
+    <p>O'zim haqimda: {{ resume.additional_info }} </p>
+    <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('Mehnat faoliyati') }} </el-divider>
+    <el-row class="mt-5">
+      <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
+    </el-row>
+    <el-row>
+      <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
+        {{ $t('Ta\'lim ma\'lumotlari') }}</el-divider>
+      <div>
+        <el-row v-if="education && education.length">
+          <EducationTable :education="education" />
+        </el-row>
+      </div>
+    </el-row>
+    <!-- LANGUAGES -->
+    <el-divider content-position="left">{{ $t('Qo\'shimcha ma\'lumotlar') }}</el-divider>
+    <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
+      <el-col>
+        <languages :profile="user.resume" :locale="locale" />
+      </el-col>
+    </el-row>
+    <el-row class="mt-1">
+      <el-col :span="6">
+        Haydovchilik guvohnomasi 
+      </el-col>
+      <el-col :span="12">
+        {{ profile.drivers_license }}
+      </el-col>
+    </el-row>
+    <el-row class="mt-1">
+      <el-col :span="6">
+        Hobbi: 
+      </el-col>
+      <el-col :span="12">
+        {{ profile.hobbies }}
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import ExperienceIndex from './components/experience/show'
+import EducationTable from './components/Education/show.vue'
+import languages from './components/show_skills'
+
 export default {
-  name: 'Show',
-  data() { 
+  components: {
+    EducationTable, ExperienceIndex, languages
+  },
+  data() {
     return {
-      
+      loaded: false,
+      seeder_salary: null,
+      loading: false
     }
   },
   computed: {
-    ...mapGetters({ resume: 'resources/GET_WORK_SEEKER' })
-  },
-  mounted() {
-    this.getInfo().then(res => {
-      this.fetchResume({ user_id: this.user.id, search_by: 'user_id' })
+    ...mapGetters({
+      locale: 'app/LOCALE',
+      is_auth: 'auth/GET_IS_AUTH',
+      resume: 'resources/GET_WORK_SEEKER',
+      education: 'education/GET_EDUCATIONS',
+      profile: 'resources/GET_SEEKER_PROFILE',
+      skillCategories: 'resources/GET_SKILL_CATEGORIES'
     })
-    console.log(this.user)
+  },
+  async mounted() {
+    await this.fetchResources().then(() => {
+      this.loaded = true
+    })
+    await this.getInfo()
+      .then(() => {
+        this.setEducation()
+      })
+      .catch(() => {
+        if (!(this.user && this.user.id)) {
+          this.$router.push({ name: 'Register' })
+        }
+      })
+    if (this.$route.params.id) {
+      if (!(this.resume && this.resume.position)) {
+        this.fetchResume({ user_id: this.user.id, search_by: 'user_id' })
+      }
+      this.fetchSeekerProfile({ user_id: this.user.id, search_by: 'user_id' })
+    }
   },
   methods: {
-    ...mapActions({ fetchResume: 'resources/get_work_seeker', getInfo: 'auth/getInfo' })
+    ...mapActions({
+      getInfo: 'auth/getInfo',
+      fetchEdus: 'education/index',
+      fetchResources: 'resources/index',
+      fetchResume: 'resources/get_work_seeker',
+      fetchSeekerProfile: 'resources/get_seeker_profile'
+    }),
+    calcAge(birth_date) {
+      var today = new Date()
+      var birthDate = new Date(birth_date)
+      var age = today.getFullYear() - birthDate.getFullYear()
+      var m = today.getMonth() - birthDate.getMonth()
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--
+      }
+      return age
+    },
+    setEducation() {
+      this.fetchEdus({ user_id: this.user.id })
+    }
+
   }
 }
 </script>
+<style scope>
+.el-collapse{
+    max-width: 100%;
+}
+.selecttt{
+    flex-basis: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0 2px;
+    position: relative;
+}
+.el-collapse-item__header {
+    border-bottom-color: transparent;
 
+    line-height: 14px !important;
+    font-weight: bold !important;
+}
+.w100 {
+  width: 100%;
+}
+</style>
