@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8 text-right">
                   <div class="total">
-                    Namoyish etilyapdi <b>{{ vacancies.per_page }}</b> ta <b>{{ $filters.formatPrice(vacancies.total) }}</b> tadan
+                    Namoyish etilyapdi <b>{{ (vacancies && vacancies.data) ? vacancies.data.length : 0 }}</b> ta <b>{{ $filters.formatPrice(vacancies.total) }}</b> tadan
                   </div>
                 </div>
               </div>
@@ -81,44 +81,49 @@
           </div>
           <div class="col-lg-9">
             <div v-loading="loading" class="list__vacancies">
-              <div
-                v-for="(vacancy, index) in vacancies.data"
-                :key="index"
-                class="list__vacancies__item"
-              >
-                <div class="item-body" @click="showVacancy(vacancy.id)">
-                  <div class="item-row">
-                    <div class="name">{{ vacancy.position_name }}</div>
-                    <div v-if="vacancy.position_salary" class="salary">
-                      {{ $filters.formatPrice(vacancy.position_salary) }} <b> so’mdan</b>
+              <template v-if="vacancies && vacancies.data && vacancies.data.length">
+                <div
+                  v-for="(vacancy, index) in vacancies.data"
+                  :key="index"
+                  class="list__vacancies__item"
+                >
+                  <div class="item-body" @click="showVacancy(vacancy.id)">
+                    <div class="item-row">
+                      <div class="name">{{ vacancy.position_name }}</div>
+                      <div v-if="vacancy.position_salary" class="salary">
+                        {{ $filters.formatPrice(vacancy.position_salary) }} <b> so’mdan</b>
+                      </div>
+                      <div v-else class="salary">
+                        <span class="text-muted font-weight-normal" style="font-size: 16px">Maosh ko'rsatilmagan</span>
+                      </div>
                     </div>
-                    <div v-else class="salary">
-                      <span class="text-muted font-weight-normal" style="font-size: 16px">Maosh ko'rsatilmagan</span>
+                    <div class="organization">{{ vacancy.company_name }}</div>
+                    <div class="address">
+                      {{ vacancy.region ? vacancy.region.name_uz_ln : "" }}
+                      {{ vacancy.district ? ", " + vacancy.district.name_uz_ln : "" }}
+                    </div>
+                    <div class="organization__logo" :style="`background-image: url('${defaultLogo}')`" />
+                    <div class="desc">
+                      {{ vacancy.position_name }}
                     </div>
                   </div>
-                  <div class="organization">{{ vacancy.company_name }}</div>
-                  <div class="address">
-                    {{ vacancy.region ? vacancy.region.name_uz_ln : "" }}
-                    {{ vacancy.district ? ", " + vacancy.district.name_uz_ln : "" }}
-                  </div>
-                  <div class="organization__logo" :style="`background-image: url('${defaultLogo}')`" />
-                  <div class="desc">
-                    {{ vacancy.position_name }}
+                  <div class="item-footer">
+                    <div class="btn btn-primary">Qiziqish bildirish</div>
+                    <div class="icon-question">
+                      <img src="/img/image/question.svg" alt="">
+                    </div>
+                    <div class="date_view">
+                      <div class="date">
+                        {{ toLocaleDateString(vacancy.date_start) }}
+                      </div>
+                      <div class="view-count">2,5К</div>
+                    </div>
                   </div>
                 </div>
-                <div class="item-footer">
-                  <div class="btn btn-primary">Qiziqish bildirish</div>
-                  <div class="icon-question">
-                    <img src="/img/image/question.svg" alt="">
-                  </div>
-                  <div class="date_view">
-                    <div class="date">
-                      {{ toLocaleDateString(vacancy.date_start) }}
-                    </div>
-                    <div class="view-count">2,5К</div>
-                  </div>
-                </div>
-              </div>
+              </template>
+              <template v-else>
+                <el-empty description="Berilgan kiriteriyalar bo'yicha ma'lumot yo'q"></el-empty>
+              </template>
             </div>
             <div class="text-center">
               <button class="filter_mobile_btn">
