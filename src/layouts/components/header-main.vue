@@ -109,9 +109,7 @@
           </router-link>
           <div class="header__nav">
             <ul class="nav nav-pills" style="display:flex">
-              <li class="nav-link">
-
-              </li>
+       
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <span class="name">Bosh sahifa</span>
@@ -127,15 +125,6 @@
                 <a href="" class="nav-link">
 
                   <span class="name">Vakansiya e’lon qilish</span>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="" class="nav-link register">
-                  <span>
-                    <img src="img/image/icon_user.svg" alt="" width="16">
-                  </span>
-                  <span class="name">Ro’yxatdan o’tish</span>
                 </a>
               </li>
             </ul>

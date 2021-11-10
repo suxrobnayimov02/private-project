@@ -3241,19 +3241,14 @@ body {
   letter-spacing: -0.01em;
   line-height: 23px;
   color: #3c3c3c;
-  padding-right: 210px;
   margin-bottom: 30px;
 }
 
 .resume-info .block .simple-card .interest {
-  font-size: 60px;
+  font-size: 45px;
   font-weight: 700;
   color: #3c3c3c;
-  position: absolute;
-  top: 50%;
-  right: 48px;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  position: static;
 }
 
 .resume-info .block .simple-card .interest b {
@@ -3387,10 +3382,6 @@ body {
 }
 
 .resume-info .block .btn-warning {
-  padding-left: 47px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='16' viewBox='0 0 26 32'%3E%3Cpath id='Fabric_Icons' data-name='Fabric Icons' d='M26-6h4v2H26V0H24V-4H20V-6h4v-4h2ZM6-30V-6H18v2H4V-32H17.422L26-23.422V-12H24V-22H16v-8Zm12,1.422V-24h4.578Z' transform='translate(-4 32)' fill='%233c3c3c'/%3E%3C/svg%3E%0A") !important;
-  background-repeat: no-repeat !important;
-  background-position: 26px 52% !important;
   color: #333333;
 }
 

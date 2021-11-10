@@ -219,7 +219,7 @@
             <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
               <el-form-item :label="$t('Haydovchilik guvohnomasi') + ':'">
                 <el-select v-model="form.drivers_license" :placeholder="$t('Guvohnoma mavjud emas')" class="w100" multiple>
-                  <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.id" />
+                  <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.name" />
                 </el-select>
                 <!-- <el-checkbox-group v-for="(item, index) in driversLicenses" :key="'license' +index" v-model="form.drivers_license">
                   <el-checkbox :label="item.id">{{ item.name }}</el-checkbox>
@@ -266,9 +266,9 @@
             </el-row>
           </el-row>
           <hr>
-          <el-form-item>
-            <el-button type="success" class="float-right" @click="save">{{ $t('Saqlash') }}</el-button>
-          </el-form-item>
+          <el-row class="float-right">
+            <el-button type="success" @click="save">{{ $t('Saqlash') }}</el-button>
+          </el-row>
 
         </el-col>
         <el-col :span="8" />
@@ -536,7 +536,7 @@ export default {
         }
         const dataProfile = {
           user_id: this.user.id,
-          id: this.form.profile_id,
+          id: this.user.data.profile.id,
           hobbies: this.form.hobbies,
           wanted_work: this.form.wanted_work,
           soato_region: this.form.soato_region,
@@ -731,7 +731,6 @@ export default {
 }
 .el-collapse-item__header {
     border-bottom-color: transparent;
-
     line-height: 14px !important;
     font-weight: bold !important;
 }

@@ -165,27 +165,3 @@ export default {
   }
 }
 </script>
-<style scope>
-.el-collapse{
-    max-width: 100%;
-}
-.selecttt{
-    flex-basis: 100%;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: 0 2px;
-    position: relative;
-}
-.el-collapse-item__header {
-    border-bottom-color: transparent;
-
-    line-height: 14px !important;
-    font-weight: bold !important;
-}
-.w100 {
-  width: 100%;
-}
-</style>

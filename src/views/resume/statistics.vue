@@ -2,37 +2,47 @@
   <div class="content resume-info">
     <div class="container">
       <div class="block">
-        <div class="row row-no-gutters">
-          <div class="title">Mening rezyumeim</div>
-          <div class="col-lg-7">
-            <div class="simple-card">
-              <div class="__title">
-                Yana 9 martta «Qiziqish bildirish»
-                imkoniyatingiz bor
+        
+        <div>
+          <el-row>
+            <el-col :span="20">
+              <div class="title">Mening rezyumeim</div>
+            </el-col>
+            <el-col :span="4">
+              <button class="btn btn-warning" @click="goToRoute('ResumeShow', {id: user.id})">
+                Rezyumeni ko'rish
+              </button>
+            </el-col>
+          </el-row>
+          <el-row>
+            <div class="col-lg-7">
+              <div class="simple-card">
+                <div class="__title">
+                  Yana 9 martta «Qiziqish bildirish»
+                  imkoniyatingiz bor
+                </div>
+                <el-row>
+                  <el-col :span="4">
+                    <div class="interest">
+                      <b>1</b>/10
+                    </div>
+                  </el-col>
+                  <el-col :span="20">
+                    <div class="__desc">
+                      O’zingizga yoqgan vakansiyalarga qiziqish bildiring,
+                      statistika bo’yicha, 10 ta qiziqish bildirilgan
+                      vakansiyalardan o’rtacha 1 dona ishga taklif tushadi
+                    </div>
+                  </el-col>
+                </el-row>
+                <button class="btn btn-outline-primary">Qiziqish bildirishga mos vakansiyalar</button>
               </div>
-              <div class="__desc">
-                O’zingizga yoqgan vakansiyalarga qiziqish bildiring,
-                statistika bo’yicha, 10 ta qiziqish bildirilgan
-                vakansiyalardan o’rtacha 1 dona ishga taklif tushadi
-              </div>
-              <div class="interest">
-                <b>1</b>/10
-              </div>
+            </div>        
 
-              <button class="btn btn-outline-primary">Qiziqish bildirishga mos vakansiyalar</button>
-            </div>
-          </div>
-          <div class="col-lg-5 float-right">
-            <button v-if="!user.id" class="btn btn-warning">
-              Rezyume yaratish
-            </button>
-            <button v-else class="btn btn-warning" @click="goToRoute('ResumeShow', {id: user.id})">
-              Rezyumeni ko'rish
-            </button>
+          </el-row>
           <!-- <button class="btn btn-outline-primary">
             Tayyor shablondan foydalanish
           </button> -->
-          </div>
         </div>
       </div>
       <div v-if="resume && resume.position" class="block">

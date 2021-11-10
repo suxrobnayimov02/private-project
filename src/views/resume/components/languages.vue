@@ -62,7 +62,7 @@
             :model="form"
             :rules="rules"
             label-position="top"
-            class="top-label-custom pb-5"
+            class="top-label-custom"
           >
             <el-row>
               <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
@@ -76,7 +76,7 @@
                 </el-select>
               </el-col>
               <el-col :xs="24" :sm="24" :md="9" :lg="9" :xl="9">
-                <el-select v-model="form.skill_level_id" class="w-50" :placeholder="$t('Bilish darajasi')" :filterable="true">
+                <el-select v-model="form.skill_level_id" :placeholder="$t('Bilish darajasi')" :filterable="true">
                   <el-option
                     v-for="language in levels"
                     :key="language.id"
