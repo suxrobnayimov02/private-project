@@ -37,7 +37,7 @@
                 <span>
                   <img src="/image/phone_icon.svg" alt="" width="23">
                 </span>
-                <span class="name">+998 (71) 200-06-00</span>
+                 <span class="name">+998 (71) 200-06-00</span>
               </a>
             </li>
             <li class="nav-item dropdown">

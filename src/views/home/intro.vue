@@ -26,12 +26,12 @@
                 class="nav-link"
               >Rezyume qo’shish</router-link>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <router-link
                 to="/"
                 class="nav-link"
               >Vakansiya e’lon qilish</router-link>
-            </li> -->
+            </li>
             <li class="nav-item mobile__btn">
               <button class="btnHamburger">
                 <img src="/img/image/icon_menu.svg" alt="" width="24">
