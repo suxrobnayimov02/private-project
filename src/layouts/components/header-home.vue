@@ -63,6 +63,7 @@
                 </li>
               </ul>
             </li>
+         
             <li v-if="!user.token" class="nav-item no-tab">
               <router-link :to="{ name: 'Register' }" class="nav-link">
                 <span>

@@ -2,7 +2,10 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters({ user: 'auth/USER' }),
+    ...mapGetters({
+      user: 'auth/USER',
+      is_auth: 'auth/USERGET_IS_AUTH'      
+    }),
     currentYear() {
       return new Date().getFullYear()
     }
@@ -43,6 +46,9 @@ export default {
     },
     goToRoute(name, params, query) {
       this.$router.push({ name: name, params: params, query: query })
+    },
+    goToBack() {
+      window.history.back()
     }
   }
 }

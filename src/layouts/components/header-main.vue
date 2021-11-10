@@ -117,6 +117,7 @@
           <div class="header__nav">
             <ul class="nav nav-pills" style="display: flex; align-items: center;">
               <li class="nav-link"></li>
+  
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <span class="name">Bosh sahifa</span>

@@ -184,11 +184,6 @@ export default {
 .mt5 {
   margin-top: 15px;
 }
-.btnClose {
-  font-size: 20px;
-  font-weight: 1000;
-  color: #f56c6c;
-}
 .frcontent {
   float: right;
 }
