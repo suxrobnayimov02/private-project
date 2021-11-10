@@ -57,7 +57,7 @@
               </el-col>
               <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
                 <el-form-item label="" class="mt5">
-                  <el-checkbox v-model="form.currently_studying" class="float-right">{{ $t('Talaba/O\'quvchi') }}</el-checkbox>
+                  <el-checkbox v-model="form.currently_studying" class="float-right">{{ $t('Hozir ham o\'qiyapman') }}</el-checkbox>
                 </el-form-item>
               </el-col>
             </el-row>

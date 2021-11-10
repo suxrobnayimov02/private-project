@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row v-for="(skill, index) in skills" :key="'skill' + index" :class="index != 0 ? 'mt5' : ''">
-      <el-col><b class="text-muted">{{ $t(skill.name) }}:</b></el-col>
+      <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7"><b class="el-form-item__label">{{ $t(skill.name) }}:</b></el-col>
       <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
         <div v-if="skill.id == 1">
           <template v-if="user_languages && user_languages.length != 0">
@@ -14,10 +14,12 @@
                   <el-input v-model="lang.skill_level.name" disabled :placeholder="$t('Bilish darajasi')" />
                 </el-col>
                 <el-col :span="1" class="">
-                  <!-- <i class="el-icon-close btnClose" /> -->
-                  <el-button size="mini" type="danger" plain @click="deleteItem(lang.id)">
+                  <span @click="deleteItem(lang.id)">
+                    <i class="el-icon-close btnClose" />
+                  </span>
+                  <!-- <el-button size="mini" type="danger" plain @click="deleteItem(lang.id)">
                     <i class="el-icon-delete-solid" />
-                  </el-button>
+                  </el-button> -->
                 </el-col>
               </el-row>
             </div>
@@ -35,9 +37,9 @@
                   <el-input v-model="lang.skill_level.name" disabled :placeholder="$t('Билиш даражаси')" />
                 </el-col>
                 <el-col :span="1">
-                  <el-button size="mini" type="danger" plain @click="deleteItem(lang.id)">
-                    <i class="el-icon-delete-solid" />
-                  </el-button>
+                  <span @click="deleteItem(lang.id)">
+                    <i class="el-icon-close btnClose" />
+                  </span>
                 </el-col>
               </el-row>
             </div>
@@ -46,16 +48,7 @@
             <span class=" mr-2">{{ $t('Нет') }}</span>
           </template>
         </div>
-      </el-col>
-      <!-- <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4">
-        <div class="float-right ml5l">
-          <el-button type="primary" size="mini" icon="el-icon-plus" @click="addSkillForm(skill)">{{ $t('Qo\'shish') }}</el-button>
-        </div>
-      </el-col> -->
-      <!--  -->
-      <!-- Add skill  -->
-      <!-- <el-col /> -->
-      <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
+        <!-- Add skill  -->
         <div v-if="dialogVisible && skill.id == add_skill_id" class="float-right lang">
           <el-form
             ref="form"
@@ -86,19 +79,15 @@
                 </el-select>
               </el-col>
               <el-col :span="1">
-                <!-- <el-button class="float-right mr-2 mtb" type="primary" size="mini" icon="el-icon-plus" @click="addSkill" /> -->
-                <!-- <el-button class="float-left mtb" type="danger" size="mini" icon="el-icon-delete" @click="reset" /> -->
-                <el-button size="mini" type="danger" plain @click="reset">
-                  <i class="el-icon-delete-solid" />
-                </el-button>
+                <span @click="reset">
+                  <i class="el-icon-close btnClose" />
+                </span>
               </el-col>
             </el-row>        
           </el-form>
         </div>
-      </el-col>
-      <el-col>
-        <div class="float-left mt5">
-          <el-button type="primary" size="mini" icon="el-icon-plus" @click="addSkillForm(skill)">{{ $t('Qo\'shish') }}</el-button>
+        <div class="float-right mt-3">
+          <p class="text-primary" style="cursor:pointer" size="mini" @click="addSkillForm(skill)"><i class="el-icon-plus" /> {{ $t('Qo\'shish') }}</p>
         </div>
       </el-col>
     </el-row>
@@ -249,11 +238,7 @@ export default {
 .mt5 {
   margin-top: 15px;
 }
-.btnClose {
-  font-size: 20px;
-  font-weight: 1000;
-  color: #f56c6c;
-}
+
 .frcontent {
   float: right;
 }

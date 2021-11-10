@@ -46,6 +46,9 @@ export default {
     },
     goToRoute(name, params, query) {
       this.$router.push({ name: name, params: params, query: query })
+    },
+    goToBack() {
+      window.history.back()
     }
   }
 }
