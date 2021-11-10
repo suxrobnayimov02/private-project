@@ -2,7 +2,7 @@
   <div class="content v-page">
     <div class="container">
       <div class="row row-no-gutters">
-        <div class="col-lg-8 row-right-divider">
+        <div class="col-lg-8 row-right-divider rowRight">
           <div class="v-info">
             <div class="v-card position-relative">
               <div class="name">{{ vacancy.position_name }}</div>

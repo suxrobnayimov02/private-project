@@ -416,8 +416,8 @@ body {
 
 .header__bottom {
   border-bottom: 1px solid #EAEAEA;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 35px;
+  /* padding-bottom: 10px; */
 }
 
 .header__bottom .breadcrumb {
@@ -437,7 +437,7 @@ body {
   color: #767676;
   display: table-cell;
   vertical-align: middle;
-  height: 38px;
+  height: 50px;
 }
 
 .header__bottom .breadcrumb-item + li::before {
@@ -464,6 +464,10 @@ body {
 
 .header__bottom .search {
   float: right;
+  top: -31px;
+}
+.col-lg-6 {
+  margin: 0 auto;
 }
 
 .header__bottom .search .form-control {
@@ -3953,6 +3957,15 @@ body {
 .search-input {
   width: 90%;
   padding: 5px;
+}
+.row-no-gutters {
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+}
+.rowRight {
+  /* width: 100%; */
+  margin: 0 auto;
 }
 
 
