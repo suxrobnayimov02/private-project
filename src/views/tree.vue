@@ -1,6 +1,6 @@
 <template>
-  <el-card class="box-shadov" style="display: flex; justify-content: center; align-items: center; padding-top: 200px" >
-    <el-tree :data="options" clearable :props="{label: 'name', children: 'children'}" >
+  <el-card class="box-shadov" style="display: flex; justify-content: center; align-items: center; padding-top: 200px">
+    <el-tree :data="options" clearable :props="{label: 'name', children: 'children'}">
       <template #default="{ node, data }">
         <span class="custom-tree-node">
           <span>{{ node.label + ' - ' + data.code }}</span>
