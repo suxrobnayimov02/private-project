@@ -11,6 +11,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Vakansiya izlash uchun kasb, hudud, lavozim yoki tashkilot nomini kiriting"
+                  @keyup.enter="getVacancies"
                 >
                 <button class="btn btn-default btn-filter-setting">
                   <img src="/img/image/filter.svg">
@@ -40,22 +41,22 @@
       </div>
     </div>
     <div class="list__content">
-<!--      <div class="container">-->
-<!--        <div class="list__info">-->
-<!--          <div class="__header">-->
-<!--            <div class="list__title">-->
-<!--              Topilgan vakansiyalar soni <b>{{ $filters.formatPrice(vacancies.total) }}</b> ta-->
-<!--            </div>-->
-<!--            <div class="btn-group btn-group-slider">-->
-<!--              <button class="btn btn-default">Vaqtincha ish</button>-->
-<!--              <button class="btn btn-default">Mavsumiy ish</button>-->
-<!--              <button class="btn btn-default">Doimiy ish</button>-->
-<!--              <button class="btn btn-default">Masofadan turib ishlash</button>-->
-<!--              <button class="btn btn-default">Smenali ish</button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
+      <!--      <div class="container">-->
+      <!--        <div class="list__info">-->
+      <!--          <div class="__header">-->
+      <!--            <div class="list__title">-->
+      <!--              Topilgan vakansiyalar soni <b>{{ $filters.formatPrice(vacancies.total) }}</b> ta-->
+      <!--            </div>-->
+      <!--            <div class="btn-group btn-group-slider">-->
+      <!--              <button class="btn btn-default">Vaqtincha ish</button>-->
+      <!--              <button class="btn btn-default">Mavsumiy ish</button>-->
+      <!--              <button class="btn btn-default">Doimiy ish</button>-->
+      <!--              <button class="btn btn-default">Masofadan turib ishlash</button>-->
+      <!--              <button class="btn btn-default">Smenali ish</button>-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -122,7 +123,7 @@
                 </div>
               </template>
               <template v-else>
-                <el-empty description="Berilgan kiriteriyalar bo'yicha ma'lumot yo'q"></el-empty>
+                <el-empty description="Berilgan kiriteriyalar bo'yicha ma'lumot yo'q" />
               </template>
             </div>
             <div class="text-center">

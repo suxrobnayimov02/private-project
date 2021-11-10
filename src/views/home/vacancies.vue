@@ -15,6 +15,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Vakansiya izlash uchun kasb, hudud, lavozim yoki tashkilot nomini kiriting "
+                  @keyup.enter="goToFilterVacancyIndex"
                 >
                 <div class="input_setting-btn">
                   <img src="/img/image/filter.svg">

@@ -102,6 +102,12 @@
       <table>
         <tr>
           <td>
+            <el-radio v-model="salary" :label="null">Ahamiyatsiz</el-radio>
+          </td>
+          <td>23 005</td>
+        </tr>
+        <tr>
+          <td>
             <el-radio v-model="salary" :label="1000000">1 000 000 dan</el-radio>
           </td>
           <td>23 005</td>
