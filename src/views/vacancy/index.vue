@@ -25,7 +25,8 @@
             </div>
           </div>
         </div>
-        <ul class="nav nav-pills">
+        <br>
+        <!-- <ul class="nav nav-pills">
           <li class="nav-item">
             <a href="" class="nav-link active"> Vakansiyalar </a>
           </li>
@@ -35,7 +36,7 @@
           <li class="nav-item">
             <a href="" class="nav-link"> Tashkilotlar </a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
     <div class="list__content">
@@ -76,7 +77,7 @@
         </div>
         <div class="row">
           <div class="col-lg-3">
-            <filter-vacancy :filter="filter"/>
+            <filter-vacancy :filter="filter" />
           </div>
           <div class="col-lg-9">
             <div v-loading="loading" class="list__vacancies">
@@ -140,7 +141,7 @@
               </button>
             </div>
             <div class="text-center">
-              <el-pagination :total="vacancies.total" layout="prev, pager, next" v-model:currentPage="filter.page" :page-size="vacancies.per_page" @current-change="handleCurrentChange"/>
+              <el-pagination v-model:currentPage="filter.page" :total="vacancies.total" layout="prev, pager, next" :page-size="vacancies.per_page" @current-change="handleCurrentChange" />
               <br><br>
             </div>
           </div>
