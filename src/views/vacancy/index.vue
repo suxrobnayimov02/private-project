@@ -40,22 +40,22 @@
       </div>
     </div>
     <div class="list__content">
-      <div class="container">
-        <div class="list__info">
-          <div class="__header">
-            <div class="list__title">
-              Topilgan vakansiyalar soni <b>{{ $filters.formatPrice(vacancies.total) }}</b> ta
-            </div>
-            <div class="btn-group btn-group-slider">
-              <button class="btn btn-default">Vaqtincha ish</button>
-              <button class="btn btn-default">Mavsumiy ish</button>
-              <button class="btn btn-default">Doimiy ish</button>
-              <button class="btn btn-default">Masofadan turib ishlash</button>
-              <button class="btn btn-default">Smenali ish</button>
-            </div>
-          </div>
-        </div>
-      </div>
+<!--      <div class="container">-->
+<!--        <div class="list__info">-->
+<!--          <div class="__header">-->
+<!--            <div class="list__title">-->
+<!--              Topilgan vakansiyalar soni <b>{{ $filters.formatPrice(vacancies.total) }}</b> ta-->
+<!--            </div>-->
+<!--            <div class="btn-group btn-group-slider">-->
+<!--              <button class="btn btn-default">Vaqtincha ish</button>-->
+<!--              <button class="btn btn-default">Mavsumiy ish</button>-->
+<!--              <button class="btn btn-default">Doimiy ish</button>-->
+<!--              <button class="btn btn-default">Masofadan turib ishlash</button>-->
+<!--              <button class="btn btn-default">Smenali ish</button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -92,14 +92,14 @@
                     <div v-if="vacancy.position_salary" class="salary">
                       {{ $filters.formatPrice(vacancy.position_salary) }} <b> so’mdan</b>
                     </div>
-                    <div v-else>
-                      <span>Maosh ko'rsatilmagan</span>
+                    <div v-else class="salary">
+                      <span class="text-muted font-weight-normal" style="font-size: 16px">Maosh ko'rsatilmagan</span>
                     </div>
                   </div>
                   <div class="organization">{{ vacancy.company_name }}</div>
                   <div class="address">
                     {{ vacancy.region ? vacancy.region.name_uz_ln : "" }}
-                    {{ vacancy.city ? ", " + vacancy.city.name_uz_ln : "" }}
+                    {{ vacancy.district ? ", " + vacancy.district.name_uz_ln : "" }}
                   </div>
                   <div class="organization__logo" :style="`background-image: url('${defaultLogo}')`" />
                   <div class="desc">
@@ -166,7 +166,10 @@ export default {
         per_page: 5,
         page: 1,
         salary: null,
-        search: null
+        search: null,
+        company_soato_code: null,
+        min_education: null,
+        nskz: null
       }
     }
   },
@@ -178,9 +181,19 @@ export default {
       if (newVal !== 'manual') {
         this.getVacancies()
       }
+    },
+    'filter.company_soato_code'(newVal) {
+      this.getVacancies()
+    },
+    'filter.min_education'(newVal) {
+      this.getVacancies()
+    },
+    'filter.nskz'(newVal) {
+      this.getVacancies()
     }
   },
   mounted() {
+    if (this.$route.query.search) this.filter.search = this.$route.query.search
     this.fetchVacancies(this.filter)
   },
   methods: {

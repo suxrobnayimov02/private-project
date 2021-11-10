@@ -8,52 +8,24 @@
               <label for="">Qidirish</label>
           </div> -->
           <div class="search__form">
-            <form action="">
-              <div class="input-group">
-                <div class="input__field">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Vakansiya izlash uchun kasb, hudud, lavozim yoki tashkilot nomini kiriting "
-                  >
-                  <div class="input_setting-btn">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 64 64"
-                    >
-                      <g
-                        id="Сгруппировать_10538"
-                        data-name="Сгруппировать 10538"
-                        transform="translate(11263 -12655)"
-                      >
-                        <rect
-                          id="Прямоугольник_13921"
-                          data-name="Прямоугольник 13921"
-                          width="64"
-                          height="64"
-                          transform="translate(-11263 12655)"
-                          fill="none"
-                        />
-                        <path
-                          id="Fabric_Icons"
-                          data-name="Fabric Icons"
-                          d="M48-42v3H30v1.5a4.415,4.415,0,0,1-.352,1.758,4.515,4.515,0,0,1-.961,1.43,4.515,4.515,0,0,1-1.43.961A4.415,4.415,0,0,1,25.5-33a4.415,4.415,0,0,1-1.758-.352,4.515,4.515,0,0,1-1.43-.961,4.515,4.515,0,0,1-.961-1.43A4.415,4.415,0,0,1,21-37.5V-39H0v-3H21v-1.5a4.415,4.415,0,0,1,.352-1.758,4.515,4.515,0,0,1,.961-1.43,4.515,4.515,0,0,1,1.43-.961A4.415,4.415,0,0,1,25.5-48a4.415,4.415,0,0,1,1.758.352,4.515,4.515,0,0,1,1.43.961,4.515,4.515,0,0,1,.961,1.43A4.415,4.415,0,0,1,30-43.5V-42ZM37.5-18a4.415,4.415,0,0,1,1.758.352,4.515,4.515,0,0,1,1.43.961,4.515,4.515,0,0,1,.961,1.43A4.415,4.415,0,0,1,42-13.5V-12h6v3H42v1.5a4.415,4.415,0,0,1-.352,1.758,4.515,4.515,0,0,1-.961,1.43,4.515,4.515,0,0,1-1.43.961A4.415,4.415,0,0,1,37.5-3a4.415,4.415,0,0,1-1.758-.352,4.515,4.515,0,0,1-1.43-.961,4.515,4.515,0,0,1-.961-1.43A4.415,4.415,0,0,1,33-7.5V-9H0v-3H33v-1.5a4.415,4.415,0,0,1,.352-1.758,4.515,4.515,0,0,1,.961-1.43,4.515,4.515,0,0,1,1.43-.961A4.415,4.415,0,0,1,37.5-18Zm-27-15a4.415,4.415,0,0,1,1.758.352,4.515,4.515,0,0,1,1.43.961,4.515,4.515,0,0,1,.961,1.43A4.415,4.415,0,0,1,15-28.5V-27H48v3H15v1.5a4.415,4.415,0,0,1-.352,1.758,4.515,4.515,0,0,1-.961,1.43,4.515,4.515,0,0,1-1.43.961A4.415,4.415,0,0,1,10.5-18a4.415,4.415,0,0,1-1.758-.352,4.515,4.515,0,0,1-1.43-.961,4.515,4.515,0,0,1-.961-1.43A4.415,4.415,0,0,1,6-22.5V-24H0v-3H6v-1.5a4.415,4.415,0,0,1,.352-1.758,4.515,4.515,0,0,1,.961-1.43,4.515,4.515,0,0,1,1.43-.961A4.415,4.415,0,0,1,10.5-33ZM12-28.5a1.442,1.442,0,0,0-.445-1.055A1.442,1.442,0,0,0,10.5-30a1.442,1.442,0,0,0-1.055.445A1.442,1.442,0,0,0,9-28.5v6a1.442,1.442,0,0,0,.445,1.055A1.442,1.442,0,0,0,10.5-21a1.442,1.442,0,0,0,1.055-.445A1.442,1.442,0,0,0,12-22.5Zm15-15a1.442,1.442,0,0,0-.445-1.055A1.442,1.442,0,0,0,25.5-45a1.442,1.442,0,0,0-1.055.445A1.442,1.442,0,0,0,24-43.5v6a1.442,1.442,0,0,0,.445,1.055A1.442,1.442,0,0,0,25.5-36a1.442,1.442,0,0,0,1.055-.445A1.442,1.442,0,0,0,27-37.5Zm12,30a1.442,1.442,0,0,0-.445-1.055A1.442,1.442,0,0,0,37.5-15a1.442,1.442,0,0,0-1.055.445A1.442,1.442,0,0,0,36-13.5v6a1.442,1.442,0,0,0,.445,1.055A1.442,1.442,0,0,0,37.5-6a1.442,1.442,0,0,0,1.055-.445A1.442,1.442,0,0,0,39-7.5Z"
-                          transform="translate(-11255 12713)"
-                          fill="#0078d4"
-                        />
-                      </g>
-                    </svg>
-                  </div>
-                </div>
-                <div class="input__btn">
-                  <button class="btn" type="submit">
-                    <span class="text">Qidirish</span>
-                  </button>
+            <div class="input-group">
+              <div class="input__field">
+                <input
+                  v-model="search"
+                  type="text"
+                  class="form-control"
+                  placeholder="Vakansiya izlash uchun kasb, hudud, lavozim yoki tashkilot nomini kiriting "
+                >
+                <div class="input_setting-btn">
+                  <img src="/img/image/filter.svg">
                 </div>
               </div>
-            </form>
+              <div class="input__btn">
+                <button class="btn" type="submit">
+                  <span class="text" @click="goToFilterVacancyIndex">Qidirish</span>
+                </button>
+              </div>
+            </div>
           </div>
           <!-- <li role="presentation" class="nav-item active">
             <a
@@ -325,7 +297,17 @@
 import VacancyList from './components/vacancy-list'
 export default {
   name: 'Vacancies',
-  components: { VacancyList }
+  components: { VacancyList },
+  data() {
+    return {
+      search: ''
+    }
+  },
+  methods: {
+    goToFilterVacancyIndex() {
+      if (this.search.length >= 3) this.$router.push({ name: 'VacancyIndex', query: { search: this.search }})
+    }
+  }
 }
 
 </script>

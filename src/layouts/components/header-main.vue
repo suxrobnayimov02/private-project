@@ -1,5 +1,5 @@
 <template>
-  <div class="header inner">
+  <div class="header inner d-block">
     <div class="header__top ">
       <div class="container">
         <div class="row">
@@ -109,7 +109,7 @@
           </router-link>
           <div class="header__nav">
             <ul class="nav nav-pills" style="display:flex">
-       
+
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <span class="name">Bosh sahifa</span>

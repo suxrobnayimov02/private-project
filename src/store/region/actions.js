@@ -16,17 +16,17 @@ export const actions = {
       }
     })
   },
-  districts({ commit }, query) {
+  districts({ commit }, soato) {
     return new Promise((resolve, reject) => {
-      const soato = {
-        region_soato: query
+      const query = {
+        region_soato: soato
       }
-      districts(soato).then(res => {
+      districts(query).then(res => {
         commit('SET_DISTRICTS', res.data)
         resolve(res)
       }).catch(error => {
         reject(error)
       })
     })
-  } 
+  }
 }
