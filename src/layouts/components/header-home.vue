@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="container">
-      <div class="row row-no-gutters">
+      <div class="row row-no-gutter">
         <div class="header__nav">
           <ul class="navList" style="display: flex">
             <li class="nav nav-item radio-btn">
