@@ -109,33 +109,23 @@
             </button> -->
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="nav nav-pills">
-              <li>
-                <a href="#">
-                  <img src="/img/image/hidden.svg" alt="">
-                  Ko’rishni o’zgartirish
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <router-link :to="{name: 'ResumeUpdate', params: { id: resume.user_id}}">
-                    <img src="/img/image/edit-pen.svg">
-                    Tahrir qilish
-                  </router-link>
-                </a>
-              </li>
-              <!-- <li><a href="#">
-                Takroriy nusxa</a></li> -->
-              <li>
-                <a href="#">
-                  <img src="/img/image/trash.svg" alt="">
-                  O’chirish</a>
-              </li>
+        <el-row class="link-buttons">
+          <el-col :span="4">
+            <img src="/img/image/hidden.svg" alt="">
+            Ko’rishni o’zgartirish
+
+          </el-col>
+          <el-col :span="4">
+            <div @click="goToRoute('ResumeUpdate',{ id: resume.user_id})">
+              <img src="/img/image/edit-pen.svg">
+              Tahrir qilish
             </div>
-          </div>
-        </div>
+          </el-col>
+          <el-col :span="4">
+            <img src="/img/image/trash.svg" alt="">
+            O’chirish
+          </el-col>
+        </el-row>
       </div>
     </div>
 
