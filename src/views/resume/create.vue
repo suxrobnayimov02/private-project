@@ -1,12 +1,18 @@
 <template>
   <div v-if="is_auth && user" class="contentBlock clearfix container">
+    <div v-if="is_edit">
+      <p class="text-primary" style="cursor:pointer" @click="goToBack">
+        Shaxsiy profilga qaytish
+      </p>
+    </div>
     <div class="grid-content bg-purple-dark">
       <h2 style="text-align: center; font-weight: bold">{{ $t('Rezyume') }}</h2>
     </div>
     <hr>
     <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
-      {{ user.fullname }}
+      {{ profile.first_name + ' ' + profile.last_name }}
     </h3>
+    {{ form }}
     <el-row :gutter="40">
       <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
         <div class="grid-content bg-purple" justify="end" style="text-align: center">
@@ -298,6 +304,7 @@ export default {
       mask: '##',
       loaded: false,
       seeder_salary: null,
+      is_edit: false,
       form: {
         user_id: null,
         pin: null,
@@ -421,13 +428,12 @@ export default {
         }
       })
     if (this.$route.params.id) {
-      if (!(this.resume && this.resume.position)) {
-        this.fetchResume({ user_id: this.user.id, search_by: 'user_id' }).then(res => {
-          if (res.success) {
-            this.setResumeWork(res.data)
-          }
-        })
-      }
+      this.is_edit = true
+      this.fetchResume({ user_id: this.user.id, search_by: 'user_id' }).then(res => {
+        if (res.success) {
+          this.setResumeWork(res.data)
+        }
+      })
       this.fetchSeekerProfile({ user_id: this.user.id, search_by: 'user_id' }).then(res => {
         if (res.success) {
           this.setResumeProfile(res.data)
@@ -703,6 +709,9 @@ export default {
       if (this.regionModel) {
         this.changeRegion()
       }
+      if (this.districtModel) {
+        this.changeDistrict()
+      }      
     },
     addEducation() {
       this.educationDialog = true

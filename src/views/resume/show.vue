@@ -1,6 +1,9 @@
 <template>
   <div v-if="is_auth && user" class="contentBlock clearfix container">
     <div v-if="resume && profile">
+      <p class="text-primary" style="cursor:pointer" @click="goToBack">
+        Shaxsiy profilga qaytish
+      </p>
       <!-- {{ resume }}
       <hr>
       {{ profile }} -->
