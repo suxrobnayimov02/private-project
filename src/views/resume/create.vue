@@ -12,7 +12,6 @@
     <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
       {{ profile.first_name + ' ' + profile.last_name }}
     </h3>
-    {{ form }}
     <el-row :gutter="40">
       <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
         <div class="grid-content bg-purple" justify="end" style="text-align: center">
@@ -75,22 +74,18 @@
       </el-col>
     </el-row>
     <br>
-    <el-divider content-position="left">
-      <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
-      {{ $t('Yashash manzili') }}
-    </el-divider>
+    <p class="label-content-form"> {{ $t('Yashash manzili') }}</p>
     <el-form
       ref="form"
       :model="form"
       :rules="rules"
-      label-width="120px"
+      label-width="240px"
       class="top-label-custom"
-      label-position="top"
     >
       <el-row>
         <el-col :span="16">
           <el-row>
-            <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+            <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
               <div class="formControl">
                 <el-form-item :label="$t('Hudud') + ':'" prop="soato_region">
                   <div class="field withBackground">
@@ -104,7 +99,9 @@
                 </el-form-item>
               </div>
             </el-col>
-            <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+          </el-row>
+          <el-row>
+            <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
               <div class="formControl">
                 <el-form-item :label="$t('Tuman') + ':'" prop="soato_district">
                   <div class="field withBackground">
@@ -122,10 +119,11 @@
             </el-col>
           </el-row>
           <!-- Position/salary -->
-          <el-divider content-position="left">
+          <!-- <el-divider content-position="left">
             <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
             {{ $t('Ishga doir ma\'lumotlar') }}
-          </el-divider>
+          </el-divider> -->
+          <p class="label-content-form">Mutaxasislik</p>
           <el-row>
             <el-col :span="24">
               <el-form-item :label="$t('Istayotgan lavozimingiz')" prop="kodp_key">
@@ -148,28 +146,53 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
+            <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
               <el-form-item :label="$t('Ish haqi')">
                 <input v-model="seeder_salary" v-money="money" class="text-right text-right  el-input__inner">
               </el-form-item>
             </el-col>
-            <el-col :xs="24" :sm="24" :md="12" :lg="3" :xl="3">
-              <el-form-item label=" ‎">
-                <el-select v-model="form.salary_currency_id" placeholder="UZS">
-                  <el-option v-for="item in salaryCurrencies" :key="item.id" :label="item.name" :value="item.id" />
-                </el-select>
-              </el-form-item>
+            <el-col :xs="24" :sm="24" :md="12" :lg="4" :xl="4">
+              <el-select v-model="form.salary_currency_id" placeholder="UZS" class="mt-1">
+                <el-option v-for="item in salaryCurrencies" :key="item.id" :label="item.name" :value="item.id" />
+              </el-select>
             </el-col>
             <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <el-form-item label="Kelishsa bo'ladimi?‎">
+              <el-form-item label="Kelishsa bo'ladimi?">
                 <el-radio v-model="form.is_agreed_salary" :label="true">{{ $t('Ha') }}</el-radio>
                 <el-radio v-model="form.is_agreed_salary" :label="false">{{ $t('Yo\'q') }}</el-radio>
+              </el-form-item>
+            </el-col>
+          </el-row>         
+          <!-- ABOUT ME -->
+          <el-row>
+            <el-col :xs="24" :sm="24" :lg="24" :xl="24">
+              <el-form-item :label="$t('O\'zim haqimda') + ':'">
+                <el-input v-model="form.additional_info" type="textarea" />
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :xs="24" :sm="24" :lg="24" :xl="24">
+              <el-form-item :label="$t('Hobbi') + ':'">
+                <el-input v-model="form.hobbies" type="textarea" />
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
+              <el-form-item :label="$t('Haydovchilik guvohnomasi') + ':'">
+                <el-select v-model="form.drivers_license" :placeholder="$t('Guvohnoma mavjud emas')" class="w100" multiple>
+                  <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.name" />
+                </el-select>
+                <!-- <el-checkbox-group v-for="(item, index) in driversLicenses" :key="'license' +index" v-model="form.drivers_license">
+                  <el-checkbox :label="item.id">{{ item.name }}</el-checkbox>
+                </el-checkbox-group> -->
               </el-form-item>
             </el-col>
           </el-row>
           <!-- График работы -->
           <el-row>
-            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+            <el-col :xs="24" :sm="24" :md="20" :lg="20" :xl="20">
               <div class="demo-collapse">
                 <el-collapse v-model="activeNames">
                   <el-collapse-item :title="$t('Ish grafigi')" name="1">
@@ -206,33 +229,6 @@
               </div>
             </el-col>
           </el-row>
-          <!-- ABOUT ME -->
-          <el-row>
-            <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-              <el-form-item :label="$t('O\'zim haqimda') + ':'">
-                <el-input v-model="form.additional_info" type="textarea" />
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :xs="24" :sm="24" :lg="12" :xl="12">
-              <el-form-item :label="$t('Hobbi') + ':'">
-                <el-input v-model="form.hobbies" type="textarea" />
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <el-form-item :label="$t('Haydovchilik guvohnomasi') + ':'">
-                <el-select v-model="form.drivers_license" :placeholder="$t('Guvohnoma mavjud emas')" class="w100" multiple>
-                  <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.name" />
-                </el-select>
-                <!-- <el-checkbox-group v-for="(item, index) in driversLicenses" :key="'license' +index" v-model="form.drivers_license">
-                  <el-checkbox :label="item.id">{{ item.name }}</el-checkbox>
-                </el-checkbox-group> -->
-              </el-form-item>
-            </el-col>
-          </el-row>
           <!-- LANGUAGES -->
           <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
             <el-col>
@@ -254,13 +250,7 @@
                 <p class="text-center">{{ $t('Нет информации') }}</p>
               </el-row>
               <el-row>
-                <el-button
-                  class="float-right mt-5"
-                  type="primary"
-                  size="mini"
-                  icon="el-icon-plus"
-                  @click="addEducation"
-                >Ta'lim ma'lumoti qo'shish</el-button>
+                <p class="text-primary mt-2" style="cursor:pointer" size="mini" @click="addEducation"><i class="el-icon-plus" /> {{ $t('Ta\'lim ma\'lumoti qo\'shish') }}</p>
               </el-row>
             </div>
             <br>
@@ -745,5 +735,8 @@ export default {
 }
 .w100 {
   width: 100%;
+}
+.el-form-item__label {
+    text-align: left;
 }
 </style>

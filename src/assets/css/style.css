@@ -3418,6 +3418,19 @@ body {
   cursor: pointer;
 }
 
+.label-content-form {
+  font-weight: bold;
+  font-size: 23px;
+  letter-spacing: -0.02em;
+  line-height: 32px;
+  color: #333;
+}
+.btnClose {
+  font-size: 20px;
+  font-weight: 1000;
+  color: #f56c6c;
+  padding: 9px;
+}
 
 .resume-info .block .nav li a:hover {
   background: none;

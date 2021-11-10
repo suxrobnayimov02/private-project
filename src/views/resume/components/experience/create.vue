@@ -85,7 +85,7 @@
       </template>
     </el-dialog>
     <div>
-      <el-button type="primary" size="mini" icon="el-icon-plus" @click="addItem">{{ $t('Ish tajribasi qo\'shish') }}</el-button>
+      <p class="text-primary mt-2" style="cursor:pointer" size="mini" @click="addItem"><i class="el-icon-plus" /> {{ $t('Ish tajribasi qo\'shish') }}</p>
     </div>
   </div>
 </template>
