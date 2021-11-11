@@ -115,44 +115,37 @@
             <span class="name"> Milliy vakansiyalar bazasi </span>
           </router-link>
           <div class="header__nav">
-            <<<<<<< HEAD
-            <ul class="nav nav-pills" style="display:flex">
-
-              =======
-              <ul class="nav nav-pills" style="display: flex; align-items: center;">
-                <li class="nav-link" />
-  
-                >>>>>>> 1e019e605e2ac135b732c938800896a8159bf1fb
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <span class="name">Bosh sahifa</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <span class="name">Rezyume qo’shish</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <span class="name">Vakansiya e’lon qilish</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link register">
-                    <span>
-                      <img src="img/image/icon_user.svg" alt="" width="16">
-                    </span>
-                    <span class="name">Ro’yxatdan o’tish</span>
-                  </a>
-                </li>
-                <li class="nav-item mobile__bt">
-                  <button class="btn">
-                    <img src="img/image/icon_menu.svg" alt="" width="24">
-                  </button>
-                </li>
-              </ul>
-            </ul></div>
+            <ul class="nav nav-pills" style="display: flex; align-items: center;">
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <span class="name">Bosh sahifa</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <span class="name">Rezyume qo’shish</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <span class="name">Vakansiya e’lon qilish</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link register">
+                  <span>
+                    <img src="img/image/icon_user.svg" alt="" width="16">
+                  </span>
+                  <span class="name">Ro’yxatdan o’tish</span>
+                </a>
+              </li>
+              <li class="nav-item mobile__bt">
+                <button class="btn">
+                  <img src="img/image/icon_menu.svg" alt="" width="24">
+                </button>
+              </li>
+            </ul>
+          </div>
           <!-- <div class="mobile__btn">
             <button class="btn">
               <img src="img/image/icon_menu.svg" alt="" width="24" />

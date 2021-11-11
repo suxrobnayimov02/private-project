@@ -12,7 +12,7 @@
                 <span class="name"> Milliy vakansiyalar bazasi </span>
               </router-link>
             </div>
-            <ul class="nav" />
+<!--            <ul class="nav" />-->
             <li class="nav-item nav-title no-desktop on-mobile">
               Ish qidiruvchilarga
             </li>
@@ -235,67 +235,64 @@
       <div class="statistic">
         <div class="row">
           <a href="" class="statistic__logo">
-            <span class="icon">
-              <img src="/img/image/logo-uz.png" alt="" width="82">
-            </span>
-            <span class="name"> Milliy vakansiyalar bazasi </span>
+            <el-row>
+              <el-col :span="12">
+                <span class="icon float-end">
+                  <img src="/img/image/logo-uz.png" alt="" width="82">
+                </span>
+              </el-col>
+              <el-col :span="12">
+                <span class="name"> Milliy vakansiyalar bazasi </span>
+              </el-col>
+            </el-row>
           </a>
         </div>
-        <div class="row row-no-gutters">
-          <div class="col-lg-12 row-no-gutter">
-            <div class="row">
-              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="/img/image/icon_users.svg" alt="" width="64px">
-                  </div>
-                  <div class="info">
-                    <div class="number">56 829</div>
-                    <div class="name">Rezyumelar</div>
-                  </div>
-                </div>
+        <el-row class="statistic-el-row">
+          <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
+            <div class="item">
+              <div class="icon">
+                <img src="/img/image/icon_users.svg" alt="" width="64px">
               </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="/img/image/icon_case.svg" alt="" width="64px">
-                  </div>
-                  <div class="info">
-                    <div class="number">34 789</div>
-                    <div class="name">Ish o’rinlari</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                <div class="item">
-                  <div class="icon">
-                    <img
-                      src="/img/image/icon_building.svg"
-                      alt=""
-                      width="67"
-                      height="52"
-                    >
-                  </div>
-                  <div class="info">
-                    <div class="number">1 253</div>
-                    <div class="name">Korhonalar</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="/img/image/icon_flag.svg" alt="" width="55px">
-                  </div>
-                  <div class="info">
-                    <div class="number">358</div>
-                    <div class="name">Davlat tashkilotlari</div>
-                  </div>
-                </div>
+              <div class="info">
+                <div class="number">56 829</div>
+                <div class="name">Rezyumelar</div>
               </div>
             </div>
-          </div>
-        </div>
+          </el-col>
+          <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
+            <div class="item">
+              <div class="icon">
+                <img src="/img/image/icon_case.svg" alt="" width="64px">
+              </div>
+              <div class="info">
+                <div class="number">34 789</div>
+                <div class="name">Ish o’rinlari</div>
+              </div>
+            </div>
+          </el-col>
+          <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
+            <div class="item">
+              <div class="icon">
+                <img src="/img/image/icon_building.svg" alt="" width="67" height="52">
+              </div>
+              <div class="info">
+                <div class="number">1 253</div>
+                <div class="name">Korhonalar</div>
+              </div>
+            </div>
+          </el-col>
+          <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
+            <div class="item">
+              <div class="icon">
+                <img src="/img/image/icon_flag.svg" alt="" width="55px">
+              </div>
+              <div class="info">
+                <div class="number">358</div>
+                <div class="name">Davlat tashkilotlari</div>
+              </div>
+            </div>
+          </el-col>
+        </el-row>
         <div class="row text-center">
           <button class="swipe__btn" type="button">
             <div class="icon">

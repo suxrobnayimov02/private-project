@@ -593,11 +593,15 @@
     margin: 0 auto;
   }
   .intro .statistic__logo {
-    display: block;
-    margin: 65px auto 64px auto;
+    display: inline-block;
+    margin: 65px auto;
   }
   .intro .statistic .swipe__btn {
+    margin-top: 150px;
     display: inline-block;
+  }
+  .statistic-el-row {
+    margin-top: 150px;
   }
   .intro .statistic .item .info {
     display: inline-block;
