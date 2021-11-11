@@ -3,9 +3,11 @@ $(document).ready(function () {
   if ($(document).width() < 776) {
     $('.mobile__btn button').click(function () {
       $('.main_nav').toggleClass('show')
+      $('.menuLogo').toggleClass('d-none')
     });
     $('.js_close_main-nav').click(function () {
       $('.main_nav').removeClass('show')
+      $('.menuLogo').removeClass('d-none')
     });
   }
 
