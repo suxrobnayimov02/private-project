@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="container">
-      <div class="row row-no-gutters">
+      <div class="row row-no-gutter">
         <div class="header__nav">
           <ul class="navList" style="display: flex">
             <li class="nav nav-item radio-btn">
@@ -37,7 +37,7 @@
                 <span>
                   <img src="/image/phone_icon.svg" alt="" width="23">
                 </span>
-                <span class="name">+998 (71) 200-06-00</span>
+                 <span class="name">+998 (71) 200-06-00</span>
               </a>
             </li>
             <li class="nav-item dropdown">
