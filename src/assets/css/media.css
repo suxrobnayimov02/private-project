@@ -290,7 +290,7 @@
     padding-top: 10px;
     padding-bottom: 30px;
     background: #0078D4;
-    min-height: 403px;
+    min-height: 200px;
   }
   .intro .tab-form .nav-tabs.nav-justified > li {
     display: table-cell;
@@ -597,11 +597,7 @@
     margin: 65px auto;
   }
   .intro .statistic .swipe__btn {
-    margin-top: 150px;
     display: inline-block;
-  }
-  .statistic-el-row {
-    margin-top: 150px;
   }
   .intro .statistic .item .info {
     display: inline-block;

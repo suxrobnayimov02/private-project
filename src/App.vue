@@ -20,6 +20,4 @@ export default {
     }, 500)
   }
 }
-// import '@/assets/js/script.js'
-// import '@/assets/js/owl.carousel.min.js'
 </script>

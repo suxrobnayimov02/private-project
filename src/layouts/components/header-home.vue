@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row row-no-gutter">
         <div class="header__nav">
-          <ul class="navList" style="display: flex">
+          <ul class="navList">
             <li class="nav nav-item radio-btn">
               <label class="radio-inline">
                 <input
@@ -63,7 +63,7 @@
                 </li>
               </ul>
             </li>
-         
+
             <li v-if="!user.token" class="nav-item no-tab">
               <router-link :to="{ name: 'Register' }" class="nav-link">
                 <span>
