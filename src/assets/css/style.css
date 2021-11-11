@@ -3431,6 +3431,12 @@ body {
   color: #f56c6c;
   padding: 9px;
 }
+.btnEdit {
+  font-size: 20px;
+  font-weight: 1000;
+  color: #409eff;
+  padding: 9px;
+}
 
 .resume-info .block .nav li a:hover {
   background: none;

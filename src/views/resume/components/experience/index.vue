@@ -19,8 +19,12 @@
               </el-card>
             </el-col>
             <el-col :span="2">
-              <el-button class="float-right mr-2 mtb" type="primary" round plain size="mini" icon="el-icon-edit" @click="editItem(item.id)" />
-              <el-button class="float-left mtb" type="danger" round plain size="mini" icon="el-icon-delete" @click="deleteItem(item.id)" />
+              <span @click="editItem(item.id)">
+                <i class="el-icon-edit btnEdit" />
+              </span>
+              <span @click="deleteItem(item.id)">
+                <i class="el-icon-close btnClose" />
+              </span>
             </el-col>
           </el-row>
         </div>

@@ -10,7 +10,12 @@
     </div>
     <hr>
     <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
-      {{ profile.first_name + ' ' + profile.last_name }}
+      <template v-if="is_edit">
+        {{ profile.first_name + ' ' + profile.last_name }}
+      </template>
+      <template v-else>
+        {{ user.fullname }}
+      </template>
     </h3>
     <el-row :gutter="40">
       <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
@@ -162,33 +167,6 @@
                 <el-radio v-model="form.is_agreed_salary" :label="false">{{ $t('Yo\'q') }}</el-radio>
               </el-form-item>
             </el-col>
-          </el-row>         
-          <!-- ABOUT ME -->
-          <el-row>
-            <el-col :xs="24" :sm="24" :lg="24" :xl="24">
-              <el-form-item :label="$t('O\'zim haqimda') + ':'">
-                <el-input v-model="form.additional_info" type="textarea" />
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :xs="24" :sm="24" :lg="24" :xl="24">
-              <el-form-item :label="$t('Hobbi') + ':'">
-                <el-input v-model="form.hobbies" type="textarea" />
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
-              <el-form-item :label="$t('Haydovchilik guvohnomasi') + ':'">
-                <el-select v-model="form.drivers_license" :placeholder="$t('Guvohnoma mavjud emas')" class="w100" multiple>
-                  <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.name" />
-                </el-select>
-                <!-- <el-checkbox-group v-for="(item, index) in driversLicenses" :key="'license' +index" v-model="form.drivers_license">
-                  <el-checkbox :label="item.id">{{ item.name }}</el-checkbox>
-                </el-checkbox-group> -->
-              </el-form-item>
-            </el-col>
           </el-row>
           <!-- График работы -->
           <el-row>
@@ -229,6 +207,34 @@
               </div>
             </el-col>
           </el-row>
+          <!-- ABOUT ME -->
+          <p class="label-content-form">Qo'shimcha ma'lumotlar</p>
+          <el-row>
+            <el-col :xs="24" :sm="24" :lg="24" :xl="24">
+              <el-form-item :label="$t('O\'zim haqimda') + ':'">
+                <el-input v-model="form.additional_info" type="textarea" />
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :xs="24" :sm="24" :lg="24" :xl="24">
+              <el-form-item :label="$t('Hobbi') + ':'">
+                <el-input v-model="form.hobbies" type="textarea" />
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
+              <el-form-item :label="$t('Haydovchilik guvohnomasi') + ':'">
+                <el-select v-model="form.drivers_license" :placeholder="$t('Guvohnoma mavjud emas')" class="w100" multiple>
+                  <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.name" />
+                </el-select>
+                <!-- <el-checkbox-group v-for="(item, index) in driversLicenses" :key="'license' +index" v-model="form.drivers_license">
+                  <el-checkbox :label="item.id">{{ item.name }}</el-checkbox>
+                </el-checkbox-group> -->
+              </el-form-item>
+            </el-col>
+          </el-row>       
           <!-- LANGUAGES -->
           <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
             <el-col>
@@ -237,8 +243,7 @@
           </el-row>
           <!-- Образование/ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ -->
           <el-row>
-            <el-divider content-position="left"><img alt="logo" src="@/assets/images/cap.svg" height="25px" class="ml-2 mt-1">
-              {{ $t('Ta\'lim ma\'lumotlari') }}</el-divider>
+            <p class="label-content-form">{{ $t('Ta\'lim ma\'lumotlari') }}</p>
             <div>
               <el-row v-if="educationDialog">
                 <EducationCreate :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" @close="educationDialog = false" @save="setEducation" />
@@ -255,14 +260,14 @@
             </div>
             <br>
             <br>
-            <el-divider content-position="left"><i class="el-icon-s-cooperation" /> {{ $t('Mehnat faoliyati') }} </el-divider>
-            <el-row class="mt-5">
+            <p class="label-content-form">{{ $t('Mehnat faoliyati') }} </p>
+            <el-row class="mt-2">
               <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
               <experience-create ref="experienceCreate" @successSaved="$refs.experienceList.index()" />
             </el-row>
           </el-row>
           <hr>
-          <el-row class="float-right">
+          <el-row class="float-end">
             <el-button type="success" @click="save">{{ $t('Saqlash') }}</el-button>
           </el-row>
 
