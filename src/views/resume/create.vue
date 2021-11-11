@@ -86,9 +86,10 @@
       :rules="rules"
       label-width="240px"
       class="top-label-custom"
+      :label-position="labelPosition"
     >
       <el-row>
-        <el-col :span="16">
+        <el-col :span="isMobile ? 24 : 16">
           <el-row>
             <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
               <div class="formControl">
@@ -171,7 +172,7 @@
           <!-- График работы -->
           <el-row>
             <el-col :xs="24" :sm="24" :md="20" :lg="20" :xl="20">
-              <div class="demo-collapse">
+              <div class="ms-2 demo-collapse">
                 <el-collapse v-model="activeNames">
                   <el-collapse-item :title="$t('Ish grafigi')" name="1">
                     <template v-if="busynessTypes && busynessTypes.length !== 0">
@@ -187,7 +188,7 @@
                     <template v-if="workGraphics && workGraphics.length !== 0">
                       <div v-for="type in workGraphics" :key="'emp' + type.id">
                         <el-checkbox v-model="form.work_graphic_ids" :label="type.id">
-                          {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                          {{ (locale == 'ru')?type.name:(locale == 'uzln') ? type.name : type.name }}
                         </el-checkbox>
                       </div>
                     </template>
@@ -245,24 +246,14 @@
           <el-row>
             <p class="label-content-form">{{ $t('Ta\'lim ma\'lumotlari') }}</p>
             <div>
-              <el-row v-if="educationDialog">
-                <EducationCreate :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" @close="educationDialog = false" @save="setEducation" />
-              </el-row>
-              <el-row v-if="education && education.length">
-                <EducationTable :education="education" />
-              </el-row>
-              <el-row v-else>
-                <p class="text-center">{{ $t('Нет информации') }}</p>
-              </el-row>
-              <el-row>
-                <p class="text-primary mt-2" style="cursor:pointer" size="mini" @click="addEducation"><i class="el-icon-plus" /> {{ $t('Ta\'lim ma\'lumoti qo\'shish') }}</p>
-              </el-row>
+              <EducationTable ref="educationList" @editEdu="$refs.educationCreate.edit($event)" />
+              <EducationCreate ref="educationCreate" :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" @close="educationDialog = false" @save="$refs.educationList.setEducation()" />
             </div>
             <br>
             <br>
             <p class="label-content-form">{{ $t('Mehnat faoliyati') }} </p>
             <el-row class="mt-2">
-              <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
+              <experience-index ref="experienceList" @edit="$refs.educationCreate.edit($event)" />
               <experience-create ref="experienceCreate" @successSaved="$refs.experienceList.index()" />
             </el-row>
           </el-row>
@@ -341,7 +332,7 @@ export default {
       edu_degrees: [],
       photoUrl: null,
       fileList: [],
-      activeNames: ['1', '2', '3'],
+      activeNames: [],
       scheduleTypes: [],
       employmentTypes: [],
       rules: {
@@ -374,7 +365,6 @@ export default {
       districts: 'region/GET_DISTRICTS',
       resume: 'resources/GET_WORK_SEEKER',
       positions: 'resources/GET_POSITIONS',
-      education: 'education/GET_EDUCATIONS',
       profile: 'resources/GET_SEEKER_PROFILE',
       skillLevels: 'resources/GET_SKILL_LEVELS',
       workGraphics: 'resources/GET_WORK_GRAPHICS',
@@ -384,8 +374,21 @@ export default {
       skillCategories: 'resources/GET_SKILL_CATEGORIES',
       educationLevels: 'resources/GET_EDUCATION_LEVELS',
       salaryCurrencies: 'resources/GET_SALARY_CURRENCIES'
-    })
-
+    }),
+    labelPosition() {
+      if (this.isMobile) {
+        return 'top'
+      } else {
+        return 'left'    
+      }
+    },
+    isMobile() {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true
+      } else {
+        return false
+      }
+    }
   },
   watch: {
     'form.kodp_key'(newVal, oldVal) {
@@ -415,7 +418,7 @@ export default {
     })
     await this.getInfo()
       .then(() => {
-        this.setEducation()
+        console.log('xxx', this.$refs)
       })
       .catch(() => {
         if (!(this.user && this.user.id)) {
@@ -439,7 +442,6 @@ export default {
   methods: {
     ...mapActions({
       getInfo: 'auth/getInfo',
-      fetchEdus: 'education/index',
       fetchRegions: 'region/regions',
       fetchResources: 'resources/index',
       fetchDistricts: 'region/districts',
@@ -707,13 +709,6 @@ export default {
       if (this.districtModel) {
         this.changeDistrict()
       }      
-    },
-    addEducation() {
-      this.educationDialog = true
-    },
-    setEducation() {
-      this.educationDialog = false
-      this.fetchEdus({ user_id: this.user.id })
     }
 
   }
@@ -740,8 +735,5 @@ export default {
 }
 .w100 {
   width: 100%;
-}
-.el-form-item__label {
-    text-align: left;
 }
 </style>

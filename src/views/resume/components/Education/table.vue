@@ -23,7 +23,7 @@
                   </el-card>
                 </el-col>
                 <el-col :span="2">
-                  <span @click="updateEducation(item.id)">
+                  <span @click="update(item.id)">
                     <i class="el-icon-edit btnEdit" />
                   </span>
                   <span @click="deleteEdu(item.id)">
@@ -47,18 +47,28 @@ import { mapActions, mapGetters } from 'vuex'
 import { ElMessageBox, ElMessage } from 'element-plus'
 export default {
   name: 'EducationTable',
-  props: {
-    education: {
-      type: Array,
-      default() {
-        return []
-      }
-    }
+  // props: {
+  //   education: {
+  //     type: Array,
+  //     default() {
+  //       return []
+  //     }
+  //   }
+  // },
+  computed: {
+    ...mapGetters({ education: 'education/GET_EDUCATIONS' })
+  },
+  mounted() {
+    this.setEducation()
   },
   methods: {
     ...mapActions({
-      deleteAction: 'education/destroy', fetchEdu: 'education/index'
+      deleteAction: 'education/destroy', fetchEdu: 'education/index', fetchEdus: 'education/index'
     }),
+    setEducation() {
+      // this.educationDialog = false
+      this.fetchEdus({ user_id: this.user.id })
+    },
     dateFromLineToDot(date) {
       return date ? date.split('-').reverse().join('.') : ''
     },
@@ -68,8 +78,8 @@ export default {
     create() {
       this.$router.push({ name: 'EducationCreate' })
     },
-    updateEducation(id) {
-
+    update(id) {
+      this.$emit('editEdu', id)
     },
     deleteEdu(id) {
       ElMessageBox.confirm('Rostan ham o\'chirmoqchimisiz ?', 'Diqqat!',
