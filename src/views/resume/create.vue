@@ -176,7 +176,7 @@
                 <el-collapse v-model="activeNames">
                   <el-collapse-item :title="$t('Ish grafigi')" name="1">
                     <template v-if="busynessTypes && busynessTypes.length !== 0">
-                      <div v-for="(type, index) in busynessTypes" :key="'schedule' +index">
+                      <div v-for="(type, index) in busynessTypes" :key="'schedule' +index" :class="isMobile ? '' : 'collapseDesctop'">
                         <el-checkbox v-model="form.busyness_type_ids" :label="type.id">
                           {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
                         </el-checkbox>
@@ -186,7 +186,7 @@
                   </el-collapse-item>
                   <el-collapse-item :title="$t('Bandlik turi')" name="2">
                     <template v-if="workGraphics && workGraphics.length !== 0">
-                      <div v-for="type in workGraphics" :key="'emp' + type.id">
+                      <div v-for="type in workGraphics" :key="'emp' + type.id" :class="isMobile ? '' : 'collapseDesctop'">
                         <el-checkbox v-model="form.work_graphic_ids" :label="type.id">
                           {{ (locale == 'ru')?type.name:(locale == 'uzln') ? type.name : type.name }}
                         </el-checkbox>
@@ -196,7 +196,7 @@
                   </el-collapse-item>
                   <el-collapse-item :title="$t('Ko\'chish')" name="3">
                     <template v-if="businessTrips && businessTrips.length !== 0">
-                      <div v-for="type in businessTrips" :key="'trip' + type.id">
+                      <div v-for="type in businessTrips" :key="'trip' + type.id" :class="isMobile ? '' : 'collapseDesctop'">
                         <el-checkbox v-model="form.business_trip_ids" :label="type.id">
                           {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
                         </el-checkbox>
@@ -230,12 +230,9 @@
                 <el-select v-model="form.drivers_license" :placeholder="$t('Guvohnoma mavjud emas')" class="w100" multiple>
                   <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.name" />
                 </el-select>
-                <!-- <el-checkbox-group v-for="(item, index) in driversLicenses" :key="'license' +index" v-model="form.drivers_license">
-                  <el-checkbox :label="item.id">{{ item.name }}</el-checkbox>
-                </el-checkbox-group> -->
               </el-form-item>
             </el-col>
-          </el-row>       
+          </el-row>
           <!-- LANGUAGES -->
           <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
             <el-col>
@@ -735,5 +732,8 @@ export default {
 }
 .w100 {
   width: 100%;
+}
+.collapseDesctop {
+  padding: 0  0 0 250px;
 }
 </style>

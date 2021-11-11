@@ -4,49 +4,41 @@
       <p class="text-primary" style="cursor:pointer" @click="goToBack">
         Shaxsiy profilga qaytish
       </p>
-      <!-- {{ resume }}
-      <hr>
-      {{ profile }} -->
       <div class="grid-content bg-purple-dark">
         <h2 style="text-align: center; font-weight: bold">{{ $t('Rezyume') }}</h2>
       </div>
       <hr>
-      <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
-        {{ profile.first_name + ' ' + profile.last_name }}
-      </h3>
+
       <el-row :gutter="40">
         <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
-          <div class="grid-content bg-purple" justify="end" style="text-align: center">
+          <div class="grid-content bg-purple mt-4 " justify="end" style="text-align: center">
             <img
               src="@/assets/images/businessman.svg"
               alt="image"
-              width="150"
+              width="250"
             ><br>
           </div>
         </el-col>
         <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" class="mb-3">
+          <p class="resumeFullname">
+            {{ profile.first_name + ' ' + profile.last_name }}
+          </p>
           <el-row class="mt-3">
-            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Yoshi') }}:</b></el-col>
-            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.age }}</b></el-col>
+            <p> 
+              <span v-if="user.data.gender">{{ $t('Erkak') }}</span> 
+              <span v-else>{{ $t('Ayol') }}</span>
+              {{ ', ' + user.age + ' yosh, ' }}
+              {{ user.data && user.data.birth_date? user.data.birth_date.split('-').reverse().join('.') + ' yilda tug\'ilgan.':'' }}
+            </p>   
           </el-row>
-          <el-row class="mt-3">
-            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Jinsi') }}:</b></el-col>
-            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
-              <span v-if="user.data.gender"><b>{{ $t('Erkak') }}</b></span>
-              <span v-else><b>{{ $t('Ayol') }}</b></span>
-            </el-col>
-          </el-row>
-          <el-row class="mt-3">
-            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Telefoni') }}:</b></el-col>
+          <el-row class="mt-2">
             <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>+{{ user.data.contact_number }}</b></el-col>
           </el-row>
-          <el-row class="mt-3">
-            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Email') }}:</b></el-col>
+          <el-row class="mt-2">
             <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.data.email }}</b></el-col>
           </el-row>
-          <el-row class="mt-3">
-            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Yashash joyi') }}:</b></el-col>
-            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b v-if="profile.region">{{ profile.region.name_uz_ln + ', ' + profile.district.name_uz_ln }}</b></el-col>
+          <el-row class="mt-2">
+            <el-col><b class="text-muted">{{ $t('Yashash joyi') }}:</b> <b v-if="profile.region">{{ profile.region.name_uz_ln + ', ' + profile.district.name_uz_ln }}</b></el-col>
           </el-row>
         </el-col>   
       </el-row>
