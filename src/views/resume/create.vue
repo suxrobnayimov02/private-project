@@ -1,5 +1,5 @@
 <template>
-  <div v-if="is_auth && user" class="contentBlock clearfix container">
+  <div v-if="is_auth && user" class="clearfix container">
     <div v-if="is_edit">
       <p class="text-primary" style="cursor:pointer" @click="goToBack">
         Shaxsiy profilga qaytish
@@ -9,25 +9,18 @@
       <h2 style="text-align: center; font-weight: bold">{{ $t('Rezyume') }}</h2>
     </div>
     <hr>
-    <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
-      <template v-if="is_edit">
-        {{ profile.first_name + ' ' + profile.last_name }}
-      </template>
-      <template v-else>
-        {{ user.fullname }}
-      </template>
-    </h3>
-    <el-row :gutter="40">
-      <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
-        <div class="grid-content bg-purple" justify="end" style="text-align: center">
-          <!-- <template v-if="photoUrl">
+    <div>
+      <el-row :gutter="40">
+        <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
+          <div class="grid-content bg-purple mt-5" justify="end" style="text-align: center">
+            <!-- <template v-if="photoUrl">
             <img :src="photoUrl" alt="image" width="150px" style="min-height: 160px">
           </template> -->
-          <img
-            src="@/assets/images/businessman.svg"
-            alt="image"
-            width="150"
-          ><br>
+            <img
+              src="@/assets/images/businessman.svg"
+              alt="image"
+              width="150"
+            ><br>
           <!-- <div class="mt-2 clearfix">
             <el-upload
               class="upload-demo"
@@ -54,43 +47,54 @@
             ><i class="el-icon-delete" />
             </el-button>
           </div> -->
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" class="mb-3">
-        <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Yoshi') }}:</b></el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.age }}</b></el-col>
-        </el-row>
-        <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Jinsi') }}:</b></el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
-            <span v-if="user.data.gender"><b>{{ $t('Erkak') }}</b></span>
-            <span v-else><b>{{ $t('Ayol') }}</b></span>
-          </el-col>
-        </el-row>
-        <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Telefoni') }}:</b></el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>+{{ user.data.contact_number }}</b></el-col>
-        </el-row>
-        <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Email') }}:</b></el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.data.email }}</b></el-col>
-        </el-row>
-      </el-col>
-    </el-row>
+          </div>
+        </el-col>
+        <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" class="mb-3">
+          <p class="resumeFullname">
+            <template v-if="is_edit">
+              {{ profile.first_name + ' ' + profile.last_name }}
+            </template>
+            <template v-else>
+              {{ user.data.profile.first_name + ' ' + user.data.profile.last_name }}
+            </template>
+          </p>
+          <el-row class="mt-2">
+            <el-col :xs="12" :sm="4" :md="4" :lg="4" :xl="4"><b class="text-muted">{{ $t('Yoshi') }}:</b></el-col>
+            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.age }}</b></el-col>
+          </el-row>
+          <el-row class="mt-2">
+            <el-col :xs="12" :sm="4" :md="4" :lg="4" :xl="4"><b class="text-muted">{{ $t('Jinsi') }}:</b></el-col>
+            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
+              <span v-if="user.data.gender"><b>{{ $t('Erkak') }}</b></span>
+              <span v-else><b>{{ $t('Ayol') }}</b></span>
+            </el-col>
+          </el-row>
+          <el-row class="mt-2">
+            <el-col :xs="12" :sm="4" :md="4" :lg="4" :xl="4"><b class="text-muted">{{ $t('Telefoni') }}:</b></el-col>
+            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>+{{ user.data.contact_number }}</b></el-col>
+          </el-row>
+          <el-row class="mt-2">
+            <el-col :xs="12" :sm="4" :md="4" :lg="4" :xl="4"><b class="text-muted">{{ $t('Email') }}:</b></el-col>
+            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.data.email }}</b></el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+    </div>
+    <hr>
     <br>
-    <p class="label-content-form"> {{ $t('Yashash manzili') }}</p>
     <el-form
       ref="form"
       :model="form"
       :rules="rules"
       label-width="240px"
-      class="top-label-custom"
+      class="top-label-custom containerResume"
+      :label-position="labelPosition"
     >
       <el-row>
-        <el-col :span="16">
+        <el-col :span="isMobile ? 24 : 16">
           <el-row>
             <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
+              <p class="label-content-form"> {{ $t('Yashash manzili') }}</p>
               <div class="formControl">
                 <el-form-item :label="$t('Hudud') + ':'" prop="soato_region">
                   <div class="field withBackground">
@@ -161,7 +165,7 @@
                 <el-option v-for="item in salaryCurrencies" :key="item.id" :label="item.name" :value="item.id" />
               </el-select>
             </el-col>
-            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
               <el-form-item label="Kelishsa bo'ladimi?">
                 <el-radio v-model="form.is_agreed_salary" :label="true">{{ $t('Ha') }}</el-radio>
                 <el-radio v-model="form.is_agreed_salary" :label="false">{{ $t('Yo\'q') }}</el-radio>
@@ -171,11 +175,11 @@
           <!-- График работы -->
           <el-row>
             <el-col :xs="24" :sm="24" :md="20" :lg="20" :xl="20">
-              <div class="demo-collapse">
+              <div class="ms-2 demo-collapse">
                 <el-collapse v-model="activeNames">
                   <el-collapse-item :title="$t('Ish grafigi')" name="1">
                     <template v-if="busynessTypes && busynessTypes.length !== 0">
-                      <div v-for="(type, index) in busynessTypes" :key="'schedule' +index">
+                      <div v-for="(type, index) in busynessTypes" :key="'schedule' +index" :class="isMobile ? '' : 'collapseDesctop'">
                         <el-checkbox v-model="form.busyness_type_ids" :label="type.id">
                           {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
                         </el-checkbox>
@@ -185,9 +189,9 @@
                   </el-collapse-item>
                   <el-collapse-item :title="$t('Bandlik turi')" name="2">
                     <template v-if="workGraphics && workGraphics.length !== 0">
-                      <div v-for="type in workGraphics" :key="'emp' + type.id">
+                      <div v-for="type in workGraphics" :key="'emp' + type.id" :class="isMobile ? '' : 'collapseDesctop'">
                         <el-checkbox v-model="form.work_graphic_ids" :label="type.id">
-                          {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
+                          {{ (locale == 'ru')?type.name:(locale == 'uzln') ? type.name : type.name }}
                         </el-checkbox>
                       </div>
                     </template>
@@ -195,7 +199,7 @@
                   </el-collapse-item>
                   <el-collapse-item :title="$t('Ko\'chish')" name="3">
                     <template v-if="businessTrips && businessTrips.length !== 0">
-                      <div v-for="type in businessTrips" :key="'trip' + type.id">
+                      <div v-for="type in businessTrips" :key="'trip' + type.id" :class="isMobile ? '' : 'collapseDesctop'">
                         <el-checkbox v-model="form.business_trip_ids" :label="type.id">
                           {{ (locale == 'ru')?type.name:(locale == 'uzln')?type.name:type.name }}
                         </el-checkbox>
@@ -229,12 +233,9 @@
                 <el-select v-model="form.drivers_license" :placeholder="$t('Guvohnoma mavjud emas')" class="w100" multiple>
                   <el-option v-for="item in driversLicenses" :key="item.id" :label="item.name" :value="item.name" />
                 </el-select>
-                <!-- <el-checkbox-group v-for="(item, index) in driversLicenses" :key="'license' +index" v-model="form.drivers_license">
-                  <el-checkbox :label="item.id">{{ item.name }}</el-checkbox>
-                </el-checkbox-group> -->
               </el-form-item>
             </el-col>
-          </el-row>       
+          </el-row>
           <!-- LANGUAGES -->
           <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
             <el-col>
@@ -245,24 +246,14 @@
           <el-row>
             <p class="label-content-form">{{ $t('Ta\'lim ma\'lumotlari') }}</p>
             <div>
-              <el-row v-if="educationDialog">
-                <EducationCreate :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" @close="educationDialog = false" @save="setEducation" />
-              </el-row>
-              <el-row v-if="education && education.length">
-                <EducationTable :education="education" />
-              </el-row>
-              <el-row v-else>
-                <p class="text-center">{{ $t('Нет информации') }}</p>
-              </el-row>
-              <el-row>
-                <p class="text-primary mt-2" style="cursor:pointer" size="mini" @click="addEducation"><i class="el-icon-plus" /> {{ $t('Ta\'lim ma\'lumoti qo\'shish') }}</p>
-              </el-row>
+              <EducationTable ref="educationList" @editEdu="$refs.educationCreate.edit($event)" />
+              <EducationCreate ref="educationCreate" :form="education" :education-levels="educationLevels" :create-or-update="'create'" :education-dialog="educationDialog" @close="educationDialog = false" @save="$refs.educationList.setEducation()" />
             </div>
             <br>
             <br>
             <p class="label-content-form">{{ $t('Mehnat faoliyati') }} </p>
             <el-row class="mt-2">
-              <experience-index ref="experienceList" @edit="$refs.experienceCreate.edit($event)" />
+              <experience-index ref="experienceList" @edit="$refs.educationCreate.edit($event)" />
               <experience-create ref="experienceCreate" @successSaved="$refs.experienceList.index()" />
             </el-row>
           </el-row>
@@ -341,7 +332,7 @@ export default {
       edu_degrees: [],
       photoUrl: null,
       fileList: [],
-      activeNames: ['1', '2', '3'],
+      activeNames: [],
       scheduleTypes: [],
       employmentTypes: [],
       rules: {
@@ -374,7 +365,6 @@ export default {
       districts: 'region/GET_DISTRICTS',
       resume: 'resources/GET_WORK_SEEKER',
       positions: 'resources/GET_POSITIONS',
-      education: 'education/GET_EDUCATIONS',
       profile: 'resources/GET_SEEKER_PROFILE',
       skillLevels: 'resources/GET_SKILL_LEVELS',
       workGraphics: 'resources/GET_WORK_GRAPHICS',
@@ -384,8 +374,21 @@ export default {
       skillCategories: 'resources/GET_SKILL_CATEGORIES',
       educationLevels: 'resources/GET_EDUCATION_LEVELS',
       salaryCurrencies: 'resources/GET_SALARY_CURRENCIES'
-    })
-
+    }),
+    labelPosition() {
+      if (this.isMobile) {
+        return 'top'
+      } else {
+        return 'left'    
+      }
+    },
+    isMobile() {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true
+      } else {
+        return false
+      }
+    }
   },
   watch: {
     'form.kodp_key'(newVal, oldVal) {
@@ -415,7 +418,7 @@ export default {
     })
     await this.getInfo()
       .then(() => {
-        this.setEducation()
+        console.log('xxx', this.$refs)
       })
       .catch(() => {
         if (!(this.user && this.user.id)) {
@@ -439,7 +442,6 @@ export default {
   methods: {
     ...mapActions({
       getInfo: 'auth/getInfo',
-      fetchEdus: 'education/index',
       fetchRegions: 'region/regions',
       fetchResources: 'resources/index',
       fetchDistricts: 'region/districts',
@@ -707,13 +709,6 @@ export default {
       if (this.districtModel) {
         this.changeDistrict()
       }      
-    },
-    addEducation() {
-      this.educationDialog = true
-    },
-    setEducation() {
-      this.educationDialog = false
-      this.fetchEdus({ user_id: this.user.id })
     }
 
   }
@@ -741,7 +736,7 @@ export default {
 .w100 {
   width: 100%;
 }
-.el-form-item__label {
-    text-align: left;
+.collapseDesctop {
+  padding: 0  0 0 250px;
 }
 </style>

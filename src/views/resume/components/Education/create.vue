@@ -65,6 +65,9 @@
           <el-button type="primary" icon="el-icon-check" class="float-end" @click="save">Saqlash</el-button>
         </div>
       </el-dialog>
+      <el-row>
+        <p class="text-primary mt-2" style="cursor:pointer" size="mini" @click="addEducation"><i class="el-icon-plus" /> {{ $t('Ta\'lim ma\'lumoti qo\'shish') }}</p>
+      </el-row>
     </div>
   </div>
 </template>
@@ -97,6 +100,7 @@ export default {
   data() {
     return {
       form: {
+        id: null,
         user_id: null,
         education_level_id: null,
         education_place: '',
@@ -108,7 +112,6 @@ export default {
       dialogFormVisible: false,
       editLoading: false,
       diploma_given_date: '01.01.2019',
-      showDate: false,
       faculties: [],
       degrees: [
         { name: 'Бакалавр', id: 1 }, { name: 'Магистр', id: 2 }, { name: 'Мутахассис', id: 3 }
@@ -173,76 +176,58 @@ export default {
     }   
   },
   created() {
-    this.dialogFormVisible = this.educationDialog
-    if (this.$route.name === 'OtmUpdate') {
-      this.editLoading = true
-      this.setForm()
-    }
-    setTimeout(() => { this.showDate = true }, 300)
+    this.dialogFormVisible = this.educationDialog    
   },
   methods: {
-    ...mapActions({ getOtms: 'otm/otms', getFaculties: 'otm/faculties', create: 'education/store', update: 'otm/update' }),
-    fetchFaculties() {
-      this.form.faculty_id = null
-      this.showDate = false
-      const finish_year = 1 * this.form.education_stared_year + (this.form.degree === 2 ? 2 : 4)
-      this.form.education_finished_year = finish_year <= this.currentYear ? finish_year : this.currentYear
-      this.diploma_given_date = '01.01.' + this.form.education_finished_year
-      this.getFaculties({ otm_id: this.form.otm_id, begin_year: this.form.education_stared_year, finish_year: this.form.education_finished_year }).then(res => {
-        this.faculties = res.data !== 'Faculties not found!' ? res.data : []
+    ...mapActions({ fetchEdu: 'education/show', create: 'education/store', update: 'education/update' }),
+    edit(id) {
+      this.fetchEdu(id).then((res) => {
+        this.setForm(res.data)
+        this.dialogFormVisible = true
       })
-      setTimeout(() => { this.showDate = true }, 300)
     },
-    save() {
+    addEducation() {
+      this.dialogFormVisible = true
+    },
+    action(data) {
+      if (!this.form.id) return this.create(data)
+      else return this.update(data)
+    },
+    save() {    
       if (this.validate()) {
         this.form.user_id = this.user.id
-        if (true) {
-          this.create(this.form).then((res) => {
-            if (res.success) {
-              Swal.fire({
-                title: 'Маълумотлар сақланди!',
-                type: 'success',
-                timer: 1500,
-                showConfirmButton: false,
-                confirmButtonText: 'Давом этиш'
-              })
-              this.$emit('save')
-              this.dialogFormVisible = false
-            } else {
-              const message = res.code === 441 ? 'Ушбу диплом аввал рўйхатга олинган!' : 'Хатолик!'
-              Swal.fire({
-                title: message,
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false,
-                confirmButtonText: 'Давом этиш'
-              })
-            }
-            this.$emit('close')
+        this.action(this.form).then((res) => {
+          if (res.success) {            
+            Swal.fire({
+              title: 'Ma\'lumotlar saqlandi!',
+              type: 'success',
+              timer: 1500,
+              showConfirmButton: false
+            })
+            this.dialogFormVisible = false
+            this.dialogVisible = false
+            this.$emit('save')
+          } else {
+            Swal.fire({
+              title: 'Error!',
+              type: 'error',
+              timer: 1500,
+              showConfirmButton: false
+            })
+          }
+        }).catch(() => {
+          Swal.fire({
+            title: 'Error!',
+            type: 'error',
+            timer: 1500,
+            showConfirmButton: false
           })
-        } else {
-          this.update(this.form).then((res) => {
-            if (res.success) {
-              Swal.fire({
-                title: 'Маълумотлар сақланди!',
-                type: 'success',
-                timer: 1500,
-                showConfirmButton: false,
-                confirmButtonText: 'Давом этиш'
-              })
-              this.dialogFormVisible = false
-            } else {
-              const message = res.code === 441 ? 'Ушбу диплом аввал рўйхатга олинган!' : 'Хатолик!'
-              Swal.fire({
-                title: message,
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false,
-                confirmButtonText: 'Давом этиш'
-              })
-            }
-          })
-        }
+        })
+      } else {
+        ElMessage({
+          showClose: true,
+          message: 'Talab qilingan maydonalarni to\'ldiring'
+        })
       }
     },
     handleClose(done) {
@@ -268,23 +253,20 @@ export default {
     cancel() {
       this.dialogFormVisible = false
     },
-    setForm() {
-      const diplom = JSON.parse(localStorage.getItem('diplom'))
-      this.form.id = diplom.id
-      this.form.isApplications = diplom.isApplications
-      this.form.otm_id = diplom.otm_id
-      this.form.institution_id = diplom.institution_id
-      this.form.degree = this.degrees.find(degree => degree.name === diplom.degree) ? this.degrees.find(degree => degree.name === diplom.degree).id : null
-      this.form.education_stared_year = diplom.education_started_year
-      this.form.education_finished_year = diplom.education_finished_year
-      this.form.diploma = diplom.diploma
-      this.diploma_given_date = diplom.diploma_given_date
-      this.getFaculties({ otm_id: this.form.otm_id, begin_year: this.form.education_stared_year, finish_year: this.form.education_finished_year }).then(res => {
-        this.faculties = res.data
-        this.form.faculty_id = diplom.faculty_id
-      }).finally(() => {
-        setTimeout(() => { this.editLoading = false }, 200)
-      })
+    setForm(edu) {
+      this.form.id = edu.id
+      this.form.education_level_id = edu.education_level_id
+      this.form.education_place = edu.education_place
+      this.form.faculty = edu.faculty
+      this.form.currently_studying = edu.currently_studying
+      this.form.start_year = edu.start_year
+      this.form.end_year = edu.end_year
+      // this.getFaculties({ otm_id: this.form.otm_id, begin_year: this.form.education_stared_year, finish_year: this.form.education_finished_year }).then(res => {
+      //   this.faculties = res.data
+      //   this.form.faculty_id = diplom.faculty_id
+      // }).finally(() => {
+      //   setTimeout(() => { this.editLoading = false }, 200)
+      // })
     }
   }
 }

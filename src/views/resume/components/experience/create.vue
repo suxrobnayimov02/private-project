@@ -194,7 +194,7 @@ export default {
               showConfirmButton: false
             })
           }
-        }).catch(err => {
+        }).catch(() => {
           Swal.fire({
             title: 'Error!',
             type: 'error',
