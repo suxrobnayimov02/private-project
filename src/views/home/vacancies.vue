@@ -1,6 +1,8 @@
 <template>
   <div id="vacancies__section" class="vacancies__section">
     <div class="container bigger no-padding">
+      <br>
+      <br>
       <div class="vacancies__tab">
         <ul class="nav nav-tabs nav-justified" role="tablist">
           <!-- <div class="search">

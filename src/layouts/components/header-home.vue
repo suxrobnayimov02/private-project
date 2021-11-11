@@ -3,6 +3,12 @@
     <div class="container">
       <div class="row row-no-gutter">
         <div class="header__nav">
+          <router-link to="/" class="header__logo no-desktop on-mobile" style="margin-top: -12px; margin-right: 10px">
+            <span class="icon">
+              <img :src="logoUrl" alt="" width="82">
+            </span>
+            <span class="name"> Milliy vakansiyalar bazasi </span>
+          </router-link>
           <ul class="navList navbar">
             <li class="nav nav-item radio-btn no-mobile">
               <label class="radio-inline">
@@ -94,6 +100,11 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  computed: {
+    logoUrl() {
+      return process.env.VUE_APP_BASE_URL + 'storage/image/logo-uz.png'
+    }
+  }
 }
 </script>

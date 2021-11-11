@@ -115,23 +115,23 @@
             <span class="name"> Milliy vakansiyalar bazasi </span>
           </router-link>
           <div class="header__nav">
-            <ul class="nav nav-pills" style="display: flex; align-items: center;">
-              <li class="nav-item">
+            <ul class="navbar nav-pills">
+              <li class="nav-item no-mobile">
                 <a href="" class="nav-link">
                   <span class="name">Bosh sahifa</span>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item no-mobile">
                 <a href="" class="nav-link">
                   <span class="name">Rezyume qo’shish</span>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item no-mobile">
                 <a href="" class="nav-link">
                   <span class="name">Vakansiya e’lon qilish</span>
                 </a>
               </li>
-              <li class="nav-item">
+              <li v-if="$route.name !== 'Register'" class="nav-item">
                 <a href="" class="nav-link register">
                   <span>
                     <img src="img/image/icon_user.svg" alt="" width="16">
@@ -139,18 +139,18 @@
                   <span class="name">Ro’yxatdan o’tish</span>
                 </a>
               </li>
-              <li class="nav-item mobile__bt">
+              <li class="nav-item mobile__bt no-mobile">
                 <button class="btn">
                   <img src="img/image/icon_menu.svg" alt="" width="24">
                 </button>
               </li>
             </ul>
           </div>
-          <!-- <div class="mobile__btn">
+          <div class="mobile__btn">
             <button class="btn">
               <img src="img/image/icon_menu.svg" alt="" width="24" />
             </button>
-          </div> -->
+          </div>
           <div class="spec-view__btn no-mobile">
             <button class="btn">
               <img src="img/image/icon_glasses.svg" alt="" width="24">

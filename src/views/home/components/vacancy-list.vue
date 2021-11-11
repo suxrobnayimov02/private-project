@@ -3,7 +3,7 @@
     <div class="vacancies__latest no-padding-right">
       <div class="section__title">Yangi vakansiyalar</div>
       <div class="type-slider">
-        <carousel v-if="listFilterableNskz.length" :items-to-show="1">
+        <carousel v-if="listFilterableNskz.length" :items-to-show="windowWidth === 'xs' ? 1 : 5">
           <slide v-for="i in listFilterableNskz" :key="i.id">
             <span class="type_item pointer" :class="{ 'active' : filter.nskz === i.code }" @click="filter.nskz = i.code">
               <span>{{ i.name_uz_ln }}</span>
@@ -66,7 +66,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({ list: 'vacancy/GET_VACANCIES', listFilterableNskz: 'resources/GET_FILTERABLE_NSKZ' })
+    ...mapGetters({ list: 'vacancy/GET_VACANCIES', listFilterableNskz: 'resources/GET_FILTERABLE_NSKZ' }),
+    windowWidth() {
+      if (this.window < 550) return 'xs'
+      if (this.window > 549 && this.window < 1200) return 'md'
+      if (this.window > 1199) return 'lg'
+    },
+    window() {
+      return window.innerWidth
+    },
   },
   watch: {
     'filter.nskz'(newVal) {

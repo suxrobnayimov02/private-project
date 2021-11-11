@@ -32,11 +32,11 @@
                 class="nav-link"
               >Vakansiya e’lon qilish</router-link>
             </li>
-            <li class="nav-item mobile__btn">
-              <button class="btnHamburger">
-                <img src="/img/image/icon_menu.svg" alt="" width="24">
-              </button>
-            </li>
+<!--            <li class="nav-item mobile__btn">-->
+<!--              <button class="btnHamburger">-->
+<!--                <img src="/img/image/icon_menu.svg" alt="" width="24">-->
+<!--              </button>-->
+<!--            </li>-->
           </ul>
           <ul class="nav nav-pills no-desktop on-mobile">
             <li class="nav-item nav-title">Ish qidiruvchilarga</li>
