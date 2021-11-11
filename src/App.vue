@@ -17,7 +17,7 @@ export default {
       const recaptchaScript3 = document.createElement('script')
       recaptchaScript2.setAttribute('src', '/js/jquerySwipeHandler.js')
       document.head.appendChild(recaptchaScript3)
-    }, 100)
+    }, 2000)
   }
 }
 // import '@/assets/js/script.js'

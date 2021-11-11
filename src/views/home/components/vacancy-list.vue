@@ -3,7 +3,7 @@
     <div class="vacancies__latest no-padding-right">
       <div class="section__title">Yangi vakansiyalar</div>
       <div class="type-slider">
-        <carousel v-if="listFilterableNskz.length" :items-to-show="5">
+        <carousel v-if="listFilterableNskz.length" :items-to-show="1">
           <slide v-for="i in listFilterableNskz" :key="i.id">
             <span class="type_item pointer" :class="{ 'active' : filter.nskz === i.code }" @click="filter.nskz = i.code">
               <span>{{ i.name_uz_ln }}</span>
