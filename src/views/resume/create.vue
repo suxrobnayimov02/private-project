@@ -1,5 +1,5 @@
 <template>
-  <div v-if="is_auth && user" class="contentBlock clearfix container">
+  <div v-if="is_auth && user" class="clearfix container">
     <div v-if="is_edit">
       <p class="text-primary" style="cursor:pointer" @click="goToBack">
         Shaxsiy profilga qaytish
@@ -9,25 +9,18 @@
       <h2 style="text-align: center; font-weight: bold">{{ $t('Rezyume') }}</h2>
     </div>
     <hr>
-    <h3 class="text-gray-700 text-m font-bold text-left text-primary text-center" style="height: 35px">
-      <template v-if="is_edit">
-        {{ profile.first_name + ' ' + profile.last_name }}
-      </template>
-      <template v-else>
-        {{ user.fullname }}
-      </template>
-    </h3>
-    <el-row :gutter="40">
-      <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
-        <div class="grid-content bg-purple" justify="end" style="text-align: center">
-          <!-- <template v-if="photoUrl">
+    <div>
+      <el-row :gutter="40">
+        <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
+          <div class="grid-content bg-purple mt-5" justify="end" style="text-align: center">
+            <!-- <template v-if="photoUrl">
             <img :src="photoUrl" alt="image" width="150px" style="min-height: 160px">
           </template> -->
-          <img
-            src="@/assets/images/businessman.svg"
-            alt="image"
-            width="150"
-          ><br>
+            <img
+              src="@/assets/images/businessman.svg"
+              alt="image"
+              width="150"
+            ><br>
           <!-- <div class="mt-2 clearfix">
             <el-upload
               class="upload-demo"
@@ -54,44 +47,54 @@
             ><i class="el-icon-delete" />
             </el-button>
           </div> -->
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" class="mb-3">
-        <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Yoshi') }}:</b></el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.age }}</b></el-col>
-        </el-row>
-        <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Jinsi') }}:</b></el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
-            <span v-if="user.data.gender"><b>{{ $t('Erkak') }}</b></span>
-            <span v-else><b>{{ $t('Ayol') }}</b></span>
-          </el-col>
-        </el-row>
-        <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Telefoni') }}:</b></el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>+{{ user.data.contact_number }}</b></el-col>
-        </el-row>
-        <el-row class="mt-3">
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b class="text-muted">{{ $t('Email') }}:</b></el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.data.email }}</b></el-col>
-        </el-row>
-      </el-col>
-    </el-row>
+          </div>
+        </el-col>
+        <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" class="mb-3">
+          <p class="resumeFullname">
+            <template v-if="is_edit">
+              {{ profile.first_name + ' ' + profile.last_name }}
+            </template>
+            <template v-else>
+              {{ user.data.profile.first_name + ' ' + user.data.profile.last_name }}
+            </template>
+          </p>
+          <el-row class="mt-2">
+            <el-col :xs="12" :sm="4" :md="4" :lg="4" :xl="4"><b class="text-muted">{{ $t('Yoshi') }}:</b></el-col>
+            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.age }}</b></el-col>
+          </el-row>
+          <el-row class="mt-2">
+            <el-col :xs="12" :sm="4" :md="4" :lg="4" :xl="4"><b class="text-muted">{{ $t('Jinsi') }}:</b></el-col>
+            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
+              <span v-if="user.data.gender"><b>{{ $t('Erkak') }}</b></span>
+              <span v-else><b>{{ $t('Ayol') }}</b></span>
+            </el-col>
+          </el-row>
+          <el-row class="mt-2">
+            <el-col :xs="12" :sm="4" :md="4" :lg="4" :xl="4"><b class="text-muted">{{ $t('Telefoni') }}:</b></el-col>
+            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>+{{ user.data.contact_number }}</b></el-col>
+          </el-row>
+          <el-row class="mt-2">
+            <el-col :xs="12" :sm="4" :md="4" :lg="4" :xl="4"><b class="text-muted">{{ $t('Email') }}:</b></el-col>
+            <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6"><b>{{ user.data.email }}</b></el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+    </div>
+    <hr>
     <br>
-    <p class="label-content-form"> {{ $t('Yashash manzili') }}</p>
     <el-form
       ref="form"
       :model="form"
       :rules="rules"
       label-width="240px"
-      class="top-label-custom"
+      class="top-label-custom containerResume"
       :label-position="labelPosition"
     >
       <el-row>
         <el-col :span="isMobile ? 24 : 16">
           <el-row>
             <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
+              <p class="label-content-form"> {{ $t('Yashash manzili') }}</p>
               <div class="formControl">
                 <el-form-item :label="$t('Hudud') + ':'" prop="soato_region">
                   <div class="field withBackground">
@@ -162,7 +165,7 @@
                 <el-option v-for="item in salaryCurrencies" :key="item.id" :label="item.name" :value="item.id" />
               </el-select>
             </el-col>
-            <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
               <el-form-item label="Kelishsa bo'ladimi?">
                 <el-radio v-model="form.is_agreed_salary" :label="true">{{ $t('Ha') }}</el-radio>
                 <el-radio v-model="form.is_agreed_salary" :label="false">{{ $t('Yo\'q') }}</el-radio>

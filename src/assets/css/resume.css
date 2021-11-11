@@ -1,6 +1,18 @@
 .resumeFullname {
-  font: normal normal bold 50px/84px 'Segoe UI';
+  font: normal normal bold 40px/84px 'Segoe UI';
   letter-spacing: -2.25px;
 color: #333333;
 opacity: 1; 
+}
+.el-select .el-input__inner {
+  box-shadow: inset 0px 1px 2px #00000029;
+}
+.el-input__inner {
+  box-shadow: inset 0px 1px 2px #00000029;
+}
+.el-textarea__inner {
+  box-shadow: inset 0px 1px 2px #00000029;
+}
+.containerResume {
+  padding-left: 100px;
 }
