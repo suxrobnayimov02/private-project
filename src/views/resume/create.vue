@@ -1,5 +1,5 @@
 <template>
-  <div v-if="is_auth && user" class="clearfix container">
+  <div v-if="is_auth && user" class="clearfix container resumeCreate">
     <div v-if="is_edit">
       <p class="text-primary" style="cursor:pointer" @click="goToBack">
         Shaxsiy profilga qaytish
@@ -128,10 +128,6 @@
             </el-col>
           </el-row>
           <!-- Position/salary -->
-          <!-- <el-divider content-position="left">
-            <img alt="logo" src="@/assets/images/career-promotion.svg" height="22px" class="mr-2 mt-1">
-            {{ $t('Ishga doir ma\'lumotlar') }}
-          </el-divider> -->
           <p class="label-content-form">Mutaxasislik</p>
           <el-row>
             <el-col :span="24">
@@ -174,8 +170,8 @@
           </el-row>
           <!-- График работы -->
           <el-row>
-            <el-col :xs="24" :sm="24" :md="20" :lg="20" :xl="20">
-              <div class="ms-2 demo-collapse">
+            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+              <div class="ms-1 demo-collapse">
                 <el-collapse v-model="activeNames">
                   <el-collapse-item :title="$t('Ish grafigi')" name="1">
                     <template v-if="busynessTypes && busynessTypes.length !== 0">
@@ -236,10 +232,10 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <!-- LANGUAGES -->
+          <!-- LANGUAGES/SKILLS -->
           <el-row v-if="skillCategories && skillCategories.length" class="mt-1">
             <el-col>
-              <languages :profile="user.resume" :locale="locale" />
+              <skills :profile="user.resume" :locale="locale" />
             </el-col>
           </el-row>
           <!-- Образование/ТРУДОВАЯ ДЕЯТЕЛЬНОСТЬ -->
@@ -258,7 +254,7 @@
             </el-row>
           </el-row>
           <hr>
-          <el-row class="float-end">
+          <el-row class="float-end mb-5">
             <el-button type="success" @click="save">{{ $t('Saqlash') }}</el-button>
           </el-row>
 
@@ -276,13 +272,13 @@ import EducationCreate from './components/Education/create.vue'
 import { translater } from '../../utils/translater'
 import ExperienceIndex from './components/experience/index'
 import ExperienceCreate from './components/experience/create'
-import languages from './components/languages'
+import skills from './components/skills'
 import { VMoney } from 'v-money'
 import { VueMaskDirective } from 'v-mask'
 
 export default {
   components: {
-    EducationTable, ExperienceIndex, ExperienceCreate, languages, EducationCreate
+    EducationTable, ExperienceIndex, ExperienceCreate, skills, EducationCreate
   },
   directives: { money: VMoney, mask: VueMaskDirective },
   data() {
@@ -714,9 +710,10 @@ export default {
   }
 }
 </script>
-<style scope>
-.el-collapse{
+<style >
+.containerResume .el-collapse{
     max-width: 100%;
+  border-top: none;
 }
 .selecttt{
     flex-basis: 100%;
@@ -728,10 +725,13 @@ export default {
     padding: 0 2px;
     position: relative;
 }
-.el-collapse-item__header {
+.containerResume .el-collapse-item__header {
     border-bottom-color: transparent;
-    line-height: 14px !important;
+    color: #606266;
+    line-height: 22px !important;
     font-weight: bold !important;
+    font-size: 14px;
+    margin-bottom: 19px;
 }
 .w100 {
   width: 100%;
