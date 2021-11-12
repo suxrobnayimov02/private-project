@@ -416,15 +416,15 @@ body {
 
 .header__bottom {
   border-bottom: 1px solid #EAEAEA;
-  padding-top: 35px;
-  /* padding-bottom: 10px; */
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .header__bottom .breadcrumb {
   background: none;
   margin-bottom: 0;
   padding: 0;
-  float: left;
+  /* float: left; */
   display: table;
 }
 
@@ -437,7 +437,7 @@ body {
   color: #767676;
   display: table-cell;
   vertical-align: middle;
-  height: 50px;
+  /* height: 50px; */
 }
 
 .header__bottom .breadcrumb-item + li::before {
@@ -858,7 +858,7 @@ body {
 }
 
 .intro .statistic .swipe__btn {
-  margin-top: 65px;
+  margin-top: 25px;
   display: none;
   background: transparent;
   border: 0;
@@ -4077,4 +4077,7 @@ body {
 }
 ul {
   padding: 0;
+}
+.responsive_logo {
+  display: none;
 }
