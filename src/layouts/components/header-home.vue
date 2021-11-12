@@ -3,14 +3,8 @@
     <div class="container">
       <div class="row row-no-gutter">
         <div class="header__nav">
-          <router-link to="/" class="header__logo no-desktop on-mobile" style="margin-top: -12px; margin-right: 10px">
-            <span class="icon">
-              <img :src="logoUrl" alt="" width="82">
-            </span>
-            <span class="name"> Milliy vakansiyalar bazasi </span>
-          </router-link>
-          <ul class="navList navbar">
-            <li class="nav nav-item radio-btn no-mobile">
+          <ul class="navList " style="display: flex; align-items:center;">
+            <li class="na nav-item radio-btn new_class">
               <label class="radio-inline">
                 <input
                   id="inlineRadio1"
@@ -31,6 +25,12 @@
               </label>
             </li>
             <li class="nav-item">
+              <span class="icon float-end responsive_logo">
+                <img src="/img/image/logo-uz.png" alt="" width="72">
+              </span>
+            </li>
+
+            <li class="nav-item">
               <a href="" class="nav-link">
                 <span>
                   <img src="/img/image/icon_book.svg" alt="" width="23">
@@ -46,8 +46,15 @@
                 <span class="name">+998 (71) 200-06-00</span>
               </a>
             </li>
-            <li class="nav-item dropdown no-mobile">
-              <a href="" class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown new_class">
+              <a
+                href=""
+                class="nav-link"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 <span>
                   <img src="/img/image/icon_globus.svg" alt="" width="23">
                 </span>
@@ -67,25 +74,29 @@
               </router-link>
             </li>
             <li v-else class="nav-item no-tab">
-              <router-link :to="{ name: 'ResumeStatistics', params: { id: 5 } }" class="nav-link">
+              <router-link
+                :to="{ name: 'ResumeStatistics', params: { id: 5 } }"
+                class="nav-link"
+              >
                 <span>
                   <img src="/img/image/admin_icon.svg" alt="" width="20">
                 </span>
               </router-link>
             </li>
-            <li class="nav-item no-mobile">
+            <li class="nav-item new_class">
               <button class="btn glasses-btn">
                 <img src="/img/image/icon_glasses.svg" alt="" width="24">
               </button>
             </li>
-<!--            <li class="nav-item no-tab">-->
-<!--              <router-link to="/register" class="nav-link register">-->
-<!--                <span>-->
-<!--                  <img src="/img/image/icon_user.svg" alt="" width="16">-->
-<!--                </span>-->
-<!--                <span class="name">Ro’yxatdan o’tish</span>-->
-<!--              </router-link>-->
-<!--            </li>-->
+            
+            <!-- <li class="nav-item no-tab">
+              <router-link to="/register" class="nav-link register">
+                <span>
+                  <img src="/img/image/icon_user.svg" alt="" width="16">
+                </span>
+                <span class="name">Ro’yxatdan o’tish</span>
+              </router-link>
+            </li> -->
           </ul>
         </div>
         <div class="mobile__btn">
@@ -100,11 +111,6 @@
 
 <script>
 export default {
-  name: 'Header',
-  computed: {
-    logoUrl() {
-      return process.env.VUE_APP_BASE_URL + 'storage/image/logo-uz.png'
-    }
-  }
+  name: 'Header'
 }
 </script>

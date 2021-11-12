@@ -6,7 +6,7 @@
       </p>
     </div>
     <div class="grid-content bg-purple-dark">
-      <h2 style="text-align: center; font-weight: bold">{{ $t('Rezyume') }}</h2>
+      <h2 style="text-align: center; font-weight: bold">{{ $t('Rezyume yaratish') }}</h2>
     </div>
     <hr>
     <div>
