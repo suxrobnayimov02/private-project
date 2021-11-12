@@ -477,6 +477,7 @@ body {
 .header__bottom .search > .btn {
   background: transparent;
   border: none;
+  margin-top: -10px;
 }
 
 .header__bottom .search > .btn:focus {
