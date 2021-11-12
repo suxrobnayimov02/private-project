@@ -416,8 +416,8 @@ body {
 
 .header__bottom {
   border-bottom: 1px solid #EAEAEA;
-  /* padding-top: 35px; */
-  /* padding-bottom: 10px; */
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .header__bottom .breadcrumb {
@@ -437,7 +437,7 @@ body {
   color: #767676;
   display: table-cell;
   vertical-align: middle;
-  height: 50px;
+  /* height: 50px; */
 }
 
 .header__bottom .breadcrumb-item + li::before {
@@ -858,7 +858,7 @@ body {
 }
 
 .intro .statistic .swipe__btn {
-  margin-top: 65px;
+  margin-top: 25px;
   display: none;
   background: transparent;
   border: 0;
@@ -1575,6 +1575,7 @@ body {
 }
 
 .employers__section {
+  padding-top: 90px;
   padding-bottom: 90px;
   background: #DEECF9;
 }
@@ -1584,7 +1585,6 @@ body {
   -webkit-box-shadow: 0 3px 99px rgba(0, 0, 0, 0.1);
   box-shadow: 0 3px 99px rgba(0, 0, 0, 0.1);
   padding: 40px;
-  margin-top: 90px;
 }
 
 .employers__card .row-no-gutters {
@@ -4079,4 +4079,7 @@ body {
 }
 ul {
   padding: 0;
+}
+.responsive_logo {
+  display: none;
 }
