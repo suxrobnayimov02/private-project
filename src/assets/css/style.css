@@ -417,7 +417,7 @@ body {
 .header__bottom {
   border-bottom: 1px solid #EAEAEA;
   /*padding-top: 35px;*/
-   padding-bottom: 56px;
+   padding-bottom: 4px;
 }
 
 .header__bottom .breadcrumb {
@@ -477,6 +477,7 @@ body {
 .header__bottom .search > .btn {
   background: transparent;
   border: none;
+  margin-top: -10px;
 }
 
 .header__bottom .search > .btn:focus {
