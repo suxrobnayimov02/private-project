@@ -25,7 +25,7 @@
               </label>
             </div>
           </div>
-          <div class="col-lg-5 pull-right no-tab">
+          <div class="col-lg-5 offset-lg-3 offset-md-3 pull-right no-tab">
             <ul class="nav nav-pills">
               <li class="nav-item dropdown nav-lang">
                 <a
@@ -107,14 +107,14 @@
     </div>
     <div class="header__middle">
       <div class="container">
-        <div class="row-no-gutters">
+        <div class="d-flex justify-content-between row-no-gutters">
           <router-link to="/" class="header__logo">
             <span class="icon">
               <img :src="logoUrl" alt="" width="82">
             </span>
             <span class="name"> Milliy vakansiyalar bazasi </span>
           </router-link>
-          <div class="header__nav">
+          <div class="header__nav align-self-end">
             <ul class="navbar nav-pills">
               <li class="nav-item no-mobile">
                 <a href="" class="nav-link">
@@ -132,18 +132,18 @@
                 </a>
               </li>
               <li v-if="$route.name !== 'Register'" class="nav-item">
-                <a href="" class="nav-link register">
+                <router-link :to="{ name: 'Register' }" class="nav-link register">
                   <span>
                     <img src="img/image/icon_user.svg" alt="" width="16">
                   </span>
                   <span class="name">Ro’yxatdan o’tish</span>
-                </a>
+                </router-link>
               </li>
-              <li class="nav-item mobile__bt no-mobile">
-                <button class="btn">
-                  <img src="img/image/icon_menu.svg" alt="" width="24">
-                </button>
-              </li>
+<!--              <li class="nav-item mobile__bt no-mobile">-->
+<!--                <button class="btn">-->
+<!--                  <img src="img/image/icon_menu.svg" alt="" width="24">-->
+<!--                </button>-->
+<!--              </li>-->
             </ul>
           </div>
           <div class="mobile__btn">
@@ -280,12 +280,12 @@
         <img src="img/image/icon_close.svg" width="32">
       </button>
 
-      <a href="" class="nav-link login-link">
+      <router-link :to="{ name: 'Register' }" class="nav-link login-link">
         <span>
           <img src="img/image/icon_door.svg" alt="" width="23">
         </span>
         <span class="name">Kirish</span>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>

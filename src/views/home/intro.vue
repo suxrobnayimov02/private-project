@@ -116,12 +116,12 @@
             <img src="/img/image/icon_close.svg" width="32">
           </button>
 
-          <a href="" class="nav-link login-link">
+          <router-link :to="{ name: 'Register' }" class="nav-link login-link">
             <span>
               <img src="/img/image/icon_door.svg" alt="" width="23">
             </span>
             <span class="name">Kirish</span>
-          </a>
+          </router-link>
         </div>
       </div>
       <div class="row">

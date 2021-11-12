@@ -416,8 +416,8 @@ body {
 
 .header__bottom {
   border-bottom: 1px solid #EAEAEA;
-  padding-top: 35px;
-  /* padding-bottom: 10px; */
+  /*padding-top: 35px;*/
+   padding-bottom: 56px;
 }
 
 .header__bottom .breadcrumb {
@@ -1575,6 +1575,7 @@ body {
 }
 
 .employers__section {
+  padding-top: 90px;
   padding-bottom: 90px;
   background: #DEECF9;
 }
@@ -1584,7 +1585,6 @@ body {
   -webkit-box-shadow: 0 3px 99px rgba(0, 0, 0, 0.1);
   box-shadow: 0 3px 99px rgba(0, 0, 0, 0.1);
   padding: 40px;
-  margin-top: 90px;
 }
 
 .employers__card .row-no-gutters {

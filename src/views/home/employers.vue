@@ -1,7 +1,7 @@
 <template>
   <div class="employers__section">
     <div class="container bigger no-padding">
-      <div class="employers__card no-padding-right">
+      <div class="employers__card no-padding-right" style="margin-bottom: 90px">
         <div class="section__title">Mashxur ish beruvchilar</div>
         <div class="type-slider">
           <div class="type-carousel owl-carousel owl-theme">

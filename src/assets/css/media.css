@@ -160,6 +160,20 @@
 }
 
 @media (max-width: 776px) {
+  .search__form .input__btn .btn .text {
+    display: none;
+  }
+  .search__form .input__field .form-control {
+    padding-right: 70px!important;
+  }
+  .input_setting-btn {
+    display: none;
+  }
+  .search__form .input__btn .btn {
+    padding: 24px;
+    background-position: 8px;
+  }
+
   .header {
     top: 0;
     background: #0078D4;

@@ -67,7 +67,7 @@ body {
 }
 
 .header__nav {
-  float: right;
+  float: end;
 }
 
 .header__nav .nav {
@@ -273,7 +273,7 @@ body {
 .header__bottom {
   border-bottom: 1px solid #EAEAEA;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 56pxpx;
 }
 
 .header__bottom .breadcrumb {
