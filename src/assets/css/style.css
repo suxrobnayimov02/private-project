@@ -416,7 +416,7 @@ body {
 
 .header__bottom {
   border-bottom: 1px solid #EAEAEA;
-  padding-top: 35px;
+  /* padding-top: 35px; */
   /* padding-bottom: 10px; */
 }
 
@@ -424,7 +424,7 @@ body {
   background: none;
   margin-bottom: 0;
   padding: 0;
-  float: left;
+  /* float: left; */
   display: table;
 }
 

@@ -1,5 +1,5 @@
 .resumeFullname {
-  font: normal normal bold 40px/84px 'Segoe UI';
+  font: normal normal bold 35px/84px 'Segoe UI';
   letter-spacing: -2.25px;
 color: #333333;
 opacity: 1; 
@@ -15,4 +15,7 @@ opacity: 1;
 }
 .containerResume {
   padding-left: 100px;
+}
+.resumeCreate {
+  background-color: rgba(246,247,249,0.4);
 }

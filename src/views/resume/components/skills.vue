@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-row v-for="(skill, index) in skills" :key="'skill' + index" :class="index != 0 ? 'mt5' : ''">
-      <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7"><b class="el-form-item__label">{{ $t(skill.name) }}:</b></el-col>
-      <el-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
+      <div style="width:240px"><b class="el-form-item__label">{{ $t(skill.name) }}:</b></div>
+      <el-col :xs="24" :sm="24" :md="15" :lg="15" :xl="15">
         <div v-if="skill.id == 1">
           <template v-if="user_languages && user_languages.length != 0">
             <div v-for="lang in user_languages" :key="lang.id" class="lang">

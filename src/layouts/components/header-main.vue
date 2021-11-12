@@ -148,7 +148,7 @@
           </div>
           <div class="mobile__btn">
             <button class="btn">
-              <img src="img/image/icon_menu.svg" alt="" width="24" />
+              <img src="img/image/icon_menu.svg" alt="" width="24">
             </button>
           </div>
           <div class="spec-view__btn no-mobile">
@@ -162,8 +162,8 @@
     <div class="header__bottom">
       <div class="container">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Bosh sahifa </a></li>
-          <li class="breadcrumb-item active">Ro’yhatdan o’tish</li>
+          <li class="breadcrumb-item"><a href="/">Bosh sahifa </a></li>
+          <li class="breadcrumb-item active">{{ $route.name }}</li>
         </ol>
 
         <div class="search dropdown">
